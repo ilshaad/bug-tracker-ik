@@ -1,0 +1,8 @@
+# ignore bundle files
+dist/
+
+# files not to do with us
+node_modules/
+
+# additional files
+ziK-folder/

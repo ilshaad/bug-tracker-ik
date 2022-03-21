@@ -1,0 +1,12 @@
+.AppComponent {
+    font-size: 2em;
+    color: red;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 10px;
+    justify-content: space-evenly;
+    background-color: yellow;
+    font-size: 28px;
+    transform: rotate(-5deg);
+}

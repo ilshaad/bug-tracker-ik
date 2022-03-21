@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  bugtrackerfrontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+  bugtrackerbackend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"

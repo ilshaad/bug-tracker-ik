@@ -1,0 +1,21 @@
+{
+  "name": "backend-bug-tracker",
+  "version": "1.0.0",
+  "description": "backend for the bug tracker",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon src/server.js",
+    "ikcleanci": "rm -fr node_modules/ && npm cache clean -vf && npm ci && npm run server",
+    "ikupdate": "npm i && npm update && npm audit fix --force && npm outdated"
+  },
+  "author": "Rechad Salma",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "morgan": "^1.10.0"
+  }
+}
