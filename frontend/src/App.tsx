@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect } from "react";
 // import ReactDOM from 'react-dom';
 // import PropTypes from 'prop-types';
 // import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -28,7 +28,18 @@ import React from "react";
 
 // /*iK simple App setup */
 const App = (props: unknown) => {
-  console.log(props);
+  // console.log(props);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/")
+      .then((x) => {
+        // console.log(x.json());
+        return x.json();
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  }, []);
 
   return (
     <div className="AppComponent">iK App working tsx:v01</div>

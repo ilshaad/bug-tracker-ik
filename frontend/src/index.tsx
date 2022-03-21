@@ -24,10 +24,7 @@ window.addEventListener("unhandledrejection", function (event) {
 /*IK you could set up react context api if needed */
 ReactDOM.render(
   <React.StrictMode>
-    <div>
-      indexty
-      <App />
-    </div>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 ); /*END ReactDOM.render() */
