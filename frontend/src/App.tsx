@@ -27,10 +27,11 @@ import React, { useEffect } from "react";
 // }; /*END App component*/
 
 // /*iK simple App setup */
-const App = (props: unknown) => {
-  // console.log(props);
 
+const App = (props: unknown) => {
   useEffect(() => {
+    console.log("ik env: ", process.env.NODE_ENV);
+
     fetch("http://localhost:4000/")
       .then((x) => {
         // console.log(x.json());
@@ -41,8 +42,19 @@ const App = (props: unknown) => {
       });
   }, []);
 
+  const requestButton = () => {
+    fetch("http://localhost:4000/")
+      .then((x) => {
+        return x.json();
+      })
+      .then((y) => console.log(y));
+  };
+
   return (
-    <div className="AppComponent">iK App working tsx:v01</div>
+    <div className="AppComponent">
+      iK App working tsx:v01
+      <button onClick={requestButton}>click request testing</button>
+    </div>
   ); /*END return */
 }; /*END App component*/
 

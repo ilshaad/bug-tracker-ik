@@ -31,8 +31,8 @@ app.use(cors(corsOptionsDelegate));
 app.get("/", (req, res) => {
   // const envi = process.env.NODE_ENV;
   // console.log(env);
-  // res.json({ youik: "working ikkkkk" });
-  res.send("iK success request");
+  res.json({ youik: "working ikkkkk" });
+  // res.send("iK success request");
 });
 
 app.get("/api/signup", (req, res) => {
