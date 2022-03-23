@@ -2,6 +2,11 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 
+// ! this is temporary as i want to test psql pg, but you will need to change this when you start creating express routes & etc
+const psqlDb = require("./database/db");
+
+require("dotenv").config();
+
 const app = express();
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
@@ -35,8 +40,18 @@ app.get("/", (req, res) => {
   // res.send("iK success request");
 });
 
-app.get("/api/signup", (req, res) => {
-  res.send("iK signup page");
+const psQuery =
+  "UPDATE users_table SET email = 'updatedemail@mail.com' WHERE name = 'deletename';";
+
+// ! this is a testing psql fetch just to see if psql is working & it is, but remove afterwards when you do not need it
+app.get("/db", (req, res) => {
+  psqlDb.query(psQuery, null, (err, result) => {
+    if (err) {
+      console.log(err);
+      return err;
+    }
+    res.send(result);
+  });
 });
 
 app.post("/api/signup", (req, res) => {
