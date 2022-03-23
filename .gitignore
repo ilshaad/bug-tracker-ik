@@ -1,4 +1,4 @@
-*.http
+restapi.http
 
 # Logs
 logs
