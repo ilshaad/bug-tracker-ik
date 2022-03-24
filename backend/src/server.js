@@ -40,8 +40,7 @@ app.get("/", (req, res) => {
   // res.send("iK success request");
 });
 
-const psQuery =
-  "UPDATE users_table SET email = 'updatedemail@mail.com' WHERE name = 'deletename';";
+const psQuery = "SELECT * FROM users_table;";
 
 // ! this is a testing psql fetch just to see if psql is working & it is, but remove afterwards when you do not need it
 app.get("/db", (req, res) => {
