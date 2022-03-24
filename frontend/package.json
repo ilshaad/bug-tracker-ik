@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "ikclean": "rm -fr node_modules/ package-lock.json dist/ && npm cache clean -vf && npm run ikupdate && npm run dev",
     "ikcleanci": "rm -fr node_modules/ dist/ && npm cache clean -vf && npm ci && npm run dev",
-    "tsconfig": "tsc --init"
+    "tsconfig": "tsc --init",
+    "workboxc": "workbox wizard"
   },
   "keywords": [],
   "author": "Rechad Salma",
@@ -42,12 +43,16 @@
     "typescript": "^4.6.2",
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.3.1"
+    "webpack-dev-server": "^4.3.1",
+    "workbox-cli": "^6.5.2",
+    "workbox-webpack-plugin": "^6.5.2"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.0",
     "handlebars": "^4.7.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2"
   }
 }

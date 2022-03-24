@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const ReactRefreshBabel = require("react-refresh/babel");
+const { InjectManifest } = require("workbox-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -76,5 +77,13 @@ module.exports = {
       publicPath: "/",
     }),
     new ReactRefreshWebpackPlugin(),
+    new InjectManifest({
+      // These are some common options, and not all are required.
+      // Consult the docs for more info.
+      // exclude: [/.../, '...'],
+      // maximumFileSizeToCacheInBytes: ...,
+      swSrc: "./src/config/src-sw.js",
+      swDest: "./dist/sw.js",
+    }),
   ],
 };

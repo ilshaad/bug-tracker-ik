@@ -2,6 +2,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { InjectManifest } = require("workbox-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -61,6 +62,14 @@ module.exports = {
           "iK SEO keywords, however it might not be necessary because it counts for little for google",
       },
       publicPath: "/",
+    }),
+    new InjectManifest({
+      // These are some common options, and not all are required.
+      // Consult the docs for more info.
+      // exclude: [/.../, '...'],
+      // maximumFileSizeToCacheInBytes: ...,
+      swSrc: "./src/config/src-sw.js",
+      swDest: "./dist/sw.js",
     }),
   ],
 };

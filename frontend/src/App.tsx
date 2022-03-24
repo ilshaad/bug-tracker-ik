@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import TestingRequest from "./components/TestingRequest";
 import Home from "./pages/Home";
+import ReduxTest from "./pages/ReduxTest";
 
 // function App() {
 //   return (
@@ -39,6 +40,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/fetch" element={<TestingRequest />} />
+        <Route path="/reduxtest" element={<ReduxTest />} />
       </Routes>
     </BrowserRouter>
   ); /*END return */

@@ -1,6 +1,9 @@
 import App from "./App";
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+
+import store from "./redux/store";
 
 /*To listen to any unhandled promise rejections (no catch handler?)
 +\ you probably remove it afterwards if you think you do not need it. */
@@ -13,7 +16,9 @@ window.addEventListener("unhandledrejection", function (event) {
 /*IK you could set up react context api if needed */
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 ); /*END ReactDOM.render() */
