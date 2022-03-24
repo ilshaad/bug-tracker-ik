@@ -19,6 +19,7 @@ module.exports = {
     },
     compress: true,
     port: 9000,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -33,6 +34,19 @@ module.exports = {
         },
       },
       {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "babel-loader",
+            // options: babelOptions
+          },
+          {
+            loader: "ts-loader",
+          },
+        ],
+      },
+      {
         test: /\.hbs$/,
         use: ["handlebars-loader"],
       },
@@ -43,11 +57,6 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
-      },
-      {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
       },
     ],
   },

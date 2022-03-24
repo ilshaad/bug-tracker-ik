@@ -1,19 +1,23 @@
 import "./App.css";
-import React, { useEffect } from "react";
-// import ReactDOM from 'react-dom';
-// import PropTypes from 'prop-types';
-// import { BrowserRouter, Switch, Route } from 'react-router-dom';
-// import { createStore, applyMiddleware, compose } from 'redux';
-// import { Provider, connect, ReactReduxContext } from 'react-redux';
-// import ReduxThunk from 'redux-thunk';
-// import axios from 'axios';
-// import DOMPurify from 'dompurify';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// import KerrorPage1 from '../ziK-Tools/kError-pages/KerrorPage1.js';
-// import KhomePage from '../kHomePage/KhomePage.js';
+import TestingRequest from "./components/TestingRequest";
+import Home from "./pages/Home";
 
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <div>
+//         <h1>Hello, React Router!</h1>
+//         <Routes>
+//           <Route path="/" element={<Home />} />
+//         </Routes>
+//       </div>
+//     </BrowserRouter>
+//   );
+// }
 // const App = props => {
-//      // console.log( props );
 
 //     /*iK add more <Route> for path pages if needed */
 //     return (
@@ -28,33 +32,15 @@ import React, { useEffect } from "react";
 
 // /*iK simple App setup */
 
-const App = (props: unknown) => {
-  useEffect(() => {
-    console.log("ik env: ", process.env.NODE_ENV);
-
-    fetch("http://localhost:4000/")
-      .then((x) => {
-        // console.log(x.json());
-        return x.json();
-      })
-      .then((res) => {
-        console.log(res);
-      });
-  }, []);
-
-  const requestButton = () => {
-    fetch("http://localhost:4000/")
-      .then((x) => {
-        return x.json();
-      })
-      .then((y) => console.log(y));
-  };
-
+const App = () => {
   return (
-    <div className="AppComponent">
-      iK App working tsx:v01
-      <button onClick={requestButton}>click request testing</button>
-    </div>
+    <BrowserRouter>
+      <h1>app component header</h1>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/fetch" element={<TestingRequest />} />
+      </Routes>
+    </BrowserRouter>
   ); /*END return */
 }; /*END App component*/
 
