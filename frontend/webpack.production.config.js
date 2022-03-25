@@ -2,7 +2,8 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { InjectManifest } = require("workbox-webpack-plugin");
+// const { InjectManifest } = require("workbox-webpack-plugin");
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -63,13 +64,21 @@ module.exports = {
       },
       publicPath: "/",
     }),
-    new InjectManifest({
-      // These are some common options, and not all are required.
-      // Consult the docs for more info.
-      // exclude: [/.../, '...'],
-      // maximumFileSizeToCacheInBytes: ...,
-      swSrc: "./src/config/src-sw.js",
-      swDest: "./dist/sw.js",
+    new WorkboxPlugin.GenerateSW({
+      // these options encourage the ServiceWorkers to get in there fast
+      // and not allow any straggling "old" SWs to hang around
+      // clientsClaim: true,
+      // skipWaiting: true,
+      // maximumFileSizeToCacheInBytes: 5000000,
+      // navigateFallback: "/reduxtest",
     }),
+    // new InjectManifest({
+    //   // These are some common options, and not all are required.
+    //   // Consult the docs for more info.
+    //   // exclude: [/.../, '...'],
+    //   // maximumFileSizeToCacheInBytes: ...,
+    //   swSrc: "./src/config/src-sw.js",
+    //   swDest: "./dist/sw.js",
+    // }),
   ],
 };
