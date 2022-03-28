@@ -2,8 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const ReactRefreshBabel = require("react-refresh/babel");
-// const { InjectManifest } = require("workbox-webpack-plugin");
-const WorkboxPlugin = require("workbox-webpack-plugin");
+// const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -78,21 +77,12 @@ module.exports = {
       publicPath: "/",
     }),
     new ReactRefreshWebpackPlugin(),
-    new WorkboxPlugin.GenerateSW({
-      // these options encourage the ServiceWorkers to get in there fast
-      // and not allow any straggling "old" SWs to hang around
-      clientsClaim: true,
-      skipWaiting: true,
-      maximumFileSizeToCacheInBytes: 5000000,
-      navigateFallback: "http://localhost:3000/reduxtest",
-    }),
-    // new InjectManifest({
-    //   // These are some common options, and not all are required.
-    //   // Consult the docs for more info.
-    //   // exclude: [/.../, '...'],
-    //   // maximumFileSizeToCacheInBytes: ...,
-    //   swSrc: "./src/config/src-sw.js",
-    //   swDest: "./dist/sw.js",
+    // new WorkboxPlugin.GenerateSW({
+    //   // these options encourage the ServiceWorkers to get in there fast
+    //   // and not allow any straggling "old" SWs to hang around
+    //   clientsClaim: true,
+    //   skipWaiting: true,
+    //   maximumFileSizeToCacheInBytes: 5000000,
     // }),
   ],
 };
