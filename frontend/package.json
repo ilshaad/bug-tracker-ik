@@ -12,8 +12,7 @@
     "lint": "eslint .",
     "ikclean": "rm -fr node_modules/ package-lock.json dist/ && npm cache clean -vf && npm run ikupdate && npm run dev",
     "ikcleanci": "rm -fr node_modules/ dist/ && npm cache clean -vf && npm ci && npm run dev",
-    "tsconfig": "tsc --init",
-    "workboxc": "workbox wizard"
+    "tsconfig": "tsc --init"
   },
   "keywords": [],
   "author": "Rechad Salma",
@@ -38,6 +37,8 @@
     "postcss-loader": "^6.2.0",
     "postcss-preset-env": "^7.4.3",
     "react-refresh": "^0.11.0",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
     "style-loader": "^3.3.0",
     "ts-loader": "^9.2.8",
     "typescript": "^4.6.2",
@@ -48,6 +49,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
+    "bootstrap": "^5.1.3",
     "handlebars": "^4.7.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
