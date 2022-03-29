@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "ikupdate": "npm i && npm update && npm audit fix --force && npm outdated",
-    "build": "eslint . && rm -rfv ./dist && mkdir dist && cp -rv ./src/public/ikmanifestdir/ ./dist/ && webpack --config webpack.production.config.js",
+    "build": "eslint . && rm -rfv ./dist && mkdir dist && cp -rv ./src/public/manifestdir/ ./dist/ && webpack --config webpack.production.config.js",
     "prod": "npm run build && node src/server.js",
-    "dev": "eslint . && rm -rfv ./dist && mkdir dist && cp -rv ./src/public/ikmanifestdir ./dist && webpack serve --config webpack.dev.config.js --hot",
+    "dev": "eslint . && rm -rfv ./dist && mkdir dist && cp -rv ./src/public/manifestdir ./dist && webpack serve --config webpack.dev.config.js --hot",
     "server": "node src/server.js",
     "lint": "eslint .",
     "ikclean": "rm -fr node_modules/ package-lock.json dist/ && npm cache clean -vf && npm run ikupdate && npm run dev",
