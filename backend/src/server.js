@@ -7,38 +7,33 @@ const psqlDb = require("./database/db");
 
 require("dotenv").config();
 
+// routes import
+const dummyroute = require("./routes/dummyroute.js");
+const ticketRoute = require("./routes/ticketRoute.js");
+
+// express config settings
 const app = express();
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
 
-// list of urls for cors
-let allowlist;
-// setting production & develoment environments variables & etc
-if (process.env.NODE_ENV === "production") {
-  allowlist = ["https://bug-tracker-frontend-ik-202203.herokuapp.com"];
-} else {
-  allowlist = ["http://localhost:9000", "http://localhost:3000"];
-}
-
-const corsOptionsDelegate = (req, callback) => {
-  let corsOptions;
-  if (allowlist.indexOf(req.header("Origin")) !== -1) {
-    corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
-  } else {
-    corsOptions = { origin: false }; // disable CORS for this request
-  }
-  callback(null, corsOptions); // callback expects two parameters: error and options
-};
-
+// url cors settings
+const { corsOptionsDelegate } = require("./config/cors.js");
 app.use(cors(corsOptionsDelegate));
 
-//routes
+//server route paths
 app.get("/", (req, res) => {
-  // const envi = process.env.NODE_ENV;
-  // console.log(env);
-  res.json({ youik: "working ikkkkk" });
-  // res.send("iK success request");
+  console.log(process.env.NODE_ENV);
+
+  res.json({ success: true, msg: "home route, but nothing to gain here" });
 });
+
+// ! delete when finish
+// app.get("/dummyroute", dummyroute);
+app.use("/dummyroute", dummyroute);
+
+// ticket_table psql route
+app.use("/api/ticket", ticketRoute);
 
 const psQuery = "SELECT * FROM users_table;";
 
@@ -53,24 +48,9 @@ app.get("/db", (req, res) => {
   });
 });
 
-app.post("/api/signup", (req, res) => {
-  res.send(req.body);
-});
-
-app.get("/api/login", (req, res) => {
-  res.send("iK login page");
-});
-
-app.post("/login", (req, res) => {
-  res.send(req.body);
-});
-
-app.post("/api/logout", (req, res) => {
-  res.send(req.body);
-});
-
-app.get("/api/authpage", (req, res) => {
-  res.send("iK auth page");
+// error page route
+app.all("*", (req, res) => {
+  res.status(404).json({ success: false, msg: "path does not exist" });
 });
 
 const port = process.env.PORT || 4000;
