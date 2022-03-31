@@ -7,7 +7,7 @@ import {
   incrementByAmount,
 } from "../redux/reducers/counterSlice";
 
-export default function ReduxRoute() {
+export default function ReduxRoute(): JSX.Element {
   const countN = useAppSelector((state) => state.counter.value);
 
   const dispatchy = useAppDispatch();
