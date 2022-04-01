@@ -11,7 +11,7 @@ exports.getTicketList = (req, res) => {
     if (err) {
       res.status(400).json({
         success: false,
-        msg: "error when fetching from database",
+        msg: "error when fetching ticket list from database",
         err,
       });
     }
@@ -23,7 +23,7 @@ exports.getTicketList = (req, res) => {
  * PATCH /api/ticket/:ticketid
  * edit / update a specific bug ticket
  * editable only: title / description / priority / assigned_user / status / app_name / app_version
- * requires ticketid params & ticket_id json property from client to know which ticket to edit
+ * * requires ticketid params & ticket_id json property from client to know which ticket to edit
  */
 exports.updateTicket = (req, res) => {
   // collect the ticket_id number from params to identify which ticket to update
@@ -83,7 +83,7 @@ exports.updateTicket = (req, res) => {
 /**
  * DELETE /api/ticket/:ticketid
  * delete a singe ticket from psql tickets_table
- * requires ticket_id params & ticket_id json property from client to know which ticket to delete
+ * * requires ticket_id params & ticket_id json property from client to know which ticket to delete
  */
 exports.deleteTicket = (req, res) => {
   // collect the ticket_id number from params to identify which ticket to delete
@@ -134,7 +134,7 @@ exports.deleteTicket = (req, res) => {
 /**
  * POST /api/ticket/create
  * create a new ticket within the psql tickets_table
- * client must send full list key value pair for creating new ticket
+ * * client must send full list key value pair for creating new ticket
  */
 exports.createTicket = (req, res) => {
   // json data send by the client which contains all the editable properties that wil get updated

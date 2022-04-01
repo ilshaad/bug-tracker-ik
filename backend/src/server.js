@@ -10,6 +10,7 @@ require("dotenv").config();
 // routes import
 const dummyroute = require("./routes/dummyroute.js");
 const ticketRoute = require("./routes/ticketRoute.js");
+const userRoute = require("./routes/userRoute.js");
 
 // express config settings
 const app = express();
@@ -28,12 +29,15 @@ app.get("/", (req, res) => {
   res.json({ success: true, msg: "home route, but nothing to gain here" });
 });
 
-// ! delete when finish
+// ! delete dummyRoute when finish
 // app.get("/dummyroute", dummyroute);
 app.use("/dummyroute", dummyroute);
 
 // ticket_table psql route
 app.use("/api/ticket", ticketRoute);
+
+// users_table psql route
+app.use("/api/user", userRoute);
 
 const psQuery = "SELECT * FROM users_table;";
 
