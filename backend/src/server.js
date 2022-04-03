@@ -11,6 +11,7 @@ require("dotenv").config();
 const dummyroute = require("./routes/dummyroute.js");
 const ticketRoute = require("./routes/ticketRoute.js");
 const userRoute = require("./routes/userRoute.js");
+const commentRoute = require("./routes/commentRoute.js");
 
 // express config settings
 const app = express();
@@ -38,6 +39,9 @@ app.use("/api/ticket", ticketRoute);
 
 // users_table psql route
 app.use("/api/user", userRoute);
+
+// comments_table psql route
+app.use("/api/comment", commentRoute);
 
 const psQuery = "SELECT * FROM users_table;";
 

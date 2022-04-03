@@ -77,11 +77,16 @@ exports.signUpUser = (req, res) => {
   });
 }; //END signUpUser controller
 
-// TODO include comments about this controller & test if the route is working according before doing the logic
+/**
+ * DELETE /api/user/profile
+ * delete user account profile from the psql users_table
+ * * client must send user email addreass in json
+ * confirm user account profile has been deleted
+ */
 exports.deleteUserAccount = (req, res) => {
-  // const sqlQuery = `UPDATE tickets_table SET title = '${title}', description = '${description}', priority = '${priority}', assigned_user = '${assigned_user}', status = '${status}', app_name = '${app_name}', app_version = '${app_version}' WHERE ticket_id = '69';`;
+  const { email } = req.body;
 
-  const sqlQuery = "SELECT * FROM users_table;";
+  const sqlQuery = `DELETE FROM users_table WHERE email = '${email}';`;
 
   psqlDb.query(sqlQuery, null, (err, result) => {
     if (err) {
@@ -103,11 +108,9 @@ exports.deleteUserAccount = (req, res) => {
       return;
     }
 
-    // res.status(200).json({
-    //   success: true,
-    //   msg: "successful update to the database",
-    // });
-
-    res.json({ success: true, data: result });
+    res.status(200).json({
+      success: true,
+      msg: "successful user account delete on the database",
+    });
   });
 }; //END deleteUserAccount controller

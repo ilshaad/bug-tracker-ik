@@ -25,7 +25,6 @@ userRoute.post("/profile", getUserProfile);
  */
 userRoute.post("/signup", signUpUser);
 
-// 		- DELETE /api/user/profile = user deletes their account
 /**
  * DELETE /api/user/profile
  * delete user account profile from the psql users_table
