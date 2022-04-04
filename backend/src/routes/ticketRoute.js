@@ -25,7 +25,8 @@ ticketRoute.patch("/:ticketid", updateTicket);
 /**
  * DELETE /api/ticket/:ticketid
  * delete a singe ticket from psql tickets_table
- * * requires ticket_id params & ticket_id json property from client to know which ticket to delete
+ * Also delete comments related to that ticket_id within psql comments_table
+ * * requires ticket_id params & ticket_id json property from client to know which ticket & comments to delete
  */
 ticketRoute.delete("/:ticketid", deleteTicket);
 

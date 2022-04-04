@@ -3,9 +3,9 @@ exports.corsOptionsDelegate = (req, callback) => {
   let allowlist;
   // setting production & develoment environments variables & etc
   if (process.env.NODE_ENV === "production") {
-    allowlist = ["https://bug-tracker-frontend-ik-202203.herokuapp.com"];
+    allowlist = [process.env.HEROKU_FRONTEND_URL];
   } else {
-    allowlist = ["http://localhost:9000", "http://localhost:3000"];
+    allowlist = [process.env.LOCAL_DEV_URL, process.env.LOCAL_PROD_URL];
   }
 
   let corsOptions;

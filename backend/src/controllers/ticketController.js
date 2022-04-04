@@ -14,6 +14,7 @@ exports.getTicketList = (req, res) => {
         msg: "error when fetching ticket list from database",
         err,
       });
+      return;
     }
     res.json({ success: true, data: result.rows });
   });
@@ -83,10 +84,11 @@ exports.updateTicket = (req, res) => {
 /**
  * DELETE /api/ticket/:ticketid
  * delete a singe ticket from psql tickets_table
- * * requires ticket_id params & ticket_id json property from client to know which ticket to delete
+ * Also delete comments related to that ticket_id within psql comments_table
+ * * requires ticket_id params & ticket_id json property from client to know which ticket & comments to delete
  */
 exports.deleteTicket = (req, res) => {
-  // collect the ticket_id number from params to identify which ticket to delete
+  // collect the ticket_id number from params to identify which ticket & comments to delete
   const ticketId = req.params.ticketid;
 
   // json data sendf by the client which contains the ticket_id to be deleted
@@ -101,8 +103,8 @@ exports.deleteTicket = (req, res) => {
     return;
   }
 
-  // sql query string to use to delete a ticket within the psql tickets_table
-  const sqlQuery = `DELETE FROM tickets_table WHERE ticket_id = '${ticket_id}';`;
+  // sql query string to use to delete a ticket & all the comments related to that single ticket within both the psql tickets_table & comments_table
+  const sqlQuery = `BEGIN TRANSACTION; DELETE FROM tickets_table WHERE ticket_id = '${ticket_id}'; DELETE FROM comments_table WHERE ticket_id = '${ticket_id}'; COMMIT;`;
 
   psqlDb.query(sqlQuery, null, (err, result) => {
     if (err) {
@@ -114,11 +116,11 @@ exports.deleteTicket = (req, res) => {
       return;
     }
 
-    // if result.rowcount is 0 than it means psql ticket did not delete, & inform client
+    // if result.rowcount is 0 than it means psql ticket & comments did not delete, & inform client
     if (result.rowCount === 0) {
       res.status(500).json({
         success: false,
-        msg: "error occured when deleting ticket within database",
+        msg: "error occured when deleting ticket or comments within the database",
         err,
       });
       return;
@@ -126,7 +128,7 @@ exports.deleteTicket = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: "successful ticket delete within the database",
+      msg: "successful ticket & comments delete within the database",
     });
   });
 }; //END deleteTicket controller

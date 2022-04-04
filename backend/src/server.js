@@ -2,37 +2,29 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 
-// ! this is temporary as i want to test psql pg, but you will need to change this when you start creating express routes & etc
-const psqlDb = require("./database/db");
-
 require("dotenv").config();
 
-// routes import
-const dummyroute = require("./routes/dummyroute.js");
+/** routes import */
 const ticketRoute = require("./routes/ticketRoute.js");
 const userRoute = require("./routes/userRoute.js");
 const commentRoute = require("./routes/commentRoute.js");
 
-// express config settings
+/**express config settings */
 const app = express();
 app.use(morgan("dev"));
 // app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// url cors settings
+/**url cors settings */
 const { corsOptionsDelegate } = require("./config/cors.js");
 app.use(cors(corsOptionsDelegate));
 
-//server route paths
+/**server route paths */
 app.get("/", (req, res) => {
   console.log(process.env.NODE_ENV);
 
   res.json({ success: true, msg: "home route, but nothing to gain here" });
 });
-
-// ! delete dummyRoute when finish
-// app.get("/dummyroute", dummyroute);
-app.use("/dummyroute", dummyroute);
 
 // ticket_table psql route
 app.use("/api/ticket", ticketRoute);
@@ -42,19 +34,6 @@ app.use("/api/user", userRoute);
 
 // comments_table psql route
 app.use("/api/comment", commentRoute);
-
-const psQuery = "SELECT * FROM users_table;";
-
-// ! this is a testing psql fetch just to see if psql is working & it is, but remove afterwards when you do not need it
-app.get("/db", (req, res) => {
-  psqlDb.query(psQuery, null, (err, result) => {
-    if (err) {
-      console.log(err);
-      return err;
-    }
-    res.send(result);
-  });
-});
 
 // error page route
 app.all("*", (req, res) => {

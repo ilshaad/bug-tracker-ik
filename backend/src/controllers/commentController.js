@@ -86,8 +86,6 @@ exports.updateComment = (req, res) => {
 
   const sqlQuery = `UPDATE comments_table SET text_comment = '${text_comment}' WHERE comment_id = '${comment_id}';`;
 
-  // const sqlQuery = "SELECT * FROM comments_table;";
-
   psqlDb.query(sqlQuery, null, (err, result) => {
     if (err) {
       res.status(400).json({
@@ -118,15 +116,13 @@ exports.updateComment = (req, res) => {
 /**
  * DELETE /api/comment/delete
  * user delete their comment
- * *CS must provide json data of comment_id
+ * * CS must provide json data of comment_id
  */
 exports.deleteComment = (req, res) => {
   // json data send by the client which contains the comment_id to be deleted
   const { comment_id } = req.body;
 
   const sqlQuery = `DELETE FROM comments_table WHERE comment_id = '${comment_id}';`;
-
-  // const sqlQuery = "SELECT * FROM comments_table;";
 
   psqlDb.query(sqlQuery, null, (err, result) => {
     if (err) {
