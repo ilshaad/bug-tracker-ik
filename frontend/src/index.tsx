@@ -1,6 +1,7 @@
 import App from "./App";
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import "./styles/customBootstrap.scss";
 import "./styles/global.scss";
@@ -30,14 +31,25 @@ window.addEventListener("unhandledrejection", function (event) {
 
 /*iK React with not redux store */
 /*IK you could set up react context api if needed */
-ReactDOM.render(
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Provider store={store}>
+//       <App />
+//     </Provider>
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// ); /*END ReactDOM.render() */
+
+// import { createRoot } from "react-dom/client";
+const container = document.getElementById("root") as HTMLDivElement;
+const root = createRoot(container);
+root.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
-); /*END ReactDOM.render() */
+  </React.StrictMode>
+);
 
 /*iK using React-Redux */
 // import kStore1 from './Redux-State/Redux-Store/kStore.js';

@@ -33,7 +33,7 @@ commentRoute.patch("/update", updateComment);
 /**
  * DELETE /api/comment/delete
  * user delete their comment
- * *CS must provide json data of comment_id
+ * * CS must provide json data of comment_id
  */
 commentRoute.delete("/delete", deleteComment);
 

@@ -2,9 +2,17 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+// ! these are dummy routes & remove when you done
 import TestingRequest from "./components/TestingRequest";
-import Home from "./pages/Home";
 import ReduxTest from "./pages/ReduxTest";
+
+/**page routes */
+import HomeLogin from "./pages/HomeLogin";
+import Dashboard from "./pages/Dashboard";
+import CreateTicket from "./pages/CreateTicket";
+import TicketList from "./pages/TicketList";
+import ViewTicket from "./pages/ViewTicket";
+import NotFound from "./pages/NotFound";
 
 // function App() {
 //   return (
@@ -33,14 +41,20 @@ import ReduxTest from "./pages/ReduxTest";
 
 // /*iK simple App setup */
 
+// ! /fetch & /reduxtest routes are dummy routes, remove afterwards
 const App = () => {
   return (
     <BrowserRouter>
       <h1>app component header v5</h1>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomeLogin />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/createticket" element={<CreateTicket />} />
+        <Route path="/ticketlist" element={<TicketList />} />
+        <Route path="/viewticket/:ticketid" element={<ViewTicket />} />
         <Route path="/fetch" element={<TestingRequest />} />
         <Route path="/reduxtest" element={<ReduxTest />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   ); /*END return */
