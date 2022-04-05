@@ -15,9 +15,7 @@ export default function App(): JSX.Element {
   // }, []);
 
   const requestButton = () => {
-    fetch(
-      "https://bug-tracker-frontend-ik-202203.herokuapp.com/api/ticket/list"
-    )
+    fetch("https://bug-tracker-backend-ik-202203.herokuapp.com/api/ticket/list")
       .then((x) => {
         return x.json();
       })
