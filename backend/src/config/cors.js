@@ -4,6 +4,7 @@ exports.corsOptionsDelegate = (req, callback) => {
   // setting production & develoment environments variables & etc
   if (process.env.NODE_ENV === "production") {
     allowlist = [process.env.FRONTEND_HEROKU_SITE_URL];
+    console.log("🚀 ~ file: cors.js ~ line 7 ~ allowlist", allowlist);
   } else {
     allowlist = [process.env.LOCAL_DEV_URL, process.env.LOCAL_PROD_URL];
   }
