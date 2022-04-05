@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const ReactRefreshBabel = require("react-refresh/babel");
 // const WorkboxPlugin = require("workbox-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -84,5 +85,6 @@ module.exports = {
     //   skipWaiting: true,
     //   maximumFileSizeToCacheInBytes: 5000000,
     // }),
+    new Dotenv(),
   ],
 };

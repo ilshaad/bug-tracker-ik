@@ -14,33 +14,6 @@ import TicketList from "./pages/TicketList";
 import ViewTicket from "./pages/ViewTicket";
 import NotFound from "./pages/NotFound";
 
-// function App() {
-//   return (
-//     <BrowserRouter>
-//       <div>
-//         <h1>Hello, React Router!</h1>
-//         <Routes>
-//           <Route path="/" element={<Home />} />
-//         </Routes>
-//       </div>
-//     </BrowserRouter>
-//   );
-// }
-// const App = props => {
-
-//     /*iK add more <Route> for path pages if needed */
-//     return (
-//         <BrowserRouter>
-//             <Switch>
-//                 <Route path="/" component={KhomePage} />
-//                 <Route component={KerrorPage1} />
-//             </Switch>
-//         </BrowserRouter>
-//     ); /*END return */
-// }; /*END App component*/
-
-// /*iK simple App setup */
-
 // ! /fetch & /reduxtest routes are dummy routes, remove afterwards
 const App = () => {
   return (
