@@ -3,7 +3,7 @@ exports.corsOptionsDelegate = (req, callback) => {
   let allowlist;
   // setting production & develoment environments variables & etc
   if (process.env.NODE_ENV === "production") {
-    allowlist = [process.env.HEROKU_FRONTEND_URL];
+    allowlist = [process.env.FRONTEND_HEROKU_SITE_URL];
   } else {
     allowlist = [process.env.LOCAL_DEV_URL, process.env.LOCAL_PROD_URL];
   }
