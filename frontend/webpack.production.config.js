@@ -3,8 +3,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const WorkboxPlugin = require("workbox-webpack-plugin")
-const Dotenv = require("dotenv-webpack");
-// const webpack = require("webpack");
+// const Dotenv = require("dotenv-webpack");
+const webpack = require("webpack");
 
 // require("dotenv").config();
 
@@ -75,7 +75,7 @@ module.exports = {
 
     // new WorkboxPlugin.GenerateSW(),
 
-    new Dotenv({ systemvars: true }),
+    // new Dotenv({ systemvars: true }),
 
     // new webpack.EnvironmentPlugin({
     //   NODE_ENV: "production", // use 'production' unless process.env.NODE_ENV is defined
@@ -104,5 +104,13 @@ module.exports = {
     //     TESTINGENV: JSON.stringify(process.env.TESTINGENV),
     //   },
     // }),
+
+    new webpack.DefinePlugin({
+      "process.env.DOMAIN_AUTH0": JSON.stringify(process.env.DOMAIN_AUTH0),
+      "process.env.CLIENT_ID_AUTH0": JSON.stringify(
+        process.env.CLIENT_ID_AUTH0
+      ),
+      "process.env.TESTINGENV": JSON.stringify(process.env.TESTINGENV),
+    }),
   ],
 };
