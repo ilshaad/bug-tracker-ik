@@ -43,3 +43,8 @@ jobs:
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           docker_compose_file: "./docker-compose.yml" # set the path to the folder where the docker-compose file is located
           heroku_apps: '[{"imagename":"bug-tracker-ik_bugtrackerfrontend","appname":"bug-tracker-frontend-ik-202203","apptype":"web"},{"imagename":"bug-tracker-ik_bugtrackerbackend","appname":"bug-tracker-backend-ik-202203","apptype":"web"}]' # List of Docker Image name, Heroku app and Heroku app type
+        env:
+          # CI: true
+          DOMAIN_AUTH0: ${{ secrets.DOMAIN_AUTH0 }}
+          CLIENT_ID_AUTH0: ${{ secrets.CLIENT_ID_AUTH0 }}
+          TESTINGENV: ${{ secrets.DOMAIN_AUTH0 }}
