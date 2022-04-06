@@ -13,7 +13,7 @@ export default function HomeLogin() {
         role="group"
         aria-label="Basic outlined example"
       >
-        {process.env.TESTINGENV}
+        <code>{process.env.TESTINGENV}</code>
         <LoginButton />
         {/* <button type="button" className="btn btn-outline-primary">
           Login
