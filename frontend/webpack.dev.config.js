@@ -6,7 +6,7 @@ const ReactRefreshBabel = require("react-refresh/babel");
 const Dotenv = require("dotenv-webpack");
 // const webpack = require("webpack");
 
-require("dotenv").config();
+// require("dotenv").config();
 
 module.exports = {
   entry: "./src/index.tsx",
