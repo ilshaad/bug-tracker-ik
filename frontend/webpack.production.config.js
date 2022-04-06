@@ -6,7 +6,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const WorkboxPlugin = require("workbox-webpack-plugin")
 // const Dotenv = require("dotenv-webpack");
-// const webpack = require("webpack");
+const webpack = require("webpack");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -105,12 +105,10 @@ module.exports = {
     //   },
     // }),
 
-    // new webpack.DefinePlugin({
-    //   "process.env.DOMAIN_AUTH0": JSON.stringify(process.env.DOMAIN_AUTH0),
-    //   "process.env.CLIENT_ID_AUTH0": JSON.stringify(
-    //     process.env.CLIENT_ID_AUTH0
-    //   ),
-    //   "process.env.TESTINGENV": JSON.stringify(process.env.TESTINGENV),
-    // }),
+    new webpack.DefinePlugin({
+      "process.env.DOMAIN_AUTH0": process.env.DOMAIN_AUTH0,
+      "process.env.CLIENT_ID_AUTH0": process.env.CLIENT_ID_AUTH0,
+      "process.env.TESTINGENV": process.env.TESTINGENV,
+    }),
   ],
 };
