@@ -7,6 +7,13 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
 // require("dotenv").config();
+const DOMAIN_AUTH0 = process.env.DOMAIN_AUTH0,
+  CLIENT_ID_AUTH0 = process.env.CLIENT_ID_AUTH0,
+  TESTINGENV = process.env.TESTINGENV;
+// process.env.TESTINGENV)
+// "process.env.DOMAIN_AUTH0": process.env.DOMAIN_AUTH0,
+//       "process.env.CLIENT_ID_AUTH0": process.env.CLIENT_ID_AUTH0,
+//       "process.env.TESTINGENV": process.env.TESTINGENV,
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -97,18 +104,18 @@ module.exports = {
     //   TESTINGENV: process.env.TESTINGENV,
     // }),
 
-    // new webpack.DefinePlugin({
-    //   "process.env": {
-    //     DOMAIN_AUTH0: JSON.stringify(process.env.DOMAIN_AUTH0),
-    //     CLIENT_ID_AUTH0: JSON.stringify(process.env.CLIENT_ID_AUTH0),
-    //     TESTINGENV: JSON.stringify(process.env.TESTINGENV),
-    //   },
-    // }),
-
     new webpack.DefinePlugin({
-      "process.env.DOMAIN_AUTH0": process.env.DOMAIN_AUTH0,
-      "process.env.CLIENT_ID_AUTH0": process.env.CLIENT_ID_AUTH0,
-      "process.env.TESTINGENV": process.env.TESTINGENV,
+      "process.env": {
+        DOMAIN_AUTH0: JSON.stringify(DOMAIN_AUTH0),
+        CLIENT_ID_AUTH0: JSON.stringify(CLIENT_ID_AUTH0),
+        TESTINGENV: JSON.stringify(TESTINGENV),
+      },
     }),
+
+    // new webpack.DefinePlugin({
+    //   "process.env.DOMAIN_AUTH0": process.env.DOMAIN_AUTH0,
+    //   "process.env.CLIENT_ID_AUTH0": process.env.CLIENT_ID_AUTH0,
+    //   "process.env.TESTINGENV": process.env.TESTINGENV,
+    // }),
   ],
 };

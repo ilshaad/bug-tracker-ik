@@ -3,8 +3,6 @@ const app = express();
 const path = require("path");
 const fs = require("fs");
 
-require("dotenv").config();
-
 /*reads our statc files such as css / js / etc… */
 app.use("/", express.static(path.resolve(__dirname, "../dist")));
 
