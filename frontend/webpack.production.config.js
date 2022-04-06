@@ -69,6 +69,6 @@ module.exports = {
       publicPath: "/",
     }),
     // new WorkboxPlugin.GenerateSW(),
-    new Dotenv(),
+    new Dotenv({ systemvars: true }),
   ],
 };

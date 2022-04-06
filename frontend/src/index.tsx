@@ -35,8 +35,8 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Auth0Provider
-      domain={`${process.env.DOMAIN_AUTH0}`}
-      clientId={`${process.env.CLIENT_ID_AUTH0}`}
+      domain={process.env.DOMAIN_AUTH0!}
+      clientId={process.env.CLIENT_ID_AUTH0!}
       redirectUri={`${window.location.origin}/dashboard`}
     >
       <Provider store={store}>
