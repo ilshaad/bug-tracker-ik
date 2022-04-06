@@ -3,7 +3,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const ReactRefreshBabel = require("react-refresh/babel");
 // const WorkboxPlugin = require("workbox-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
+// const Dotenv = require("dotenv-webpack");
+const webpack = require("webpack");
+
+require("dotenv").config();
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -85,6 +88,27 @@ module.exports = {
     //   skipWaiting: true,
     //   maximumFileSizeToCacheInBytes: 5000000,
     // }),
-    new Dotenv(),
+    // new Dotenv({ systemvars: true }),
+
+    new webpack.EnvironmentPlugin({
+      // NODE_ENV: "development", // use 'development' unless process.env.NODE_ENV is defined
+      DOMAIN_AUTH0: process.env.DOMAIN_AUTH0,
+      CLIENT_ID_AUTH0: process.env.CLIENT_ID_AUTH0,
+      TESTINGENV: process.env.TESTINGENV,
+    }),
+
+    // new webpack.EnvironmentPlugin([
+    //   "DOMAIN_AUTH0",
+    //   "CLIENT_ID_AUTH0",
+    //   "TESTINGENV",
+    // ]),
+
+    // new webpack.DefinePlugin({
+    //   "process.env.DOMAIN_AUTH0": JSON.stringify(process.env.DOMAIN_AUTH0),
+    //   "process.env.CLIENT_ID_AUTH0": JSON.stringify(
+    //     process.env.CLIENT_ID_AUTH0
+    //   ),
+    //   "process.env.TESTINGENV": JSON.stringify(process.env.TESTINGENV),
+    // }),
   ],
 };
