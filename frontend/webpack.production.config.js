@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const Dotenv = require("dotenv-webpack");
 const webpack = require("webpack");
 
-// require("dotenv").config();
+require("dotenv").config();
 
 module.exports = {
   entry: "./src/index.tsx",
