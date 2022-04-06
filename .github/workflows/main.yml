@@ -38,13 +38,13 @@ jobs:
       - name: Deploy Multiple Docker Images to Heroku Apps
         uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0 # use the latest version of the action
         id: heroku
-        with:
-          email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
-          api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
-          docker_compose_file: "./docker-compose.yml" # set the path to the folder where the docker-compose file is located
-          heroku_apps: '[{"imagename":"bug-tracker-ik_bugtrackerfrontend","appname":"bug-tracker-frontend-ik-202203","apptype":"web"},{"imagename":"bug-tracker-ik_bugtrackerbackend","appname":"bug-tracker-backend-ik-202203","apptype":"web"}]' # List of Docker Image name, Heroku app and Heroku app type
         env:
           CI: true
           DOMAIN_AUTH0: ${{ secrets.DOMAIN_AUTH0 }}
           CLIENT_ID_AUTH0: ${{ secrets.CLIENT_ID_AUTH0 }}
           TESTINGENV: ${{ secrets.DOMAIN_AUTH0 }}
+        with:
+          email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
+          api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
+          docker_compose_file: "./docker-compose.yml" # set the path to the folder where the docker-compose file is located
+          heroku_apps: '[{"imagename":"bug-tracker-ik_bugtrackerfrontend","appname":"bug-tracker-frontend-ik-202203","apptype":"web"},{"imagename":"bug-tracker-ik_bugtrackerbackend","appname":"bug-tracker-backend-ik-202203","apptype":"web"}]' # List of Docker Image name, Heroku app and Heroku app type
