@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
@@ -7,6 +5,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const WorkboxPlugin = require("workbox-webpack-plugin")
 // const Dotenv = require("dotenv-webpack");
 const webpack = require("webpack");
+
+// require("dotenv").config();
 
 module.exports = {
   entry: "./src/index.tsx",
