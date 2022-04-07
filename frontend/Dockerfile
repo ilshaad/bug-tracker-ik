@@ -32,7 +32,7 @@ RUN echo iktesting
 
 RUN printenv
 
-RUN cat .env
+# RUN cat .env
 
 # npm install, must have package-lock-json file to install successfully
 RUN npm ci
