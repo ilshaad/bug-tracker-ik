@@ -1,19 +1,20 @@
-# docker build -t fe1 . \
-# && \
-# docker run -p 3000:3000 fe1
-touch .env && \
+docker build -t fe1 . \
+&& \
+docker run -p 3000:3000 fe1
 
-echo iKworking && \
+# touch .env && \
 
-printenv && \
+# echo iKworking && \
 
-echo $(DOMAIN_AUTH0) && \
+# printenv && \
 
-printenv >> .env && \
+# echo $(DOMAIN_AUTH0) && \
 
-cat .env && \
+# printenv >> .env && \
 
-echo second working
+# cat .env && \
+
+# echo second working
 
 # printenv DOMAIN_AUTH0 >> .env && \
 

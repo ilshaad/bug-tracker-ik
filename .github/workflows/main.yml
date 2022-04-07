@@ -1,60 +1,60 @@
-# This is a basic workflow to help you get started with Actions
+# Your workflow name.
+name: Deploy second FRONTEND container to heroku.
 
-name: connect bug-tracker docker-compose.yml to heroku frontend & backend app
-
-# Controls when the workflow will run
+# Run workflow on every push to master branch.
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [master]
-#   pull_request:
-#     branches: [ master ]
 
-# Allows you to run this workflow manually from the Actions tab
-#   workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# Your workflows jobs.
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      # Check-out your repository.
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo iK Hello, world! BUG TRACKER echoing!!!
+      ### ⬇ IMPORTANT PART ⬇ ###
 
-      # Runs a single command using the runners shell
-      - name: Run the domain auth0
-        run: echo ${{ secrets.DOMIAN_AUTH0 }}
-
-      # create .env
-      - name: iK create .env file
-        run: |
-          echo create .env start
-          touch .env
-          echo DOMAIN_AUTH0=${{ secrets.DOMAIN_AUTH0 }} >> .env
-          echo CLIENT_ID_AUTH0=${{ secrets.CLIENT_ID_AUTH0 }} >> .env
-          echo TESTINGENV=${{ secrets.TESTINGENV }} >> .env
-          echo JUSTTESTING=yoyuuuu >> .env
-          cat .env
-          echo create .env finish
-
-      - name: Deploy Multiple Docker Images to Heroku Apps
-        uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0 # use the latest version of the action
-        id: heroku
-        # env:
-        #   CI: true
-        #   DOMAIN_AUTH0: ${{ secrets.DOMAIN_AUTH0 }}
-        #   CLIENT_ID_AUTH0: ${{ secrets.CLIENT_ID_AUTH0 }}
-        #   TESTINGENV: ${{ secrets.DOMAIN_AUTH0 }}
+      - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
+        uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
+        env:
+          CI: true
+          GDOMAIN_AUTH0: ${{ secrets.DOMAIN_AUTH0 }}
+          GCLIENT_ID_AUTH0: ${{ secrets.CLIENT_ID_AUTH0 }}
+          GTESTINGENV: ${{ secrets.TESTINGENV }}
         with:
-          email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
-          api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
-          docker_compose_file: "./docker-compose.yml" # set the path to the folder where the docker-compose file is located
-          heroku_apps: '[{"imagename":"bug-tracker-ik_bugtrackerfrontend","appname":"bug-tracker-frontend-ik-202203","apptype":"web"},{"imagename":"bug-tracker-ik_bugtrackerbackend","appname":"bug-tracker-backend-ik-202203","apptype":"web"}]' # List of Docker Image name, Heroku app and Heroku app type
+          # Below you must provide variables for your Heroku app.
+
+          # The email address associated with your Heroku account.
+          # If you don't want to use repository secrets (which is recommended) you can do:
+          # email: my.email@example.com
+          email: ${{ secrets.HEROKU_EMAIL }}
+
+          # Heroku API key associated with provided user's email.
+          # Api Key is available under your Heroku account settings.
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+
+          # Name of the heroku application to which the build is to be sent.
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+
+          # (Optional, default: "./")
+          # Dockerfile directory.
+          # For example, if you have a Dockerfile in the root of your project, leave it as follows:
+          dockerfile_directory: ./frontend/Dockerfile
+
+          # (Optional, default: "Dockerfile")
+          # Dockerfile name.
+          dockerfile_name: Dockerfile
+
+          # (Optional, default: "")
+          # Additional options of docker build command.
+          docker_options: "--no-cache"
+
+          # (Optional, default: "web")
+          # Select the process type for which you want the docker container to be uploaded.
+          # By default, this argument is set to "web".
+          # For more information look at https://devcenter.heroku.com/articles/process-model
+          process_type: web
+### ⬆ IMPORTANT PART ⬆ ###
