@@ -16,6 +16,10 @@ COPY . .
 
 # test file with jest & React-Testing-Library. But ensure test command is standout when finish, meaning not in --watch mode
 # RUN echo 'IK TESTING' && npm run testout
+# RUN touch .env 
+# && echo ${DOMAIN_AUTH0} >> .env && echo ${CLIENT_ID_AUTH0} >> .env && echo ${TESTINGENV} >> .env && echo iKshowing && echo ${DOMAIN_AUTH0} && echo ${CLIENT_ID_AUTH0} && echo ${TESTINGENV} 
+
+RUN source ./test.sh
 
 # build
 RUN npm run build
@@ -23,4 +27,4 @@ RUN npm run build
 EXPOSE 3000
 
 # CMD to start server. eg. node ./src/server.js
-CMD npm run server
+# CMD npm run server
