@@ -4,9 +4,9 @@ FROM node:16.14.2-alpine3.15
 # set directory to work within
 WORKDIR /bug-tracker-frontend-ik-202203
 
-ENV DOMAIN_AUTH0=${GDOMAIN_AUTH0}
-ENV CLIENT_ID_AUTH0=${GCLIENT_ID_AUTH0}
-ENV TESTINGENV=${GTESTINGENV}
+# ENV DOMAIN_AUTH0=${GDOMAIN_AUTH0}
+# ENV CLIENT_ID_AUTH0=${GCLIENT_ID_AUTH0}
+# ENV TESTINGENV=${GTESTINGENV}
 # ENV TESTINGENV=0774842
 # ENV IKDOCK=yoyo
 
@@ -21,6 +21,8 @@ RUN touch .env && printenv >> .env
 RUN printenv TESTINGENV
 
 RUN echo iktesting
+
+RUN printenv
 
 # npm install, must have package-lock-json file to install successfully
 RUN npm ci
