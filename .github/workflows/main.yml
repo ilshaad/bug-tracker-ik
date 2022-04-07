@@ -16,6 +16,9 @@ jobs:
         uses: actions/checkout@v2
         run: ls -la && echo ikcheckout && touch .env && echo ikenv=wheat >> .env
 
+      - name: create .env
+        run: ls -la && echo ikcheckout && touch .env && echo ikenv=wheat >> .env
+
       ### ⬇ IMPORTANT PART ⬇ ###
 
       - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
