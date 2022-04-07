@@ -19,11 +19,11 @@ jobs:
 
       - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
         uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
-        # env:
-        #   CI: true
-        #   DOMAIN_AUTH0: ${{ secrets.DOMAIN_AUTH0 }}
-        #   CLIENT_ID_AUTH0: ${{ secrets.CLIENT_ID_AUTH0 }}
-        #   TESTINGENV: ${{ secrets.TESTINGENV }}
+        env:
+          CI: true
+          DOMAIN_AUTH0: ${{ secrets.DOMAIN_AUTH0 }}
+          CLIENT_ID_AUTH0: ${{ secrets.CLIENT_ID_AUTH0 }}
+          TESTINGENV: ${{ secrets.TESTINGENV }}
         with:
           # Below you must provide variables for your Heroku app.
 

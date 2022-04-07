@@ -16,7 +16,7 @@ COPY ./package-lock.json .
 
 # RUN echo ${TESTINGENV}
 
-# RUN touch .env 
+RUN touch .env 
 
 # RUN echo DOMAIN_AUTH0=${DOMAIN_AUTH0}} >> .env
 
@@ -28,7 +28,7 @@ COPY ./package-lock.json .
 
 RUN echo iktesting
 
-# RUN printenv >> .env
+RUN printenv >> .env
 
 RUN printenv
 
