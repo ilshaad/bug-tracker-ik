@@ -24,7 +24,7 @@ COPY . .
 # RUN touch .env 
 # && echo ${DOMAIN_AUTH0} >> .env && echo ${CLIENT_ID_AUTH0} >> .env && echo ${TESTINGENV} >> .env && echo iKshowing && echo ${DOMAIN_AUTH0} && echo ${CLIENT_ID_AUTH0} && echo ${TESTINGENV} 
 
-RUN source ./test.sh
+# RUN source ./test.sh
 
 # build
 RUN npm run build
