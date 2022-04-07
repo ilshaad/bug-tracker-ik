@@ -17,7 +17,7 @@ jobs:
         # run: ls -la && echo ikcheckout && touch .env && echo ikenv=wheat >> .env
 
       - name: create .env
-        run: ls -la && echo ikcheckout && touch .env && echo ikenv=wheat >> .env && cat .env && ls -la
+        run: ls -la && echo ikcheckout && touch .env && echo ikenv=wheat >> .env && echo TESTINGENV=${{ secrets.TESTINGENV }} >> .env &&  cat .env && ls -la
 
       ### ⬇ IMPORTANT PART ⬇ ###
 
