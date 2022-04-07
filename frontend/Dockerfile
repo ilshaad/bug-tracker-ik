@@ -27,4 +27,4 @@ RUN npm run build
 EXPOSE 3000
 
 # CMD to start server. eg. node ./src/server.js
-# CMD npm run server
+CMD npm run server

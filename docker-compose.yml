@@ -7,9 +7,9 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DOMAIN_AUTH0: domainTesting
-      CLIENT_ID_AUTH0: clientIdTesting
-      TESTINGENV: testingEnvTesting
+      DOMAIN_AUTH0: ${DOMAIN_AUTH0]
+      CLIENT_ID_AUTH0: ${CLIENT_ID_AUTH0}
+      TESTINGENV: ${TESTINGENV}
 
   bugtrackerbackend:
     build:

@@ -9,22 +9,26 @@ printenv && \
 
 echo $(DOMAIN_AUTH0) && \
 
-echo second working && \ 
+printenv >> .env && \
 
-printenv DOMAIN_AUTH0 >> .env && \
+cat .env && \
 
-printenv CLIENT_ID_AUTH0 >> .env && \
+echo second working
 
-printenv TESTINGENV >> .env && \
+# printenv DOMAIN_AUTH0 >> .env && \
 
-echo iKshowing && \
+# printenv CLIENT_ID_AUTH0 >> .env && \
 
-printenv pwd && \
+# printenv TESTINGENV >> .env && \
 
-echo ikpath && \
+# echo iKshowing && \
 
-printenv DOMAIN_AUTH0 && \
+# printenv pwd && \
 
-printenv CLIENT_ID_AUTH0 && \
+# echo ikpath && \
 
-printenv TESTINGENV
+# printenv DOMAIN_AUTH0 && \
+
+# printenv CLIENT_ID_AUTH0 && \
+
+# printenv TESTINGENV
