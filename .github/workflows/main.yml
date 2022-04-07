@@ -58,9 +58,9 @@ jobs:
           # For more information look at https://devcenter.heroku.com/articles/process-model
           process_type: web
 
-          DOMAIN_AUTH0: ${{ secrets.DOMAIN_AUTH0 }}
+          # DOMAIN_AUTH0: ${{ secrets.DOMAIN_AUTH0 }}
 
-          CLIENT_ID_AUTH0: ${{ secrets.CLIENT_ID_AUTH0 }}
+          # CLIENT_ID_AUTH0: ${{ secrets.CLIENT_ID_AUTH0 }}
 
-          TESTINGENV: ${{ secrets.TESTINGENV }}
+          # TESTINGENV: ${{ secrets.TESTINGENV }}
 ### ⬆ IMPORTANT PART ⬆ ###
