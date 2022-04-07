@@ -4,9 +4,9 @@ FROM node:16.14.2-alpine3.15
 # set directory to work within
 WORKDIR /bug-tracker-frontend-ik-202203
 
-ENV DOMAIN_AUTH0=$(echo ${{ secrets.DOMAIN_AUTH0 }})
-ENV CLIENT_ID_AUTH0=$(echo ${{ secrets.CLIENT_ID_AUTH0 }})
-ENV TESTINGENV=$(echo ${{ secrets.TESTINGENV }})
+ENV DOMAIN_AUTH0=${secrets.DOMAIN_AUTH0}
+ENV CLIENT_ID_AUTH0=${secrets.CLIENT_ID_AUTH0}
+ENV TESTINGENV=${secrets.TESTINGENV}
 # ENV TESTINGENV=0774842
 # ENV IKDOCK=yoyo
 
