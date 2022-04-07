@@ -21,9 +21,9 @@ jobs:
         uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
         env:
           CI: true
-          DOMAIN_AUTH0: ${{ secrets.DOMAIN_AUTH0 }}
-          CLIENT_ID_AUTH0: ${{ secrets.CLIENT_ID_AUTH0 }}
-          TESTINGENV: ${{ secrets.TESTINGENV }}
+          GDOMAIN_AUTH0: ${{ secrets.DOMAIN_AUTH0 }}
+          GCLIENT_ID_AUTH0: ${{ secrets.CLIENT_ID_AUTH0 }}
+          GTESTINGENV: ${{ secrets.TESTINGENV }}
         with:
           # Below you must provide variables for your Heroku app.
 

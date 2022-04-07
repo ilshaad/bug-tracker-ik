@@ -4,9 +4,9 @@ FROM node:16.14.2-alpine3.15
 # set directory to work within
 WORKDIR /bug-tracker-frontend-ik-202203
 
-# ENV DOMAIN_AUTH0=${GDOMAIN_AUTH0}
-# ENV CLIENT_ID_AUTH0=${GCLIENT_ID_AUTH0}
-# ENV TESTINGENV=${GTESTINGENV}
+ENV DOMAIN_AUTH0=${GDOMAIN_AUTH0}
+ENV CLIENT_ID_AUTH0=${GCLIENT_ID_AUTH0}
+ENV TESTINGENV=${GTESTINGENV}
 # ENV TESTINGENV=0774842
 # ENV IKDOCK=yoyo
 
@@ -16,7 +16,13 @@ COPY ./package-lock.json .
 
 RUN echo ${TESTINGENV}
 
-RUN touch .env && printenv >> .env
+RUN touch .env 
+
+RUN echo DOMAIN_AUTH0=${DOMAIN_AUTH0}} >> .env
+
+RUN echo CLIENT_ID_AUTH0=${CLIENT_ID_AUTH0} >> .env
+
+RUN echo TESTINGENV=${TESTINGENV} >> .env
 
 RUN printenv TESTINGENV
 
