@@ -3,10 +3,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const WorkboxPlugin = require("workbox-webpack-plugin")
-const Dotenv = require("dotenv-webpack");
-// const webpack = require("webpack");
+// const Dotenv = require("dotenv-webpack");
+const webpack = require("webpack");
 
-// require("dotenv").config();
+require("dotenv").config();
 // const DOMAIN_AUTH0 = process.env.DOMAIN_AUTH0,
 //   CLIENT_ID_AUTH0 = process.env.CLIENT_ID_AUTH0,
 //   TESTINGENV = process.env.TESTINGENV;
@@ -82,7 +82,7 @@ module.exports = {
 
     // new WorkboxPlugin.GenerateSW(),
 
-    new Dotenv({ systemvars: true }),
+    // new Dotenv({ systemvars: true }),
 
     // new webpack.EnvironmentPlugin({
     //   NODE_ENV: "production", // use 'production' unless process.env.NODE_ENV is defined
@@ -104,13 +104,13 @@ module.exports = {
     //   TESTINGENV: process.env.TESTINGENV,
     // }),
 
-    // new webpack.DefinePlugin({
-    //   "process.env": {
-    //     DOMAIN_AUTH0: JSON.stringify(DOMAIN_AUTH0),
-    //     CLIENT_ID_AUTH0: JSON.stringify(CLIENT_ID_AUTH0),
-    //     TESTINGENV: JSON.stringify(TESTINGENV),
-    //   },
-    // }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        DOMAIN_AUTH0: JSON.stringify(process.env.DOMAIN_AUTH0),
+        CLIENT_ID_AUTH0: JSON.stringify(process.env.CLIENT_ID_AUTH0),
+        TESTINGENV: JSON.stringify(process.env.TESTINGENV),
+      },
+    }),
 
     // new webpack.DefinePlugin({
     //   "process.env.DOMAIN_AUTH0": process.env.DOMAIN_AUTH0,
