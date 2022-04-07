@@ -6,7 +6,7 @@
   "scripts": {
     "ikupdate": "npm i && npm update && npm audit fix --force && npm outdated",
     "builddelete": "eslint . && rm -rfv ./dist && mkdir dist && cp -rv ./src/public/manifestdir/ ./dist/ && echo $(DOMAIN_AUTH0) >> .env && echo $(CLIENT_ID_AUTH0) >> .env && echo $(TESTINGENV) >> .env && echo iKshowing && echo $(pwd) && echo ikpath && echo $(DOMAIN_AUTH0) && echo $(CLIENT_ID_AUTH0) && echo $(TESTINGENV) && webpack --config webpack.production.config.js",
-    "build": "eslint . && rm -rfv ./dist && mkdir dist && cp -rv ./src/public/manifestdir/ ./dist/ && webpack --config webpack.production.config.js",
+    "build": "cat .env && eslint . && rm -rfv ./dist && mkdir dist && cp -rv ./src/public/manifestdir/ ./dist/ && webpack --config webpack.production.config.js",
     "prod": "npm run build && node src/server.js",
     "dev": "eslint . && rm -rfv ./dist && mkdir dist && cp -rv ./src/public/manifestdir ./dist && webpack serve --config webpack.dev.config.js --hot",
     "server": "node src/server.js",
