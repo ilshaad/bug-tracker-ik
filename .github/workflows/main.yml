@@ -41,16 +41,17 @@ jobs:
           echo DOMAIN_AUTH0=${{ secrets.DOMAIN_AUTH0 }}
           echo CLIENT_ID_AUTH0=${{ secrets.CLIENT_ID_AUTH0 }}
           echo TESTINGENV=${{ secrets.TESTINGENV }}
+          cat .env
           echo create .env finish
 
       - name: Deploy Multiple Docker Images to Heroku Apps
         uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0 # use the latest version of the action
         id: heroku
-        env:
-          CI: true
-          DOMAIN_AUTH0: ${{ secrets.DOMAIN_AUTH0 }}
-          CLIENT_ID_AUTH0: ${{ secrets.CLIENT_ID_AUTH0 }}
-          TESTINGENV: ${{ secrets.DOMAIN_AUTH0 }}
+        # env:
+        #   CI: true
+        #   DOMAIN_AUTH0: ${{ secrets.DOMAIN_AUTH0 }}
+        #   CLIENT_ID_AUTH0: ${{ secrets.CLIENT_ID_AUTH0 }}
+        #   TESTINGENV: ${{ secrets.DOMAIN_AUTH0 }}
         with:
           email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key

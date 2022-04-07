@@ -13,6 +13,7 @@ services:
     #   IKTEST: whateveriktest
     env_file:
       - ./.env
+    command: echo DOCKERF && cat .env
   bugtrackerbackend:
     build:
       context: ./backend
