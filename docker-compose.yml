@@ -11,9 +11,9 @@ services:
     #   CLIENT_ID_AUTH0: ${CLIENT_ID_AUTH0}
     #   TESTINGENV: ${TESTINGENV}
     #   IKTEST: whateveriktest
-    env_file:
-      - ./.env
-    command: echo DOCKERF && cat .env
+    # env_file:
+    #   - ./.env
+    # command: echo DOCKERF && cat .env
   bugtrackerbackend:
     build:
       context: ./backend
