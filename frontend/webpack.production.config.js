@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const Dotenv = require("dotenv-webpack");
 const webpack = require("webpack");
 
-require("dotenv").config();
+// require("dotenv").config();
 // const DOMAIN_AUTH0 = process.env.DOMAIN_AUTH0,
 //   CLIENT_ID_AUTH0 = process.env.CLIENT_ID_AUTH0,
 //   TESTINGENV = process.env.TESTINGENV;
