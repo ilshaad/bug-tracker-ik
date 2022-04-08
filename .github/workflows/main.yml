@@ -1,5 +1,4 @@
 # This is a basic workflow to help you get started with Actions
-
 name: connect bug-tracker docker-compose.yml to heroku frontend & backend app
 
 # Controls when the workflow will run
@@ -30,7 +29,7 @@ jobs:
         run: echo iK Hello, world! BUG TRACKER echoing!!!
 
       # Create .env file & insert env variables from github secrets for the frontend
-      - name: Create .env file & insert env variables from github secrets for the frontend
+      - name: Create .env file & insert github secrets as env variables within for the frontend to use as .env
         run: |
           touch .env
           echo DOMAIN_AUTH0=${{ secrets.DOMAIN_AUTH0 }} >> .env
@@ -44,11 +43,6 @@ jobs:
       - name: Deploy Multiple Docker Images to Heroku Apps
         uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0 # use the latest version of the action
         id: heroku
-        # env:
-        #   CI: true
-        #   DOMAIN_AUTH0: ${{ secrets.DOMAIN_AUTH0 }}
-        #   CLIENT_ID_AUTH0: ${{ secrets.CLIENT_ID_AUTH0 }}
-        #   TESTINGENV: ${{ secrets.DOMAIN_AUTH0 }}
         with:
           email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
