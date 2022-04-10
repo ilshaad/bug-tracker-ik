@@ -14,16 +14,30 @@ import TicketList from "./pages/TicketList";
 import ViewTicket from "./pages/ViewTicket";
 import NotFound from "./pages/NotFound";
 
+// HOC function for Auth0 protected routes
+import AuthenticateRoute from "./components/AuthenticateRoute";
+
 // ! /fetch & /reduxtest routes are dummy routes, remove afterwards
 const App = () => {
+  const Dashboard_Auth = AuthenticateRoute(() => <Dashboard />);
+  const CreateTicket_Auth = AuthenticateRoute(() => <CreateTicket />);
+  const TicketList_Auth = AuthenticateRoute(() =>  <TicketList />;
+  
+  // TODO create the other protected routes
+  const TicketList_Auth = AuthenticateRoute(() =>  <TicketList />;
+
   return (
     <BrowserRouter>
       <h1>app component header v13</h1>
       <Routes>
         <Route path="/" element={<HomeLogin />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/createticket" element={<CreateTicket />} />
-        <Route path="/ticketlist" element={<TicketList />} />
+        <Route path="/dashboard" element={<Dashboard_Auth />} />
+        <Route path="/createticket" element={<CreateTicket_Auth />} />
+
+        {/* <Route path="/ticketlist" element={<TicketList coolio={777} />} /> */}
+
+        <Route path="/ticketlist" element={<TicketList_Auth />} />
+
         <Route path="/viewticket/:ticketid" element={<ViewTicket />} />
         <Route path="/fetch" element={<TestingRequest />} />
         <Route path="/reduxtest" element={<ReduxTest />} />

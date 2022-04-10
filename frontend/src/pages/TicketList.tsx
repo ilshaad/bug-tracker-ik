@@ -4,13 +4,13 @@ import LogoutButton from "../components/LogoutButton";
 import Profile from "../components/Profiles";
 
 export default function TicketList(): JSX.Element {
-  const Aroute = AuthenticateRoute(() => {
-    return (
-      <React.Fragment>
-        <h1>i am protected routes</h1>
-      </React.Fragment>
-    );
-  });
+  // const Aroute = AuthenticateRoute(() => {
+  //   return (
+  //     <React.Fragment>
+  //       <h1>i am protected routes {coolio}</h1>
+  //     </React.Fragment>
+  //   );
+  // });
 
   // const Aroute = AuthenticateRoute(Profile);
 
@@ -25,7 +25,19 @@ export default function TicketList(): JSX.Element {
         // </>
       )} */}
       {/* </AuthenticateRoute> */}
-      <Aroute />
+      {/* <Aroute /> */}
     </div>
   );
 } //END TicketList component
+
+// import React from 'react'
+
+// type Props = {}
+
+// function TicketList({}: Props) {
+//   return (
+//     <div>TicketList</div>
+//   )
+// }
+
+// export default TicketList

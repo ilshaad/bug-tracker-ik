@@ -5,7 +5,9 @@ name: connect bug-tracker docker-compose.yml to heroku frontend & backend app
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [master]
+    branches:
+      - master
+      - develop
 #   pull_request:
 #     branches: [ master ]
 
