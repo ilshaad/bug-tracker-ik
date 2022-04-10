@@ -3,7 +3,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const WorkboxPlugin = require("workbox-webpack-plugin")
-const Dotenv = require("dotenv-webpack");
+const webpack = require("webpack");
+
+require("dotenv").config();
+
 module.exports = {
   entry: "./src/index.tsx",
   output: {
@@ -57,6 +60,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "styles.[contenthash].css",
     }),
+
     new HtmlWebpackPlugin({
       title: "03 production javascript webapck template",
       template: "src/index.hbs",
@@ -68,7 +72,15 @@ module.exports = {
       },
       publicPath: "/",
     }),
+
     // new WorkboxPlugin.GenerateSW(),
-    new Dotenv({ systemvars: true }),
+
+    new webpack.DefinePlugin({
+      "process.env": {
+        DOMAIN_AUTH0: JSON.stringify(process.env.DOMAIN_AUTH0),
+        CLIENT_ID_AUTH0: JSON.stringify(process.env.CLIENT_ID_AUTH0),
+        GTESTINGENV: JSON.stringify(process.env.GTESTINGENV),
+      },
+    }),
   ],
 };

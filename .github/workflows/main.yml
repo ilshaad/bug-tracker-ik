@@ -1,16 +1,15 @@
 # This is a basic workflow to help you get started with Actions
-
 name: connect bug-tracker docker-compose.yml to heroku frontend & backend app
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [master]
 #   pull_request:
 #     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
+# Allows you to run this workflow manually from the Actions tab
 #   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -29,17 +28,23 @@ jobs:
       - name: Run a one-line script
         run: echo iK Hello, world! BUG TRACKER echoing!!!
 
-      # Runs a set of commands using the runners shell
-#       - name: Run a multi-line script
-#         run: |
-#           echo Add other actions to build,
-#           echo test, and deploy your project.
+      # Create .env file & insert env variables from github secrets for the frontend
+      - name: Create .env file & insert github secrets as env variables within for the frontend to use as .env
+        run: |
+          touch .env
+          echo DOMAIN_AUTH0=${{ secrets.DOMAIN_AUTH0 }} >> .env
+          echo CLIENT_ID_AUTH0=${{ secrets.CLIENT_ID_AUTH0 }} >> .env
+          echo GTESTINGENV=${{ secrets.GTESTINGENV }} >> .env
+          cat .env
+          ls -la
+          mv .env frontend
+          ls -la frontend
 
       - name: Deploy Multiple Docker Images to Heroku Apps
-        uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0  # use the latest version of the action
+        uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0 # use the latest version of the action
         id: heroku
         with:
           email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
-          docker_compose_file: './docker-compose.yml' # set the path to the folder where the docker-compose file is located
+          docker_compose_file: "./docker-compose.yml" # set the path to the folder where the docker-compose file is located
           heroku_apps: '[{"imagename":"bug-tracker-ik_bugtrackerfrontend","appname":"bug-tracker-frontend-ik-202203","apptype":"web"},{"imagename":"bug-tracker-ik_bugtrackerbackend","appname":"bug-tracker-backend-ik-202203","apptype":"web"}]' # List of Docker Image name, Heroku app and Heroku app type

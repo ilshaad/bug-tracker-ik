@@ -3,7 +3,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const ReactRefreshBabel = require("react-refresh/babel");
 // const WorkboxPlugin = require("workbox-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
+const webpack = require("webpack");
+
+require("dotenv").config();
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -77,7 +79,9 @@ module.exports = {
       },
       publicPath: "/",
     }),
+
     new ReactRefreshWebpackPlugin(),
+
     // new WorkboxPlugin.GenerateSW({
     //   // these options encourage the ServiceWorkers to get in there fast
     //   // and not allow any straggling "old" SWs to hang around
@@ -85,6 +89,13 @@ module.exports = {
     //   skipWaiting: true,
     //   maximumFileSizeToCacheInBytes: 5000000,
     // }),
-    new Dotenv(),
+
+    new webpack.DefinePlugin({
+      "process.env": {
+        DOMAIN_AUTH0: JSON.stringify(process.env.DOMAIN_AUTH0),
+        CLIENT_ID_AUTH0: JSON.stringify(process.env.CLIENT_ID_AUTH0),
+        GTESTINGENV: JSON.stringify(process.env.GTESTINGENV),
+      },
+    }),
   ],
 };
