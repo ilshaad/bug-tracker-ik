@@ -21,10 +21,10 @@ import AuthenticateRoute from "./components/AuthenticateRoute";
 const App = () => {
   const Dashboard_Auth = AuthenticateRoute(() => <Dashboard />);
   const CreateTicket_Auth = AuthenticateRoute(() => <CreateTicket />);
-  const TicketList_Auth = AuthenticateRoute(() =>  <TicketList />;
-  
+  const TicketList_Auth = AuthenticateRoute(() => <TicketList />);
+
   // TODO create the other protected routes
-  const TicketList_Auth = AuthenticateRoute(() =>  <TicketList />;
+  // const TicketList_Auth = AuthenticateRoute(() =>  <TicketList />;
 
   return (
     <BrowserRouter>
