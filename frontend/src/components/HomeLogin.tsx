@@ -1,5 +1,6 @@
+// ! remove this component because this is for testing env variables
 import React, { useEffect } from "react";
-import LoginButton from "../components/LoginButton";
+import LoginButton from "./LoginButton";
 
 export default function HomeLogin() {
   useEffect(() => {

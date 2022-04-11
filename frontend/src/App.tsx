@@ -7,7 +7,6 @@ import TestingRequest from "./components/TestingRequest";
 import ReduxTest from "./pages/ReduxTest";
 
 /**page routes */
-import HomeLogin from "./pages/HomeLogin";
 import Dashboard from "./pages/Dashboard";
 import CreateTicket from "./pages/CreateTicket";
 import TicketList from "./pages/TicketList";
@@ -22,25 +21,19 @@ const App = () => {
   const Dashboard_Auth = AuthenticateRoute(() => <Dashboard />);
   const CreateTicket_Auth = AuthenticateRoute(() => <CreateTicket />);
   const TicketList_Auth = AuthenticateRoute(() => <TicketList />);
-
-  // TODO create the other protected routes
-  // const TicketList_Auth = AuthenticateRoute(() =>  <TicketList />;
+  const ViewTicket_Auth = AuthenticateRoute(() => <ViewTicket />);
 
   return (
     <BrowserRouter>
       <h1>app component header v13</h1>
       <Routes>
-        <Route path="/" element={<HomeLogin />} />
-        <Route path="/dashboard" element={<Dashboard_Auth />} />
+        <Route path="/" element={<Dashboard_Auth />} />
         <Route path="/createticket" element={<CreateTicket_Auth />} />
-
-        {/* <Route path="/ticketlist" element={<TicketList coolio={777} />} /> */}
-
         <Route path="/ticketlist" element={<TicketList_Auth />} />
-
-        <Route path="/viewticket/:ticketid" element={<ViewTicket />} />
+        <Route path="/viewticket/:ticketid" element={<ViewTicket_Auth />} />
         <Route path="/fetch" element={<TestingRequest />} />
         <Route path="/reduxtest" element={<ReduxTest />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

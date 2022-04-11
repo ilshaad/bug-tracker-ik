@@ -37,7 +37,7 @@ root.render(
     <Auth0Provider
       domain={`${process.env.DOMAIN_AUTH0}`!}
       clientId={`${process.env.CLIENT_ID_AUTH0}`!}
-      redirectUri={`${window.location.origin}/dashboard`}
+      redirectUri={`${window.location.origin}`}
     >
       <Provider store={store}>
         <App />

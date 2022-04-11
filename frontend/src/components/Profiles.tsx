@@ -5,7 +5,7 @@ const Profile = () => {
   // const { user, isAuthenticated, isLoading }: any = useAuth0();
   const auth0: any = useAuth0();
   useEffect(() => {
-    console.log(auth0);
+    // console.log(auth0);
   }, []);
 
   if (auth0.isLoading) {

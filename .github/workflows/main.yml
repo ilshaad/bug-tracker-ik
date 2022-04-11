@@ -37,7 +37,6 @@ jobs:
           echo DOMAIN_AUTH0=${{ secrets.DOMAIN_AUTH0 }} >> .env
           echo CLIENT_ID_AUTH0=${{ secrets.CLIENT_ID_AUTH0 }} >> .env
           echo GTESTINGENV=${{ secrets.GTESTINGENV }} >> .env
-          cat .env
           ls -la
           mv .env frontend
           ls -la frontend

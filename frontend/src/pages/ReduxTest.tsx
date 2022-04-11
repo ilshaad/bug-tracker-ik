@@ -7,6 +7,15 @@ import {
   incrementByAmount,
 } from "../redux/reducers/counterSlice";
 
+import { login, logout } from "../redux/reducers/userProfileSlice";
+
+interface userP {
+  email: string;
+  name: string;
+  role: string;
+  created_on: string;
+}
+
 export default function ReduxRoute(): JSX.Element {
   const countN = useAppSelector((state) => state.counter.value);
 
@@ -24,6 +33,20 @@ export default function ReduxRoute(): JSX.Element {
     dispatchy(incrementByAmount(6));
   };
 
+  const loginReduxAction = () => {
+    const loginObject = {
+      email: "any@mail.com",
+      name: "anyname",
+      role: "Nonadmin",
+      created_on: "2023-01-22",
+    };
+    dispatchy(login(loginObject));
+  };
+
+  const logoutReduxAction = () => {
+    dispatchy(logout());
+  };
+
   return (
     <div>
       <h1>I am redux page</h1>
@@ -33,6 +56,8 @@ export default function ReduxRoute(): JSX.Element {
       <button onClick={incrementByAmountAction}>
         increment by amount of 6 button
       </button>
+      <button onClick={loginReduxAction}>login redux</button>
+      <button onClick={logoutReduxAction}>logout redux</button>
     </div>
   );
 }

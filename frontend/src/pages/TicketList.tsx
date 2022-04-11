@@ -1,5 +1,5 @@
 import React from "react";
-import AuthenticateRoute from "../components/AuthenticateRoute";
+// import AuthenticateRoute from "../components/AuthenticateRoute";
 import LogoutButton from "../components/LogoutButton";
 import Profile from "../components/Profiles";
 
