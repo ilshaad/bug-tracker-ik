@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginScreen from "../pages/LoginScreen";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { logout } from "../redux/reducers/userProfileSlice";
+import Layout from "./Layout";
 
 export default function AuthenticateRoute(PageComponent: any) {
   const {
@@ -10,7 +10,7 @@ export default function AuthenticateRoute(PageComponent: any) {
     // error,
     isAuthenticated,
     isLoading,
-    // user,
+    user,
     // Auth methods:
     // getAccessTokenSilently,
     // getAccessTokenWithPopup,
@@ -27,47 +27,21 @@ export default function AuthenticateRoute(PageComponent: any) {
       return <div>Loading ...</div>;
     }
 
-    // collect redux guest user loggedIn state
-    const loggedInState = useAppSelector((state) => state.userProfile.loggedIn);
-
-    // * Give user access if isAuthenictcated or guest loggedIn is true, otherwise send them back to the login screen
-    //IF isAuthenticated & loggedInState are false THEN it is true & the user is not logged in
-    if (!isAuthenticated && !loggedInState) {
-      //  IF redux loggedIn guest user is false THEN
-      // if (loggedInState !== false) {
-      //    ASSIGN redux login as false
-      dispatch(logout());
-      //    RETURN login & guess login buttons page
-      return <LoginScreen />;
-      // }
-
-      //  ELSE IF redux loggedIn guest user is true THEN
-      // else if (loggedInState) {
-      //  ASSIGN redux loggedIn as true & assign the user information
-      // dispatch(lo)
-
-      //    RETURN PageComponent
-      // return <PageComponent />;
+    // Auth0 will authenticate each routes & if false user will be redirected to the login screen everytime
+    if (isAuthenticated) {
+      console.log(user);
+      console.log("iK authenticated");
+      // dispatch( )
+      return (
+        <Layout>
+          <PageComponent />
+        </Layout>
+      );
     } else {
-      return <PageComponent />;
+      console.log(user);
+      console.log("iK unauthenticated");
+      return <LoginScreen />;
     }
-    //  END IF
-
-    //ELSE IF isAuthenticated is true THEN
-    // else if (isAuthenticated) {
-    //  RETURN PageComponent
-    //END IF
-    // }
-    // } //END if statement on isAuthehtidated & guest user
-
-    // ? working function but remove once guest login is working fine too
-    // return isAuthenticated ? (
-    //   <PageComponent />
-    // ) : (
-    //   <div>
-    //     <LoginScreen au0={isAuthenticated} />
-    //   </div>
-    // );
   }
 
   return Component;

@@ -7,13 +7,14 @@ import {
   incrementByAmount,
 } from "../redux/reducers/counterSlice";
 
-import { login, logout } from "../redux/reducers/userProfileSlice";
+import { loginAction, logoutAction } from "../redux/reducers/userProfileSlice";
 
 interface userP {
   email: string;
-  name: string;
+  name: string; //from auth0 nickname or psql name
   role: string;
   created_on: string;
+  avatar: string; //from auth0 picture
 }
 
 export default function ReduxRoute(): JSX.Element {
@@ -39,12 +40,13 @@ export default function ReduxRoute(): JSX.Element {
       name: "anyname",
       role: "Nonadmin",
       created_on: "2023-01-22",
+      avatar: "iKurl",
     };
-    dispatchy(login(loginObject));
+    dispatchy(loginAction(loginObject));
   };
 
   const logoutReduxAction = () => {
-    dispatchy(logout());
+    dispatchy(logoutAction());
   };
 
   return (

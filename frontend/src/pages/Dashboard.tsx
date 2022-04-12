@@ -2,11 +2,30 @@ import React from "react";
 import LogoutButton from "../components/LogoutButton";
 import Profile from "../components/Profiles";
 import HomeLogin from "../components/HomeLogin";
+import { Link } from "react-router-dom";
 
 export default function Dashboard(): JSX.Element {
   return (
     <div>
       <h1>Dashboard PAGE</h1>
+      <nav>
+        <Link to="/">Dashboard</Link> |{" "}
+        <Link to="createticket">create ticket</Link>
+        <Link to="ticketlist">ticketlist</Link>
+        <Link to="viewticket/ticketidparams">viewticket/:ticketid</Link>
+        <Link to="fetch">fetch</Link>
+        <Link to="reduxtest">reduxtest</Link>
+        <Link to="*">error page</Link>
+      </nav>
+
+      <div className="container breakpoint">
+        <h1 className="container bg-primary text-secondary">
+          iK testing responsive breakpoints for the containers1
+        </h1>
+        <h1 className="container bg-secondary text-primary">
+          iK testing responsive breakpoints for the containers2
+        </h1>
+      </div>
       <LogoutButton />
       <Profile />
       <HomeLogin />

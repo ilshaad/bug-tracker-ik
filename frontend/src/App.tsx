@@ -25,7 +25,6 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <h1>app component header v13</h1>
       <Routes>
         <Route path="/" element={<Dashboard_Auth />} />
         <Route path="/createticket" element={<CreateTicket_Auth />} />

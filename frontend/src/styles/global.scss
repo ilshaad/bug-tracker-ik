@@ -1,8 +1,57 @@
 @import "./customBootstrap.scss";
+// @import "../components/OuterGrid.scss";
 
 // X-Small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 // No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+
+// body {
+//   background-color: red;
+// }
+
+// #root {
+//   width: 100%;
+//   height: 100%;
+//   background-color: blue;
+// }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// * to get react component full 100 width & height of the screen
+html,
+body,
+#root,
+#root > div#OuterGrid {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+// * Setup up Outer-grid of the screen (OuterGrid.tsx component)
+#OuterGrid {
+  background-color: aquamarine;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  // grid-template-rows: 1fr 5fr;
+  grid-auto-rows: minmax(60px, auto);
+  grid-template-areas: "OG-header" "OG-main";
+}
+
+#OuterGrid-header {
+  grid-area: OG-header;
+  background-color: red;
+}
+
+#OuterGrid-main {
+  grid-area: OG-main;
+  background-color: darkgreen;
+}
+
 // Small devices (landscape phones, 576px and up)
 @include media-breakpoint-up(sm) {
 }
