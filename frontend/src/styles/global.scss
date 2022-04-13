@@ -1,3 +1,8 @@
+// ! iK this sass bootstrap is a setup for Outer-grid & Inner-Grid
+//  You will need to create the component/element first & add the id's within
+// Outer-grid uses css grid & consist of header / main / left side navbar
+// Inner-grid uses flexbox & consist of main & footer
+
 @import "./customBootstrap.scss";
 // @import "../components/OuterGrid.scss";
 
@@ -22,53 +27,131 @@
 }
 
 // * to get react component full 100 width & height of the screen
+root,
 html,
 body,
 #root,
 #root > div#OuterGrid {
-  height: 100%;
+  height: max-content;
   width: 100%;
   margin: 0;
 }
 
 // * Setup up Outer-grid of the screen (OuterGrid.tsx component)
 #OuterGrid {
-  background-color: aquamarine;
-
   display: grid;
   grid-template-columns: 1fr;
-  // grid-template-rows: 1fr 5fr;
   grid-auto-rows: minmax(60px, auto);
-  grid-template-areas: "OG-header" "OG-main";
+  grid-template-areas:
+    "OG-header"
+    "OG-main";
+  width: 100%;
+  height: 100%;
+
+  background-color: aquamarine;
+
+  #OuterGrid-header {
+    grid-area: OG-header;
+
+    background-color: red;
+  }
+
+  #OuterGrid-main {
+    grid-area: OG-main;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+
+    background-color: darkgreen;
+  }
+
+  #OuterGrid-leftNavBar {
+    grid-area: OG-leftNav;
+    display: none;
+    height: 100%;
+
+    background-color: yellow;
+  }
 }
 
-#OuterGrid-header {
-  grid-area: OG-header;
-  background-color: red;
+// Setup Inner-grid within the Outer-grid
+#InnerGrid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+
+  background-color: orchid;
+  border: black 6px solid;
+
+  #InnerGrid-main {
+    flex-basis: 1;
+    height: max-content;
+
+    border: yellowgreen 4px solid;
+    margin-bottom: 0px;
+
+    & > * {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  #InnerGrid-footer {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 0px;
+
+    background-color: slateblue;
+    border: blue 3px solid;
+  }
 }
 
-#OuterGrid-main {
-  grid-area: OG-main;
-  background-color: darkgreen;
-}
+// ! iK Beware I notice media query does not work accordingly unless your elements have higher specificity than < 576px. Not sure if this is a one off or not?
+// * However the other breakpoints are working fine with each other so you do not have to compete for specificity there
 
+// ! Use div#InnerGrid main#InnerGrid-main specificity to expand & adjuse height at each breakpoint because if the content is too small there than the footer will have empty white space below it
+// EG. div#InnerGrid main#InnerGrid-main { height: 800px }
+// you can also modify InnerGrid-footer too if need be
+
+// #####################################################
 // Small devices (landscape phones, 576px and up)
+// #####################################################
 @include media-breakpoint-up(sm) {
+  #OuterGrid {
+    grid-template-columns: 1fr 9fr;
+    grid-template-areas:
+      "OG-header OG-header OG-header OG-header OG-header OG-header OG-header OG-header OG-header OG-header"
+      "OG-leftNav OG-main OG-main OG-main OG-main OG-main OG-main OG-main OG-main OG-main";
+
+    #OuterGrid-leftNavBar {
+      display: block;
+    }
+  }
 }
 
+// #####################################################
 // Medium devices (tablets, 768px and up)
+// #####################################################
 @include media-breakpoint-up(md) {
 }
 
+// #####################################################
 // Large devices (desktops, 992px and up)
+// #####################################################
 @include media-breakpoint-up(lg) {
 }
 
+// #####################################################
 // X-Large devices (large desktops, 1200px and up)
+// #####################################################
 @include media-breakpoint-up(xl) {
 }
 
+// #####################################################
 // XX-Large devices (larger desktops, 1400px and up)
+// #####################################################
 @include media-breakpoint-up(xxl) {
 }
 
