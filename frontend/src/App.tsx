@@ -7,14 +7,18 @@ import TestingRequest from "./components/TestingRequest";
 import ReduxTest from "./pages/ReduxTest";
 
 /**page routes */
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard"; // * shares the / rul with login screen route
 import CreateTicket from "./pages/CreateTicket";
 import TicketList from "./pages/TicketList";
 import ViewTicket from "./pages/ViewTicket";
 import NotFound from "./pages/NotFound";
 
 // HOC function for Auth0 protected routes
+// * It is also the login screen route which share the / url with dashboard
 import AuthenticateRoute from "./components/AuthenticateRoute";
+
+// Layout component for non authenticated routes (eg error page) because AuthentcateRoute sets Layout component to all protected routes
+import Layout from "./components/Layout";
 
 // ! /fetch & /reduxtest routes are dummy routes, remove afterwards
 const App = () => {
@@ -30,10 +34,31 @@ const App = () => {
         <Route path="/createticket" element={<CreateTicket_Auth />} />
         <Route path="/ticketlist" element={<TicketList_Auth />} />
         <Route path="/viewticket/:ticketid" element={<ViewTicket_Auth />} />
-        <Route path="/fetch" element={<TestingRequest />} />
-        <Route path="/reduxtest" element={<ReduxTest />} />
+        <Route
+          path="/fetch"
+          element={
+            <Layout>
+              <TestingRequest />
+            </Layout>
+          }
+        />
+        <Route
+          path="/reduxtest"
+          element={
+            <Layout>
+              <ReduxTest />
+            </Layout>
+          }
+        />
 
-        <Route path="*" element={<NotFound />} />
+        <Route
+          path="*"
+          element={
+            <Layout>
+              <NotFound />
+            </Layout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   ); /*END return */

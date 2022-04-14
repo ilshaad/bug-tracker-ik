@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+import fetchBackendApi from "../middlewares/fetchBackendApi";
 
 export default function App(): JSX.Element {
   // useEffect(() => {
@@ -15,11 +16,15 @@ export default function App(): JSX.Element {
   // }, []);
 
   const requestButton = () => {
-    fetch("https://bug-tracker-backend-ik-202203.herokuapp.com/api/ticket/list")
-      .then((x) => {
-        return x.json();
-      })
-      .then((y) => console.log(y));
+    // fetch(`${process.env.BACKEND_URL_DEV}/api/ticket/list`)
+    //   .then((x) => {
+    //     return x.json();
+    //   })
+    //   .then((y) => console.log(y));
+
+    fetchBackendApi()
+      .get("/api/ticket/list")
+      .then((x) => console.log(x.data));
   };
 
   return <button onClick={requestButton}>click request testing</button>;

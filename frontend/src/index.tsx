@@ -6,7 +6,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import "./styles/customBootstrap.scss";
 import "./styles/global.scss";
 
-import store from "./redux/store";
+import store from "./models/store";
 
 // * uncomment service worker when you ready to enable workbox pwa within webpack config files
 // if ("serviceWorker" in navigator) {

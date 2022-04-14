@@ -3,13 +3,21 @@ import LogoutButton from "../components/LogoutButton";
 import Profile from "../components/Profiles";
 import HomeLogin from "../components/HomeLogin";
 import { Link } from "react-router-dom";
+import SeoReactHelmet from "../components/SeoReactHelmet";
 
 export default function Dashboard(): JSX.Element {
   return (
     <div>
+      <SeoReactHelmet
+        pageTitle="coming from Dashoard"
+        metaDescriptionContent="mDescContent-dashboard"
+        metaKeywordsContent="dashboard & etc"
+      />
+
       <h1>Dashboard PAGE</h1>
+
       <nav>
-        <Link to="/">Dashboard</Link> |{" "}
+        <Link to="/">Dashboard</Link>
         <Link to="createticket">create ticket</Link>
         <Link to="ticketlist">ticketlist</Link>
         <Link to="viewticket/ticketidparams">viewticket/:ticketid</Link>

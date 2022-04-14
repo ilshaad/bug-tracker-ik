@@ -36,6 +36,7 @@ jobs:
           touch .env
           echo DOMAIN_AUTH0=${{ secrets.DOMAIN_AUTH0 }} >> .env
           echo CLIENT_ID_AUTH0=${{ secrets.CLIENT_ID_AUTH0 }} >> .env
+          echo BACKEND_URL=${{ secrets.BACKEND_URL }} >> .env
           echo GTESTINGENV=${{ secrets.GTESTINGENV }} >> .env
           ls -la
           mv .env frontend

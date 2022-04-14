@@ -2,6 +2,7 @@ import React from "react";
 // import AuthenticateRoute from "../components/AuthenticateRoute";
 import LogoutButton from "../components/LogoutButton";
 import Profile from "../components/Profiles";
+import SeoReactHelmet from "../components/SeoReactHelmet";
 
 export default function TicketList(): JSX.Element {
   // const Aroute = AuthenticateRoute(() => {
@@ -16,6 +17,12 @@ export default function TicketList(): JSX.Element {
 
   return (
     <div>
+      <SeoReactHelmet
+        pageTitle="coming from ticket list"
+        metaDescriptionContent="mDescContent-ticket list"
+        metaKeywordsContent="ticket list & etc"
+      />
+
       <h1>TicketList PAGE</h1>
       <LogoutButton />
       <Profile />

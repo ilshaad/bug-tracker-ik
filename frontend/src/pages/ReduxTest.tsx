@@ -1,13 +1,13 @@
 import React from "react";
 
-import { useAppSelector, useAppDispatch } from "../redux/hooks";
+import { useAppSelector, useAppDispatch } from "../models/hooks";
 import {
   increment,
   decrement,
   incrementByAmount,
-} from "../redux/reducers/counterSlice";
+} from "../models/reducers/counterSlice";
 
-import { loginAction, logoutAction } from "../redux/reducers/userProfileSlice";
+import { loginAction, logoutAction } from "../models/reducers/userProfileSlice";
 
 interface userP {
   email: string;

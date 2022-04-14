@@ -32,7 +32,7 @@ html,
 body,
 #root,
 #root > div#OuterGrid {
-  height: max-content;
+  height: 100vh;
   width: 100%;
   margin: 0;
 }
@@ -41,7 +41,7 @@ body,
 #OuterGrid {
   display: grid;
   grid-template-columns: 1fr;
-  grid-auto-rows: minmax(60px, auto);
+  grid-auto-rows: 60px auto;
   grid-template-areas:
     "OG-header"
     "OG-main";
@@ -58,7 +58,6 @@ body,
 
   #OuterGrid-main {
     grid-area: OG-main;
-    overflow-y: scroll;
     height: 100%;
     width: 100%;
 
@@ -87,7 +86,7 @@ body,
 
   #InnerGrid-main {
     flex-basis: 1;
-    height: max-content;
+    height: 100%;
 
     border: yellowgreen 4px solid;
     margin-bottom: 0px;
@@ -111,6 +110,7 @@ body,
 // ! iK Beware I notice media query does not work accordingly unless your elements have higher specificity than < 576px. Not sure if this is a one off or not?
 // * However the other breakpoints are working fine with each other so you do not have to compete for specificity there
 
+// !! iKupdate this line is not require I think because I manage to get page to load with 100vh & still keeping page filled
 // ! Use div#InnerGrid main#InnerGrid-main specificity to expand & adjuse height at each breakpoint because if the content is too small there than the footer will have empty white space below it
 // EG. div#InnerGrid main#InnerGrid-main { height: 800px }
 // you can also modify InnerGrid-footer too if need be
