@@ -10,8 +10,8 @@ const {
 /**
  * POST /api/user/profile
  * user have logged on
- * get user profile from psql tickets_table
- * return only email / name / role / created_on data of the user profile
+ * get a single user profile from psql tickets_table
+ * response with only email / name / role / created_on data of the user profile
  * * client must send user email json data
  */
 userRoute.post("/profile", getUserProfile);
