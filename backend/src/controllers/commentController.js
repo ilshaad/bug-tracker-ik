@@ -69,7 +69,7 @@ exports.createComment = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: "successfully created a new comment within the database",
+      msg: `Successfully created new comment related to ticket id of '${ticket_id}' within the database`,
     });
   });
 }; //END createComment
@@ -108,7 +108,7 @@ exports.updateComment = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: "successful comment update to the database",
+      msg: `Successfully updated comment with comment id of '${comment_id}' within the database`,
     });
   });
 }; //END updateComment

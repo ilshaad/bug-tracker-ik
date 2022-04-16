@@ -94,7 +94,7 @@ exports.updateTicket = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: "successful ticket update within the database",
+      msg: `successful updated ticket id '${ticket_id}' within the database`,
     });
   });
 }; //END updateTicket controller
@@ -146,7 +146,7 @@ exports.deleteTicket = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: "successful ticket & comments delete within the database",
+      msg: `successfully deleted ticket & all comments with ticket id of '${ticket_id}'`,
     });
   });
 }; //END deleteTicket controller
@@ -178,7 +178,7 @@ exports.createTicket = (req, res) => {
     if (err) {
       res.status(400).json({
         success: false,
-        msg: "error occured when creating ticket within the database",
+        msg: "error occured when creating ticket within the database, perhaps ticket already exist",
         err,
       });
       return;
@@ -196,7 +196,7 @@ exports.createTicket = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: "successful ticket create within the database",
+      msg: `successfully created ticket with ticket id of '${ticket_id}' within the database`,
     });
   });
 }; //END createTicket controller

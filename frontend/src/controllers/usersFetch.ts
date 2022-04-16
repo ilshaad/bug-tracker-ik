@@ -1,5 +1,12 @@
 import backendApi_fetchInstance from "./backendApi_fetchInstance";
+import { userSignup_type } from "../helpers/backendFetch_types";
 import catchHandler from "./backendCatchHandler";
+
+/**exported controllers on this file:
+ * post_getUserProfile
+ * post_userSignup
+ * delete_deleteUser
+ */
 
 /**
  * * Get user profile data
@@ -45,13 +52,15 @@ post_getUserProfile(dummyEmail)
  * create new user within psql users_table
  * No need to send back profile because client will save it within redux, but SS must send back confirmation
  */
-type userSignupProps = {
-  user_id: string;
-  email: string;
-  name: string;
-  role: string;
-  created_on: string;
-};
+
+// ! delete after Pieces
+// type userSignup_type = {
+//   user_id: string;
+//   email: string;
+//   name: string;
+//   role: string;
+//   created_on: string;
+// };
 
 export const post_userSignup = ({
   user_id,
@@ -59,7 +68,7 @@ export const post_userSignup = ({
   name,
   role,
   created_on,
-}: userSignupProps) => {
+}: userSignup_type) => {
   return backendApi_fetchInstance()
     .post("/api/user/signup", { user_id, email, name, role, created_on })
     .then((res) => {
@@ -98,7 +107,7 @@ export const post_userSignup = ({
  * * client must send user email addreass in json
  * confirm user account profile has been deleted
  */
-export const delete_user = (email: string) => {
+export const delete_deleteUser = (email: string) => {
   return backendApi_fetchInstance()
     .delete("/api/user/profile", { data: { email } })
     .then((res) => {

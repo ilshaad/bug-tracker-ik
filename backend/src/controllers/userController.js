@@ -72,7 +72,7 @@ exports.signUpUser = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: "successful update to the database",
+      msg: `successful signed up '${name}' to the database`,
     });
   });
 }; //END signUpUser controller
@@ -110,7 +110,7 @@ exports.deleteUserAccount = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: "successful user account delete on the database",
+      msg: `successful deleted '${email}' user account on the database`,
     });
   });
 }; //END deleteUserAccount controller

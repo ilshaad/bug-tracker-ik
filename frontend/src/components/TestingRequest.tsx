@@ -1,13 +1,20 @@
 import React from "react";
+import { get_allCommentsForASingleTicket } from "../controllers/commentsFetch";
 import {
+  delete_deleteTicket,
   get_ticketList,
   patch_updateTicket,
+  post_createTicket,
 } from "../controllers/ticketsFetch";
 import {
-  delete_user,
+  delete_deleteUser,
   post_getUserProfile,
   post_userSignup,
 } from "../controllers/usersFetch";
+import {
+  createTicket_type,
+  updateTicket_type,
+} from "../helpers/backendFetch_types";
 
 export default function App(): JSX.Element {
   const getUserProfile = () => {
@@ -47,7 +54,7 @@ export default function App(): JSX.Element {
   const deleteUser = () => {
     const email = "client@mail.com";
 
-    delete_user(email)
+    delete_deleteUser(email)
       .then((data) => {
         console.log(data);
       })
@@ -67,16 +74,27 @@ export default function App(): JSX.Element {
   };
 
   const updateTicket = async () => {
+    // ! DELETE
+    // interface updateTicket_type {
+    //   ticket_id: string;
+    //   title: string;
+    //   description: string;
+    //   priority: string;
+    //   assigned_user: string;
+    //   status: string;
+    //   app_name: string;
+    //   app_version: string;
+    // }
     // const ticket = "77";
-    const updateTicketObject = {
-      ticket_id: "77",
-      title: "clientTitle",
-      description: "clientDescription",
-      priority: "high",
-      assigned_user: "clientassigned",
-      status: "resolve",
-      app_name: "client app",
-      app_version: "v1",
+    const updateTicketObject: updateTicket_type = {
+      ticket_id: "456",
+      title: "update ticket",
+      description: "update ticket",
+      priority: "update ticket",
+      assigned_user: "update ticket",
+      status: "update ticket",
+      app_name: "update ticket",
+      app_version: "update ticket",
     };
 
     try {
@@ -87,6 +105,54 @@ export default function App(): JSX.Element {
     }
   };
 
+  const createTicket = () => {
+    const createTicketObject: createTicket_type = {
+      ticket_id: "456",
+      title: "client create",
+      description: "client create",
+      submitted_by: "client create",
+      priority: "high",
+      assigned_user: "client create",
+      status: "client create",
+      app_name: "client create",
+      app_version: "client create",
+      created_on: "2022-04-16",
+    };
+
+    post_createTicket(createTicketObject)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const deleteTicket = () => {
+    const ticketId = "456";
+
+    delete_deleteTicket(ticketId)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const allCommentsForASingleTicket = () => {
+    const ticketId = "049e7fd3-753c-4123-8df5-df3aab63d9d2";
+    console.log(88);
+
+    get_allCommentsForASingleTicket(ticketId)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <button onClick={getUserProfile}>get user profile</button>
@@ -94,6 +160,11 @@ export default function App(): JSX.Element {
       <button onClick={deleteUser}>Delete user from backend</button>
       <button onClick={getTicketList}>Get all ticket list</button>
       <button onClick={updateTicket}>Update a ticket</button>
+      <button onClick={createTicket}>Create a new ticket</button>
+      <button onClick={deleteTicket}>Delete a ticket</button>
+      <button onClick={allCommentsForASingleTicket}>
+        Get all comments for a single ticket
+      </button>
     </div>
   );
 }

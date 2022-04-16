@@ -3,8 +3,8 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { Auth0Provider } from "@auth0/auth0-react";
-import "./styles/customBootstrap.scss";
-import "./styles/global.scss";
+import "./css/customBootstrap.scss";
+import "./css/global.scss";
 
 import store from "./models/store";
 
