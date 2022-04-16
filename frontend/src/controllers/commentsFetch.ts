@@ -2,8 +2,8 @@ import backendApi_fetchInstance from "./backendApi_fetchInstance";
 import catchHandler from "./backendCatchHandler";
 
 /**exported controllers on this file:
+ * get_allCommentsForASingleTicket
  */
-// get_allCommentsForASingleTicket,
 // post_createComment,
 // patch_updateComment,
 // delete_deleteComment,
@@ -32,10 +32,10 @@ export const get_allCommentsForASingleTicket = (ticketId: string) => {
     });
 };
 /**fetch example
-    const ticketId = "456";
-    console.log(77);
+    const ticketId = "049e7fd3-753c-4123-8df5-df3aab63d9d2";
+    console.log(88);
 
-    delete_ticket(ticketId)
+    get_allCommentsForASingleTicket(ticketId)
       .then((data) => {
         console.log(data);
       })
@@ -43,6 +43,8 @@ export const get_allCommentsForASingleTicket = (ticketId: string) => {
         console.log(error);
       });
 */
+
+// TODO BEGIN THIS FUNCTION NOW
 // post_createComment,
 // patch_updateComment,
 // delete_deleteComment,

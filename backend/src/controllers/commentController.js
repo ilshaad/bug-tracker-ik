@@ -25,7 +25,7 @@ exports.getAllCommentsForASingleTicket = (req, res) => {
     if (result.rowCount === 0) {
       res.status(400).json({
         success: false,
-        msg: "error occured when getting comments from a specific ticket. Perhaps check your ticketid query parameters",
+        msg: "error occured when getting comments from a specific ticket. Perhaps check your ticketid values",
         err,
       });
       return;
