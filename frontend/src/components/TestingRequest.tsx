@@ -1,5 +1,10 @@
 import React from "react";
-import { get_allCommentsForASingleTicket } from "../controllers/commentsFetch";
+import {
+  delete_deleteComment,
+  get_allCommentsForASingleTicket,
+  patch_updateComment,
+  post_createComment,
+} from "../controllers/commentsFetch";
 import {
   delete_deleteTicket,
   get_ticketList,
@@ -12,6 +17,7 @@ import {
   post_userSignup,
 } from "../controllers/usersFetch";
 import {
+  createComment_type,
   createTicket_type,
   updateTicket_type,
 } from "../helpers/backendFetch_types";
@@ -74,18 +80,6 @@ export default function App(): JSX.Element {
   };
 
   const updateTicket = async () => {
-    // ! DELETE
-    // interface updateTicket_type {
-    //   ticket_id: string;
-    //   title: string;
-    //   description: string;
-    //   priority: string;
-    //   assigned_user: string;
-    //   status: string;
-    //   app_name: string;
-    //   app_version: string;
-    // }
-    // const ticket = "77";
     const updateTicketObject: updateTicket_type = {
       ticket_id: "456",
       title: "update ticket",
@@ -141,8 +135,7 @@ export default function App(): JSX.Element {
   };
 
   const allCommentsForASingleTicket = () => {
-    const ticketId = "049e7fd3-753c-4123-8df5-df3aab63d9d2";
-    console.log(88);
+    const ticketId = "456";
 
     get_allCommentsForASingleTicket(ticketId)
       .then((data) => {
@@ -151,6 +144,44 @@ export default function App(): JSX.Element {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const createComment = () => {
+    const commentObject: createComment_type = {
+      comment_id: "456",
+      ticket_id: "456",
+      name: "create comment",
+      email: "createComment@mail.com",
+      text_comment: "create comment",
+      created_on: "2022-04-17",
+    };
+
+    post_createComment(commentObject)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const updateComment = () => {
+    const comment_id = "456",
+      text_comment = "update comment";
+
+    patch_updateComment(comment_id, text_comment)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const deleteComment = () => {
+    const comment_id = "456";
+
+    delete_deleteComment(comment_id)
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -164,7 +195,10 @@ export default function App(): JSX.Element {
       <button onClick={deleteTicket}>Delete a ticket</button>
       <button onClick={allCommentsForASingleTicket}>
         Get all comments for a single ticket
-      </button>
+      </button>{" "}
+      <button onClick={createComment}>User creates a new comment</button>
+      <button onClick={updateComment}>User updates their comment</button>{" "}
+      <button onClick={deleteComment}>User delete their comment</button>
     </div>
   );
 }

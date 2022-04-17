@@ -29,3 +29,12 @@ export interface createTicket_type {
   app_version: string;
   created_on: string;
 }
+
+export interface createComment_type {
+  comment_id: string;
+  ticket_id: string;
+  name: string;
+  email: string;
+  text_comment: string;
+  created_on: string;
+}

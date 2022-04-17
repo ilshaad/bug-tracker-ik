@@ -6,6 +6,7 @@ import {
   decrement,
   incrementByAmount,
 } from "../models/reducers/counterSlice";
+import { fetchAllTickets_actions } from "../models/reducers/tickets/ticketsSlice";
 
 import { loginAction, logoutAction } from "../models/reducers/userProfileSlice";
 
@@ -49,6 +50,18 @@ export default function ReduxRoute(): JSX.Element {
     dispatchy(logoutAction());
   };
 
+  // *******************
+  // ticketsState redux section *****************
+  const ticketsState = useAppSelector((state) => state.tickets);
+
+  const getAllTicketsReduxAction = () => {
+    console.log(ticketsState);
+
+    dispatchy(fetchAllTickets_actions());
+
+    console.log(ticketsState);
+  };
+
   return (
     <div>
       <h1>I am redux page</h1>
@@ -60,6 +73,12 @@ export default function ReduxRoute(): JSX.Element {
       </button>
       <button onClick={loginReduxAction}>login redux</button>
       <button onClick={logoutReduxAction}>logout redux</button>
+      <div>
+        <h4>ticketsState buttons</h4>
+        <button onClick={getAllTicketsReduxAction}>
+          console.log ticketsState
+        </button>
+      </div>
     </div>
   );
 }

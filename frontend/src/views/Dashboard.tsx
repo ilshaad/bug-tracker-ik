@@ -4,8 +4,12 @@ import Profile from "../components/Profiles";
 import HomeLogin from "../components/HomeLogin";
 import { Link } from "react-router-dom";
 import SeoReactHelmet from "../components/SeoReactHelmet";
+import { useAuth0, User } from "@auth0/auth0-react";
 
 export default function Dashboard(): JSX.Element {
+  const ua = useAuth0<User>();
+  console.log("🚀 ~ file: Dashboard.tsx ~ line 11 ~ Dashboard ~ ua", ua);
+
   return (
     <div>
       <SeoReactHelmet

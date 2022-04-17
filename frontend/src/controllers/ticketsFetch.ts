@@ -32,14 +32,13 @@ export const get_ticketList = () => {
     });
 };
 /**fetch example
-const dummyEmail: string = "v1@mail.com";
-
-// post user login email & recieve user profile
-post_getUserProfile(dummyEmail)
-  .then((data) => console.log(data))
-  .catch((error) => {
-    console.log(error);
-  });
+    get_ticketList()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 */
 
 /**
