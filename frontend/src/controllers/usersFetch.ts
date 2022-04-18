@@ -1,5 +1,5 @@
 import backendApi_fetchInstance from "./backendApi_fetchInstance";
-import { userSignup_type } from "../helpers/backendFetch_types";
+import { userSignup_type } from "../@types/backendFetch_types";
 import catchHandler from "./backendCatchHandler";
 
 /**exported controllers on this file:

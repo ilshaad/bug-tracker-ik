@@ -6,7 +6,7 @@ import {
   decrement,
   incrementByAmount,
 } from "../models/reducers/counterSlice";
-import { fetchAllTickets_actions } from "../models/reducers/tickets/ticketsSlice";
+import { get_ticketList_actions } from "../models/reducers/tickets/ticketsSlice";
 
 import { loginAction, logoutAction } from "../models/reducers/userProfileSlice";
 
@@ -57,7 +57,8 @@ export default function ReduxRoute(): JSX.Element {
   const getAllTicketsReduxAction = () => {
     console.log(ticketsState);
 
-    dispatchy(fetchAllTickets_actions());
+    // dispatchy(fetchAllTickets_actions());
+    dispatchy(get_ticketList_actions());
 
     console.log(ticketsState);
   };

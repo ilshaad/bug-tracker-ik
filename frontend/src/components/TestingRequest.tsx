@@ -20,7 +20,7 @@ import {
   createComment_type,
   createTicket_type,
   updateTicket_type,
-} from "../helpers/backendFetch_types";
+} from "../@types/backendFetch_types";
 
 export default function App(): JSX.Element {
   const getUserProfile = () => {

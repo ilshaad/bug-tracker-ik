@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import AuthenticateRoute from "../components/AuthenticateRoute";
 import LogoutButton from "../components/LogoutButton";
 import Profile from "../components/Profiles";
 import SeoReactHelmet from "../components/SeoReactHelmet";
 
-export default function TicketList(): JSX.Element {
-  // const Aroute = AuthenticateRoute(() => {
-  //   return (
-  //     <React.Fragment>
-  //       <h1>i am protected routes {coolio}</h1>
-  //     </React.Fragment>
-  //   );
-  // });
+import { useAppSelector, useAppDispatch } from "../models/hooks";
+import { get_ticketList_actions } from "../models/reducers/tickets/ticketsSlice";
 
-  // const Aroute = AuthenticateRoute(Profile);
+export default function TicketList(): JSX.Element {
+  const ticketsList = useAppSelector((state) => state.tickets);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    // console.log(ticketsList);
+    dispatch(get_ticketList_actions());
+    // console.log(ticketsList);
+  }, [dispatch]);
+
+  const listOfTickets = () => {
+    if ("null" in ticketsList) {
+      return null;
+    }
+
+    const arrayList: Array<JSX.Element> = [];
+
+    for (let property in ticketsList) {
+      // console.log(property);
+      arrayList.push(<li key={property}>{ticketsList[property].title}</li>);
+    }
+    return arrayList;
+  };
 
   return (
     <div>
@@ -26,25 +42,7 @@ export default function TicketList(): JSX.Element {
       <h1>TicketList PAGE</h1>
       <LogoutButton />
       <Profile />
-      {/* {AuthenticateRoute(
-        // <>
-        //   <h1>this is authenticated route, hopefully it works</h1>
-        // </>
-      )} */}
-      {/* </AuthenticateRoute> */}
-      {/* <Aroute /> */}
+      <ul>{listOfTickets()}</ul>
     </div>
   );
 } //END TicketList component
-
-// import React from 'react'
-
-// type Props = {}
-
-// function TicketList({}: Props) {
-//   return (
-//     <div>TicketList</div>
-//   )
-// }
-
-// export default TicketList

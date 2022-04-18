@@ -11,7 +11,8 @@
     "server": "node src/server.js",
     "lint": "eslint .",
     "ikclean": "rm -fr node_modules/ package-lock.json dist/ && npm cache clean -vf && npm run ikupdate && npm run dev",
-    "ikcleanci": "rm -fr node_modules/ dist/ && npm cache clean -vf && npm ci && npm run dev"
+    "ikcleanci": "rm -fr node_modules/ dist/ && npm cache clean -vf && npm ci && npm run dev",
+    "backend": "cd ../backend && npm run server"
   },
   "keywords": [],
   "author": "Rechad Salma",

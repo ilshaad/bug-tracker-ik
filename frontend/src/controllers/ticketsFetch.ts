@@ -2,7 +2,7 @@ import backendApi_fetchInstance from "./backendApi_fetchInstance";
 import {
   createTicket_type,
   updateTicket_type,
-} from "../helpers/backendFetch_types";
+} from "../@types/backendFetch_types";
 import catchHandler from "./backendCatchHandler";
 
 /**exported controllers on this file:
