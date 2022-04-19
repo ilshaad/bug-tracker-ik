@@ -135,7 +135,7 @@ export default function App(): JSX.Element {
   };
 
   const allCommentsForASingleTicket = () => {
-    const ticketId = "456";
+    const ticketId = "049e7fd3-753c-4123-8df5-df3aab63d9d2";
 
     get_allCommentsForASingleTicket(ticketId)
       .then((data) => {

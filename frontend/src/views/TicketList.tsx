@@ -13,7 +13,7 @@ export default function TicketList(): JSX.Element {
 
   useEffect(() => {
     // console.log(ticketsList);
-    dispatch(get_ticketList_actions());
+    // dispatch(get_ticketList_actions());
     // console.log(ticketsList);
   }, [dispatch]);
 

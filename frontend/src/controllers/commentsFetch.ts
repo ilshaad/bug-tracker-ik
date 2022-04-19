@@ -21,9 +21,7 @@ import catchHandler from "./backendCatchHandler";
 export const get_allCommentsForASingleTicket = (ticketId: string) => {
   // console.log(updateTicket);
   return backendApi_fetchInstance()
-    .get(`/api/comment/${ticketId}`, {
-      data: { ticketId },
-    })
+    .get(`/api/comment/${ticketId}`)
     .then((res) => {
       // console.log(res.data);
       return res.data;
