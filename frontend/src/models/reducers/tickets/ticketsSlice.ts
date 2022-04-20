@@ -5,6 +5,7 @@ import {
   dictionary_ticketsState_type,
   TicketsState_type,
 } from "../../../@types/TicketSlice_types";
+import parseTimestamp from "../../../helpers/parseTimestamp";
 
 // fetch all ticket list to insert into redux 'tickets' reducer
 export const get_ticketList_actions = createAsyncThunk(
@@ -61,6 +62,9 @@ export const ticketSlice = createSlice({
 
         for (let item of data) {
           // console.log(item);
+          // parse sql timestamp before placing within ticket state
+          const parseCreated_on = parseTimestamp(item.created_on);
+
           newDictionary_ticketsState[item.ticket_id] = {
             ticket_id: item.ticket_id,
             title: item.title,
@@ -71,7 +75,7 @@ export const ticketSlice = createSlice({
             status: item.status,
             app_name: item.app_name,
             app_version: item.app_version,
-            created_on: item.created_on,
+            created_on: parseCreated_on,
           };
         }
 

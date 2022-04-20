@@ -1,4 +1,11 @@
 const psqlDb = require("../database/db");
+const createDOMPurify = require("dompurify");
+// dompurify requies jsdom for it to work on the serverside
+const { JSDOM } = require("jsdom");
+
+// setup the sanitizer function as recommended
+const window = new JSDOM("").window;
+const DOMPurify = createDOMPurify(window);
 
 /**
  * POST /api/user/profile
@@ -11,7 +18,9 @@ exports.getUserProfile = (req, res) => {
   // collect client json email address of user who logged on
   const { email } = req.body;
 
-  const sqlQuery = `SELECT email, name, role, created_on FROM users_table WHERE email = '${email}';`;
+  const emailC = DOMPurify.sanitize(email);
+
+  const sqlQuery = `SELECT email, name, role, created_on FROM users_table WHERE email = '${emailC}';`;
 
   psqlDb.query(sqlQuery, null, (err, result) => {
     if (err) {
@@ -48,7 +57,14 @@ exports.signUpUser = (req, res) => {
   // ! you might not need to save password depending out Auth0 works
   const { user_id, email, name, role, created_on } = req.body;
 
-  const sqlQuery = `INSERT INTO users_table (user_id, email, name, role, created_on) VALUES ('${user_id}', '${email}', '${name}', '${role}', '${created_on}');`;
+  // sanitize incoming request
+  const user_idC = DOMPurify.sanitize(user_id);
+  const emailC = DOMPurify.sanitize(email);
+  const nameC = DOMPurify.sanitize(name);
+  const roleC = DOMPurify.sanitize(role);
+  const created_onC = DOMPurify.sanitize(created_on);
+
+  const sqlQuery = `INSERT INTO users_table (user_id, email, name, role, created_on) VALUES ('${user_idC}', '${emailC}', '${nameC}', '${roleC}', '${created_onC}');`;
 
   psqlDb.query(sqlQuery, null, (err, result) => {
     if (err) {
@@ -86,7 +102,9 @@ exports.signUpUser = (req, res) => {
 exports.deleteUserAccount = (req, res) => {
   const { email } = req.body;
 
-  const sqlQuery = `DELETE FROM users_table WHERE email = '${email}';`;
+  const emailC = DOMPurify.sanitize(email);
+
+  const sqlQuery = `DELETE FROM users_table WHERE email = '${emailC}';`;
 
   psqlDb.query(sqlQuery, null, (err, result) => {
     if (err) {

@@ -18,7 +18,6 @@ export interface updateTicket_type {
 }
 
 export interface createTicket_type {
-  ticket_id: string;
   title: string;
   description: string;
   submitted_by: string;
@@ -27,14 +26,12 @@ export interface createTicket_type {
   status: string;
   app_name: string;
   app_version: string;
-  created_on: string;
 }
 
 export interface createComment_type {
-  comment_id: string;
+  // comment_id: string;
   ticket_id: string;
   name: string;
   email: string;
   text_comment: string;
-  created_on: string;
 }

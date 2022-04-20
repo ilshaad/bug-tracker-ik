@@ -101,7 +101,6 @@ export default function App(): JSX.Element {
 
   const createTicket = () => {
     const createTicketObject: createTicket_type = {
-      ticket_id: "456",
       title: "client create",
       description: "client create",
       submitted_by: "client create",
@@ -110,7 +109,6 @@ export default function App(): JSX.Element {
       status: "client create",
       app_name: "client create",
       app_version: "client create",
-      created_on: "2022-04-16",
     };
 
     post_createTicket(createTicketObject)
@@ -148,12 +146,11 @@ export default function App(): JSX.Element {
 
   const createComment = () => {
     const commentObject: createComment_type = {
-      comment_id: "456",
+      // comment_id: "456",
       ticket_id: "456",
       name: "create comment",
       email: "createComment@mail.com",
       text_comment: "create comment",
-      created_on: "2022-04-17",
     };
 
     post_createComment(commentObject)

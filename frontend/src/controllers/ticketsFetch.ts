@@ -4,6 +4,8 @@ import {
   updateTicket_type,
 } from "../@types/backendFetch_types";
 import catchHandler from "./backendCatchHandler";
+import { v4 as uuidv4 } from "uuid";
+import timeStamp from "../helpers/timeStamp";
 
 /**exported controllers on this file:
  * get_ticketList
@@ -52,10 +54,17 @@ export const get_ticketList = () => {
  */
 
 export const post_createTicket = (newTicket: createTicket_type) => {
-  console.log(newTicket);
+  // create new UUID for ticket
+  const uuid = uuidv4();
+
+  // create timestamp
+  const currentTimestamp = timeStamp();
+
   return backendApi_fetchInstance()
     .post("/api/ticket/create", {
       ...newTicket,
+      ticket_id: uuid,
+      created_on: currentTimestamp,
     })
     .then((res) => {
       // console.log(res.data);
@@ -67,7 +76,6 @@ export const post_createTicket = (newTicket: createTicket_type) => {
 };
 /**fetch example
     const createTicketObject: createTicket_type = {
-      ticket_id: "456",
       title: "client create",
       description: "client create",
       submitted_by: "client create",
@@ -76,7 +84,6 @@ export const post_createTicket = (newTicket: createTicket_type) => {
       status: "client create",
       app_name: "client create",
       app_version: "client create",
-      created_on: "2022-04-16",
     };
 
     post_createTicket(createTicketObject)
@@ -96,19 +103,9 @@ export const post_createTicket = (newTicket: createTicket_type) => {
  * PATCH /api/ticket/:ticketid
  * edit / update a specific bug ticket
  * editable only: title / description / priority / assigned_user / status / app_name / app_version
+ * only the admin can update the submitted_by
 //  * * requires ticketid params & ticket_id json property from client to know which ticket to edit
  */
-// ! DELETE AFTER PIECES
-// interface updateTicket_type {
-//   ticket_id: string;
-//   title: string;
-//   description: string;
-//   priority: string;
-//   assigned_user: string;
-//   status: string;
-//   app_name: string;
-//   app_version: string;
-// }
 
 export const patch_updateTicket = (updateTicket: updateTicket_type) => {
   // console.log(updateTicket);

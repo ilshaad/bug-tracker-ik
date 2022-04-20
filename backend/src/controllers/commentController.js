@@ -1,4 +1,11 @@
 const psqlDb = require("../database/db");
+const createDOMPurify = require("dompurify");
+// dompurify requies jsdom for it to work on the serverside
+const { JSDOM } = require("jsdom");
+
+// setup the sanitizer function as recommended
+const window = new JSDOM("").window;
+const DOMPurify = createDOMPurify(window);
 
 /**
  * GET /api/comment/:ticketid
@@ -9,7 +16,10 @@ exports.getAllCommentsForASingleTicket = (req, res) => {
   // collect the ticket_id number from params to identify which ticket to collect the comments
   const ticketId = req.params.ticketid;
 
-  const sqlQuery = `SELECT * FROM comments_table WHERE ticket_id = '${ticketId}';`;
+  // sanitize incoming request
+  const ticketIdC = DOMPurify.sanitize(ticketId);
+
+  const sqlQuery = `SELECT * FROM comments_table WHERE ticket_id = '${ticketIdC}';`;
 
   psqlDb.query(sqlQuery, null, (err, result) => {
     if (err) {
@@ -45,7 +55,15 @@ exports.createComment = (req, res) => {
   const { comment_id, ticket_id, name, email, text_comment, created_on } =
     req.body;
 
-  const sqlQuery = `INSERT INTO comments_table (comment_id, ticket_id, name, email, text_comment, created_on) VALUES ('${comment_id}', '${ticket_id}', '${name}', '${email}', '${text_comment}', '${created_on}');`;
+  // sanitize incoming request
+  const comment_idC = DOMPurify.sanitize(comment_id);
+  const ticket_idC = DOMPurify.sanitize(ticket_id);
+  const nameC = DOMPurify.sanitize(name);
+  const emailC = DOMPurify.sanitize(email);
+  const text_commentC = DOMPurify.sanitize(text_comment);
+  const created_onC = DOMPurify.sanitize(created_on);
+
+  const sqlQuery = `INSERT INTO comments_table (comment_id, ticket_id, name, email, text_comment, created_on) VALUES ('${comment_idC}', '${ticket_idC}', '${nameC}', '${emailC}', '${text_commentC}', '${created_onC}');`;
 
   psqlDb.query(sqlQuery, null, (err, result) => {
     if (err) {
@@ -69,7 +87,7 @@ exports.createComment = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: `Successfully created new comment related to ticket id of '${ticket_id}' within the database`,
+      msg: `Successfully created new comment related to ticket id of '${ticket_idC}' within the database`,
     });
   });
 }; //END createComment
@@ -84,7 +102,11 @@ exports.updateComment = (req, res) => {
   // json data send by the client which contains the comment_id & text_comment to be edited
   const { comment_id, text_comment } = req.body;
 
-  const sqlQuery = `UPDATE comments_table SET text_comment = '${text_comment}' WHERE comment_id = '${comment_id}';`;
+  // sanitize incoming request
+  const comment_idC = DOMPurify.sanitize(comment_id);
+  const text_commentC = DOMPurify.sanitize(text_comment);
+
+  const sqlQuery = `UPDATE comments_table SET text_comment = '${text_commentC}' WHERE comment_id = '${comment_idC}';`;
 
   psqlDb.query(sqlQuery, null, (err, result) => {
     if (err) {
@@ -108,7 +130,7 @@ exports.updateComment = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: `Successfully updated comment with comment id of '${comment_id}' within the database`,
+      msg: `Successfully updated comment with comment id of '${comment_idC}' within the database`,
     });
   });
 }; //END updateComment
@@ -122,7 +144,10 @@ exports.deleteComment = (req, res) => {
   // json data send by the client which contains the comment_id to be deleted
   const { comment_id } = req.body;
 
-  const sqlQuery = `DELETE FROM comments_table WHERE comment_id = '${comment_id}';`;
+  // sanitize incoming request
+  const comment_idC = DOMPurify.sanitize(comment_id);
+
+  const sqlQuery = `DELETE FROM comments_table WHERE comment_id = '${comment_idC}';`;
 
   psqlDb.query(sqlQuery, null, (err, result) => {
     if (err) {

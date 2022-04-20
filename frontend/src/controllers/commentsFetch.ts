@@ -1,6 +1,8 @@
 import backendApi_fetchInstance from "./backendApi_fetchInstance";
 import { createComment_type } from "../@types/backendFetch_types";
 import catchHandler from "./backendCatchHandler";
+import { v4 as uuidv4 } from "uuid";
+import timeStamp from "../helpers/timeStamp";
 
 /**exported controllers on this file:
  * get_allCommentsForASingleTicket
@@ -53,10 +55,16 @@ export const get_allCommentsForASingleTicket = (ticketId: string) => {
  * * CS needs to provide json data of the newly comments for the psql comments_table
  */
 export const post_createComment = (commentObject: createComment_type) => {
-  // console.log(updateTicket);
+  const uuid = uuidv4();
+
+  // create timestamp
+  const currentTimestamp = timeStamp();
+
   return backendApi_fetchInstance()
     .post(`/api/comment/create`, {
       ...commentObject,
+      comment_id: uuid,
+      created_on: currentTimestamp,
     })
     .then((res) => {
       // console.log(res.data);
@@ -73,7 +81,6 @@ export const post_createComment = (commentObject: createComment_type) => {
       name: "create comment",
       email: "createComment@mail.com",
       text_comment: "create comment",
-      created_on: "2022-04-17",
     };
 
     post_createComment(commentObject)

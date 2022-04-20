@@ -77,7 +77,7 @@ export default function ReduxRoute(): JSX.Element {
       <div>
         <h4>ticketsState buttons</h4>
         <button onClick={getAllTicketsReduxAction}>
-          console.log ticketsState
+          fetched ticketsState on tickets slice
         </button>
       </div>
     </div>

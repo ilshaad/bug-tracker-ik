@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { comments_type } from "../../../@types/commentsSlice_types";
 import { get_allCommentsForASingleTicket } from "../../../controllers/commentsFetch";
+import parseTimestamp from "../../../helpers/parseTimestamp";
 import type { RootState } from "../../store";
 
 // fetch all comments to one specific ticket
@@ -45,6 +46,11 @@ export const commentsSlice = createSlice({
           const newArray_commentsForSingleTicket: Array<comments_type> = [
             ...data,
           ];
+
+          // parse each comments created_on sql timestamp
+          for (let item of newArray_commentsForSingleTicket) {
+            item.created_on = parseTimestamp(item.created_on);
+          }
 
           return newArray_commentsForSingleTicket;
         }

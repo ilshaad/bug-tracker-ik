@@ -53,15 +53,6 @@ post_getUserProfile(dummyEmail)
  * No need to send back profile because client will save it within redux, but SS must send back confirmation
  */
 
-// ! delete after Pieces
-// type userSignup_type = {
-//   user_id: string;
-//   email: string;
-//   name: string;
-//   role: string;
-//   created_on: string;
-// };
-
 export const post_userSignup = ({
   user_id,
   email,
