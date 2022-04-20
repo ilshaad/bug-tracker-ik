@@ -3,8 +3,8 @@ const psqlDb = require("../database/db");
 /**
  * POST /api/user/profile
  * user have logged on
- * get user profile from psql tickets_table
- * return only email / name / role / created_on data of the user profile
+ * get a single user profile from psql tickets_table
+ * response with only email / name / role / created_on data of the user profile
  * * client must send user email json data
  */
 exports.getUserProfile = (req, res) => {
@@ -26,7 +26,7 @@ exports.getUserProfile = (req, res) => {
     if (result.rowCount === 0) {
       res.status(400).json({
         success: false,
-        msg: "error occured when finding user within database, perhaps user does not exist",
+        msg: "error occured when finding user within database, perhaps user does not exist or email json data was not provided correctly",
         err,
       });
       return;
@@ -46,9 +46,9 @@ exports.getUserProfile = (req, res) => {
 exports.signUpUser = (req, res) => {
   // collect client send req json of user details
   // ! you might not need to save password depending out Auth0 works
-  const { user_id, email, password, name, role, created_on } = req.body;
+  const { user_id, email, name, role, created_on } = req.body;
 
-  const sqlQuery = `INSERT INTO users_table (user_id, email, password, name, role, created_on) VALUES ('${user_id}', '${email}', '${password}', '${name}', '${role}', '${created_on}');`;
+  const sqlQuery = `INSERT INTO users_table (user_id, email, name, role, created_on) VALUES ('${user_id}', '${email}', '${name}', '${role}', '${created_on}');`;
 
   psqlDb.query(sqlQuery, null, (err, result) => {
     if (err) {
@@ -72,7 +72,7 @@ exports.signUpUser = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: "successful update to the database",
+      msg: `successful signed up '${name}' to the database`,
     });
   });
 }; //END signUpUser controller
@@ -102,7 +102,7 @@ exports.deleteUserAccount = (req, res) => {
     if (result.rowCount === 0) {
       res.status(500).json({
         success: false,
-        msg: "error occured when deleting user within database",
+        msg: "error occured when deleting user within database, perhaps user does not exist or check your json email data is correct",
         err,
       });
       return;
@@ -110,7 +110,7 @@ exports.deleteUserAccount = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: "successful user account delete on the database",
+      msg: `successful deleted '${email}' user account on the database`,
     });
   });
 }; //END deleteUserAccount controller

@@ -4,17 +4,21 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // ! these are dummy routes & remove when you done
 import TestingRequest from "./components/TestingRequest";
-import ReduxTest from "./pages/ReduxTest";
+import ReduxTest from "./views/ReduxTest";
 
 /**page routes */
-import Dashboard from "./pages/Dashboard";
-import CreateTicket from "./pages/CreateTicket";
-import TicketList from "./pages/TicketList";
-import ViewTicket from "./pages/ViewTicket";
-import NotFound from "./pages/NotFound";
+import Dashboard from "./views/Dashboard"; // * shares the / rul with login screen route
+import CreateTicket from "./views/CreateTicket";
+import TicketList from "./views/TicketList";
+import ViewTicket from "./views/ViewTicket";
+import NotFound from "./views/NotFound";
 
 // HOC function for Auth0 protected routes
+// * It is also the login screen route which share the / url with dashboard
 import AuthenticateRoute from "./components/AuthenticateRoute";
+
+// Layout component for non authenticated routes (eg error page) because AuthentcateRoute sets Layout component to all protected routes
+import Layout from "./components/Layout";
 
 // ! /fetch & /reduxtest routes are dummy routes, remove afterwards
 const App = () => {
@@ -30,10 +34,31 @@ const App = () => {
         <Route path="/createticket" element={<CreateTicket_Auth />} />
         <Route path="/ticketlist" element={<TicketList_Auth />} />
         <Route path="/viewticket/:ticketid" element={<ViewTicket_Auth />} />
-        <Route path="/fetch" element={<TestingRequest />} />
-        <Route path="/reduxtest" element={<ReduxTest />} />
+        <Route
+          path="/fetch"
+          element={
+            <Layout>
+              <TestingRequest />
+            </Layout>
+          }
+        />
+        <Route
+          path="/reduxtest"
+          element={
+            <Layout>
+              <ReduxTest />
+            </Layout>
+          }
+        />
 
-        <Route path="*" element={<NotFound />} />
+        <Route
+          path="*"
+          element={
+            <Layout>
+              <NotFound />
+            </Layout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   ); /*END return */

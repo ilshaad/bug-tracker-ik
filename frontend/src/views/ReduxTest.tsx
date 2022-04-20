@@ -1,13 +1,14 @@
 import React from "react";
 
-import { useAppSelector, useAppDispatch } from "../redux/hooks";
+import { useAppSelector, useAppDispatch } from "../models/hooks";
 import {
   increment,
   decrement,
   incrementByAmount,
-} from "../redux/reducers/counterSlice";
+} from "../models/reducers/counterSlice";
+import { get_ticketList_actions } from "../models/reducers/tickets/ticketsSlice";
 
-import { loginAction, logoutAction } from "../redux/reducers/userProfileSlice";
+import { loginAction, logoutAction } from "../models/reducers/userProfileSlice";
 
 interface userP {
   email: string;
@@ -49,6 +50,19 @@ export default function ReduxRoute(): JSX.Element {
     dispatchy(logoutAction());
   };
 
+  // *******************
+  // ticketsState redux section *****************
+  const ticketsState = useAppSelector((state) => state.tickets);
+
+  const getAllTicketsReduxAction = () => {
+    console.log(ticketsState);
+
+    // dispatchy(fetchAllTickets_actions());
+    dispatchy(get_ticketList_actions());
+
+    console.log(ticketsState);
+  };
+
   return (
     <div>
       <h1>I am redux page</h1>
@@ -60,6 +74,12 @@ export default function ReduxRoute(): JSX.Element {
       </button>
       <button onClick={loginReduxAction}>login redux</button>
       <button onClick={logoutReduxAction}>logout redux</button>
+      <div>
+        <h4>ticketsState buttons</h4>
+        <button onClick={getAllTicketsReduxAction}>
+          console.log ticketsState
+        </button>
+      </div>
     </div>
   );
 }

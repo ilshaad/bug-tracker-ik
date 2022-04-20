@@ -51,6 +51,24 @@ exports.updateTicket = (req, res) => {
     return;
   }
 
+  // check client request data has no falsy values
+  if (
+    !ticket_id ||
+    !title ||
+    !description ||
+    !priority ||
+    !assigned_user ||
+    !status ||
+    !app_name ||
+    !app_version
+  ) {
+    res.status(400).json({
+      success: false,
+      msg: "error because falsy value occured within ticket_id / title / description / priority / assigned_user / status / app_name / app_version",
+    });
+    return;
+  }
+
   // sql query string to use for updating the psql tickets_table for the one specific ticket
   const sqlQuery = `UPDATE tickets_table SET title = '${title}', description = '${description}', priority = '${priority}', assigned_user = '${assigned_user}', status = '${status}', app_name = '${app_name}', app_version = '${app_version}' WHERE ticket_id = '${ticket_id}';`;
 
@@ -68,7 +86,7 @@ exports.updateTicket = (req, res) => {
     if (result.rowCount === 0) {
       res.status(500).json({
         success: false,
-        msg: "error occured when updating ticket within the database",
+        msg: "error occured when updating ticket within the database, or perhap ticket id does not exist",
         err,
       });
       return;
@@ -76,7 +94,7 @@ exports.updateTicket = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: "successful ticket update within the database",
+      msg: `successful updated ticket id '${ticket_id}' within the database`,
     });
   });
 }; //END updateTicket controller
@@ -128,7 +146,7 @@ exports.deleteTicket = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: "successful ticket & comments delete within the database",
+      msg: `successfully deleted ticket & all comments with ticket id of '${ticket_id}'`,
     });
   });
 }; //END deleteTicket controller
@@ -160,7 +178,7 @@ exports.createTicket = (req, res) => {
     if (err) {
       res.status(400).json({
         success: false,
-        msg: "error occured when creating ticket within the database",
+        msg: "error occured when creating ticket within the database, perhaps ticket already exist",
         err,
       });
       return;
@@ -178,7 +196,7 @@ exports.createTicket = (req, res) => {
 
     res.status(200).json({
       success: true,
-      msg: "successful ticket create within the database",
+      msg: `successfully created ticket with ticket id of '${ticket_id}' within the database`,
     });
   });
 }; //END createTicket controller

@@ -1,8 +1,9 @@
 // import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import LoginButton from "../components/LoginButton";
-import { useAppDispatch } from "../redux/hooks";
-import { loginAction } from "../redux/reducers/userProfileSlice";
+import { useAppDispatch } from "../models/hooks";
+import { loginAction } from "../models/reducers/userProfileSlice";
+import SeoReactHelmet from "../components/SeoReactHelmet";
 
 type Props = {};
 
@@ -26,6 +27,12 @@ export default function LoginScreen({}: Props) {
 
   return (
     <div>
+      <SeoReactHelmet
+        pageTitle="coming from login screen "
+        metaDescriptionContent="mDescContent-login screen"
+        metaKeywordsContent="login screen & etc"
+      />
+
       <code>iK LoginScreen component!!</code>
       <h3>You need to login/signup with Auth0 or login as guest user</h3>
       <LoginButton />

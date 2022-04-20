@@ -1,15 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+// !delete
 import counterSlice from "./reducers/counterSlice";
+
+import ticketsSlice from "./reducers/tickets/ticketsSlice";
+import commentsSlice from "./reducers/comments/commentsSlice";
 import userProfileSlice from "./reducers/userProfileSlice";
 
 const store = configureStore({
   reducer: {
     counter: counterSlice,
     userProfile: userProfileSlice,
-    // posts: postsReducer,
-    // comments: commentsReducer,
-    // users: usersReducer,
+    tickets: ticketsSlice,
+    comments: commentsSlice,
   },
   // devTools: false,
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import LoginScreen from "../pages/LoginScreen";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import LoginScreen from "../views/LoginScreen";
+import { useAppDispatch, useAppSelector } from "../models/hooks";
 import Layout from "./Layout";
 
 export default function AuthenticateRoute(PageComponent: any) {
