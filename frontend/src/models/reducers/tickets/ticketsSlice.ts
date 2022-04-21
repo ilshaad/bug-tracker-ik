@@ -1,13 +1,21 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
+
 import type { RootState } from "../../store";
-import { get_ticketList } from "../../../controllers/ticketsFetch";
+import timeStamp from "../../../helpers/timeStamp";
+import parseTimestamp from "../../../helpers/parseTimestamp";
+
 import {
   dictionary_ticketsState_type,
   TicketsState_type,
 } from "../../../@types/TicketSlice_types";
-import parseTimestamp from "../../../helpers/parseTimestamp";
+import { createTicket_type } from "../../../@types/backendFetch_types";
 
-// fetch all ticket list to insert into redux 'tickets' reducer
+import get_ticketList from "../../../controllers/ticketsFetch/get_ticketList";
+import post_createTicket from "../../../controllers/ticketsFetch/post_createTicket";
+import { createTicket_dispatch_type } from "../../../@types/ticketsSlice_types.t";
+
+/** *Fetch all tickets from psql > insert it within the ticket reducer */
 export const get_ticketList_actions = createAsyncThunk(
   "get/ticketList",
   async (par, thunkAPI) => {
@@ -24,6 +32,38 @@ export const get_ticketList_actions = createAsyncThunk(
       });
   }
 );
+
+/** *Create a ticket > send to psql > if successful insert also into ticket reducer */
+export const post_createTicket_actions = createAsyncThunk(
+  "post/createTicket",
+  async (newTicket: createTicket_dispatch_type, { rejectWithValue }) => {
+    // create new UUID for ticket
+    const uuid = uuidv4();
+
+    // create timestamp
+    const currentTimestamp = timeStamp();
+
+    const ticketObject = {
+      ...newTicket,
+      ticket_id: uuid,
+      created_on: currentTimestamp,
+    };
+
+    return post_createTicket(ticketObject)
+      .then((data) => {
+        console.log(data);
+        return data;
+      })
+      .catch((error) => {
+        console.log(error);
+        return rejectWithValue("Error occured with post_createTicket_actions");
+      });
+  }
+);
+
+/** *Update a ticket > update psql > if successful update ticket reducer too */
+
+/** *Delete a ticket > delete on psql > if successful delete on ticket reducer too */
 
 // Define the initial state using that type
 const initialState: dictionary_ticketsState_type = {
@@ -48,6 +88,7 @@ export const ticketSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      /******************************** */
       // * get_ticketList_actions function
       // collect all ticket list within redux as dictionary, so ticket id will be the property name for quicker access
       .addCase(get_ticketList_actions.fulfilled, (state, actions) => {
@@ -85,6 +126,20 @@ export const ticketSlice = createSlice({
       // return nothing if request fail
       .addCase(get_ticketList_actions.rejected, (state, actions) => {
         console.log(actions.payload);
+      })
+
+      /******************************** */
+      /** * post_createTicket_actions  */
+      // if successful, include the new ticket within the ticket reducer
+      .addCase(post_createTicket_actions.fulfilled, (state, actions) => {
+        const { success, data } = actions.payload;
+
+        // do not set state if success property (from SS response) returns false
+        if (!success) return;
+      })
+
+      .addCase(post_createTicket_actions.rejected, (state, actions) => {
+        console.log("iK rejected for the create ticket");
       });
   },
 });

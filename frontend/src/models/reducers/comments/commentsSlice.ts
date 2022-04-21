@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { comments_type } from "../../../@types/commentsSlice_types";
-import { get_allCommentsForASingleTicket } from "../../../controllers/commentsFetch";
+import get_allCommentsForASingleTicket from "../../../controllers/commentsFetch/get_allCommentsForASingleTicket";
+// import { get_allCommentsForASingleTicket } from "../../../controllers/commentsFetch";
 import parseTimestamp from "../../../helpers/parseTimestamp";
 import type { RootState } from "../../store";
 

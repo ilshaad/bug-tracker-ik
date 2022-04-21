@@ -15,10 +15,10 @@ export default () => {
 
   for (let dateNumber of timestampArray) {
     // if number is less than 10 than add a 0 in front of it
-    if (dateNumber <= 10) {
-      timestampString += `0${dateNumber}`;
-    } else {
+    if (dateNumber >= 10) {
       timestampString += dateNumber;
+    } else {
+      timestampString += `0${dateNumber}`;
     }
   }
 

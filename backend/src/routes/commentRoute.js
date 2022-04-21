@@ -3,10 +3,10 @@ const commentRoute = require("express").Router();
 // importing comment controllers
 const {
   getAllCommentsForASingleTicket,
-  createComment,
-  updateComment,
-  deleteComment,
-} = require("../controllers/commentController.js");
+} = require("../controllers/comments/getAllCommentsForASingleTicket");
+const { createComment } = require("../controllers/comments/createComment");
+const { updateComment } = require("../controllers/comments/updateComment");
+const { deleteComment } = require("../controllers/comments/deleteComment");
 
 /**
  * GET /api/comment/:ticketid
@@ -25,7 +25,8 @@ commentRoute.post("/create", createComment);
 /**
  * PATCH /api/comment/update
  * user edits their comments
- * only text_comment is ediable by the user
+ * EDITABLE text_comment by the user
+ * ADMIN-EDITABLE ticket_id / name / email / created_on
  * * CS must provide json data of comment_id & text_comment of the user
  */
 commentRoute.patch("/update", updateComment);

@@ -1,24 +1,25 @@
 import React from "react";
-import {
-  delete_deleteComment,
-  get_allCommentsForASingleTicket,
-  patch_updateComment,
-  post_createComment,
-} from "../controllers/commentsFetch";
-import {
-  delete_deleteTicket,
-  get_ticketList,
-  patch_updateTicket,
-  post_createTicket,
-} from "../controllers/ticketsFetch";
+
+import get_ticketList from "./../controllers/ticketsFetch/get_ticketList";
+import post_createTicket from "../controllers/ticketsFetch/post_createTicket";
+import patch_updateTicket from "../controllers/ticketsFetch/patch_updateTicket";
+import delete_deleteTicket from "../controllers/ticketsFetch/delete_deleteTicket";
+
+import get_allCommentsForASingleTicket from "../controllers/commentsFetch/get_allCommentsForASingleTicket";
+import post_createComment from "../controllers/commentsFetch/post_createComment";
+import patch_updateComment from "../controllers/commentsFetch/patch_updateComment";
+import delete_deleteComment from "../controllers/commentsFetch/delete_deleteComment";
+
 import {
   delete_deleteUser,
   post_getUserProfile,
   post_userSignup,
 } from "../controllers/usersFetch";
+
 import {
   createComment_type,
   createTicket_type,
+  updateComment_type,
   updateTicket_type,
 } from "../@types/backendFetch_types";
 
@@ -81,7 +82,7 @@ export default function App(): JSX.Element {
 
   const updateTicket = async () => {
     const updateTicketObject: updateTicket_type = {
-      ticket_id: "456",
+      ticket_id: "70d966f8-8e1f-4bda-a568-5ff82116b507",
       title: "update ticket",
       description: "update ticket",
       priority: "update ticket",
@@ -89,6 +90,8 @@ export default function App(): JSX.Element {
       status: "update ticket",
       app_name: "update ticket",
       app_version: "update ticket",
+      submitted_by: "admin",
+      created_on: "2022-04-21 11:58:00",
     };
 
     try {
@@ -109,6 +112,8 @@ export default function App(): JSX.Element {
       status: "client create",
       app_name: "client create",
       app_version: "client create",
+      ticket_id: "",
+      created_on: "",
     };
 
     post_createTicket(createTicketObject)
@@ -163,10 +168,16 @@ export default function App(): JSX.Element {
   };
 
   const updateComment = () => {
-    const comment_id = "456",
-      text_comment = "update comment";
+    const commentObject: updateComment_type = {
+      comment_id: "d07ff472-9d26-4bd7-8dc5-77c5892e4190",
+      text_comment: "updated comment",
+      ticket_id: "999",
+      name: "555",
+      email: "zzz",
+      created_on: "2000-02-02 11:11:11",
+    };
 
-    patch_updateComment(comment_id, text_comment)
+    patch_updateComment(commentObject)
       .then((data) => {
         console.log(data);
       })
