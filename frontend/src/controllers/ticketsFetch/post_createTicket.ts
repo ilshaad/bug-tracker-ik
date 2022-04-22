@@ -7,6 +7,7 @@ import timeStamp from "../../helpers/timeStamp";
 /**
  * * Create a new ticket
  * returns promise object with confirmation
+ * this function is wrapped in redux acion (post_createTicket_actions) which will our newTicket argument, including ticket_id & created_on
  *
  * Backend api:
  * POST /api/ticket/create
@@ -15,18 +16,8 @@ import timeStamp from "../../helpers/timeStamp";
  */
 // post_createTicket
 export default (newTicket: createTicket_type) => {
-  // create new UUID for ticket
-  const uuid = uuidv4();
-
-  // create timestamp
-  const currentTimestamp = timeStamp();
-
   return backendApi_fetchInstance()
-    .post("/api/ticket/create", {
-      ...newTicket,
-      ticket_id: uuid,
-      created_on: currentTimestamp,
-    })
+    .post("/api/ticket/create", { ...newTicket })
     .then((res) => {
       // console.log(res.data);
       return res.data;

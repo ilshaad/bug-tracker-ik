@@ -11,21 +11,28 @@ export const get_allCommentsForASingleTicket_actions = createAsyncThunk(
   async (ticketId: string, thunkAPI) => {
     return get_allCommentsForASingleTicket(ticketId)
       .then((data) => {
+        console.log(data);
+
+        // return msg text if SS response object property 'success' is false
+        if (!data.success) return data.msg;
+
+        // if request was a success & on the SS too, return data to insert into the ticket state
         return data;
       })
       .catch((error) => {
-        console.log(error);
-        return thunkAPI.rejectWithValue(
-          "Error occured with get_allCommentsForASingleTicket_action function"
-        );
+        if ("success" in error) {
+          return thunkAPI.rejectWithValue(error.msg);
+        }
+
+        return thunkAPI.rejectWithValue(error);
       });
   }
 );
 
 // Define the initial state using that type
+// state of array full of objects
 const initialState: Array<comments_type> = [];
 
-// TODO
 export const commentsSlice = createSlice({
   name: "comments",
   initialState,

@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
+import { updateTicket_type } from "../@types/backendFetch_types";
 import { createTicket_dispatch_type } from "../@types/ticketsSlice_types.t";
+import patch_updateTicket from "../controllers/ticketsFetch/patch_updateTicket";
 
 import { useAppSelector, useAppDispatch } from "../models/hooks";
 import {
@@ -8,7 +10,9 @@ import {
   incrementByAmount,
 } from "../models/reducers/counterSlice";
 import {
+  delete_deleteTicket_actions,
   get_ticketList_actions,
+  patch_updateTicket_actions,
   post_createTicket_actions,
 } from "../models/reducers/tickets/ticketsSlice";
 
@@ -30,7 +34,7 @@ export default function ReduxRoute(): JSX.Element {
   useEffect(() => {
     // dispatchy(fetchAllTickets_actions());
     dispatchy(get_ticketList_actions());
-  }, [dispatchy]);
+  }, []);
 
   const incrementAction = (): void => {
     dispatchy(increment());
@@ -73,7 +77,6 @@ export default function ReduxRoute(): JSX.Element {
   };
 
   const createTicketReduxAction = () => {
-    console.log(111);
     const createTicketObject: createTicket_dispatch_type = {
       title: "client create",
       description: "client create",
@@ -86,6 +89,31 @@ export default function ReduxRoute(): JSX.Element {
     };
 
     dispatchy(post_createTicket_actions(createTicketObject));
+  };
+
+  const updateTicketReduxAction = () => {
+    const updateTicketObject: updateTicket_type = {
+      ticket_id: "44",
+      created_on: "1900-07-22",
+      title: "client update 2",
+      description: "client update 2",
+      submitted_by: "client update 2",
+      priority: "high",
+      assigned_user: "client update 2",
+      status: "client update 2",
+      app_name: "client update 2",
+      app_version: "client update 2",
+    };
+
+    dispatchy(patch_updateTicket_actions(updateTicketObject));
+  };
+
+  const deleteTicketReduxAction = () => {
+    dispatchy(delete_deleteTicket_actions("44"));
+  };
+
+  const getAllComments = () => {
+    console.log("testing getAllComments method function");
   };
 
   return (
@@ -107,6 +135,17 @@ export default function ReduxRoute(): JSX.Element {
       </div>
       <div>
         <button onClick={createTicketReduxAction}>post_createTicket</button>
+      </div>{" "}
+      <div>
+        <button onClick={updateTicketReduxAction}>patch_updateTicket</button>
+      </div>{" "}
+      <div>
+        <button onClick={deleteTicketReduxAction}>delete_deleteTicket</button>
+      </div>
+      <div>
+        <button onClick={getAllComments}>
+          get_allCommentsForASingleTicket
+        </button>
       </div>
     </div>
   );
