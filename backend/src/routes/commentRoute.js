@@ -27,7 +27,7 @@ commentRoute.post("/create", createComment);
  * user edits their comments
  * EDITABLE text_comment by the user
  * ADMIN-EDITABLE ticket_id / name / email / created_on
- * * CS must provide json data of comment_id & text_comment of the user
+ * * CS must provide json data of all the comment object
  */
 commentRoute.patch("/update", updateComment);
 

@@ -33,19 +33,22 @@ export interface updateTicket_type {
   created_on: string;
 }
 
-export interface createComment_type {
-  ticket_id: string;
-  name: string;
-  email: string;
-  text_comment: string;
-}
-
-export interface updateComment_type {
+export interface comment_type {
   comment_id: string;
   text_comment: string;
-  // only admin can make these changes
+  // only admin can update below when updating
+  created_on: string;
   ticket_id: string;
   name: string;
   email: string;
-  created_on: string;
 }
+
+// export interface updateComment_type {
+//   comment_id: string;
+//   text_comment: string;
+//   // only admin can make these changes
+//   ticket_id: string;
+//   name: string;
+//   email: string;
+//   created_on: string;
+// }

@@ -2,7 +2,7 @@ import backendApi_fetchInstance from "./../backendApi_fetchInstance";
 import catchHandler from "./../backendCatchHandler";
 import { v4 as uuidv4 } from "uuid";
 import timeStamp from "../../helpers/timeStamp";
-import { createComment_type } from "../../@types/backendFetch_types";
+import { comment_type } from "../../@types/backendFetch_types";
 
 /**
  * * User creates a comment for a ticket
@@ -14,34 +14,35 @@ import { createComment_type } from "../../@types/backendFetch_types";
  * * CS needs to provide json data of the newly comments for the psql comments_table
  */
 // post_createComment
-export default (commentObject: createComment_type) => {
-  const uuid = uuidv4();
+export default (commentObject: comment_type) => {
+  // const uuid = uuidv4();
 
   // create timestamp
-  const currentTimestamp = timeStamp();
+  // const currentTimestamp = timeStamp();
 
   return backendApi_fetchInstance()
     .post(`/api/comment/create`, {
       ...commentObject,
-      comment_id: uuid,
-      created_on: currentTimestamp,
+      // comment_id: uuid,
+      // created_on: currentTimestamp,
     })
     .then((res) => {
       // console.log(res.data);
       return res.data;
     })
     .catch((error) => {
-      console.log(currentTimestamp);
+      // console.log(currentTimestamp);
       catchHandler(error);
     });
 };
 /**fetch example
-    const commentObject: createComment_type = {
+    const commentObject: comment_type = {
       comment_id: "456",
       ticket_id: "456",
       name: "create comment",
       email: "createComment@mail.com",
       text_comment: "create comment",
+      created_on: '2022-04-23#'
     };
 
     post_createComment(commentObject)

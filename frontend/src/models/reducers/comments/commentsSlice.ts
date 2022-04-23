@@ -1,17 +1,30 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { comments_type } from "../../../@types/commentsSlice_types";
+import {
+  createAsyncThunk,
+  createSlice,
+  current,
+  PayloadAction,
+} from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
+import { comment_type } from "../../../@types/backendFetch_types";
+import { createComment_dispatch_type } from "../../../@types/commentsSlice_types";
 import get_allCommentsForASingleTicket from "../../../controllers/commentsFetch/get_allCommentsForASingleTicket";
+import patch_updateComment from "../../../controllers/commentsFetch/patch_updateComment";
+import post_createComment from "../../../controllers/commentsFetch/post_createComment";
+import catchHandlerForReduxSlices from "../../../helpers/catchHandlerForReduxSlices";
 // import { get_allCommentsForASingleTicket } from "../../../controllers/commentsFetch";
 import parseTimestamp from "../../../helpers/parseTimestamp";
+import timeStamp from "../../../helpers/timeStamp";
 import type { RootState } from "../../store";
 
-// fetch all comments to one specific ticket
+/************************************** */
+// * get_allCommentsForASingleTicket_actions function
+// collect all comments for a single ticket >> parse the sql date (created_on) >> insert into comments reducer
 export const get_allCommentsForASingleTicket_actions = createAsyncThunk(
   "get/commentsForOneTicket",
   async (ticketId: string, thunkAPI) => {
     return get_allCommentsForASingleTicket(ticketId)
       .then((data) => {
-        console.log(data);
+        // console.log(data);
 
         // return msg text if SS response object property 'success' is false
         if (!data.success) return data.msg;
@@ -29,9 +42,80 @@ export const get_allCommentsForASingleTicket_actions = createAsyncThunk(
   }
 );
 
+/************************************** */
+// * post_createComments_actions function
+// user post a new comment on a ticket
+/************************************** */
+export const post_createComments_action = createAsyncThunk(
+  "post/createComment",
+  async (newComment: createComment_dispatch_type, { rejectWithValue }) => {
+    // create new UUID for ticket
+    const comment_id_uuid = uuidv4();
+
+    // create timestamp
+    const currentTimestamp = timeStamp();
+
+    const commentObject = {
+      ...newComment,
+      comment_id: comment_id_uuid,
+      created_on: currentTimestamp,
+    };
+
+    return post_createComment(commentObject)
+      .then((data) => {
+        // return msg text if SS response object property 'success' is false
+        if (!data.success) return data.msg;
+
+        // return the commentObject so we can insert the new comment into the comment reducer too
+        return commentObject;
+      })
+      .catch((error) => {
+        if ("success" in error) {
+          return rejectWithValue(error.msg);
+        }
+
+        return rejectWithValue(error);
+      });
+  }
+);
+
+/************************************** */
+// * patch_updateComment_actions function
+// user updates their comment
+export const patch_updateComment_actions = createAsyncThunk(
+  "patch/updateComment",
+  async (commentObject: comment_type, thunkAPI) => {
+    return patch_updateComment(commentObject)
+      .then((data) => {
+        console.log(
+          "🚀 ~ file: commentsSlice.ts ~ line 90 ~ .then ~ data",
+          data
+        );
+        // return msg text if SS response object property 'success' is false
+        if (!data.success) return data.msg;
+
+        // return the commentObject so we can insert the new comment into the comment reducer too
+        return commentObject;
+      })
+      .catch((error) => {
+        console.log("🚀 ~ file: commentsSlice.ts ~ line 101 ~ error", error);
+
+        if ("success" in error) {
+          return thunkAPI.rejectWithValue(error.msg);
+        }
+
+        return thunkAPI.rejectWithValue(error);
+      });
+  }
+);
+
+/************************************** */
+// * delete_deleteComments function
+// user delete their comment
+
 // Define the initial state using that type
 // state of array full of objects
-const initialState: Array<comments_type> = [];
+const initialState: Array<comment_type> = [];
 
 export const commentsSlice = createSlice({
   name: "comments",
@@ -39,28 +123,39 @@ export const commentsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      /******************************** */
       // * get_allCommentsForASingleTicket_actions function
-      // collect all comments for one specific ticket
+      // collect all comments for a single ticket >> parse the sql date (created_on) >> insert into comments reducer
       .addCase(
         get_allCommentsForASingleTicket_actions.fulfilled,
         (state, actions) => {
-          // console.log(actions.payload);
-          const { success, data } = actions.payload;
+          const data = actions.payload;
 
-          // do not set state if success property (from SS response) returns false
-          if (!success) return;
-
-          // create a new immuntable state object with all the ticketlist
-          const newArray_commentsForSingleTicket: Array<comments_type> = [
-            ...data,
-          ];
-
-          // parse each comments created_on sql timestamp
-          for (let item of newArray_commentsForSingleTicket) {
-            item.created_on = parseTimestamp(item.created_on);
+          // if data is 'string' than I have return the SS 'msg' property which will be string data from SS giving more details on about the err
+          // also do not update the comments reducer;
+          if (typeof data === "string") {
+            catchHandlerForReduxSlices(
+              "get_allCommentsForASingleTicket_actions",
+              "commentsSlice.ts",
+              data
+            );
+            return;
           }
 
-          return newArray_commentsForSingleTicket;
+          const newCommentArrays: Array<comment_type> = [];
+
+          for (let item of data.data) {
+            // parse sql timestamp each date before placing within comments state
+            const parseCreated_on = parseTimestamp(item.created_on);
+
+            let commentsObject = item;
+
+            commentsObject.created_on = parseCreated_on;
+
+            newCommentArrays.push(commentsObject);
+          }
+
+          return [...newCommentArrays];
         }
       )
 
@@ -68,9 +163,90 @@ export const commentsSlice = createSlice({
       .addCase(
         get_allCommentsForASingleTicket_actions.rejected,
         (state, actions) => {
-          console.log(actions.payload);
+          catchHandlerForReduxSlices(
+            "get_allCommentsForASingleTicket_actions",
+            "commentsSlice.ts",
+            actions.payload
+          );
         }
-      );
+      )
+
+      /******************************** */
+      /** * post_createComments_action  */
+      // if successful, include the new comment within the comment reducer
+      .addCase(post_createComments_action.fulfilled, (state, actions) => {
+        const data = actions.payload;
+
+        // if data is 'string' than I have return the SS 'msg' property which will be string data from SS giving more details on about the err
+        // also do not update the comment reducer;
+        if (typeof data === "string") {
+          catchHandlerForReduxSlices(
+            "post_createComments_action",
+            "commentsSlice.ts",
+            data
+          );
+          return;
+        }
+
+        /**if SS successfully updated the db than include the new comment within the comment list state */
+        return [...state, data];
+      })
+
+      .addCase(post_createComments_action.rejected, (state, actions) => {
+        catchHandlerForReduxSlices(
+          "post_createComments_action",
+          "commentsSlice.ts",
+          actions.payload
+        );
+      })
+
+      /******************************** */
+      /** * patch_updateComment_actions  */
+      // if successful, update the comment within the comment reducer too
+      .addCase(patch_updateComment_actions.fulfilled, (state, actions) => {
+        const data = actions.payload;
+        console.log(
+          "🚀 ~ file: commentsSlice.ts ~ line 202 ~ .addCase ~ data",
+          data
+        );
+
+        // if data is 'string' than I have return the SS 'msg' property which will be string data from SS giving more details on about the err
+        // also do not update the comment reducer;
+        if (typeof data === "string") {
+          catchHandlerForReduxSlices(
+            "patch_updateComment_actions",
+            "commentsSlice.ts",
+            data
+          );
+          return;
+        }
+
+        console.log(current(state));
+
+        // const parseCreated_on = parseTimestamp(data.created_on);
+
+        /**if SS successfully updated the db than include the updated comment within the comment list state */
+        return state.map((item) => {
+          if (item.comment_id === data.comment_id) {
+            // return { ...data, created_on: parseCreated_on };
+            return data;
+          }
+          return item;
+        });
+
+        //  state.map((item) => {
+        //   if
+        // });
+        // return [...state, data];
+      })
+
+      .addCase(patch_updateComment_actions.rejected, (state, actions) => {
+        catchHandlerForReduxSlices(
+          "patch_updateComment_actions",
+          "commentsSlice.ts",
+          actions.payload
+        );
+      });
   },
 });
 

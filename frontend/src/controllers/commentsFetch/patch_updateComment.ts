@@ -1,4 +1,4 @@
-import { updateComment_type } from "../../@types/backendFetch_types";
+import { comment_type } from "../../@types/backendFetch_types";
 import backendApi_fetchInstance from "./../backendApi_fetchInstance";
 import catchHandler from "./../backendCatchHandler";
 
@@ -11,7 +11,7 @@ import catchHandler from "./../backendCatchHandler";
  * user edits their comments
  * EDITABLE text_comment by the user
  * ADMIN-EDITABLE ticket_id / name / email / created_on
- * * CS must provide json data of comment_id & text_comment of the user
+ * * CS must provide json data of all the comment object
  */
 // patch_updateComment
 export default ({
@@ -21,7 +21,7 @@ export default ({
   name,
   email,
   created_on,
-}: updateComment_type) => {
+}: comment_type) => {
   return backendApi_fetchInstance()
     .patch(`/api/comment/update`, {
       comment_id,
@@ -41,7 +41,11 @@ export default ({
 };
 /**fetch example
     const comment_id = "456",
-      text_comment = "update comment";
+      text_comment = "update comment",
+      ticket_id = 'ticketid',
+      name: 'name',
+      email: 'emaily',
+      created_on: '1952-07-20';
 
     patch_updateComment(comment_id, text_comment)
       .then((data) => {

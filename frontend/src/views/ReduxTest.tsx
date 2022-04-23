@@ -1,9 +1,15 @@
 import React, { useEffect } from "react";
-import { updateTicket_type } from "../@types/backendFetch_types";
+import { comment_type, updateTicket_type } from "../@types/backendFetch_types";
+import { createComment_dispatch_type } from "../@types/commentsSlice_types";
 import { createTicket_dispatch_type } from "../@types/ticketsSlice_types.t";
 import patch_updateTicket from "../controllers/ticketsFetch/patch_updateTicket";
 
 import { useAppSelector, useAppDispatch } from "../models/hooks";
+import {
+  get_allCommentsForASingleTicket_actions,
+  patch_updateComment_actions,
+  post_createComments_action,
+} from "../models/reducers/comments/commentsSlice";
 import {
   increment,
   decrement,
@@ -112,8 +118,42 @@ export default function ReduxRoute(): JSX.Element {
     dispatchy(delete_deleteTicket_actions("44"));
   };
 
-  const getAllComments = () => {
-    console.log("testing getAllComments method function");
+  const getAllCommentsReduxAction = () => {
+    const dummyTicket_id = "049e7fd3-753c-4123-8df5-df3aab63d9d2";
+
+    dispatchy(get_allCommentsForASingleTicket_actions(dummyTicket_id));
+  };
+
+  const getAllCommentsReduxAction2 = () => {
+    // const dummyTicket_id = "3063e48d-110f-4712-9a0a-f8b7a41b7f09";
+    const dummyTicket_id = "456";
+
+    dispatchy(get_allCommentsForASingleTicket_actions(dummyTicket_id));
+  };
+
+  const createCommentReduxAction = () => {
+    const commentObject: createComment_dispatch_type = {
+      // comment_id: "456",
+      ticket_id: "456",
+      name: "create comment",
+      email: "createComment@mail.com",
+      text_comment: "create comment",
+    };
+
+    dispatchy(post_createComments_action(commentObject));
+  };
+
+  const updateCommentReducAction = () => {
+    const commentObject: comment_type = {
+      comment_id: "888",
+      text_comment: "888",
+      ticket_id: "456",
+      name: "2",
+      email: "ehatesd dfd",
+      created_on: "1952-07-20 11:22:33",
+    };
+
+    dispatchy(patch_updateComment_actions(commentObject));
   };
 
   return (
@@ -143,9 +183,18 @@ export default function ReduxRoute(): JSX.Element {
         <button onClick={deleteTicketReduxAction}>delete_deleteTicket</button>
       </div>
       <div>
-        <button onClick={getAllComments}>
+        <button onClick={getAllCommentsReduxAction}>
           get_allCommentsForASingleTicket
         </button>
+        <button onClick={getAllCommentsReduxAction2}>
+          get_allCommentsForASingleTicket2
+        </button>
+      </div>
+      <div>
+        <button onClick={createCommentReduxAction}>post_createComment</button>
+      </div>
+      <div>
+        <button onClick={updateCommentReducAction}>patch_updateComment</button>
       </div>
     </div>
   );

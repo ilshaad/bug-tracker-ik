@@ -25,6 +25,7 @@ ticketRoute.post("/create", createTicket);
  * editable only: title / description / priority / assigned_user / status / app_name / app_version
  * admin-editable can update the submitted_by & created_on
  * * requires ticketid params & ticket_id json property from client to know which ticket to edit
+ * * CS must json data of the ticket object
  */
 ticketRoute.patch("/:ticketid", updateTicket);
 

@@ -17,11 +17,11 @@ import {
 } from "../controllers/usersFetch";
 
 import {
-  createComment_type,
+  comment_type,
   createTicket_type,
-  updateComment_type,
   updateTicket_type,
 } from "../@types/backendFetch_types";
+import { createComment_dispatch_type } from "../@types/commentsSlice_types";
 
 export default function App(): JSX.Element {
   const getUserProfile = () => {
@@ -150,12 +150,14 @@ export default function App(): JSX.Element {
   };
 
   const createComment = () => {
-    const commentObject: createComment_type = {
+    const commentObject: comment_type = {
       // comment_id: "456",
       ticket_id: "456",
       name: "create comment",
       email: "createComment@mail.com",
       text_comment: "create comment",
+      comment_id: "make up id",
+      created_on: "1999-01-12",
     };
 
     post_createComment(commentObject)
@@ -168,7 +170,7 @@ export default function App(): JSX.Element {
   };
 
   const updateComment = () => {
-    const commentObject: updateComment_type = {
+    const commentObject: comment_type = {
       comment_id: "d07ff472-9d26-4bd7-8dc5-77c5892e4190",
       text_comment: "updated comment",
       ticket_id: "999",
