@@ -6,6 +6,7 @@ import patch_updateTicket from "../controllers/ticketsFetch/patch_updateTicket";
 
 import { useAppSelector, useAppDispatch } from "../models/hooks";
 import {
+  delete_deleteComment_actions,
   get_allCommentsForASingleTicket_actions,
   patch_updateComment_actions,
   post_createComments_action,
@@ -148,12 +149,18 @@ export default function ReduxRoute(): JSX.Element {
       comment_id: "888",
       text_comment: "888",
       ticket_id: "456",
-      name: "2",
+      name: "3",
       email: "ehatesd dfd",
       created_on: "1952-07-20 11:22:33",
     };
 
     dispatchy(patch_updateComment_actions(commentObject));
+  };
+
+  const deleteCommentReducAction = () => {
+    const comment_id = "888";
+
+    dispatchy(delete_deleteComment_actions(comment_id));
   };
 
   return (
@@ -195,6 +202,9 @@ export default function ReduxRoute(): JSX.Element {
       </div>
       <div>
         <button onClick={updateCommentReducAction}>patch_updateComment</button>
+      </div>
+      <div>
+        <button onClick={deleteCommentReducAction}>delete_deleteComment</button>
       </div>
     </div>
   );

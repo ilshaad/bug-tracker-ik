@@ -7,6 +7,7 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import { comment_type } from "../../../@types/backendFetch_types";
 import { createComment_dispatch_type } from "../../../@types/commentsSlice_types";
+import delete_deleteComment from "../../../controllers/commentsFetch/delete_deleteComment";
 import get_allCommentsForASingleTicket from "../../../controllers/commentsFetch/get_allCommentsForASingleTicket";
 import patch_updateComment from "../../../controllers/commentsFetch/patch_updateComment";
 import post_createComment from "../../../controllers/commentsFetch/post_createComment";
@@ -87,10 +88,6 @@ export const patch_updateComment_actions = createAsyncThunk(
   async (commentObject: comment_type, thunkAPI) => {
     return patch_updateComment(commentObject)
       .then((data) => {
-        console.log(
-          "🚀 ~ file: commentsSlice.ts ~ line 90 ~ .then ~ data",
-          data
-        );
         // return msg text if SS response object property 'success' is false
         if (!data.success) return data.msg;
 
@@ -98,8 +95,6 @@ export const patch_updateComment_actions = createAsyncThunk(
         return commentObject;
       })
       .catch((error) => {
-        console.log("🚀 ~ file: commentsSlice.ts ~ line 101 ~ error", error);
-
         if ("success" in error) {
           return thunkAPI.rejectWithValue(error.msg);
         }
@@ -112,7 +107,29 @@ export const patch_updateComment_actions = createAsyncThunk(
 /************************************** */
 // * delete_deleteComments function
 // user delete their comment
+export const delete_deleteComment_actions = createAsyncThunk(
+  "delete/deleteComment",
+  async (comment_id: string, thunkAPI) => {
+    return delete_deleteComment(comment_id)
+      .then((data) => {
+        // return msg text if SS response object property 'success' is false
+        if (!data.success) return data.msg;
 
+        // return the comment_id so we can remove the comment from comment reducer too
+        // comment_id is wrap to because I setup an error handling that only errors when return data is string
+        return { comment_id };
+      })
+      .catch((error) => {
+        if ("success" in error) {
+          return thunkAPI.rejectWithValue(error.msg);
+        }
+
+        return thunkAPI.rejectWithValue(error);
+      });
+  }
+);
+
+/******************************** */
 // Define the initial state using that type
 // state of array full of objects
 const initialState: Array<comment_type> = [];
@@ -205,10 +222,6 @@ export const commentsSlice = createSlice({
       // if successful, update the comment within the comment reducer too
       .addCase(patch_updateComment_actions.fulfilled, (state, actions) => {
         const data = actions.payload;
-        console.log(
-          "🚀 ~ file: commentsSlice.ts ~ line 202 ~ .addCase ~ data",
-          data
-        );
 
         // if data is 'string' than I have return the SS 'msg' property which will be string data from SS giving more details on about the err
         // also do not update the comment reducer;
@@ -221,28 +234,56 @@ export const commentsSlice = createSlice({
           return;
         }
 
-        console.log(current(state));
-
-        // const parseCreated_on = parseTimestamp(data.created_on);
-
-        /**if SS successfully updated the db than include the updated comment within the comment list state */
+        /**if SS successfully updated the db than include the updated comment within the comment list state too */
         return state.map((item) => {
           if (item.comment_id === data.comment_id) {
-            // return { ...data, created_on: parseCreated_on };
             return data;
           }
           return item;
         });
-
-        //  state.map((item) => {
-        //   if
-        // });
-        // return [...state, data];
       })
 
       .addCase(patch_updateComment_actions.rejected, (state, actions) => {
         catchHandlerForReduxSlices(
           "patch_updateComment_actions",
+          "commentsSlice.ts",
+          actions.payload
+        );
+      })
+
+      /******************************** */
+      /** * delete_deleteComment_actions  */
+      // if successful, delete the comment within the comment reducer too
+      .addCase(delete_deleteComment_actions.fulfilled, (state, actions) => {
+        const data = actions.payload;
+        console.log(
+          "🚀 ~ file: commentsSlice.ts ~ line 259 ~ .addCase ~ data",
+          data
+        );
+
+        // if data is 'string' than I have return the SS 'msg' property which will be string data from SS giving more details on about the err
+        // also do not update the comment reducer;
+        if (typeof data === "string") {
+          catchHandlerForReduxSlices(
+            "delete_deleteComment_actions",
+            "commentsSlice.ts",
+            data
+          );
+          return;
+        }
+
+        /**if SS successfully updated the db than delete the comment within the comment list too */
+        return state.map((item) => {
+          if (item.comment_id === data.comment_id) {
+            return data;
+          }
+          return item;
+        });
+      })
+
+      .addCase(delete_deleteComment_actions.rejected, (state, actions) => {
+        catchHandlerForReduxSlices(
+          "delete_deleteComment_actions",
           "commentsSlice.ts",
           actions.payload
         );
