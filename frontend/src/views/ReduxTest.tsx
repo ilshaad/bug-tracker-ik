@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
-import { comment_type, updateTicket_type } from "../@types/backendFetch_types";
-import { createComment_dispatch_type } from "../@types/commentsSlice_types";
-import { createTicket_dispatch_type } from "../@types/ticketsSlice_types.t";
+import {
+  createTicket_dispatch_type,
+  ticket_type,
+} from "../@types/tickets_type";
+import {
+  comment_type,
+  createComment_dispatch_type,
+} from "../@types/comments_type";
+// import { createTicket_dispatch_type } from "../@types/ticketsSlice_types.t";
 import patch_updateTicket from "../controllers/ticketsFetch/patch_updateTicket";
 
 import { useAppSelector, useAppDispatch } from "../models/hooks";
@@ -99,7 +105,7 @@ export default function ReduxRoute(): JSX.Element {
   };
 
   const updateTicketReduxAction = () => {
-    const updateTicketObject: updateTicket_type = {
+    const updateTicketObject: ticket_type = {
       ticket_id: "44",
       created_on: "1900-07-22",
       title: "client update 2",
@@ -146,10 +152,10 @@ export default function ReduxRoute(): JSX.Element {
 
   const updateCommentReducAction = () => {
     const commentObject: comment_type = {
-      comment_id: "888",
+      comment_id: "91541a06-f657-4f8c-84cc-0101a9a73761",
       text_comment: "888",
       ticket_id: "456",
-      name: "3",
+      name: "34",
       email: "ehatesd dfd",
       created_on: "1952-07-20 11:22:33",
     };

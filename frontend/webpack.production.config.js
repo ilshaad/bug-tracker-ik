@@ -76,6 +76,7 @@ module.exports = {
     // new WorkboxPlugin.GenerateSW(),
 
     new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify("production"),
       "process.env": {
         DOMAIN_AUTH0: JSON.stringify(process.env.DOMAIN_AUTH0),
         CLIENT_ID_AUTH0: JSON.stringify(process.env.CLIENT_ID_AUTH0),

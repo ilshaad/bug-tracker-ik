@@ -1,6 +1,6 @@
 import backendApi_fetchInstance from "./../backendApi_fetchInstance";
 import catchHandler from "./../backendCatchHandler";
-import { updateTicket_type } from "../../@types/backendFetch_types";
+import { ticket_type } from "../../@types/tickets_type";
 
 /**
  * * update a ticket
@@ -15,7 +15,7 @@ import { updateTicket_type } from "../../@types/backendFetch_types";
  * * CS must json data of the ticket object
  */
 // patch_updateTicket
-export default (updateTicket: updateTicket_type) => {
+export default (updateTicket: ticket_type) => {
   // console.log(updateTicket);
   return backendApi_fetchInstance()
     .patch("/api/ticket/" + updateTicket.ticket_id, {

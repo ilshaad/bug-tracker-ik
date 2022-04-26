@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // ! these are dummy routes & remove when you done
@@ -15,17 +15,53 @@ import NotFound from "./views/NotFound";
 
 // HOC function for Auth0 protected routes
 // * It is also the login screen route which share the / url with dashboard
-import AuthenticateRoute from "./components/AuthenticateRoute";
+import AuthenticateRoute_HOC from "./components/AuthenticateRoute_HOC";
 
 // Layout component for non authenticated routes (eg error page) because AuthentcateRoute sets Layout component to all protected routes
 import Layout from "./components/Layout";
 
-// ! /fetch & /reduxtest routes are dummy routes, remove afterwards
+import { useAppDispatch } from "./models/hooks";
+import { get_ticketList_actions } from "./models/reducers/tickets/ticketsSlice";
+
 const App = () => {
-  const Dashboard_Auth = AuthenticateRoute(() => <Dashboard />);
-  const CreateTicket_Auth = AuthenticateRoute(() => <CreateTicket />);
-  const TicketList_Auth = AuthenticateRoute(() => <TicketList />);
-  const ViewTicket_Auth = AuthenticateRoute(() => <ViewTicket />);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    // when page first loads fetch all tickets list for redux ticket reducer store to collect
+    // still fetches in login screen so not ideal, but decide to leave it for now, you can optimize this later if you wish
+    dispatch(get_ticketList_actions());
+  }, []);
+
+  // ! /fetch & /reduxtest routes are dummy routes, remove afterwards
+  // authenticate routes when user can view when they login/signup
+  const Dashboard_Auth = AuthenticateRoute_HOC(() => <Dashboard />);
+  const CreateTicket_Auth = AuthenticateRoute_HOC(() => <CreateTicket />);
+  const TicketList_Auth = AuthenticateRoute_HOC(() => <TicketList />);
+  const ViewTicket_Auth = AuthenticateRoute_HOC(() => <ViewTicket />);
+
+  // routes only for development mode to testing your fetch request crud
+  const devRoutes = () => {
+    if (process.env.NODE_ENV !== "production") {
+      return [
+        <Route
+          path="/fetch"
+          element={
+            <Layout>
+              <TestingRequest />
+            </Layout>
+          }
+        />,
+        <Route
+          path="/reduxtest"
+          element={
+            <Layout>
+              <ReduxTest />
+            </Layout>
+          }
+        />,
+      ];
+    }
+  };
 
   return (
     <BrowserRouter>
@@ -34,22 +70,8 @@ const App = () => {
         <Route path="/createticket" element={<CreateTicket_Auth />} />
         <Route path="/ticketlist" element={<TicketList_Auth />} />
         <Route path="/viewticket/:ticketid" element={<ViewTicket_Auth />} />
-        <Route
-          path="/fetch"
-          element={
-            <Layout>
-              <TestingRequest />
-            </Layout>
-          }
-        />
-        <Route
-          path="/reduxtest"
-          element={
-            <Layout>
-              <ReduxTest />
-            </Layout>
-          }
-        />
+
+        {devRoutes()}
 
         <Route
           path="*"
@@ -63,27 +85,5 @@ const App = () => {
     </BrowserRouter>
   ); /*END return */
 }; /*END App component*/
-
-// const mapStateToProps = (iKstateP, iKownPropsP) => {
-// return {};
-// }; /*END mapStateToProps */
-
-// const mapDispatchToProps = (iKdispatchP, iKownPropsP) => {
-// return {
-//     iKactionCreatorDispatch1: () => iKdispatchP( iKactionCreator1() )
-// };
-// }; /*END mapDispatchToProps */
-
-// export default connect(mapStateToProps, mapDispatchToProps) (App);
-
-// App.propTypes = {
-// kProps1: PropTypes.number,
-// kProps2: PropTypes.arrayOf( PropTypes.string )
-// }; /*END App.propTypes */
-
-// App.defaultProps = {
-// kProps1: 23,
-// kProps2: ["iKdefaultValue2"]
-// }; /*END App.defaultProps */
 
 export default App;

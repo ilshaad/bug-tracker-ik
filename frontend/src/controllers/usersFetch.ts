@@ -1,5 +1,7 @@
+// IK I DO NOT THINK I NEED THIS SINCE AUTH0 WILL HANDLE MY USER DATA
+
 import backendApi_fetchInstance from "./backendApi_fetchInstance";
-import { userSignup_type } from "../@types/backendFetch_types";
+// import { userSignup_type } from "../@types/tickets_type";
 import catchHandler from "./backendCatchHandler";
 
 /**exported controllers on this file:
@@ -7,6 +9,15 @@ import catchHandler from "./backendCatchHandler";
  * post_userSignup
  * delete_deleteUser
  */
+
+// user type
+type userSignup_type = {
+  user_id: string;
+  email: string;
+  name: string;
+  role: string;
+  created_on: string;
+};
 
 /**
  * * Get user profile data

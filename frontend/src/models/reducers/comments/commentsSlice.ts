@@ -5,8 +5,10 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import { comment_type } from "../../../@types/backendFetch_types";
-import { createComment_dispatch_type } from "../../../@types/commentsSlice_types";
+import {
+  comment_type,
+  createComment_dispatch_type,
+} from "../../../@types/comments_type";
 import delete_deleteComment from "../../../controllers/commentsFetch/delete_deleteComment";
 import get_allCommentsForASingleTicket from "../../../controllers/commentsFetch/get_allCommentsForASingleTicket";
 import patch_updateComment from "../../../controllers/commentsFetch/patch_updateComment";
@@ -116,7 +118,7 @@ export const delete_deleteComment_actions = createAsyncThunk(
         if (!data.success) return data.msg;
 
         // return the comment_id so we can remove the comment from comment reducer too
-        // comment_id is wrap to because I setup an error handling that only errors when return data is string
+        // I return comment_id as object literal because it will assume I return data.msg string (above) & be considered as an error
         return { comment_id };
       })
       .catch((error) => {
@@ -256,10 +258,6 @@ export const commentsSlice = createSlice({
       // if successful, delete the comment within the comment reducer too
       .addCase(delete_deleteComment_actions.fulfilled, (state, actions) => {
         const data = actions.payload;
-        console.log(
-          "🚀 ~ file: commentsSlice.ts ~ line 259 ~ .addCase ~ data",
-          data
-        );
 
         // if data is 'string' than I have return the SS 'msg' property which will be string data from SS giving more details on about the err
         // also do not update the comment reducer;
@@ -272,13 +270,8 @@ export const commentsSlice = createSlice({
           return;
         }
 
-        /**if SS successfully updated the db than delete the comment within the comment list too */
-        return state.map((item) => {
-          if (item.comment_id === data.comment_id) {
-            return data;
-          }
-          return item;
-        });
+        /**if SS successfully updated the db than delete the comment within the comment state list too */
+        return state.filter((item) => item.comment_id !== data.comment_id);
       })
 
       .addCase(delete_deleteComment_actions.rejected, (state, actions) => {

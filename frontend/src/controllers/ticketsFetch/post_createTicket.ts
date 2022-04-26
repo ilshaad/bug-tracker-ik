@@ -1,8 +1,8 @@
 import backendApi_fetchInstance from "./../backendApi_fetchInstance";
 import catchHandler from "./../backendCatchHandler";
-import { createTicket_type } from "../../@types/backendFetch_types";
 import { v4 as uuidv4 } from "uuid";
 import timeStamp from "../../helpers/timeStamp";
+import { ticket_type } from "../../@types/tickets_type";
 
 /**
  * * Create a new ticket
@@ -15,7 +15,7 @@ import timeStamp from "../../helpers/timeStamp";
  * * client must send full list key value pair for creating new ticket
  */
 // post_createTicket
-export default (newTicket: createTicket_type) => {
+export default (newTicket: ticket_type) => {
   return backendApi_fetchInstance()
     .post("/api/ticket/create", { ...newTicket })
     .then((res) => {

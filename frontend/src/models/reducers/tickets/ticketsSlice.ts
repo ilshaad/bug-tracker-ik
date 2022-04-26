@@ -10,18 +10,19 @@ import type { RootState } from "../../store";
 import timeStamp from "../../../helpers/timeStamp";
 import parseTimestamp from "../../../helpers/parseTimestamp";
 
+// import {
+//   dictionary_ticketsState_type,
+//   TicketsState_type,
+// } from "../../../@types/TicketSlice_types";
 import {
+  createTicket_dispatch_type,
   dictionary_ticketsState_type,
-  TicketsState_type,
-} from "../../../@types/TicketSlice_types";
-import {
-  createTicket_type,
-  updateTicket_type,
-} from "../../../@types/backendFetch_types";
+  ticket_type,
+} from "../../../@types/tickets_type";
 
 import get_ticketList from "../../../controllers/ticketsFetch/get_ticketList";
 import post_createTicket from "../../../controllers/ticketsFetch/post_createTicket";
-import { createTicket_dispatch_type } from "../../../@types/ticketsSlice_types.t";
+// import { createTicket_dispatch_type } from "../../../@types/ticketsSlice_types.t";
 import catchHandlerForReduxSlices from "../../../helpers/catchHandlerForReduxSlices";
 import patch_updateTicket from "../../../controllers/ticketsFetch/patch_updateTicket";
 import delete_deleteTicket from "../../../controllers/ticketsFetch/delete_deleteTicket";
@@ -88,7 +89,7 @@ export const post_createTicket_actions = createAsyncThunk(
 /** *Update a ticket > update psql > if successful update ticket reducer too */
 export const patch_updateTicket_actions = createAsyncThunk(
   "patch/updateATicket",
-  async (updatedTicket: updateTicket_type, thunkAPI) => {
+  async (updatedTicket: ticket_type, thunkAPI) => {
     return patch_updateTicket(updatedTicket)
       .then((data) => {
         // return msg text if SS response object property 'success' is false
@@ -118,7 +119,7 @@ export const delete_deleteTicket_actions = createAsyncThunk(
         if (!data.success) return data.msg;
 
         // return ticket_id so we can delete the ticket from the ticket reducer ticketlist too
-        // I send ticket_id as object literal because it will assume I return data.msg string (above) & be considered as an error
+        // I return ticket_id as object literal because it will assume I return data.msg string (above) & be considered as an error
         return { ticket_id };
       })
       .catch((error) => {
@@ -134,18 +135,18 @@ export const delete_deleteTicket_actions = createAsyncThunk(
 /************************************ */
 // Define the initial state using that type
 const initialState: dictionary_ticketsState_type = {
-  null: {
-    ticket_id: null,
-    title: null,
-    description: null,
-    submitted_by: null,
-    priority: null,
-    assigned_user: null,
-    status: null,
-    app_name: null,
-    app_version: null,
-    created_on: null,
-  },
+  // null: {
+  // ticket_id: null,
+  // title: null,
+  // description: null,
+  // submitted_by: null,
+  // priority: null,
+  // assigned_user: null,
+  // status: null,
+  // app_name: null,
+  // app_version: null,
+  // created_on: null,
+  // },
 };
 
 /******************************************* */
@@ -154,7 +155,12 @@ export const ticketsSlice = createSlice({
   name: "tickets",
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
-  reducers: {},
+  reducers: {
+    // // when user is logged out reset to initialState
+    // resetTicketsToInitialState_actions: (state, ) => {
+    //   return initialState;
+    // },
+  },
   extraReducers: (builder) => {
     builder
       /******************************** */
@@ -304,7 +310,7 @@ export const ticketsSlice = createSlice({
 });
 
 // export all actions
-// export const { fetchAllTickets_actions } = ticketSlice.actions;
+// export const { resetTicketsToInitialState_actions } = ticketsSlice.actions;
 
 // // Other code such as selectors can use the imported `RootState` type
 // export const selectCount = (state: RootState) => state.counter.value;

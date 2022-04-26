@@ -1,3 +1,6 @@
+// IK FOR DEVELOPMENT USE ONLY
+// this route is for testing & will only show up when in development mode
+
 import React from "react";
 
 import get_ticketList from "./../controllers/ticketsFetch/get_ticketList";
@@ -16,14 +19,12 @@ import {
   post_userSignup,
 } from "../controllers/usersFetch";
 
-import {
-  comment_type,
-  createTicket_type,
-  updateTicket_type,
-} from "../@types/backendFetch_types";
-import { createComment_dispatch_type } from "../@types/commentsSlice_types";
+import { ticket_type } from "../@types/tickets_type";
+import { comment_type } from "../@types/comments_type";
 
 export default function App(): JSX.Element {
+  // DevelopmentModeOnly();
+
   const getUserProfile = () => {
     // * scaffold to create your request within the button
     // fetchBackendApi()
@@ -81,7 +82,7 @@ export default function App(): JSX.Element {
   };
 
   const updateTicket = async () => {
-    const updateTicketObject: updateTicket_type = {
+    const updateTicketObject: ticket_type = {
       ticket_id: "70d966f8-8e1f-4bda-a568-5ff82116b507",
       title: "update ticket",
       description: "update ticket",
@@ -103,7 +104,7 @@ export default function App(): JSX.Element {
   };
 
   const createTicket = () => {
-    const createTicketObject: createTicket_type = {
+    const createTicketObject: ticket_type = {
       title: "client create",
       description: "client create",
       submitted_by: "client create",

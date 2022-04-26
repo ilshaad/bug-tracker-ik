@@ -1,4 +1,4 @@
-import { comment_type } from "../../@types/backendFetch_types";
+import { comment_type } from "../../@types/comments_type";
 import backendApi_fetchInstance from "./../backendApi_fetchInstance";
 import catchHandler from "./../backendCatchHandler";
 
