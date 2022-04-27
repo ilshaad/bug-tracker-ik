@@ -1,9 +1,7 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginScreen from "../views/LoginScreen";
-import { useAppDispatch, useAppSelector } from "../models/hooks";
 import Layout from "./Layout";
-// import { resetTicketsToInitialState_actions } from "../models/reducers/tickets/ticketsSlice";
 
 export default function AuthenticateRoute_HOC(PageComponent: any) {
   const {
@@ -20,8 +18,6 @@ export default function AuthenticateRoute_HOC(PageComponent: any) {
     // loginWithPopup,
     // logout,
   } = useAuth0<any>();
-
-  const dispatch = useAppDispatch();
 
   function Component() {
     if (isLoading) {
@@ -41,7 +37,6 @@ export default function AuthenticateRoute_HOC(PageComponent: any) {
     } else {
       console.log(user);
       console.log("iK unauthenticated");
-      // dispatch(resetTicketsToInitialState_actions());
       return <LoginScreen />;
     }
   }

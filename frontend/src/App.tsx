@@ -73,14 +73,15 @@ const App = () => {
 
         {devRoutes()}
 
-        <Route
+        {/* <Route
           path="*"
           element={
             <Layout>
               <NotFound />
             </Layout>
           }
-        />
+        /> */}
+        <Route path="*" element={<Dashboard_Auth />} />
       </Routes>
     </BrowserRouter>
   ); /*END return */

@@ -9,19 +9,15 @@ import { get_ticketList_actions } from "../models/reducers/tickets/ticketsSlice"
 
 export default function TicketList(): JSX.Element {
   const ticketsList = useAppSelector((state) => state.tickets);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    // console.log(ticketsList);
-    // dispatch(get_ticketList_actions());
-    // console.log(ticketsList);
-  }, [dispatch]);
+  // const dispatch = useAppDispatch();
 
   const listOfTickets = () => {
-    if ("null" in ticketsList) {
-      return null;
+    // true if ticketlist is empty than return a statement to user
+    if (Object.keys(ticketsList).length === 0) {
+      return <h3>No tickets available</h3>;
     }
 
+    // array list of ticket list
     const arrayList: Array<JSX.Element> = [];
 
     for (let property in ticketsList) {

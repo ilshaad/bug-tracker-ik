@@ -41,7 +41,7 @@ export default function Dashboard(): JSX.Element {
       </div>
       <LogoutButton />
       <Profile />
-      <HomeLogin />
+      {/* <HomeLogin /> */}
     </div>
   );
 } //END Dashboard component
