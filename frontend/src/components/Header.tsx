@@ -1,26 +1,36 @@
 import React from "react";
+import "../styles/components/Header.scss";
+
 import { Link } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
 import lizard from "../images/li.jpg";
+import RouteList_anchorLinks from "./RouteList_anchorLinks";
 
 type Props = {};
 
 export default function Header({}: Props) {
   return (
-    <div>
-      <nav>
-        <img src={lizard} alt="lizard" style={{ width: "25px" }} />
-        <Link to="/">Dashboard</Link> &pound;
-        <Link to="/createticket">create ticket</Link> &pound;
-        <Link to="/ticketlist">ticketlist</Link> &pound;
-        <Link to="/viewticket/ticketidparams">viewticket/:ticketid</Link>{" "}
-        &pound;
-        <Link to="/fetch">fetch</Link> &pound;
-        <Link to="/reduxtest">reduxtest</Link> &pound;
-        <Link to="/*">error page</Link>
-      </nav>
+    <header id="OuterGrid-header">
+      <div className="container-fluid m-0 p-0">
+        <div className="row w-100 bg-primary m-0 p-0">
+          <img
+            src={lizard}
+            alt="lizard"
+            className="col"
+            style={{ width: "25px" }}
+          />
 
-      <LogoutButton />
-    </div>
+          <nav className="col-8">
+            <ul className="iktemp">
+              <RouteList_anchorLinks />
+            </ul>
+          </nav>
+
+          <div className="col">
+            <LogoutButton />
+          </div>
+        </div>
+      </div>
+    </header>
   );
 }

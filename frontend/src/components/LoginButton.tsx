@@ -5,9 +5,9 @@ import lizardImage from "../images/li.jpg";
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
-  useEffect(() => {
-    console.log(lizardImage);
-  });
+  // useEffect(() => {
+  //   console.log(lizardImage);
+  // });
 
   return (
     <div className="card text-center mx-3">

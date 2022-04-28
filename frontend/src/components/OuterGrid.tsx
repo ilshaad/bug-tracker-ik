@@ -8,12 +8,12 @@ type Props = { children: JSX.Element };
 export default function OuterGrid({ children }: Props) {
   return (
     <div id="OuterGrid">
-      <header id="OuterGrid-header">
-        <Header />
-      </header>
+      <Header />
+
       <main id="OuterGrid-main">
         <InnerGrid>{children}</InnerGrid>
       </main>
+
       <nav id="OuterGrid-leftNavBar">
         <SideLeftNavBarList />
       </nav>

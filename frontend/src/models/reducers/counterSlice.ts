@@ -13,7 +13,7 @@ const initialState: CounterState = {
 
 export const counterSlice = createSlice({
   name: "counter",
-  // `createSlice` will infer the state type from the `initialState` argument
+  // `createSlice` will infor the state type from the `initialState` argument
   initialState,
   reducers: {
     increment: (state) => {

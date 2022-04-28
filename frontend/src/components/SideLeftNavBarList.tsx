@@ -1,4 +1,5 @@
 import React from "react";
+import RouteList_anchorLinks from "./RouteList_anchorLinks";
 
 type Props = {};
 
@@ -7,9 +8,7 @@ const SideLeftNavBarList = (props: Props) => {
     <>
       <h3>heading</h3>
       <ul>
-        <li>Dashboard</li>
-        <li>Create Ticket</li>
-        <li>Ticket List</li>
+        <RouteList_anchorLinks />
       </ul>
     </>
   );

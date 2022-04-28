@@ -36,6 +36,9 @@ export const get_allCommentsForASingleTicket_actions = createAsyncThunk(
         return data;
       })
       .catch((error) => {
+        // reset comments reducet to initial state
+        thunkAPI.dispatch(resetInitialComment_actions());
+
         if ("success" in error) {
           return thunkAPI.rejectWithValue(error.msg);
         }
@@ -51,7 +54,10 @@ export const get_allCommentsForASingleTicket_actions = createAsyncThunk(
 /************************************** */
 export const post_createComments_action = createAsyncThunk(
   "post/createComment",
-  async (newComment: createComment_dispatch_type, { rejectWithValue }) => {
+  async (
+    newComment: createComment_dispatch_type,
+    { rejectWithValue, dispatch }
+  ) => {
     // create new UUID for ticket
     const comment_id_uuid = uuidv4();
 
@@ -73,6 +79,9 @@ export const post_createComments_action = createAsyncThunk(
         return commentObject;
       })
       .catch((error) => {
+        // reset comments reducet to initial state
+        dispatch(resetInitialComment_actions());
+
         if ("success" in error) {
           return rejectWithValue(error.msg);
         }
@@ -97,6 +106,9 @@ export const patch_updateComment_actions = createAsyncThunk(
         return commentObject;
       })
       .catch((error) => {
+        // reset comments reducet to initial state
+        thunkAPI.dispatch(resetInitialComment_actions());
+
         if ("success" in error) {
           return thunkAPI.rejectWithValue(error.msg);
         }
@@ -122,6 +134,9 @@ export const delete_deleteComment_actions = createAsyncThunk(
         return { comment_id };
       })
       .catch((error) => {
+        // reset comments reducet to initial state
+        thunkAPI.dispatch(resetInitialComment_actions());
+
         if ("success" in error) {
           return thunkAPI.rejectWithValue(error.msg);
         }
@@ -139,7 +154,11 @@ const initialState: Array<comment_type> = [];
 export const commentsSlice = createSlice({
   name: "comments",
   initialState,
-  reducers: {},
+  reducers: {
+    resetInitialComment_actions: (state) => {
+      return initialState;
+    },
+  },
   extraReducers: (builder) => {
     builder
       /******************************** */
@@ -285,7 +304,7 @@ export const commentsSlice = createSlice({
 });
 
 // export all actions
-// export const { fetchAllTickets_actions } = ticketSlice.actions;
+export const { resetInitialComment_actions } = commentsSlice.actions;
 
 // // Other code such as selectors can use the imported `RootState` type
 // export const selectCount = (state: RootState) => state.counter.value;

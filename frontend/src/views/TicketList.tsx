@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
-// import AuthenticateRoute from "../components/AuthenticateRoute";
 import LogoutButton from "../components/LogoutButton";
 import Profile from "../components/Profiles";
 import SeoReactHelmet from "../components/SeoReactHelmet";
+import Ticket_anchorLinkToTicket from "../components/Ticket_anchorLinkToTicket";
 
 import { useAppSelector, useAppDispatch } from "../models/hooks";
-import { get_ticketList_actions } from "../models/reducers/tickets/ticketsSlice";
 
 export default function TicketList(): JSX.Element {
   const ticketsList = useAppSelector((state) => state.tickets);
-  // const dispatch = useAppDispatch();
 
   const listOfTickets = () => {
     // true if ticketlist is empty than return a statement to user
@@ -21,8 +19,13 @@ export default function TicketList(): JSX.Element {
     const arrayList: Array<JSX.Element> = [];
 
     for (let property in ticketsList) {
-      // console.log(property);
-      arrayList.push(<li key={property}>{ticketsList[property].title}</li>);
+      // console.log(ticketsList[property]);
+      // arrayList.push(<li key={property}>{ticketsList[property].title}</li>);
+      arrayList.push(
+        <li key={property}>
+          <Ticket_anchorLinkToTicket ticket={ticketsList[property]} />
+        </li>
+      );
     }
     return arrayList;
   };
@@ -36,8 +39,6 @@ export default function TicketList(): JSX.Element {
       />
 
       <h1>TicketList PAGE</h1>
-      <LogoutButton />
-      <Profile />
       <ul>{listOfTickets()}</ul>
     </div>
   );
