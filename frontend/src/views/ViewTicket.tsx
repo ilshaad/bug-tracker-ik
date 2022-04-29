@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import SeoReactHelmet from "../components/SeoReactHelmet";
+import { sortDateByOldestFirst_array } from "../helpers/sortByDate";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { get_allCommentsForASingleTicket_actions } from "../models/reducers/comments/commentsSlice";
 
@@ -52,18 +53,16 @@ export default function ViewTicket(): JSX.Element | null {
     console.log(comments);
 
     // TODO sort out the asc  & dec (aka newest & oldest). Maybe think about creating sort function for date
-    const sortByDate = comments
-      .slice()
-      .sort((a, b) => +new Date(a.created_on) - +new Date(b.created_on));
+    const oldestDateFirst_array = sortDateByOldestFirst_array(comments);
     console.log(
-      "🚀 ~ file: ViewTicket.tsx ~ line 57 ~ displayComments ~ sortByDate",
-      sortByDate
+      "🚀 ~ file: ViewTicket.tsx ~ line 69 ~ displayComments ~ sortDateByOldestFirst_array",
+      oldestDateFirst_array
     );
 
-    let commentsArray = [];
+    const sortedOldestComments_Array = [];
 
-    for (let comment of comments) {
-      commentsArray.push(
+    for (let comment of oldestDateFirst_array) {
+      sortedOldestComments_Array.push(
         <li>
           <h4>{comment.name}</h4>
           <p>{comment.email}</p>
@@ -73,11 +72,7 @@ export default function ViewTicket(): JSX.Element | null {
       );
     }
 
-    // const sortByDate = commentsArray.sort(
-    //   (a, b) => b.created_on - a.created_on
-    // );
-
-    return <ul>{commentsArray}</ul>;
+    return <ul>{sortedOldestComments_Array}</ul>;
   };
 
   return (
