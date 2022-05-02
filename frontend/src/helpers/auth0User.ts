@@ -1,4 +1,4 @@
-// auth user function for more DRY convient in accessing user object
+// auth0 user function for more DRY convient in accessing user object from the useAuth0() hook function
 //eg. auth0User(iKcallback1, iKcallback2)
 //eg. auth0User(() => {...}, user => {...})
 
@@ -24,6 +24,7 @@ export default function auth0User(
   // user is authenticated or not
   if (auth0.isAuthenticated) {
     const { user } = auth0;
+    // console.log("🚀 ~ file: auth0User.ts ~ line 27 ~ user", user);
 
     // callback has access to the user object now
     return authenticatedCallback(user);

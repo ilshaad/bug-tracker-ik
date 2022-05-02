@@ -12,26 +12,12 @@ export default function Dashboard(): JSX.Element {
   const auth0 = useAuth0<User>();
 
   const displayUserName = () => {
-    // if (auth0.isLoading) return null;
-
-    // if (auth0.isAuthenticated) {
-    //   return auth0.user!.nickname;
-    // } else {
-    //   return null;
-    // }
-
-    // auth0User();
-    // TODO return user name with your auth0User callback function you have created
-    const testing = auth0User(
+    const username = auth0User(
       () => <div>...Loading</div>,
-      (user) => <div>{user.email}</div>
-    );
-    console.log(
-      "🚀 ~ file: Dashboard.tsx ~ line 29 ~ displayUserName ~ testing ",
-      testing
+      (user) => <div>{user.nickname}</div>
     );
 
-    return null;
+    return username;
   };
 
   return (
@@ -45,11 +31,15 @@ export default function Dashboard(): JSX.Element {
       <h1>{displayUserName()} Dashboard PAGE</h1>
 
       <div className="container">
-        <h1>display assigned user tickets</h1>
+        <h2>display assigned user tickets</h2>
       </div>
 
       <div className="container">
         <h2>display submitted_by tickets</h2>
+      </div>
+
+      <div>
+        <button>delete my account</button>
       </div>
     </div>
   );
