@@ -49,21 +49,15 @@ export default function ViewTicket(): JSX.Element | null {
       return <h4>There are no comments for this ticket</h4>;
     }
 
-    console.log(55);
-    console.log(comments);
-
-    // TODO sort out the asc  & dec (aka newest & oldest). Maybe think about creating sort function for date
+    // sort out date using the sortDateByOldestFirst_array helper function
     const oldestDateFirst_array = sortDateByOldestFirst_array(comments);
-    console.log(
-      "🚀 ~ file: ViewTicket.tsx ~ line 69 ~ displayComments ~ sortDateByOldestFirst_array",
-      oldestDateFirst_array
-    );
 
+    // new jsx array with the sorted date array
     const sortedOldestComments_Array = [];
 
     for (let comment of oldestDateFirst_array) {
       sortedOldestComments_Array.push(
-        <li>
+        <li key={comment.text_comment}>
           <h4>{comment.name}</h4>
           <p>{comment.email}</p>
           <h5>{comment.text_comment}</h5>
