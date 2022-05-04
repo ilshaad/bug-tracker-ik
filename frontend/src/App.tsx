@@ -21,7 +21,7 @@ import AuthenticateRoute_HOC from "./components/AuthenticateRoute_HOC";
 import Layout from "./components/Layout";
 
 import { useAppDispatch } from "./models/hooks";
-import { get_ticketList_actions } from "./models/reducers/tickets/ticketsSlice";
+import { get_ticketList_actions } from "./models/reducers/tickets_slice";
 
 const App = () => {
   const dispatch = useAppDispatch();

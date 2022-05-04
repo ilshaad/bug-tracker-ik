@@ -3,7 +3,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import SeoReactHelmet from "../components/SeoReactHelmet";
 import { sortDateByOldestFirst_array } from "../helpers/sortByDate";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
-import { get_allCommentsForASingleTicket_actions } from "../models/reducers/comments/commentsSlice";
+import { get_allCommentsForASingleTicket_actions } from "../models/reducers/comments_slice";
 
 export default function ViewTicket(): JSX.Element | null {
   const ticketId_Params = useParams().ticketid;

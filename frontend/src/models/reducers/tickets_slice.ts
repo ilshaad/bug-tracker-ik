@@ -6,9 +6,9 @@ import {
 } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
-import type { RootState } from "../../store";
-import timeStamp from "../../../helpers/timeStamp";
-import parseTimestamp from "../../../helpers/parseTimestamp";
+import type { RootState } from "../store";
+import timeStamp from "../../helpers/timeStamp";
+import parseTimestamp from "../../helpers/parseTimestamp";
 
 // import {
 //   dictionary_ticketsState_type,
@@ -18,14 +18,14 @@ import {
   createTicket_dispatch_type,
   dictionary_ticketsState_type,
   ticket_type,
-} from "../../../@types/tickets_type";
+} from "../../@types/tickets_type";
 
-import get_ticketList from "../../../controllers/ticketsFetch/get_ticketList";
-import post_createTicket from "../../../controllers/ticketsFetch/post_createTicket";
+import get_ticketList from "../../controllers/ticketsFetch/get_ticketList";
+import post_createTicket from "../../controllers/ticketsFetch/post_createTicket";
 // import { createTicket_dispatch_type } from "../../../@types/ticketsSlice_types.t";
-import catchHandlerForReduxSlices from "../../../helpers/catchHandlerForReduxSlices";
-import patch_updateTicket from "../../../controllers/ticketsFetch/patch_updateTicket";
-import delete_deleteTicket from "../../../controllers/ticketsFetch/delete_deleteTicket";
+import catchHandlerForReduxSlices from "../../helpers/catchHandlerForReduxSlices";
+import patch_updateTicket from "../../controllers/ticketsFetch/patch_updateTicket";
+import delete_deleteTicket from "../../controllers/ticketsFetch/delete_deleteTicket";
 
 /************************************* */
 /** *Fetch all tickets from psql > insert it within the ticket reducer */

@@ -3,16 +3,19 @@ import { configureStore } from "@reduxjs/toolkit";
 // !delete
 import counterSlice from "./reducers/counterSlice";
 
-import ticketsSlice from "./reducers/tickets/ticketsSlice";
-import commentsSlice from "./reducers/comments/commentsSlice";
+import ticketsSlice from "./reducers/tickets_slice";
+import commentsSlice from "./reducers/comments_slice";
 import userProfileSlice from "./reducers/userProfileSlice";
+import messageAlert_slice from "./reducers/messageAlert_slice";
 
 const store = configureStore({
   reducer: {
-    counter: counterSlice,
-    userProfile: userProfileSlice,
     tickets: ticketsSlice,
     comments: commentsSlice,
+    messageAlerts: messageAlert_slice,
+
+    counter: counterSlice,
+    userProfile: userProfileSlice,
   },
   // devTools: false,
 });

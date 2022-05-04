@@ -16,7 +16,7 @@ import {
   get_allCommentsForASingleTicket_actions,
   patch_updateComment_actions,
   post_createComments_action,
-} from "../models/reducers/comments/commentsSlice";
+} from "../models/reducers/comments_slice";
 import {
   increment,
   decrement,
@@ -27,7 +27,7 @@ import {
   get_ticketList_actions,
   patch_updateTicket_actions,
   post_createTicket_actions,
-} from "../models/reducers/tickets/ticketsSlice";
+} from "../models/reducers/tickets_slice";
 
 import { loginAction, logoutAction } from "../models/reducers/userProfileSlice";
 
