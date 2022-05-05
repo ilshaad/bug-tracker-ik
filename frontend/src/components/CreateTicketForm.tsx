@@ -9,6 +9,7 @@ import { useAppDispatch } from "../models/hooks";
 import { post_createTicket_actions } from "../models/reducers/tickets_slice";
 import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
 import { useNavigate } from "react-router-dom";
+import { messageToast_actions } from "../models/reducers/messageToast_slice";
 
 // ticket_id / title / description / submitted_by / priority / assigned_user / status / app_name / app_version / created_on
 
@@ -109,19 +110,26 @@ export default function CreateTicketForm({}: Props) {
                 );
 
                 // navigate to dashboard with failed message
-                //  TODO  FINISH NAVIAGING TO DASHBOARD WHEN YOU CREATED TICKET BUT FIRST DO MESSAGE ALERT STATE REDUX STORE
-                navigate("/", { state: "ik state ter" });
+                navigate("/");
 
-                console.log(777);
-                console.log(res);
-                return;
+                // trigger message toast on the dashboard route of failed create ticket
+                dispatch(
+                  messageToast_actions(
+                    "Unfortunately ticket was not created, refresh the page and try again please."
+                  )
+                );
               }
 
               // succeeded to create ticket on the server psql database
               if (res.type === "post/createTicket/fulfilled") {
                 // navigate to dashboard with success message
-                console.log(111);
-                console.log(res);
+                // navigate to dashboard with success message
+                navigate("/");
+
+                // trigger message toast on the dashboard route of success create ticket
+                dispatch(
+                  messageToast_actions("Successfully created a new ticket.")
+                );
               }
             })
             .catch((err) => {
@@ -132,8 +140,15 @@ export default function CreateTicketForm({}: Props) {
               );
 
               // navigate to dashboard with failed message
-              console.log(22);
-              console.log(err);
+              // navigate to dashboard with failed message
+              navigate("/");
+
+              // trigger message toast on the dashboard route of failed create ticket
+              dispatch(
+                messageToast_actions(
+                  "Unfortunately ticket was not created, refresh the page and try again please."
+                )
+              );
             });
         }}
       >

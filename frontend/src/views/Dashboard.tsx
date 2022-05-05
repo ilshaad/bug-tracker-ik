@@ -1,4 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
+
+import Button from "react-bootstrap/Button";
+import Toast from "react-bootstrap/Toast";
+import ToastContainer from "react-bootstrap/ToastContainer"; // import "bootstrap/js/dist/toast";
+// import * as bootstrap from "bootstrap";
+
 import LogoutButton from "../components/LogoutButton";
 import Profile from "../components/Profiles";
 import HomeLogin from "../components/HomeLogin";
@@ -7,8 +13,13 @@ import SeoReactHelmet from "../components/SeoReactHelmet";
 import { useAuth0, User } from "@auth0/auth0-react";
 import isAdmin_hook from "../helpers/isAdmin_hook";
 import auth0User from "../helpers/auth0User";
-import { useAppSelector } from "../models/hooks";
+import { useAppDispatch, useAppSelector } from "../models/hooks";
 import Ticket_anchorLinkToTicket from "../components/Ticket_anchorLinkToTicket";
+import {
+  messageToast_actions,
+  nullTheMessageToast_actions,
+} from "../models/reducers/messageToast_slice";
+import Message_toast from "../components/Message_toast";
 
 export default function Dashboard(): JSX.Element {
   const auth0UserObject = auth0User(
@@ -19,6 +30,9 @@ export default function Dashboard(): JSX.Element {
   const ticketList = useAppSelector((state) => {
     return state.tickets;
   });
+
+  const dispatch = useAppDispatch();
+  const messageToast = useAppSelector((state) => state.messageToasts.message);
 
   // return user nickname (username) from auth0 user object
   const displayUserName = () => {
@@ -126,6 +140,9 @@ export default function Dashboard(): JSX.Element {
         metaDescriptionContent="mDescContent-dashboard"
         metaKeywordsContent="dashboard & etc"
       />
+
+      {/* message toast for user confirmation such as success or failure in creating a ticket */}
+      <Message_toast />
 
       <h1>{displayUserName()} Dashboard PAGE</h1>
 

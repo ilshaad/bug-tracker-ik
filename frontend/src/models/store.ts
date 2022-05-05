@@ -6,13 +6,13 @@ import counterSlice from "./reducers/counterSlice";
 import ticketsSlice from "./reducers/tickets_slice";
 import commentsSlice from "./reducers/comments_slice";
 import userProfileSlice from "./reducers/userProfileSlice";
-import messageAlert_slice from "./reducers/messageAlert_slice";
+import messageToast_slice from "./reducers/messageToast_slice";
 
 const store = configureStore({
   reducer: {
     tickets: ticketsSlice,
     comments: commentsSlice,
-    messageAlerts: messageAlert_slice,
+    messageToasts: messageToast_slice,
 
     counter: counterSlice,
     userProfile: userProfileSlice,

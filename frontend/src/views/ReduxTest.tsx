@@ -9,6 +9,10 @@ import {
 } from "../@types/comments_type";
 // import { createTicket_dispatch_type } from "../@types/ticketsSlice_types.t";
 import patch_updateTicket from "../controllers/ticketsFetch/patch_updateTicket";
+import {
+  messageToast_actions,
+  nullTheMessageToast_actions,
+} from "../models/reducers/messageToast_slice";
 
 import { useAppSelector, useAppDispatch } from "../models/hooks";
 import {
@@ -30,6 +34,7 @@ import {
 } from "../models/reducers/tickets_slice";
 
 import { loginAction, logoutAction } from "../models/reducers/userProfileSlice";
+import Message_toast from "../components/Message_toast";
 
 interface userP {
   email: string;
@@ -169,6 +174,17 @@ export default function ReduxRoute(): JSX.Element {
     dispatchy(delete_deleteComment_actions(comment_id));
   };
 
+  // message alert reducer
+  const messageAlert = useAppSelector((state) => state.messageToasts.message);
+
+  const messageAlertReduxAction = () => {
+    dispatchy(messageToast_actions("salma kheerdali"));
+  };
+
+  const nullTheMessageAlertReduxAction = () => {
+    dispatchy(nullTheMessageToast_actions());
+  };
+
   return (
     <div>
       <h1>I am redux page</h1>
@@ -212,6 +228,19 @@ export default function ReduxRoute(): JSX.Element {
       <div>
         <button onClick={deleteCommentReducAction}>delete_deleteComment</button>
       </div>
+      <div>message alert reducer</div>
+      <div>{messageAlert ? messageAlert : "null"}</div>
+      <div>
+        <button onClick={messageAlertReduxAction}>
+          create a message alert
+        </button>
+      </div>
+      <div>
+        <button onClick={nullTheMessageAlertReduxAction}>
+          null the message alert
+        </button>
+      </div>
+      <Message_toast />
     </div>
   );
 }
