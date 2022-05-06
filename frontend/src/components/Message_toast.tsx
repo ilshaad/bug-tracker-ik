@@ -27,7 +27,7 @@ export default function Message_toast({}: Props) {
       <Toast
         show={messageToast_reduxAction()}
         onClose={nullTheMessageToast_reduxAction}
-        delay={7000}
+        delay={10000}
         autohide
       >
         <Toast.Header>
@@ -41,7 +41,7 @@ export default function Message_toast({}: Props) {
   );
 }
 
-/** eg. using button to dispatch the redux action messageToast_actions() which will trigger the Message_toast component for 7 seconds
+/** eg. using button to dispatch the redux action messageToast_actions() which will trigger the Message_toast component for 10 seconds
 
 <Button
   onClick={() => dispatch(messageToast_actions("messaging whatever"))}

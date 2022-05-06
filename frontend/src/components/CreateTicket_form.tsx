@@ -1,4 +1,4 @@
-// Form for /createticket route when user wants to create a new ticket
+// Form component for /createticket route when user wants to create a new ticket
 // Used Formik package to create the form for a new ticket, & when submitted it will be passed the newly created ticket object to redux actions to post the new ticket on the server & if successful it will also update redux tickets store
 
 import React from "react";
@@ -15,7 +15,7 @@ import { messageToast_actions } from "../models/reducers/messageToast_slice";
 
 type Props = {};
 
-export default function CreateTicketForm({}: Props) {
+export default function CreateTicket_form({}: Props) {
   // collect user auth0 object
   const auth0UserObject = auth0User(
     () => null,
@@ -25,7 +25,7 @@ export default function CreateTicketForm({}: Props) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  // form validation if user incorrectly mistype within the form
+  // form validation,for if user incorrectly mistype within the form
   // Used within Formik component for validation
   const validate = (values: createTicket_dispatch_type) => {
     const errors: FormikErrors<createTicket_dispatch_type> = {};
@@ -63,12 +63,14 @@ export default function CreateTicketForm({}: Props) {
     );
 
     return errors;
-  };
+  }; //END validate method function
 
+  // return formik jsx component
   return (
     <div>
       <h1>create new ticket</h1>
 
+      {/* Most of these code were collect in Formik documentation & I modified it to work the way I need it to */}
       <Formik
         // initial values for the ticket form object
         initialValues={{
@@ -81,9 +83,10 @@ export default function CreateTicketForm({}: Props) {
           app_version: "",
           submitted_by: "", //only the admin can use this
         }}
-        // validate the ticket form object otherwise do not submit if unsuccessful
+        // validate the ticket form object otherwise it will not submit until all validations is completed
         validate={validate}
-        // submit the ticket form object to redux to POST the newly created ticket object & if successful update the redux tickets store too
+        // complete your transaction you want to do when user successfully filled out the form correctly
+        // submit the ticket form object to redux to POST SS the newly created ticket object & if successful update the redux tickets store too
         onSubmit={(ticketObject: createTicket_dispatch_type) => {
           // if assigned_user property is empty string than put 'Unassigned' as default value as no one is assigned to the ticket yet
           if (ticketObject.assigned_user === "") {
@@ -96,9 +99,8 @@ export default function CreateTicketForm({}: Props) {
             ticketObject.submitted_by = auth0UserObject.nickname;
           }
 
-          console.log(ticketObject);
-
-          // POST created ticket to psql & if successful than include new ticket to redux tickets store too
+          // POST created ticket to ss psql & if successful than include new ticket to redux tickets store too
+          // using redux action to complete the task
           dispatch(post_createTicket_actions(ticketObject))
             .then((res) => {
               // failed to create ticket on the server psql database
@@ -123,7 +125,6 @@ export default function CreateTicketForm({}: Props) {
               // succeeded to create ticket on the server psql database
               if (res.type === "post/createTicket/fulfilled") {
                 // navigate to dashboard with success message
-                // navigate to dashboard with success message
                 navigate("/");
 
                 // trigger message toast on the dashboard route of success create ticket
@@ -139,7 +140,6 @@ export default function CreateTicketForm({}: Props) {
                 err
               );
 
-              // navigate to dashboard with failed message
               // navigate to dashboard with failed message
               navigate("/");
 
@@ -290,5 +290,5 @@ export default function CreateTicketForm({}: Props) {
         )}
       </Formik>
     </div>
-  );
-}
+  ); //END return jsx component
+} //END CreateTicket_form

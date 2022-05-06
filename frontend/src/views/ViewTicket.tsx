@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+import ApplyToAssignForTicket_button from "../components/ApplyToAssignForTicket_button";
+import DeleteTicket_button from "../components/DeleteTicket_button";
+import EditTicket_button from "../components/EditTicket_button";
+import MarkAsResolved_button from "../components/MarkAsResolved_button";
+import Message_toast from "../components/Message_toast";
 import SeoReactHelmet from "../components/SeoReactHelmet";
 import { sortDateByOldestFirst_array } from "../helpers/sortByDate";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
@@ -79,6 +84,25 @@ export default function ViewTicket(): JSX.Element | null {
 
       <h1>view ticket</h1>
       {displayTicket()}
+
+      {/* <button>Edit ticket</button> */}
+      <EditTicket_button
+        ticketSubmitted_by={ticket.submitted_by}
+        ticketAssigned_user={ticket.assigned_user}
+      />
+
+      {/* <button>Delete Ticket</button> */}
+      <DeleteTicket_button ticketSubmitted_by={ticket.submitted_by} />
+
+      {/* <button>Apply to assign for the ticket</button> */}
+      <ApplyToAssignForTicket_button
+        ticketSubmitted_by={ticket.submitted_by}
+        ticketAssigned_user={ticket.assigned_user}
+      />
+      <Message_toast />
+
+      {/* <button>Mark as Resolved</button> */}
+      <MarkAsResolved_button ticketObject={ticket} />
 
       <h2>comments</h2>
       {displayComments()}

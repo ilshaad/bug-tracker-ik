@@ -36,8 +36,14 @@ export default function auth0User(
 }
 
 /** eg. auth0User function callback
-    const testing = auth0User(
-      () => <div>...Loading</div>,
-      (user) => <div>{user.email}</div>
-    );
+  const testing = auth0User(
+    () => <div>...Loading</div>,
+    (user) => <div>{user.email}</div>
+  );
+
+* or eg. return just the user object
+  const auth0UserObject = auth0User(
+    () => null,
+    (user) => user
+  );
 */
