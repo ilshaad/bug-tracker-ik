@@ -3,7 +3,8 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import ApplyToAssignForTicket_button from "../components/ApplyToAssignForTicket_button";
 import DeleteTicket_button from "../components/DeleteTicket_button";
 import EditTicket_button from "../components/EditTicket_button";
-import MarkAsResolved_button from "../components/MarkAsResolved_button";
+import EditTicket_modal from "../components/EditTicket_modal";
+import MarkAsResolvedOrPending_button from "../components/MarkAsResolvedOrPending_button";
 import Message_toast from "../components/Message_toast";
 import SeoReactHelmet from "../components/SeoReactHelmet";
 import { sortDateByOldestFirst_array } from "../helpers/sortByDate";
@@ -90,6 +91,8 @@ export default function ViewTicket(): JSX.Element | null {
         ticketSubmitted_by={ticket.submitted_by}
         ticketAssigned_user={ticket.assigned_user}
       />
+      {/* testing */}
+      {/* <EditTicket_modal /> */}
 
       {/* <button>Delete Ticket</button> */}
       <DeleteTicket_button ticketSubmitted_by={ticket.submitted_by} />
@@ -102,7 +105,7 @@ export default function ViewTicket(): JSX.Element | null {
       <Message_toast />
 
       {/* <button>Mark as Resolved</button> */}
-      <MarkAsResolved_button ticketObject={ticket} />
+      <MarkAsResolvedOrPending_button ticketObject={ticket} />
 
       <h2>comments</h2>
       {displayComments()}

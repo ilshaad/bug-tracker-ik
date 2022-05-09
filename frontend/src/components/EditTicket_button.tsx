@@ -2,6 +2,7 @@
 
 import React from "react";
 import auth0User from "../helpers/auth0User";
+import EditTicket_modal from "./EditTicket_modal";
 
 type Props = { ticketSubmitted_by: string; ticketAssigned_user: string };
 
@@ -9,6 +10,9 @@ export default function EditTicket_button({
   ticketSubmitted_by,
   ticketAssigned_user,
 }: Props) {
+  // for showing bootstrap modal which contains the edit form
+  const [modalShow, setModalShow] = React.useState(false);
+
   const adminEmail = process.env.ADMIN_EMAIL;
 
   const auth0UserObject = auth0User(
@@ -17,7 +21,21 @@ export default function EditTicket_button({
   );
 
   const editButton = (enabledButton: boolean) => {
-    if (enabledButton) return <button>Enabled EditTicket_button</button>;
+    // show modal for edit form
+    if (enabledButton)
+      return (
+        <>
+          <button onClick={() => setModalShow(true)}>
+            Enabled EditTicket_button
+          </button>
+
+          <EditTicket_modal
+            show={modalShow}
+            hide={() => setModalShow(false)}
+            setFalse={() => setModalShow(false)}
+          />
+        </>
+      );
 
     return <button disabled>Disable EditTicket_buttons</button>;
   };
