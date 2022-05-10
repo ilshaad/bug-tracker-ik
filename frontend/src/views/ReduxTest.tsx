@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
-import {
-  createTicket_dispatch_type,
-  ticket_type,
-} from "../@types/tickets_type";
+import { createTicket_dispatch_type, ticket_type } from "../types/tickets_type";
 import {
   comment_type,
   createComment_dispatch_type,
-} from "../@types/comments_type";
+} from "../types/comments_type";
 // import { createTicket_dispatch_type } from "../@types/ticketsSlice_types.t";
 import patch_updateTicket from "../controllers/ticketsFetch/patch_updateTicket";
 import {

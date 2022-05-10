@@ -2,18 +2,19 @@ import React, { MouseEventHandler, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 
 type Props = {
-  show: boolean;
-  hide: MouseEventHandler;
-  setFalse: Function;
+  showModal: boolean;
+  closeModal(): void;
 };
 
-export default function EditTicket_modal({ show, hide, setFalse }: Props) {
+export default function EditTicket_modal({ showModal, closeModal }: Props) {
   return (
     <Modal
-      show={show}
-      // TODO I CANNOT GET BACKGROUND SCREEN TO CLOSE MODAL
-      onHide={setFalse}
+      // show modal
+      show={showModal}
+      // hide modal when user click outside the modal box
+      onHide={closeModal}
       size="lg"
+      // ! iK comeback to this aria & see if you want to adjust this
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -23,7 +24,7 @@ export default function EditTicket_modal({ show, hide, setFalse }: Props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
+        <h4>EditTicket_form</h4>
         <p>
           Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
           dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
@@ -31,7 +32,7 @@ export default function EditTicket_modal({ show, hide, setFalse }: Props) {
         </p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={hide}>Close</Button>
+        <Button onClick={closeModal}>Close</Button>
       </Modal.Footer>
     </Modal>
   );

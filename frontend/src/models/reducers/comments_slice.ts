@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import {
   comment_type,
   createComment_dispatch_type,
-} from "../../@types/comments_type";
+} from "../../types/comments_type";
 import delete_deleteComment from "../../controllers/commentsFetch/delete_deleteComment";
 import get_allCommentsForASingleTicket from "../../controllers/commentsFetch/get_allCommentsForASingleTicket";
 import patch_updateComment from "../../controllers/commentsFetch/patch_updateComment";

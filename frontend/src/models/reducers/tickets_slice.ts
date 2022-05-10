@@ -18,7 +18,7 @@ import {
   createTicket_dispatch_type,
   dictionary_ticketsState_type,
   ticket_type,
-} from "../../@types/tickets_type";
+} from "../../types/tickets_type";
 
 import get_ticketList from "../../controllers/ticketsFetch/get_ticketList";
 import post_createTicket from "../../controllers/ticketsFetch/post_createTicket";

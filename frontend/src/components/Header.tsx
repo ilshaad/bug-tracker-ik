@@ -1,9 +1,9 @@
 import React from "react";
-import "../styles/components/Header.scss";
+import "../public/styles/components/Header.scss";
 
 import { Link } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
-import lizard from "../images/li.jpg";
+import lizard from "../public/images/li.jpg";
 import RouteList_anchorLinks from "./RouteList_anchorLinks";
 import { useAuth0 } from "@auth0/auth0-react";
 

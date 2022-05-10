@@ -1,6 +1,6 @@
 import backendApi_fetchInstance from "./../backendApi_fetchInstance";
 import catchHandler from "./../backendCatchHandler";
-import { ticket_type } from "../../@types/tickets_type";
+import { ticket_type } from "../../types/tickets_type";
 
 /**
  * * update a ticket

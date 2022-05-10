@@ -19,8 +19,8 @@ import {
   post_userSignup,
 } from "../controllers/usersFetch";
 
-import { ticket_type } from "../@types/tickets_type";
-import { comment_type } from "../@types/comments_type";
+import { ticket_type } from "../types/tickets_type";
+import { comment_type } from "../types/comments_type";
 
 export default function App(): JSX.Element {
   // DevelopmentModeOnly();
