@@ -32,7 +32,8 @@ export default function EditTicket_button({
 
           <EditTicket_modal
             showModal={modalShow}
-            closeModal={() => setModalShow(false)}
+            // closeModal_function={() => setModalShow(false)}
+            closeModal_function={setModalShow}
           />
         </>
       );
