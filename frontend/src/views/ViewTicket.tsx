@@ -83,6 +83,9 @@ export default function ViewTicket(): JSX.Element | null {
         metaKeywordsContent="view ticket & etc"
       />
 
+      {/* toast message whenever user update ticket in some way */}
+      <Message_toast />
+
       <h1>view ticket</h1>
       {displayTicket()}
 
@@ -91,8 +94,6 @@ export default function ViewTicket(): JSX.Element | null {
         ticketSubmitted_by={ticket.submitted_by}
         ticketAssigned_user={ticket.assigned_user}
       />
-      {/* testing */}
-      {/* <EditTicket_modal /> */}
 
       {/* <button>Delete Ticket</button> */}
       <DeleteTicket_button ticketSubmitted_by={ticket.submitted_by} />
@@ -102,7 +103,6 @@ export default function ViewTicket(): JSX.Element | null {
         ticketSubmitted_by={ticket.submitted_by}
         ticketAssigned_user={ticket.assigned_user}
       />
-      <Message_toast />
 
       {/* <button>Mark as Resolved</button> */}
       <MarkAsResolvedOrPending_button ticketObject={ticket} />

@@ -93,61 +93,55 @@ export default function EditTicket_form({ closeModal_function }: Props) {
 
           // PATCH edited ticket to ss psql & if successful update than include updated ticket to redux tickets store too
           // using redux action to complete the task
-          dispatch(patch_updateTicket_actions(ticketObject)).then((res) => {
-            if (res.type === "patch/updateTicket/rejected") {
+          dispatch(patch_updateTicket_actions(ticketObject))
+            .then((res) => {
+              if (res.type === "patch/updateATicket/rejected") {
+                catchHandlerForReduxSlices(
+                  "patch_updateTicket_actions",
+                  "EditTicket_form.tsx",
+                  res
+                );
+
+                // close edit form modal
+                closeModal_function(false);
+
+                // display a toast message to user that update form was not successful
+                // using my custom react bootstrap toast action creator
+                dispatch(
+                  messageToast_actions(
+                    "Error occured, please refresh the page and try again!"
+                  )
+                );
+              } //END if statement patch/updateTicket/rejected
+
+              // succeed in updating the ticket on SS psql database
+              if (res.type === "patch/updateATicket/fulfilled") {
+                // close modal
+                closeModal_function(false);
+
+                // display a toast message to user that update form was successful
+                dispatch(messageToast_actions("Update was successful."));
+              }
+            }) //END thenable handler for dispatch( patch_updateTicket_actions())
+            .catch((err) => {
               catchHandlerForReduxSlices(
                 "patch_updateTicket_actions",
                 "EditTicket_form.tsx",
-                res
+                err
               );
 
-              // close edit form modal
+              // close modal
               closeModal_function(false);
 
               // display a toast message to user that update form was not successful
               // using my custom react bootstrap toast action creator
               dispatch(
                 messageToast_actions(
-                  "Error occured, please refresh the page and try again"
+                  "Error occured, please refresh the page and try again!"
                 )
               );
-            } //END if statement patch/updateTicket/rejected
-
-            // succeed in updating the ticket on SS psql database
-            if (res.type === "patch/updateTicket/fulfilled") {
-              // TODO complete this part
-            }
-          }); //END dispatch( patch_updateTicket_actions())
-
-          //     // succeeded to create ticket on the server psql database
-          //     if (res.type === "post/createTicket/fulfilled") {
-          //       // navigate to dashboard with success message
-          //       navigate("/");
-
-          //       // trigger message toast on the dashboard route of success create ticket
-          //       dispatch(
-          //         messageToast_actions("Successfully created a new ticket.")
-          //       );
-          //     }
-          //   })
-          //   .catch((err) => {
-          //     catchHandlerForReduxSlices(
-          //       "post_createdTicket_actions",
-          //       "CreatedTicketForm.tsx",
-          //       err
-          //     );
-
-          //     // navigate to dashboard with failed message
-          //     navigate("/");
-
-          //   // trigger message toast on the dashboard route of failed create ticket
-          //   dispatch(
-          //     messageToast_actions(
-          //       "Unfortunately ticket was not created, refresh the page and try again please."
-          //     )
-          //   );
-          // });
-        }}
+            }); //END catchable handler for dispatch( patch_updateTicket_actions())
+        }} //END Formik onSubmit props function
       >
         {/* <Formik> component is like a react context api & that it passes formikProps which gives you access to numerous of props to use such as errors / touched / values etc... */}
         {(formikProps) => (

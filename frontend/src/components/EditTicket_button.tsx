@@ -1,4 +1,5 @@
 // button component which will only be un-disabled if you user is the submitted_by / assigned_user / admin user (from the auth0 user object) & allow only authorize user to edit the ticket
+// edit button will display the edit modal & should have the edit form the user will need to fill out
 
 import React, { useState } from "react";
 import auth0User from "../helpers/auth0User";
