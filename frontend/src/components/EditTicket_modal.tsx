@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import EditTicket_form from "./EditTicket_form";
 
@@ -11,18 +11,6 @@ export default function EditTicket_modal({
   showModal,
   closeModal_function,
 }: Props) {
-  // I created this method function because I still want to use <Modal.Footer> structrue but need to trigger the submit event so that the form can be be submitted when user clisks on it
-  const dispatchSubmitButtonInForm = () => {
-    console.log("iKdispatch submit");
-
-    const triggerDeleteFormSubmitEvent = new Event(
-      "triggerDeleteFormSubmitEvent",
-      { bubbles: false }
-    );
-
-    dispatchEvent(triggerDeleteFormSubmitEvent);
-  };
-
   return (
     <Modal
       // show modal
@@ -39,15 +27,22 @@ export default function EditTicket_modal({
           Modal heading
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+
+      {/* <Modal.Body>
         <h4>EditTicket_form</h4>
 
         <EditTicket_form closeModal_function={closeModal_function} />
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={dispatchSubmitButtonInForm}>iK submit button</Button>
+      </Modal.Body> */}
+
+      {/* Moved the <Modal.Body> & <Modal.Footer> within the form component because I want to keep the Modal structure as siblings which will remain align */}
+      <EditTicket_form closeModal_function={closeModal_function} />
+
+      {/* <Modal.Footer>
+        <Button type="submit" onClick={() => console.log(111)}>
+          iK submit button
+        </Button>
         <Button onClick={() => closeModal_function(false)}>Close</Button>
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   );
 }

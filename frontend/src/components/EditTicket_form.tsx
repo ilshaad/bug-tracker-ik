@@ -5,9 +5,12 @@
 // authorized user can only update certains values within the ticket : title / description / priority / assigned_user / app_name / app_version
 //  - but only admin can update the submitted_by value
 // Using Formik as component
+// Also place some of react bootstrap Modal componetn with (Modal.Body & Modal.Footer) because I want to keept the Body & Footer as siblings to get the proper structure as it is meant to be
+// -  iK I had to do it this way because I could not trigger the submit event if the components as siblings outside of the form component
+// I did not use controllerd input as recommended but it seems to be working fine
 
 import { Field, Form, Formik, FormikErrors } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import auth0User from "../helpers/auth0User";
 import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
@@ -15,6 +18,7 @@ import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { patch_updateTicket_actions } from "../models/reducers/tickets_slice";
 import { ticket_type } from "../types/tickets_type";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
+import { Button, Modal } from "react-bootstrap";
 
 type Props = { closeModal_function: Function };
 
@@ -146,149 +150,154 @@ export default function EditTicket_form({ closeModal_function }: Props) {
         {/* <Formik> component is like a react context api & that it passes formikProps which gives you access to numerous of props to use such as errors / touched / values etc... */}
         {(formikProps) => (
           <Form>
-            <label htmlFor="editTitle">Title *</label>
-            {/* <Field/> is like input[type] element but is connected to formik component */}
-            <Field
-              type="text"
-              id="editTitle"
-              name="title"
-              placeholder={ticket.title ? ticket.title : "Ticket title"}
-            />
+            <Modal.Body>
+              <label htmlFor="editTitle">Title *</label>
+              {/* <Field/> is like input[type] element but is connected to formik component */}
+              <Field
+                type="text"
+                id="editTitle"
+                name="title"
+                placeholder={ticket.title ? ticket.title : "Ticket title"}
+              />
 
-            {/* this will display jsx error message if user leaves text box empty or incorrectly types something (accordingly to your validate function) */}
-            {formikProps.errors.title && formikProps.touched.title ? (
-              <div>{formikProps.errors.title}</div>
-            ) : null}
+              {/* this will display jsx error message if user leaves text box empty or incorrectly types something (accordingly to your validate function) */}
+              {formikProps.errors.title && formikProps.touched.title ? (
+                <div>{formikProps.errors.title}</div>
+              ) : null}
 
-            <div></div>
+              <div></div>
 
-            <label htmlFor="editDescription">Description *</label>
-            <Field
-              type="text"
-              id="editDescription"
-              name="description"
-              placeholder={
-                ticket.description ? ticket.description : "Ticket description"
-              }
-            />
+              <label htmlFor="editDescription">Description *</label>
+              <Field
+                type="text"
+                id="editDescription"
+                name="description"
+                placeholder={
+                  ticket.description ? ticket.description : "Ticket description"
+                }
+              />
 
-            {formikProps.errors.description &&
-            formikProps.touched.description ? (
-              <div>{formikProps.errors.description}</div>
-            ) : null}
+              {formikProps.errors.description &&
+              formikProps.touched.description ? (
+                <div>{formikProps.errors.description}</div>
+              ) : null}
 
-            <div></div>
+              <div></div>
 
-            <div role="group" aria-labelledby="priority-radio-group">
-              Priority *:
-              <label>
-                <Field
-                  type="radio"
-                  name="priority"
-                  value="High"
-                  checked={autoCheckPriority("High")}
-                  // checked={true}
-                />
-                High
-              </label>
-              <label>
-                <Field
-                  type="radio"
-                  name="priority"
-                  value="Medium"
-                  checked={autoCheckPriority("Medium")}
-                />
-                Medium
-              </label>
-              <label>
-                <Field
-                  type="radio"
-                  name="priority"
-                  value="Low"
-                  checked={autoCheckPriority("Low")}
-                />
-                Low
-              </label>
-            </div>
+              <div role="group" aria-labelledby="priority-radio-group">
+                Priority *:
+                <label>
+                  <Field
+                    type="radio"
+                    name="priority"
+                    value="High"
+                    checked={autoCheckPriority("High")}
+                    // checked={true}
+                  />
+                  High
+                </label>
+                <label>
+                  <Field
+                    type="radio"
+                    name="priority"
+                    value="Medium"
+                    checked={autoCheckPriority("Medium")}
+                  />
+                  Medium
+                </label>
+                <label>
+                  <Field
+                    type="radio"
+                    name="priority"
+                    value="Low"
+                    checked={autoCheckPriority("Low")}
+                  />
+                  Low
+                </label>
+              </div>
 
-            {formikProps.errors.priority && formikProps.touched.priority ? (
-              <div>{formikProps.errors.priority}</div>
-            ) : null}
+              {formikProps.errors.priority && formikProps.touched.priority ? (
+                <div>{formikProps.errors.priority}</div>
+              ) : null}
 
-            <div></div>
+              <div></div>
 
-            <label htmlFor="editAssignedUser">Assigned user</label>
-            <Field
-              type="text"
-              id="editAssignedUser"
-              name="assigned_user"
-              placeholder={
-                ticket.assigned_user
-                  ? ticket.assigned_user
-                  : "Ticket assigned user"
-              }
-            />
+              <label htmlFor="editAssignedUser">Assigned user</label>
+              <Field
+                type="text"
+                id="editAssignedUser"
+                name="assigned_user"
+                placeholder={
+                  ticket.assigned_user
+                    ? ticket.assigned_user
+                    : "Ticket assigned user"
+                }
+              />
 
-            <div></div>
+              <div></div>
 
-            <label htmlFor="editAppName">App Name *</label>
-            <Field
-              type="text"
-              id="editAppName"
-              name="app_name"
-              placeholder={
-                ticket.app_name ? ticket.app_name : "Ticket app name"
-              }
-            />
+              <label htmlFor="editAppName">App Name *</label>
+              <Field
+                type="text"
+                id="editAppName"
+                name="app_name"
+                placeholder={
+                  ticket.app_name ? ticket.app_name : "Ticket app name"
+                }
+              />
 
-            {formikProps.errors.app_name && formikProps.touched.app_name ? (
-              <div>{formikProps.errors.app_name}</div>
-            ) : null}
+              {formikProps.errors.app_name && formikProps.touched.app_name ? (
+                <div>{formikProps.errors.app_name}</div>
+              ) : null}
 
-            <div></div>
+              <div></div>
 
-            <label htmlFor="editAppVersion">App version *</label>
-            <Field
-              type="text"
-              id="editAppVersion"
-              name="app_version"
-              placeholder={
-                ticket.app_version ? ticket.app_version : "ticket app version"
-              }
-            />
+              <label htmlFor="editAppVersion">App version *</label>
+              <Field
+                type="text"
+                id="editAppVersion"
+                name="app_version"
+                placeholder={
+                  ticket.app_version ? ticket.app_version : "ticket app version"
+                }
+              />
 
-            {formikProps.errors.app_version &&
-            formikProps.touched.app_version ? (
-              <div>{formikProps.errors.app_version}</div>
-            ) : null}
+              {formikProps.errors.app_version &&
+              formikProps.touched.app_version ? (
+                <div>{formikProps.errors.app_version}</div>
+              ) : null}
 
-            <div></div>
+              <div></div>
 
-            {/* only admin can see & change the submitted_by property when editing the ticket */}
-            {(() => {
-              if (auth0UserObject.email === process.env.ADMIN_EMAIL) {
-                return (
-                  <>
-                    <label htmlFor="editSubmittedBy">Submitted by</label>
-                    <Field
-                      type="text"
-                      id="editSubmittedBy"
-                      name="submitted_by"
-                      placeholder={
-                        ticket.submitted_by
-                          ? ticket.submitted_by
-                          : "Ticket submitted user"
-                      }
-                    />
-                  </>
-                );
-              }
-              return null;
-            })()}
+              {/* only admin can see & change the submitted_by property when editing the ticket */}
+              {(() => {
+                if (auth0UserObject.email === process.env.ADMIN_EMAIL) {
+                  return (
+                    <>
+                      <label htmlFor="editSubmittedBy">Submitted by</label>
+                      <Field
+                        type="text"
+                        id="editSubmittedBy"
+                        name="submitted_by"
+                        placeholder={
+                          ticket.submitted_by
+                            ? ticket.submitted_by
+                            : "Ticket submitted user"
+                        }
+                      />
+                    </>
+                  );
+                }
+                return null;
+              })()}
 
-            <div></div>
+              <div></div>
+            </Modal.Body>
 
-            <button type="submit">Submit</button>
+            <Modal.Footer>
+              <Button type="submit">iK submit button</Button>
+              <Button onClick={() => closeModal_function(false)}>Close</Button>
+            </Modal.Footer>
           </Form>
         )}
       </Formik>

@@ -4,6 +4,7 @@
 
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
+import DeleteTicket_form from "./DeleteTicket_form";
 
 type Props = { showModal: boolean; closeModal_function: Function };
 
@@ -22,12 +23,16 @@ export default function DeleteTicket_modal({
       <Modal.Header closeButton>
         <Modal.Title>iK delete title</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+
+      <DeleteTicket_form closeModal_function={closeModal_function} />
+      {/* <Modal.Body>
         <h4>DeleteTicket_form</h4>
+
+        <DeleteTicket_form />
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={() => closeModal_function(false)}>Close</Button>
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   );
 }
