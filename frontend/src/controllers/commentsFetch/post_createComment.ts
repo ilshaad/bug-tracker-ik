@@ -2,7 +2,7 @@ import backendApi_fetchInstance from "./../backendApi_fetchInstance";
 import catchHandler from "./../backendCatchHandler";
 import { v4 as uuidv4 } from "uuid";
 import timeStamp from "../../helpers/timeStamp";
-import { comment_type } from "../../@types/comments_type";
+import { comment_type } from "../../types/comments_type";
 
 /**
  * * User creates a comment for a ticket

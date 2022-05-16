@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ticket_type } from "../@types/tickets_type";
+import { ticket_type } from "../types/tickets_type";
 
 type Props = { ticket: ticket_type };
 

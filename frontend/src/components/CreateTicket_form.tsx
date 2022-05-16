@@ -3,7 +3,7 @@
 
 import React from "react";
 import { Formik, FormikHelpers, Form, Field, FormikErrors } from "formik";
-import { createTicket_dispatch_type } from "../@types/tickets_type";
+import { createTicket_dispatch_type } from "../types/tickets_type";
 import auth0User from "../helpers/auth0User";
 import { useAppDispatch } from "../models/hooks";
 import { post_createTicket_actions } from "../models/reducers/tickets_slice";

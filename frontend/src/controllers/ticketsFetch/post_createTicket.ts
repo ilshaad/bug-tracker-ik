@@ -2,7 +2,7 @@ import backendApi_fetchInstance from "./../backendApi_fetchInstance";
 import catchHandler from "./../backendCatchHandler";
 import { v4 as uuidv4 } from "uuid";
 import timeStamp from "../../helpers/timeStamp";
-import { ticket_type } from "../../@types/tickets_type";
+import { ticket_type } from "../../types/tickets_type";
 
 /**
  * * Create a new ticket

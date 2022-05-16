@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import lizardImage from "../images/li.jpg";
+import lizardImage from "../public/images/li.jpg";
 
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
