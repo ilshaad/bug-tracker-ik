@@ -91,17 +91,17 @@ export default function ViewTicket(): JSX.Element | null {
 
       {/* <button>Edit ticket</button> */}
       <EditTicket_button
-        ticketSubmitted_by={ticket.submitted_by}
-        ticketAssigned_user={ticket.assigned_user}
+        ticketSubmitted_by={ticket?.submitted_by}
+        ticketAssigned_user={ticket?.assigned_user}
       />
 
       {/* <button>Delete Ticket</button> */}
-      <DeleteTicket_button ticketSubmitted_by={ticket.submitted_by} />
+      <DeleteTicket_button ticketSubmitted_by={ticket?.submitted_by} />
 
       {/* <button>Apply to assign for the ticket</button> */}
       <ApplyToAssignForTicket_button
-        ticketSubmitted_by={ticket.submitted_by}
-        ticketAssigned_user={ticket.assigned_user}
+        ticketSubmitted_by={ticket?.submitted_by}
+        ticketAssigned_user={ticket?.assigned_user}
       />
 
       {/* <button>Mark as Resolved</button> */}

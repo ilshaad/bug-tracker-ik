@@ -3,6 +3,10 @@ import LogoutButton from "../components/LogoutButton";
 import Profile from "../components/Profiles";
 import SeoReactHelmet from "../components/SeoReactHelmet";
 import Ticket_anchorLinkToTicket from "../components/Ticket_anchorLinkToTicket";
+import {
+  sortNameByAscendingOrder_array,
+  sortNameByDescendingOrder_array,
+} from "../helpers/sortByAlphabet";
 
 import { useAppSelector, useAppDispatch } from "../models/hooks";
 
@@ -14,6 +18,10 @@ export default function TicketList(): JSX.Element {
     if (Object.keys(ticketsList).length === 0) {
       return <h3>No tickets available</h3>;
     }
+
+    console.log(11);
+    console.log(ticketsList);
+    // const ticketListArray = Object.values(ticketsList);
 
     // array list of ticket list
     const arrayList: Array<JSX.Element> = [];
@@ -27,6 +35,7 @@ export default function TicketList(): JSX.Element {
         </li>
       );
     }
+
     return arrayList;
   };
 

@@ -82,12 +82,12 @@ export default function MarkAsResolvedOrPending_button({
   // while loading or user not logged in
   if (auth0UserObject === null) return null;
 
-  if (ticketObject.status === "Resolved") {
+  if (ticketObject?.status === "Resolved") {
     // check if user is authorized, submitted_by / assigned_user / admin
     if (
-      auth0UserObject.nickname === ticketObject.submitted_by ||
-      auth0UserObject.nickname === ticketObject.assigned_user ||
-      auth0UserObject.email === adminEmail
+      auth0UserObject?.nickname === ticketObject?.submitted_by ||
+      auth0UserObject?.nickname === ticketObject?.assigned_user ||
+      auth0UserObject?.email === adminEmail
     ) {
       return markAsResolvedOrPendingButton("Resolved", true);
     }
@@ -97,12 +97,12 @@ export default function MarkAsResolvedOrPending_button({
     }
   }
   // ticket is 'Pending status'
-  else if (ticketObject.status === "Pending") {
+  else if (ticketObject?.status === "Pending") {
     // check if user is authroieszed, submitted_by / assigned_user / admin
     if (
-      auth0UserObject.nickname === ticketObject.submitted_by ||
-      auth0UserObject.nickname === ticketObject.assigned_user ||
-      auth0UserObject.email === adminEmail
+      auth0UserObject?.nickname === ticketObject?.submitted_by ||
+      auth0UserObject?.nickname === ticketObject?.assigned_user ||
+      auth0UserObject?.email === adminEmail
     ) {
       return markAsResolvedOrPendingButton("Pending", true);
     }
