@@ -1,5 +1,9 @@
 // return array of objects with sorted prioirty alphabetically by ascending or decending
+//  - but also sorted by title order by using another sort naming function
 // First arguments must be array of objects containing the priority property
+
+import { ticket_type } from "../types/tickets_type";
+import { sortNameByAscendingOrder_array } from "./sortByAlphabet";
 
 type Props = {
   priority: string;
@@ -7,34 +11,63 @@ type Props = {
 };
 
 /****************** */
-// Ascending order a b c
+// Ascending order High > Medium > Low
 /****************** */
 export const sortPriorityByAscendingOrder_array = (
   arrayOfObjects: Array<Props>
 ) => {
-  const newArray = [...arrayOfObjects];
+  // sort array by name (alphabetically) first
+  // Using another sorting function (I created) to sort title order as name order
+  const titleSortOrder_array = sortNameByAscendingOrder_array(
+    arrayOfObjects,
+    "title"
+  );
 
-  // TODO
+  // separate array by three priorities (High / Medium / Low)
+  // * All the prop types here are basically array full of object item. The object is the ticket but for some reason error would occur in .map() if I used Array<ticket_type>
+  const High_array: Array<{}> = [];
+  const Medium_array: Array<any> = [];
+  const Low_array: {}[] = [];
 
-  // newArray.sort((a: Props, b: Props) =>
-  //   a.priority < b.priority ? -1 : 1
-  // );
+  titleSortOrder_array.map((item) => {
+    if (item.priority === "High") High_array.push(item);
 
-  return newArray;
+    if (item.priority === "Medium") Medium_array.push(item);
+
+    if (item.priority === "Low") Low_array.push(item);
+  });
+
+  // join the three priorities together in order of High > Medium > Low
+  return [...High_array, ...Medium_array, ...Low_array];
 };
 
 /****************** */
-// Descending order c b a
+// Descending order Low > Medium > High
 /****************** */
-export const sortNameByDescendingOrder_array = (
-  arrayOfObjects: Array<Props>,
-  targetedProperty: string
+export const sortPriorityByDescendingOrder_array = (
+  arrayOfObjects: Array<Props>
 ) => {
-  const newArray = [...arrayOfObjects];
-
-  newArray.sort((a: Props, b: Props) =>
-    a[targetedProperty] > b[targetedProperty] ? -1 : 1
+  // sort array by name (alphabetically) first
+  // Using another sorting function (I created) to sort title order as name order
+  const titleSortOrder_array = sortNameByAscendingOrder_array(
+    arrayOfObjects,
+    "title"
   );
 
-  return newArray;
+  // separate array by three priorities (Low / Medium / High)
+  // * All the prop types here are basically array full of object item. The object is the ticket but for some reason error would occur in .map() if I used Array<ticket_type>
+  const Low_array: {}[] = [];
+  const Medium_array: Array<any> = [];
+  const High_array: Array<{}> = [];
+
+  titleSortOrder_array.map((item) => {
+    if (item.priority === "Low") Low_array.push(item);
+
+    if (item.priority === "Medium") Medium_array.push(item);
+
+    if (item.priority === "High") High_array.push(item);
+  });
+
+  // join the three priorities together in order of Low > Medium > High
+  return [...Low_array, ...Medium_array, ...High_array];
 };

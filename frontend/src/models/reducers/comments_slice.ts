@@ -1,3 +1,11 @@
+/** List of actions creator:
+ * get_allCommentsForASingleTicket_actions(ticketId)
+ * post_createComments_actions(newComment)
+ * patch_updateComment_actions(commentObject)
+ * delete_deleteComments(comment_id)
+ * resetInitialComment_actions()  (non-thunk action creator)
+ */
+
 import {
   createAsyncThunk,
   createSlice,
