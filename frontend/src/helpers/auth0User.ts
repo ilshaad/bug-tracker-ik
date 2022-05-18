@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 
 // function type to return loading element or whatever while auth0 is loading or unauthenticated
 interface loadingCallback_type {
-  (): any;
+  (): unknown;
 }
 
 export default function auth0User(

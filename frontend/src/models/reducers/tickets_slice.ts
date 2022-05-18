@@ -1,3 +1,10 @@
+/** List of actions creators
+ * get_ticketList_actions()
+ * post_createTicket_actions( newTicket )
+ * patch_updateTicket_actions( updatedTicket )
+ * delete_deleteTicket_actions( ticket_id )
+ */
+
 import {
   createAsyncThunk,
   createSlice,
