@@ -1,9 +1,15 @@
 import React, { useEffect } from "react";
+import { Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { sortDateByOldestFirst_array } from "../helpers/sortByDate";
+import {
+  sortDateByNewestFirst_array,
+  sortDateByOldestFirst_array,
+} from "../helpers/sortByDate";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { get_allCommentsForASingleTicket_actions } from "../models/reducers/comments_slice";
+import { comment_type } from "../types/comments_type";
 import { ticket_type } from "../types/tickets_type";
+import CommentBox from "./CommentBox";
 
 type Props = { ticketId: string };
 
@@ -22,25 +28,33 @@ export default function DisplayCommentList({ ticketId }: Props) {
 
   // if there is 0 items in the array, than no one has written comments for this ticket
   if (comments_array.length === 0) {
-    return <h4>There are no comments for this ticket</h4>;
+    return <Row className="border">There are no comments for this ticket</Row>;
   }
 
-  // sort out date using the sortDateByOldestFirst_array helper function
-  const oldestDateFirst_array = sortDateByOldestFirst_array(comments_array);
+  // sort out date using the sortDateByNewestFirst_arry helper function
+  const newestDateFirst_array = sortDateByNewestFirst_array(comments_array);
 
-  // new jsx array with the sorted date array
-  const sortedOldestComments_Array = [];
+  // new jsx array with the sorted date array with newest first
+  const sortedNewestComments_array: Array<JSX.Element> = [];
 
-  for (let comment of oldestDateFirst_array) {
-    sortedOldestComments_Array.push(
-      <li key={comment.text_comment}>
-        <h4>{comment.name}</h4>
-        <p>{comment.email}</p>
-        <h5>{comment.text_comment}</h5>
-        <i>{comment.created_on}</i>
-      </li>
+  // create each jsx comment box individually
+  for (let comment of newestDateFirst_array) {
+    const commentObject: comment_type = {
+      comment_id: comment.comment_id,
+      text_comment: comment.text_comment,
+      created_on: comment.created_on,
+      ticket_id: comment.ticket_id,
+      name: comment.name,
+      email: comment.email,
+    };
+
+    sortedNewestComments_array.push(
+      <CommentBox
+        key={commentObject.comment_id}
+        commentObject={commentObject}
+      />
     );
   }
 
-  return <ul>{sortedOldestComments_Array}</ul>;
+  return <Container>{sortedNewestComments_array}</Container>;
 }

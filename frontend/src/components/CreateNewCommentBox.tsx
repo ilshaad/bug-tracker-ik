@@ -5,12 +5,14 @@ type Props = {
   showCreateCommentBox: boolean;
   setShowCreateCommentBox: Function;
   auth0UserObject: any;
+  ticket_id: string;
 };
 
 export default function CreateNewCommentBox({
   showCreateCommentBox,
   setShowCreateCommentBox,
   auth0UserObject,
+  ticket_id,
 }: Props) {
   if (showCreateCommentBox) {
     return (
@@ -20,9 +22,8 @@ export default function CreateNewCommentBox({
         <CreateNewCommentBox_textarea
           setShowCreateCommentBox={setShowCreateCommentBox}
           auth0UserObject={auth0UserObject}
+          ticket_id={ticket_id}
         />
-        <button>add comment</button>
-        <button>cancel</button>
       </div>
     );
   }

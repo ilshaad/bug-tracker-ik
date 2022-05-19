@@ -80,6 +80,7 @@ export default function ViewTicket(): JSX.Element | null {
         showCreateCommentBox={showCreateCommentBox}
         setShowCreateCommentBox={setShowCreateCommentBox}
         auth0UserObject={auth0UserObject}
+        ticket_id={ticket?.ticket_id}
       />
     </div>
   );

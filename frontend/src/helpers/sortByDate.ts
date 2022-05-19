@@ -4,7 +4,7 @@
 //    -iK however I think you might have to parse the timestamp first & remove T & Z from the date, but will only know when tested
 //  - you can replace created_on to match the correct property date within this function if need be
 type Props = {
-  created_on: string | number;
+  created_on: string;
   [otherProperties: string | number]: any;
 };
 
