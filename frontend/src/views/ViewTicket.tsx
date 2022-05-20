@@ -39,9 +39,6 @@ export default function ViewTicket(): JSX.Element | null {
         metaKeywordsContent="view ticket and etc"
       />
 
-      {/* toast message whenever user update ticket in some way */}
-      <Message_toast />
-
       <h1>view ticket</h1>
       {/* Show all the ticket info */}
       <DisplayTicket ticket={ticket} />
@@ -65,8 +62,6 @@ export default function ViewTicket(): JSX.Element | null {
       <MarkAsResolvedOrPending_button ticketObject={ticket} />
 
       <h2>comments</h2>
-      {/* display all the comments under the ticket info */}
-      <DisplayCommentList ticketId={ticket?.ticket_id!} />
 
       {/* button to user if they want to create a new comment */}
       <CreateNewComment_button
@@ -82,6 +77,12 @@ export default function ViewTicket(): JSX.Element | null {
         auth0UserObject={auth0UserObject}
         ticket_id={ticket?.ticket_id}
       />
+
+      {/* display all the comments under the ticket info */}
+      <DisplayCommentList ticketId={ticket?.ticket_id!} />
+
+      {/* toast message whenever user update ticket in some way */}
+      <Message_toast />
     </div>
   );
 } //END ViewTicket component

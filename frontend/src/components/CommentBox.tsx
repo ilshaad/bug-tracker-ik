@@ -36,21 +36,19 @@ export default function CommentBox({ commentObject }: Props) {
         commentEmail={email}
       />
 
-      {/* User can update their comment with this textarea form */}
+      {/* User can update their comment with this textarea form when they click on the edit button*/}
       <EditComment_textarea
         displayEditCommentBox={displayEditCommentBox}
         setDisplayEditCommentBox={setDisplayEditCommentBox}
         commentObject={commentObject}
       />
 
-      {/* delete button - DeleteComment_button */}
+      {/* delete button only presented to user or admin & will open confirmation modal to user for deletion of comment */}
       <DeleteComment_button
         auth0UserObject={auth0UserObject}
         commentEmail={email}
         commentId={comment_id}
       />
-
-      {/* delete textbox - DeleteComment_form */}
     </Row>
   );
 }

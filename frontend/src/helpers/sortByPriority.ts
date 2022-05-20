@@ -6,8 +6,8 @@ import { ticket_type } from "../types/tickets_type";
 import { sortNameByAscendingOrder_array } from "./sortByAlphabet";
 
 type Props = {
-  priority: string;
-  [anyProperties: string | number]: any;
+  [anyProperties: string]: any;
+  priority?: string;
 };
 
 /****************** */

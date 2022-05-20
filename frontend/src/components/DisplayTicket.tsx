@@ -11,7 +11,7 @@ export default function DisplayTicket({ ticket }: Props) {
   }
 
   return (
-    <>
+    <div>
       <h1>ViewTicket:ticketid PAGE</h1>
       <h2>title: {ticket.title}</h2>
       <code>description: {ticket.description}</code>
@@ -23,6 +23,6 @@ export default function DisplayTicket({ ticket }: Props) {
       <h4>admin only changes</h4>
       <p>submitted_by: {ticket.submitted_by}</p>
       <p>created_on: {ticket.created_on}</p>
-    </>
+    </div>
   );
 }

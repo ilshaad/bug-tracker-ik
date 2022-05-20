@@ -1,4 +1,4 @@
-// display delete button to open textarea commentbox for user to delete
+// display delete button to open delete comment confirmation modal for user (& admin) to delete comment
 // - only for user & admin
 //  - the comment must belong to user for them to be able to delete the comment
 
@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useAppDispatch } from "../models/hooks";
 import { delete_deleteComment_actions } from "../models/reducers/comments_slice";
+import DeleteCommentConfirmation_modal from "./DeleteCommentConfirmation_modal";
 
 type Props = {
   auth0UserObject: any;
@@ -18,41 +19,26 @@ export default function DeleteComment_button({
   commentEmail,
   commentId,
 }: Props) {
-  const dispatch = useAppDispatch();
-
   const userObject = auth0UserObject;
   const adminEmail = process.env.ADMIN_EMAIL;
 
-  // display the delete form textbox
-  const [displayDeleteConfirmation_modal, setDisplayDeleteConfirmation_modal] =
-    useState<boolean>(false);
-
-  // onClick event for the delete button
-  const onDeleteButton = () => {
-    console.log("onDeleteButton");
-    // dispatch(delete_deleteComment_actions(commentId))
-    //   .then((res) => {
-    //     console.log(res);
-
-    //     // if deleted is rejected
-    //     if (res.type === "delete/deleteComment/rejected") {
-    //       // TODO
-    //     }
-    //   }) //END thenable handler delete_deleteComment_actions
-    //   .catch((error) => {
-    //     console.log(error);
-    // }); //END catch handler delete_deleteComment_actions
-  }; //END onDeleteButton
+  // boolean state for displaying the delete comment confirmation modal to the user
+  const [
+    displayDeleteCommentConfirmation_modal,
+    setDisplayDeleteCommentConfirmation_modal,
+  ] = useState<boolean>(false);
 
   // delete button jsx
   const deleteButton = () => (
     <div>
-      <Button onClick={onDeleteButton}>ENABLED delete comment</Button>
+      <Button onClick={() => setDisplayDeleteCommentConfirmation_modal(true)}>
+        ENABLED delete comment
+      </Button>
     </div>
   ); //END deletebutton
 
-  // if delete comment textarea is not open than check comment belongs to user or user is admin
-  if (!displayDeleteConfirmation_modal) {
+  // if delete comment confirmation modal state is false than check comment belongs to user or user is admin & return the delete button
+  if (!displayDeleteCommentConfirmation_modal) {
     // check if comment belongs to user
     if (commentEmail === userObject.email) return deleteButton();
 
@@ -62,7 +48,23 @@ export default function DeleteComment_button({
     // everything else return null
     return null;
   }
+  // if delete comment confirmation modal is true then return the react-bootstrap modal component
+  else if (displayDeleteCommentConfirmation_modal) {
+    return (
+      <div>
+        <DeleteCommentConfirmation_modal
+          displayDeleteCommentConfirmation_modal={
+            displayDeleteCommentConfirmation_modal
+          }
+          setDisplayDeleteCommentConfirmation_modal={
+            setDisplayDeleteCommentConfirmation_modal
+          }
+          commentId={commentId}
+        />
+      </div>
+    );
+  }
 
-  // null if delete textarea is currently showing
+  // null for everything else
   return null;
 }

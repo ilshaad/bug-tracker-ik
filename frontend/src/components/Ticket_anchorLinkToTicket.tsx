@@ -1,3 +1,5 @@
+// ! I am not sure this is being used & perhaps could be deleted afterwards
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { ticket_type } from "../types/tickets_type";
