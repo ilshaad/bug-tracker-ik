@@ -61,8 +61,10 @@ export default function ApplyToAssignForTicket_button({
 
   // return enabled button if user nickname does not matches the ticket submitted_by or assigned_user name
   if (
-    auth0UserObject.nickname !== ticketSubmitted_by &&
-    auth0UserObject.nickname !== ticketAssigned_user
+    auth0UserObject.nickname?.toLowerCase() !==
+      ticketSubmitted_by?.toLowerCase() &&
+    auth0UserObject.nickname?.toLowerCase() !==
+      ticketAssigned_user?.toLowerCase()
   )
     return ApplyToAssignedButton(true);
 

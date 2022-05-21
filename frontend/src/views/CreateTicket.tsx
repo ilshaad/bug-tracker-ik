@@ -6,9 +6,9 @@ export default function CreateTicket(): JSX.Element {
   return (
     <div>
       <SeoReactHelmet
-        pageTitle="coming from Create ticket"
-        metaDescriptionContent="mDescContent-createticket"
-        metaKeywordsContent="createticket & etc"
+        pageTitle="Create ticket / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali"
+        metaDescriptionContent="Create ticket / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali"
+        metaKeywordsContent="Create ticket Bug Tracker RechadSalma ilshaad Kheerdali"
       />
 
       <h1>CreateTicket PAGE</h1>

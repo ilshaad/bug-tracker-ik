@@ -44,7 +44,10 @@ export default function DeleteTicket_button({ ticketSubmitted_by }: Props) {
   if (auth0UserObject.email === adminEmail) return deleteButton(true);
 
   // return button if user nickname matches the ticket submitted_by name
-  if (auth0UserObject.nickname === ticketSubmitted_by)
+  if (
+    auth0UserObject.nickname?.toLowerCase() ===
+    ticketSubmitted_by?.toLowerCase()
+  )
     return deleteButton(true);
 
   // return null if all fails

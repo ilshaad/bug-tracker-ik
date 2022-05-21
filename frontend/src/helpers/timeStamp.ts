@@ -3,7 +3,7 @@
 export default () => {
   const date = new Date();
   let year = date.getFullYear(),
-    month = date.getMonth(),
+    month = date.getMonth() + 1, //get.Month() starts from 0 index
     day = date.getDate(),
     hour = date.getHours(),
     min = date.getMinutes(),

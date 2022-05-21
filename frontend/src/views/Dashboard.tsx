@@ -20,6 +20,9 @@ import {
   nullTheMessageToast_actions,
 } from "../models/reducers/messageToast_slice";
 import Message_toast from "../components/Message_toast";
+import DisplayAssignedTicketsList_table from "../components/DisplayAssignedTicketsList_table";
+import { ticket_type } from "../types/tickets_type";
+import DisplaySubmittedTicketsList_table from "../components/DisplaySubmittedTicketsList_table";
 
 export default function Dashboard(): JSX.Element {
   const auth0UserObject = auth0User(
@@ -27,8 +30,38 @@ export default function Dashboard(): JSX.Element {
     (userObject) => userObject
   );
 
-  const ticketList = useAppSelector((state) => {
-    return state.tickets;
+  // Array of tickets that user is assigned (assigned_user) to only
+  // use for passing to DisplayAssignedTicketsList_table component props
+  const userAssignedTickets_array: Array<ticket_type> = [];
+
+  // Array of tickets that user is sumbitted (submitted_by) to only
+  // use for passing to DisplaySubmittedTicketsList_table component props
+  const userSubmittedTickets_array: Array<ticket_type> = [];
+
+  // cycle through the tickets to get user assigned & submitted tickets
+  // remember the state ticket is an object with property name of ticket_id, which than finally contain the ticket object
+  useAppSelector((state) => {
+    // removing the object wrapper container the property name of ticket_id & converting it straightup into a array of ticket objects
+    const ticketsList_array = Object.values(state.tickets);
+
+    ticketsList_array.forEach((ticket) => {
+      // check if user is assigned to the ticket
+      if (
+        ticket.assigned_user?.toLowerCase() ===
+        auth0UserObject.nickname?.toLowerCase()
+      ) {
+        // place all the user assigned tickets to userAssignedTickets_array
+        userAssignedTickets_array.push(ticket);
+      }
+
+      if (
+        ticket.submitted_by?.toLowerCase() ===
+        auth0UserObject.nickname?.toLowerCase()
+      ) {
+        // place all the user submitted tickets to userSubmittedTickets_array
+        userSubmittedTickets_array.push(ticket);
+      }
+    });
   });
 
   const dispatch = useAppDispatch();
@@ -41,104 +74,12 @@ export default function Dashboard(): JSX.Element {
     return auth0UserObject.nickname;
   };
 
-  // return assigned_user list that the user is assigned to
-  const listOfUserAssignedTickets = () => {
-    if (auth0UserObject === null) return <div>...loading</div>;
-
-    const userAssignedTickets = [];
-
-    for (let ticketIdKey in ticketList) {
-      const {
-        ticket_id,
-        title,
-        description,
-        submitted_by,
-        priority,
-        assigned_user,
-        status,
-        app_name,
-        app_version,
-        created_on,
-      } = ticketList[ticketIdKey];
-
-      if (assigned_user === auth0UserObject.nickname) {
-        // title / description / submitted_by / priority / assigned_user / status / app_name / app_version / created_on
-        const li = (
-          <li key={ticket_id}>
-            title:{" "}
-            <Ticket_anchorLinkToTicket ticket={ticketList[ticketIdKey]} /> /
-            description: {description}, / submitted_by: {submitted_by} /
-            priority: {priority} / assigned_user: {assigned_user} / status:{" "}
-            {status} / app_name: {app_name} / app_version: {app_version} /
-            created_on: {created_on}
-          </li>
-        );
-
-        userAssignedTickets.push(li);
-      }
-    }
-
-    // user has no assigned tickets
-    if (userAssignedTickets.length === 0)
-      return <div>You have no assigned tickets</div>;
-
-    // return list of user assigned tickets
-    return <ul>{userAssignedTickets}</ul>;
-  }; //END listOfUserAssignedTickets
-
-  // return submitted_by list that the user is assigned to
-  const listOfUserSubmittedTickets = () => {
-    if (auth0UserObject === null) return <div>...loading</div>;
-
-    const userSubmittedTickets = [];
-
-    for (let ticketIdKey in ticketList) {
-      const {
-        ticket_id,
-        title,
-        description,
-        submitted_by,
-        priority,
-        assigned_user,
-        status,
-        app_name,
-        app_version,
-        created_on,
-      } = ticketList[ticketIdKey];
-
-      if (submitted_by === auth0UserObject.nickname) {
-        // title / description / submitted_by / priority / assigned_user / status / app_name / app_version / created_on
-        const li = (
-          <li key={ticket_id}>
-            title:{" "}
-            <Ticket_anchorLinkToTicket ticket={ticketList[ticketIdKey]} /> /
-            description: {description}, / submitted_by: {submitted_by} /
-            priority: {priority} / assigned_user: {assigned_user} / status:{" "}
-            {status} / app_name: {app_name} / app_version: {app_version} /
-            created_on: {created_on}
-          </li>
-        );
-
-        userSubmittedTickets.push(li);
-      }
-    }
-
-    // console.log(userSubmittedTickets);
-
-    // user has not submitted tickets
-    if (userSubmittedTickets.length === 0)
-      return <div>You have no submitted tickets</div>;
-
-    // return user list of submitted tickets
-    return <ul>{userSubmittedTickets}</ul>;
-  }; //END listOfUserSubmittedTickets
-
   return (
     <div>
       <SeoReactHelmet
-        pageTitle="coming from Dashoard"
-        metaDescriptionContent="mDescContent-dashboard"
-        metaKeywordsContent="dashboard & etc"
+        pageTitle="Dashboard / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali"
+        metaDescriptionContent="Dashboard / Bug Tracker - Dashboard - Github user: RechadSalma | Developer: ilshaad Kheerdali"
+        metaKeywordsContent="Dashboard Bug Tracker RechadSalma ilshaad Kheerdali"
       />
 
       {/* message toast for user confirmation such as success or failure in creating a ticket */}
@@ -148,12 +89,21 @@ export default function Dashboard(): JSX.Element {
 
       <div className="container">
         <h2>display assigned user tickets</h2>
-        {listOfUserAssignedTickets()}
+        {/* {listOfUserAssignedTickets()} */}
+        <DisplayAssignedTicketsList_table
+          userAssignedTickets_array={userAssignedTickets_array}
+          auth0UserObject={auth0UserObject}
+        />
       </div>
 
       <div className="container">
         <h2>display submitted_by tickets</h2>
-        {listOfUserSubmittedTickets()}
+        {/* {listOfUserSubmittedTickets()} */}
+
+        <DisplaySubmittedTicketsList_table
+          userSubmittedTickets_array={userSubmittedTickets_array}
+          auth0UserObject={auth0UserObject}
+        />
       </div>
 
       <div>

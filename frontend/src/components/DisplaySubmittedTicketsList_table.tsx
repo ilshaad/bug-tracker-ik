@@ -1,17 +1,12 @@
-// display ticket lists in a table using react-bootstrap table
-// In the table show: title / priority / assigned_user / status / app_name / app_version / submitted_by / created_on
-// - not showing ticket_id / description
+// display user assigned ticket lists in a table using react-bootstrap table
+// In the table show: title / priority / status / app_name / app_version / submitted_by / created_on
+// - not showing ticket_id / description / assigned_user
 // the tickets will be listed by title ascending order first, & than user can choose to rearrange sort option if they wish to
 
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import { Table } from "react-bootstrap";
-import { useAppSelector } from "../models/hooks";
-import Ticket_anchorLinkToTicket from "./Ticket_anchorLinkToTicket";
-import {
-  sortPriorityByAscendingOrder_array,
-  sortPriorityByDescendingOrder_array,
-} from "../helpers/sortByPriority";
+import { useNavigate } from "react-router-dom";
+import auth0User from "../helpers/auth0User";
 import {
   sortNameByAscendingOrder_array,
   sortNameByDescendingOrder_array,
@@ -20,22 +15,26 @@ import {
   sortDateByNewestFirst_array,
   sortDateByOldestFirst_array,
 } from "../helpers/sortByDate";
-import timeStamp from "../helpers/timeStamp";
+import {
+  sortPriorityByAscendingOrder_array,
+  sortPriorityByDescendingOrder_array,
+} from "../helpers/sortByPriority";
+import { ticket_type } from "../types/tickets_type";
 
-type Props = {};
+type Props = {
+  userSubmittedTickets_array: ticket_type[];
+  auth0UserObject: any;
+};
 
-export default function DisplayTicketsList_table({}: Props) {
+export default function DisplaySubmittedTicketsList_table({
+  userSubmittedTickets_array,
+  auth0UserObject,
+}: Props) {
   const navigate = useNavigate();
-
-  // remember it is an object with property name of ticket_id, which than finally contain the ticket object
-  const ticketsList_dictionary = useAppSelector((state) => state.tickets);
-
-  // removing the object wrapper container the property name of ticket_id & converting it straightup into a array of ticket objects
-  const ticketsList_array = Object.values(ticketsList_dictionary);
 
   // set fold page to display ticket with title sort tickets first
   const titleSortFirst = sortNameByAscendingOrder_array(
-    ticketsList_array,
+    userSubmittedTickets_array,
     "title"
   );
 
@@ -152,7 +151,7 @@ export default function DisplayTicketsList_table({}: Props) {
           <td>{ticketObject.status}</td>
           <td>{ticketObject.app_name}</td>
           {/* <td>{ticketObject.app_version}</td> */}
-          <td>{ticketObject.submitted_by}</td>
+          {/* <td>{ticketObject.submitted_by}</td> */}
           <td>{ticketObject.assigned_user}</td>
           <td>{ticketObject.created_on}</td>
         </tr>
@@ -163,8 +162,13 @@ export default function DisplayTicketsList_table({}: Props) {
   }; // END tableBody
 
   // if redux reducer tickets list is empty (meaning no tickets at all) than return statement to user
-  if (Object.keys(ticketsList_dictionary).length === 0) {
-    return <h3>No tickets available</h3>;
+  // also if there is an error
+  if (
+    userSubmittedTickets_array.length === 0 ||
+    !userSubmittedTickets_array ||
+    auth0UserObject === null
+  ) {
+    return <h3>You have no submitted tickets</h3>;
   }
 
   return (
@@ -178,9 +182,9 @@ export default function DisplayTicketsList_table({}: Props) {
           {/* <th onClick={() => ticketSortByAlphabet("app_version")}>
             App version number
           </th> */}
-          <th onClick={() => ticketSortByAlphabet("submitted_by")}>
+          {/* <th onClick={() => ticketSortByAlphabet("submitted_by")}>
             Submitted by
-          </th>
+          </th> */}
           <th onClick={() => ticketSortByAlphabet("assigned_user")}>
             Assigned user
           </th>

@@ -3,6 +3,7 @@ import catchHandler from "./../backendCatchHandler";
 import { v4 as uuidv4 } from "uuid";
 import timeStamp from "../../helpers/timeStamp";
 import { ticket_type } from "../../types/tickets_type";
+import capitaliseString from "../../helpers/capitaliseString";
 
 /**
  * * Create a new ticket
@@ -16,6 +17,13 @@ import { ticket_type } from "../../types/tickets_type";
  */
 // post_createTicket
 export default (newTicket: ticket_type) => {
+  // capitalise some of the values
+  newTicket.title = capitaliseString(newTicket.title);
+  newTicket.description = capitaliseString(newTicket.description);
+  // newTicket.assigned_user = capitaliseString(newTicket.assigned_user);
+  newTicket.app_name = capitaliseString(newTicket.app_name);
+  // newTicket.submitted_by = capitaliseString(newTicket.submitted_by);
+
   return backendApi_fetchInstance()
     .post("/api/ticket/create", { ...newTicket })
     .then((res) => {

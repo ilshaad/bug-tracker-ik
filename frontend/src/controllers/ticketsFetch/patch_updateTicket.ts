@@ -1,6 +1,7 @@
 import backendApi_fetchInstance from "./../backendApi_fetchInstance";
 import catchHandler from "./../backendCatchHandler";
 import { ticket_type } from "../../types/tickets_type";
+import capitaliseString from "../../helpers/capitaliseString";
 
 /**
  * * update a ticket
@@ -16,7 +17,13 @@ import { ticket_type } from "../../types/tickets_type";
  */
 // patch_updateTicket
 export default (updateTicket: ticket_type) => {
-  // console.log(updateTicket);
+  // capitalise some of the values
+  updateTicket.title = capitaliseString(updateTicket.title);
+  updateTicket.description = capitaliseString(updateTicket.description);
+  // updateTicket.assigned_user = capitaliseString(updateTicket.assigned_user);
+  updateTicket.app_name = capitaliseString(updateTicket.app_name);
+  // updateTicket.submitted_by = capitaliseString(updateTicket.submitted_by);
+
   return backendApi_fetchInstance()
     .patch("/api/ticket/" + updateTicket.ticket_id, {
       ...updateTicket,

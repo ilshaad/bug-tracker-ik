@@ -8,7 +8,7 @@ import "./public/styles/global.scss";
 
 import store from "./models/store";
 
-// * uncomment service worker when you ready to enable workbox pwa within webpack config files
+// * uncomment service worker when you want to use pwa & workbox, be sure to configure the webpack config file too
 // if ("serviceWorker" in navigator) {
 //   window.addEventListener("load", () => {
 //     navigator.serviceWorker

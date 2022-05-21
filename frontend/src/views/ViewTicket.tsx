@@ -34,9 +34,9 @@ export default function ViewTicket(): JSX.Element | null {
   return (
     <div>
       <SeoReactHelmet
-        pageTitle="coming from view ticket"
-        metaDescriptionContent="mDescContent-view ticket"
-        metaKeywordsContent="view ticket and etc"
+        pageTitle={`${ticket?.title} / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali`}
+        metaDescriptionContent={`${ticket?.title} / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali`}
+        metaKeywordsContent={`${ticket?.title} Bug Tracker RechadSalma ilshaad Kheerdali`}
       />
 
       <h1>view ticket</h1>

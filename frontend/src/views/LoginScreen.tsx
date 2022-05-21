@@ -29,9 +29,9 @@ export default function LoginScreen({}: Props) {
   return (
     <div>
       <SeoReactHelmet
-        pageTitle="coming from login screen "
-        metaDescriptionContent="mDescContent-login screen"
-        metaKeywordsContent="login screen & etc"
+        pageTitle="Login screen / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali"
+        metaDescriptionContent="Login screen / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali"
+        metaKeywordsContent="Login screen Bug Tracker RechadSalma ilshaad Kheerdali"
       />
 
       <code>iK LoginScreen component!!</code>

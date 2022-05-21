@@ -61,14 +61,16 @@ module.exports = {
       filename: "styles.[contenthash].css",
     }),
 
+    // Seo is done for the fold page but than React-Helmet will take over
     new HtmlWebpackPlugin({
-      title: "03 production javascript webapck template",
+      title:
+        "Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali",
       template: "src/index.hbs",
       meta: {
         viewport: "width=device-width, initial-scale=1",
-        description: "iK SEO describe",
-        keywords:
-          "iK SEO keywords, however it might not be necessary because it counts for little for google",
+        description:
+          "Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali",
+        keywords: "Bug Tracker RechadSalma ilshaad Kheerdali",
       },
       publicPath: "/",
     }),

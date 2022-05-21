@@ -17,7 +17,9 @@ export const sortNameByAscendingOrder_array = (
   const newArray = [...arrayOfObjects];
 
   newArray.sort((a: Props, b: Props) =>
-    a[targetedProperty] < b[targetedProperty] ? -1 : 1
+    a[targetedProperty].toLowerCase() < b[targetedProperty].toLowerCase()
+      ? -1
+      : 1
   );
 
   return newArray;
@@ -33,7 +35,9 @@ export const sortNameByDescendingOrder_array = (
   const newArray = [...arrayOfObjects];
 
   newArray.sort((a: Props, b: Props) =>
-    a[targetedProperty] > b[targetedProperty] ? -1 : 1
+    a[targetedProperty].toLowerCase() > b[targetedProperty].toLowerCase()
+      ? -1
+      : 1
   );
 
   return newArray;

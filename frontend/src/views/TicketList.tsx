@@ -9,9 +9,9 @@ export default function TicketList(): JSX.Element {
   return (
     <div>
       <SeoReactHelmet
-        pageTitle="coming from ticket list"
-        metaDescriptionContent="mDescContent-ticket list"
-        metaKeywordsContent="ticket list and etc"
+        pageTitle="Tickets list / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali"
+        metaDescriptionContent="Tickets list / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali"
+        metaKeywordsContent="Tickets list Bug Tracker RechadSalma ilshaad Kheerdali"
       />
 
       <h1>TicketList PAGE</h1>
