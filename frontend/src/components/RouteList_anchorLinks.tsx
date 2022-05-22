@@ -38,7 +38,10 @@ export default function RouteList_anchorLinks({}: Props) {
         <Link to="/ticketlist">ticketlist</Link>
       </li>
 
-      {devModeLinks()}
+      {/** !! UNCOMMENT FOR DEVMODE TO DISPLAY OTHER ROUTES FOR TESTING
+       * also uncomment the devRoute() callback in App.tsx to get the routes to work
+       */}
+      {/* {devModeLinks()} */}
     </>
   );
 }

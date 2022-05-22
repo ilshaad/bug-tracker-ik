@@ -5,7 +5,7 @@
 @import "../../../node_modules/bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
-$primary: #9fffc8;
+$primary: #29c86e;
 // $secondary: #ffffff;
 $secondary: #d2da43;
 
@@ -25,11 +25,11 @@ $secondary: #d2da43;
 @import "../../../node_modules/bootstrap/scss/tables";
 @import "../../../node_modules/bootstrap/scss/forms";
 @import "../../../node_modules/bootstrap/scss/buttons";
-// @import "../../../node_modules/bootstrap/scss/transitions";
-// @import "../../../node_modules/bootstrap/scss/dropdown";
+@import "../../../node_modules/bootstrap/scss/transitions";
+@import "../../../node_modules/bootstrap/scss/dropdown";
 // @import "../../../node_modules/bootstrap/scss/button-group";
-// @import "../../../node_modules/bootstrap/scss/nav";
-// @import "../../../node_modules/bootstrap/scss/navbar";
+@import "../../../node_modules/bootstrap/scss/nav";
+@import "../../../node_modules/bootstrap/scss/navbar";
 @import "../../../node_modules/bootstrap/scss/card";
 // @import "../../../node_modules/bootstrap/scss/accordion";
 // @import "../../../node_modules/bootstrap/scss/breadcrumb";

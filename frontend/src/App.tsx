@@ -71,7 +71,10 @@ const App = () => {
         <Route path="/ticketlist" element={<TicketList_Auth />} />
         <Route path="/viewticket/:ticketid" element={<ViewTicket_Auth />} />
 
-        {devRoutes()}
+        {/** !! UNCOMMENT FOR DEVMODE TO DISPLAY OTHER ROUTES FOR TESTING
+         * also uncomment the devModeLinks() callback in components/RouteList_anchorLinks.tsx to get the links to work
+         */}
+        {/* {devRoutes()} */}
 
         {/* <Route
           path="*"
