@@ -13,6 +13,7 @@ import { post_createComments_action } from "../models/reducers/comments_slice";
 import { createComment_dispatch_type } from "../types/comments_type";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
 import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
+import capitaliseString from "../helpers/capitaliseString";
 
 type Props = {
   setShowCreateCommentBox: Function;
@@ -41,10 +42,17 @@ export default function CreateNewCommentBox_textarea({
         createComment: "",
       }}
       onSubmit={(values) => {
+        // if user is 'guest' than capitalise first letter otherwise keep as is
+        let username = auth0UserObject?.nickname;
+
+        if (username === "guest") {
+          username = "Guest";
+        }
+
         // setup the created comment to the comment object
         const commentObject: createComment_dispatch_type = {
           ticket_id: ticket_id,
-          name: auth0UserObject?.nickname,
+          name: username,
           email: auth0UserObject.email,
           text_comment: values.createComment,
         };

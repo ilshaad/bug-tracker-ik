@@ -40,7 +40,7 @@ body,
 // * Setup up Outer-grid of the screen (OuterGrid.tsx component)
 #OuterGrid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
   grid-auto-rows: 60px auto;
   grid-template-areas:
     "OG-header"

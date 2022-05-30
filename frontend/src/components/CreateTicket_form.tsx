@@ -10,6 +10,7 @@ import { post_createTicket_actions } from "../models/reducers/tickets_slice";
 import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
 import { useNavigate } from "react-router-dom";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
+import capitaliseString from "../helpers/capitaliseString";
 
 // ticket_id / title / description / submitted_by / priority / assigned_user / status / app_name / app_version / created_on
 
@@ -92,11 +93,22 @@ export default function CreateTicket_form({}: Props) {
           if (ticketObject.assigned_user === "") {
             ticketObject.assigned_user = "Unassigned";
           }
+          // if user types 'guest' as assigned user, than capitalise first letter to 'Guest'
+          else if (ticketObject.assigned_user === "guest") {
+            ticketObject.assigned_user = "Guest";
+          }
 
           // only the admin can change the submitted_by property
           // if empty string than user auth0 nickname will become default value
           if (ticketObject.submitted_by === "") {
-            ticketObject.submitted_by = auth0UserObject.nickname;
+            // if the user is 'guest' than save it as 'Guest' with capital first letter
+            if (auth0UserObject.nickname === "guest") {
+              ticketObject.submitted_by = "Guest";
+            }
+            // if user is not 'guest' user than save the user name as is
+            else {
+              ticketObject.submitted_by = auth0UserObject.nickname;
+            }
           }
 
           // POST created ticket to ss psql & if successful than include new ticket to redux tickets store too

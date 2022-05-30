@@ -95,6 +95,11 @@ export default function EditTicket_form({ closeModal_function }: Props) {
           console.log(ticketObject);
           console.log(333);
 
+          // if user assigned guest as 'guest', than capitalise first letter
+          if (ticketObject.assigned_user === "guest") {
+            ticketObject.assigned_user = "Guest";
+          }
+
           // PATCH edited ticket to ss psql & if successful update than include updated ticket to redux tickets store too
           // using redux action to complete the task
           dispatch(patch_updateTicket_actions(ticketObject))
