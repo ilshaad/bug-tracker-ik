@@ -8,6 +8,13 @@ import lizard from "../public/images/li.jpg";
 import RouteList_anchorLinks from "./RouteList_anchorLinks";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import LoadSpinner from "./LoadSpinner";
+import Image_responsive from "./Image_responsive";
+import buglogo575 from "../public/images/Bug-Tracker-575.jpg";
+import buglogo767 from "../public/images/Bug-Tracker-767.jpg";
+import buglogo991 from "../public/images/Bug-Tracker-991.jpg";
+import buglogo1199 from "../public/images/Bug-Tracker-1199.jpg";
+import buglogo1399 from "../public/images/Bug-Tracker-1399.jpg";
 
 type Props = {};
 
@@ -27,17 +34,22 @@ export default function Header({}: Props) {
     // logout,
   } = useAuth0<any>();
 
+  // display user name
   const displayUserName = () => {
     if (isLoading) {
-      return <div>Loading ...</div>;
+      return <LoadSpinner colour="light" />;
     }
 
     if (isAuthenticated) {
-      return <div className="col">{user.nickname}</div>;
+      if (user.nickname === "guest") {
+        return "Guest";
+      } else {
+        return user.nickname;
+      }
     } else {
       return null;
     }
-  };
+  }; //END displayUserName()
 
   return (
     <Navbar
@@ -46,34 +58,65 @@ export default function Header({}: Props) {
       expand="sm"
       bg="primary"
       variant="dark"
+      className="border-bottom border-dark border-3"
     >
-      <Container>
+      <Container fluid={true}>
         <Navbar.Brand>
           <Link to="/">
-            <img
+            {/* <img
               src={lizard}
               alt="lizard"
               className="col"
               style={{ width: "25px" }}
-            />
+            /> */}
+            <div className="header-logo" style={{ width: "50px" }}>
+              <Image_responsive
+                imageSrc={buglogo575}
+                // img767={buglogo767}
+                // img991={buglogo991}
+                // img1199={buglogo1199}
+                // img1399={buglogo1399}
+                altString="bug tracker logo"
+                // style={{ width: "60px" }}
+              />
+            </div>
           </Link>
+        </Navbar.Brand>
+        <Navbar.Brand className="w-100">
+          <div id="Header-userName">
+            <span className="fs-6">logged in as:</span>&nbsp;{displayUserName()}
+          </div>
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
-          className="d-sm-none"
+          className="d-sm-none "
         />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto d-sm-none">
             {/* <Nav.Link className="bg-primary text-danger" href="#features">
               Features
             </Nav.Link> */}
-            <Link to="/" className="bg-secondary text-danger">
+
+            {/* <div className="bg-primary text-light p-0 border border-dark border-2 rounded text-decoration-none fs-6">
+              Logged in as:
+            </div> */}
+
+            <Link
+              to="/"
+              className="bg-secondary text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold"
+            >
               My dashboard
             </Link>
-            <Link to="/ticketlist" className="bg-secondary text-danger">
+            <Link
+              to="/ticketlist"
+              className="bg-secondary text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold"
+            >
               Ticket lists
             </Link>
-            <Link to="/createticket" className="bg-secondary text-danger">
+            <Link
+              to="/createticket"
+              className="bg-secondary text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold"
+            >
               Create ticket
             </Link>
 

@@ -5,10 +5,12 @@
 @import "../../../node_modules/bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
-$primary: #29c86e;
+$primary: #123e24;
 // $secondary: #ffffff;
-$secondary: #d2da43;
-
+$secondary: #207846;
+// $primary: #30b96b;
+// // $secondary: #ffffff;
+// $secondary: #195b35;
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../../node_modules/bootstrap/scss/variables";
 @import "../../../node_modules/bootstrap/scss/mixins";
@@ -44,7 +46,7 @@ $secondary: #d2da43;
 @import "../../../node_modules/bootstrap/scss/tooltip";
 // @import "../../../node_modules/bootstrap/scss/popover";
 // @import "../../../node_modules/bootstrap/scss/carousel";
-// @import "../../../node_modules/bootstrap/scss/spinners";
+@import "../../../node_modules/bootstrap/scss/spinners";
 // @import "../../../node_modules/bootstrap/scss/offcanvas";
 // @import "../../../node_modules/bootstrap/scss/placeholders";
 

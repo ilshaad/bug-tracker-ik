@@ -1,11 +1,28 @@
-#OuterGrid-header {
-  ul.iktemp {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-around;
+@import "../customBootstrap.scss";
 
-    li {
-      margin: 4px;
+#OuterGrid-header {
+  // position: fixed;
+  // top: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+  .header-logo {
+    margin-top: 0.2em;
+    margin-bottom: -0.25em;
+    margin-left: 0.5rem;
+  }
+
+  // TODO center username after sm
+  @include media-breakpoint-up(sm) {
+    #Header-userName {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      color: $secondary;
+      filter: brightness(2);
+      font-size: 2rem;
+      margin-left: -1em;
     }
   }
 }
