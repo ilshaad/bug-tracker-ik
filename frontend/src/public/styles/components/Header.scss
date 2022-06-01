@@ -6,24 +6,90 @@
   width: 100%;
   padding: 0;
   margin: 0;
+  // overflow: hidden;
 
-  .header-logo {
-    margin-top: 0.2em;
+  // .iKnavBrand {
+  // margin: 0;
+  // width: calc(100vw - 160px);
+  // }
+
+  .Header-logo {
+    width: 60px;
+    margin-top: -0.1em;
     margin-bottom: -0.25em;
     margin-left: 0.5rem;
+    // position: absolute;
+    // left: 12px;
+    // top: 3px;
   }
 
-  // TODO center username after sm
+  // #Header-userName {
+  //   position: absolute;
+  //   left: 35%;
+  // }
+
+  // * breakpoint of > 576px (sm)
   @include media-breakpoint-up(sm) {
+    .Header-logo {
+      width: 75px;
+      margin-top: 10%;
+      margin-left: 10%;
+    }
+
     #Header-userName {
       // border: red 5px solid;
       width: 100%;
-      display: inline-block;
+      // display: inline-block;
       // justify-content: flex-end;
-      color: $secondary;
+      // color: $secondary;
+      // filter: brightness(2);
+      // font-size: 2rem;
+      // margin-right: auto;
+      // margin-left: 10%;
+      margin-top: 30%;
+      // margin-bottom: 10%;
+      // vertical-align: bottom;
+      // right: 10%;
+    }
+
+    .Header-brandHeading {
       filter: brightness(2);
-      font-size: 2rem;
-      margin-left: 4em;
+      position: absolute;
+      right: 20px;
+      // margin-left: 20%;
+      // margin-right: 23em;
+      // text-align: end;
+    }
+  }
+
+  // * breakpoint of > 768px (md)
+  @include media-breakpoint-up(md) {
+  }
+
+  // * breakpoint of > 992 (lg)
+  @include media-breakpoint-up(lg) {
+    .Header-brandHeading {
+      right: 60px;
+    }
+
+    .Header-logo {
+      width: 75px;
+      margin-top: 10%;
+      margin-left: 10%;
+    }
+  }
+
+  // * breakpoint of > 1200px (xl)
+  @include media-breakpoint-up(xl) {
+    .Header-brandHeading {
+      right: 80px;
+    }
+  }
+
+  // * breakpoint of > 1400px (xxl)
+  @include media-breakpoint-up(xxl) {
+    .Header-brandHeading {
+      right: 100px;
     }
   }
 }

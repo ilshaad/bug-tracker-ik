@@ -69,10 +69,10 @@ export default function Header({}: Props) {
               className="col"
               style={{ width: "25px" }}
             /> */}
-            <div className="header-logo" style={{ width: "50px" }}>
+            <div className="Header-logo">
               <Image_responsive
                 imageSrc={buglogo575}
-                // img767={buglogo767}
+                img767={buglogo767}
                 // img991={buglogo991}
                 // img1199={buglogo1199}
                 // img1399={buglogo1399}
@@ -82,16 +82,23 @@ export default function Header({}: Props) {
             </div>
           </Link>
         </Navbar.Brand>
+
         <Navbar.Brand>
           <div id="Header-userName">
-            <span className="fs-6">logged in as:</span>&nbsp;{displayUserName()}
+            <span className="fs-6">logged in as:</span>&nbsp;
+            {displayUserName()}
           </div>
         </Navbar.Brand>
+
+        <Navbar.Brand className="Header-brandHeading d-none d-sm-block text-secondary">
+          <h1>Bug Tracker app</h1>
+        </Navbar.Brand>
+
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
-          className="d-sm-none "
+          className="d-sm-none"
         />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Collapse id="responsive-navbar-nav" className="d-sm-none">
           <Nav className="me-auto d-sm-none">
             {/* <Nav.Link className="bg-primary text-danger" href="#features">
               Features

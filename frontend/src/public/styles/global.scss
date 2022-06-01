@@ -43,7 +43,7 @@ body,
 #OuterGrid {
   display: grid;
   grid-template-columns: 100%;
-  grid-auto-rows: 60px auto;
+  grid-auto-rows: 65px auto;
   grid-template-areas:
     "OG-header"
     "OG-main";
@@ -123,6 +123,7 @@ body,
 @include media-breakpoint-up(sm) {
   #OuterGrid {
     grid-template-columns: 1fr 9fr;
+    grid-auto-rows: 85px auto;
     grid-template-areas:
       "OG-header OG-header OG-header OG-header OG-header OG-header OG-header OG-header OG-header OG-header"
       "OG-leftNav OG-main OG-main OG-main OG-main OG-main OG-main OG-main OG-main OG-main";
