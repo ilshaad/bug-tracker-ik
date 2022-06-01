@@ -16,13 +16,14 @@
   // TODO center username after sm
   @include media-breakpoint-up(sm) {
     #Header-userName {
+      // border: red 5px solid;
       width: 100%;
-      display: flex;
-      justify-content: center;
+      display: inline-block;
+      // justify-content: flex-end;
       color: $secondary;
       filter: brightness(2);
       font-size: 2rem;
-      margin-left: -1em;
+      margin-left: 4em;
     }
   }
 }

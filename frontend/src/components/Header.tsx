@@ -82,7 +82,7 @@ export default function Header({}: Props) {
             </div>
           </Link>
         </Navbar.Brand>
-        <Navbar.Brand className="w-100">
+        <Navbar.Brand>
           <div id="Header-userName">
             <span className="fs-6">logged in as:</span>&nbsp;{displayUserName()}
           </div>
