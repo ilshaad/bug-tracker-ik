@@ -1,3 +1,5 @@
+// include header, which is responsive navbar which only shows the sandwich image when in <576px with route links & logout button
+
 import React from "react";
 import "../public/styles/components/Header.scss";
 
@@ -34,7 +36,7 @@ export default function Header({}: Props) {
     // logout,
   } = useAuth0<any>();
 
-  // display user name
+  // gain the user name (auth0.nickname) to display who the user is
   const displayUserName = () => {
     if (isLoading) {
       return <LoadSpinner colour="light" />;
@@ -61,14 +63,9 @@ export default function Header({}: Props) {
       className="border-bottom border-dark border-3"
     >
       <Container fluid={true}>
+        {/* the bug tracker logo image to link to dashboard route */}
         <Navbar.Brand>
           <Link to="/">
-            {/* <img
-              src={lizard}
-              alt="lizard"
-              className="col"
-              style={{ width: "25px" }}
-            /> */}
             <div className="Header-logo">
               <Image_responsive
                 imageSrc={buglogo575}
@@ -83,6 +80,7 @@ export default function Header({}: Props) {
           </Link>
         </Navbar.Brand>
 
+        {/* to display user their user name */}
         <Navbar.Brand>
           <div id="Header-userName">
             <span className="fs-6">logged in as:</span>&nbsp;
@@ -90,42 +88,45 @@ export default function Header({}: Props) {
           </div>
         </Navbar.Brand>
 
+        {/* display the Bug tracker heading only when >576 design */}
         <Navbar.Brand className="Header-brandHeading d-none d-sm-block text-secondary">
           <h1>Bug Tracker app</h1>
         </Navbar.Brand>
 
+        {/* iK? this is the sandwich bar when <575 design */}
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
           className="d-sm-none"
         />
         <Navbar.Collapse id="responsive-navbar-nav" className="d-sm-none">
           <Nav className="me-auto d-sm-none">
+            {/* iK I did not use bootstrap Nav.Link because I could not configure it like I wanted to using react-router Link component */}
             {/* <Nav.Link className="bg-primary text-danger" href="#features">
               Features
             </Nav.Link> */}
 
-            {/* <div className="bg-primary text-light p-0 border border-dark border-2 rounded text-decoration-none fs-6">
-              Logged in as:
-            </div> */}
-
+            {/* using react-router Link component */}
             <Link
               to="/"
-              className="bg-secondary text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold"
+              className="Header-navLinks text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold"
             >
               My dashboard
             </Link>
             <Link
               to="/ticketlist"
-              className="bg-secondary text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold"
+              className="Header-navLinks text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold"
             >
-              Ticket lists
+              Tickets list
             </Link>
             <Link
               to="/createticket"
-              className="bg-secondary text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold"
+              className="Header-navLinks text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold"
             >
-              Create ticket
+              Create new ticket
             </Link>
+            <div className="Header-navLinks text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold">
+              <LogoutButton />
+            </div>
 
             {/* <Nav.Link href="#pricing">Pricing</Nav.Link>
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
@@ -150,35 +151,4 @@ export default function Header({}: Props) {
       </Container>
     </Navbar>
   );
-
-  // ! the old header
-  // return (
-  //   <header id="OuterGrid-header">
-  //     <div className="container-fluid m-0 p-0">
-  //       <div className="row w-100 bg-primary m-0 p-0">
-  //         {/* afterwards move username & logout button tot he bottom of the div container */}
-  //         <div className="col">
-  //           {displayUserName()}
-
-  //           <div className="col">
-  //             <LogoutButton />
-  //           </div>
-  //         </div>
-
-  //         <img
-  //           src={lizard}
-  //           alt="lizard"
-  //           className="col"
-  //           style={{ width: "25px" }}
-  //         />
-
-  //         <nav className="col-8">
-  //           <ul className="iktemp">
-  //             <RouteList_anchorLinks />
-  //           </ul>
-  //         </nav>
-  //       </div>
-  //     </div>
-  //   </header>
-  // );
 }
