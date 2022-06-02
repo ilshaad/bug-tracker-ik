@@ -28,6 +28,24 @@
   //   left: 35%;
   // }
 
+  .Header-navLinks {
+    background-color: $secondary;
+
+    &:hover {
+      filter: brightness(2);
+    }
+
+    &:active {
+      background-color: $primary;
+      filter: brightness(1);
+    }
+
+    // the logout navlink
+    &:last-child {
+      filter: grayscale(1);
+    }
+  }
+
   // * breakpoint of > 576px (sm)
   @include media-breakpoint-up(sm) {
     .Header-logo {
@@ -64,6 +82,10 @@
 
   // * breakpoint of > 768px (md)
   @include media-breakpoint-up(md) {
+    #Header-userName {
+      margin-top: 33%;
+      margin-left: 32%;
+    }
   }
 
   // * breakpoint of > 992 (lg)

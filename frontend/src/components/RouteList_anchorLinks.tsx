@@ -40,6 +40,7 @@ export default function RouteList_anchorLinks({}: Props) {
 
       {/** !! UNCOMMENT FOR DEVMODE TO DISPLAY OTHER ROUTES FOR TESTING
        * also uncomment the devRoute() callback in App.tsx to get the routes to work
+       * iK I AM NOT SURE IF THIS STILL WORKS BECAUSE I CHANGE A FEW THINGS
        */}
       {/* {devModeLinks()} */}
     </>
