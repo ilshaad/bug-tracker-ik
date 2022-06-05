@@ -15,37 +15,47 @@ const SideLeftNavBarList = (props: Props) => {
   return (
     <>
       <ListGroup as="ul">
+        {/* dashboard route */}
         <Link to="/">
           <ListGroup.Item
             as="li"
             active={location.pathname === "/" ? true : false}
             // variant="blue"
-            className="LeftNavBar-links"
+            className={`LeftNavBar-links ${
+              location.pathname === "/" ? "hoverNav" : ""
+            }`}
           >
             Dashboard
           </ListGroup.Item>
         </Link>
 
+        {/* ticketlist route */}
         <Link to="/ticketlist">
           <ListGroup.Item
             as="li"
-            active={location.pathname === "/ticketlist" ? true : false}
-            className="LeftNavBar-links"
+            // active={location.pathname === "/ticketlist" ? true : false}
+            className={`LeftNavBar-links ${
+              location.pathname === "/ticketlist" ? "hoverNav" : ""
+            }`}
           >
             Tickets List
           </ListGroup.Item>
         </Link>
 
+        {/* create list route */}
         <Link to="/createticket">
           <ListGroup.Item
             as="li"
             active={location.pathname === "/createticket" ? true : false}
-            className="LeftNavBar-links"
+            className={`LeftNavBar-links ${
+              location.pathname === "/createticket" ? "hoverNav" : ""
+            }`}
           >
             Create a ticket
           </ListGroup.Item>
         </Link>
 
+        {/* logout button */}
         <ListGroup.Item as="li" className="LeftNavBar-links">
           <LogoutButton />
         </ListGroup.Item>

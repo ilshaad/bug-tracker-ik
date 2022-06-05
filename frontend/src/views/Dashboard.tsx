@@ -23,6 +23,8 @@ import Message_toast from "../components/Message_toast";
 import DisplayAssignedTicketsList_table from "../components/DisplayAssignedTicketsList_table";
 import { ticket_type } from "../types/tickets_type";
 import DisplaySubmittedTicketsList_table from "../components/DisplaySubmittedTicketsList_table";
+import BackToTop_link from "../components/BackToTop_link";
+import { Container } from "react-bootstrap";
 
 export default function Dashboard(): JSX.Element {
   const auth0UserObject = auth0User(
@@ -75,7 +77,7 @@ export default function Dashboard(): JSX.Element {
   };
 
   return (
-    <div>
+    <Container>
       <SeoReactHelmet
         pageTitle="Dashboard / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali"
         metaDescriptionContent="Dashboard / Bug Tracker - Dashboard - Github user: RechadSalma | Developer: ilshaad Kheerdali"
@@ -85,7 +87,7 @@ export default function Dashboard(): JSX.Element {
       {/* message toast for user confirmation such as success or failure in creating a ticket */}
       <Message_toast />
 
-      <h1>{displayUserName()} Dashboard PAGE</h1>
+      <h1 className={`text-center`}>Dashboard</h1>
 
       <div className="container">
         <h2>display assigned user tickets</h2>
@@ -106,9 +108,7 @@ export default function Dashboard(): JSX.Element {
         />
       </div>
 
-      <div>
-        <button>delete my account</button>
-      </div>
-    </div>
+      <BackToTop_link />
+    </Container>
   );
 } //END Dashboard component

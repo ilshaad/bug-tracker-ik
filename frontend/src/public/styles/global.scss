@@ -50,20 +50,21 @@ body,
   width: 100%;
   height: 100%;
 
-  background-color: aquamarine;
+  // background-color: aquamarine;
 
   #OuterGrid-header {
     grid-area: OG-header;
 
-    background-color: red;
+    // background-color: red;
   }
 
   #OuterGrid-main {
     grid-area: OG-main;
     height: 100%;
     width: 100%;
+    padding: 0;
 
-    background-color: darkgreen;
+    // background-color: darkgreen;
   }
 
   #OuterGrid-leftNavBar {
@@ -71,7 +72,7 @@ body,
     display: none;
     height: 100%;
 
-    background-color: $secondary;
+    // background-color: $secondary;
   }
 }
 
@@ -84,14 +85,15 @@ body,
   justify-content: space-between;
 
   background-color: cornsilk;
-  border: black 6px solid;
+  // border: black 6px solid;
 
   #InnerGrid-main {
     flex-basis: 1;
     height: 100%;
 
-    border: yellowgreen 4px solid;
+    // border: rgb(202, 250, 104) 4px solid;
     margin-bottom: 0px;
+    // border: black 6px solid;
 
     & > * {
       height: 100%;
@@ -103,9 +105,9 @@ body,
     width: 100%;
     height: 50px;
     margin-bottom: 0px;
-
-    background-color: slateblue;
-    border: blue 3px solid;
+    // border-left: black 6px solid;
+    // background-color: slateblue;
+    // border: blue 3px solid;
   }
 }
 

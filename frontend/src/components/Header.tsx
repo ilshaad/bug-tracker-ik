@@ -3,7 +3,7 @@
 import React from "react";
 import "../public/styles/components/Header.scss";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
 import lizard from "../public/images/li.jpg";
 // import bugTrackerImg from "../public/manifest/mstile-150x150.png";
@@ -36,6 +36,8 @@ export default function Header({}: Props) {
     // logout,
   } = useAuth0<any>();
 
+  const uselocation = useLocation();
+
   // gain the user name (auth0.nickname) to display who the user is
   const displayUserName = () => {
     if (isLoading) {
@@ -66,7 +68,7 @@ export default function Header({}: Props) {
         {/* the bug tracker logo image to link to dashboard route */}
         <Navbar.Brand>
           <Link to="/">
-            <div className="Header-logo">
+            <div className="Header-logo" id="top">
               <Image_responsive
                 imageSrc={buglogo575}
                 img767={buglogo767}
@@ -108,19 +110,29 @@ export default function Header({}: Props) {
             {/* using react-router Link component */}
             <Link
               to="/"
-              className="Header-navLinks text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold"
+              className={`Header-navLinks p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold ${
+                uselocation.pathname === "/" ? "Header-navLinks-current" : ""
+              }`}
             >
               My dashboard
             </Link>
             <Link
               to="/ticketlist"
-              className="Header-navLinks text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold"
+              className={`Header-navLinks p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold ${
+                uselocation.pathname === "/ticketlist"
+                  ? "Header-navLinks-current"
+                  : ""
+              }`}
             >
               Tickets list
             </Link>
             <Link
               to="/createticket"
-              className="Header-navLinks text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold"
+              className={`Header-navLinks p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold ${
+                uselocation.pathname === "/createticket"
+                  ? "Header-navLinks-current"
+                  : ""
+              }`}
             >
               Create new ticket
             </Link>

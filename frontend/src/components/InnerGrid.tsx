@@ -1,4 +1,5 @@
 import React, { Children } from "react";
+import { Container } from "react-bootstrap";
 import Footer from "./Footer";
 
 type Props = { children: JSX.Element };
@@ -6,7 +7,7 @@ type Props = { children: JSX.Element };
 export default function InnerGrid({ children }: Props) {
   return (
     <div id="InnerGrid">
-      <main id="InnerGrid-main">{children}</main>
+      <Container id="InnerGrid-main">{children}</Container>
       <footer id="InnerGrid-footer">
         <Footer />
       </footer>

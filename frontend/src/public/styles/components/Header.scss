@@ -30,20 +30,30 @@
 
   .Header-navLinks {
     background-color: $secondary;
+    z-index: 100;
+    color: white;
 
     &:hover {
-      filter: brightness(2);
+      // filter: brightness(2);
+      background-color: $primary;
     }
 
     &:active {
-      background-color: $primary;
-      filter: brightness(1);
+      // background-color: $primary;
+      filter: brightness(2);
     }
 
     // the logout navlink
     &:last-child {
       filter: grayscale(1);
+      cursor: pointer;
     }
+  }
+
+  .Header-navLinks-current {
+    // background-color: red !important;
+    filter: brightness(2);
+    color: black !important;
   }
 
   // * breakpoint of > 576px (sm)
