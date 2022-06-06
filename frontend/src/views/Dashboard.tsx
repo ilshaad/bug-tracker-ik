@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
+import "../public/styles/views/Dashboard.scss";
+
 import Button from "react-bootstrap/Button";
 import Toast from "react-bootstrap/Toast";
 import ToastContainer from "react-bootstrap/ToastContainer"; // import "bootstrap/js/dist/toast";
@@ -25,6 +27,7 @@ import { ticket_type } from "../types/tickets_type";
 import DisplaySubmittedTicketsList_table from "../components/DisplaySubmittedTicketsList_table";
 import BackToTop_link from "../components/BackToTop_link";
 import { Container } from "react-bootstrap";
+import TitlePage from "../components/TitlePage";
 
 export default function Dashboard(): JSX.Element {
   const auth0UserObject = auth0User(
@@ -87,10 +90,10 @@ export default function Dashboard(): JSX.Element {
       {/* message toast for user confirmation such as success or failure in creating a ticket */}
       <Message_toast />
 
-      <h1 className={`text-center`}>Dashboard</h1>
+      <TitlePage titleName="Dashboard" />
 
-      <div className="container">
-        <h2>display assigned user tickets</h2>
+      <div id="Dashboard-assignedTable" className="container">
+        <h2 className="text-secondary">Assigned tickets</h2>
         {/* {listOfUserAssignedTickets()} */}
         <DisplayAssignedTicketsList_table
           userAssignedTickets_array={userAssignedTickets_array}
@@ -98,8 +101,8 @@ export default function Dashboard(): JSX.Element {
         />
       </div>
 
-      <div className="container">
-        <h2>display submitted_by tickets</h2>
+      <div id="Dashboard-submittedTable" className="container">
+        <h2 className="text-secondary">Submitted tickets</h2>
         {/* {listOfUserSubmittedTickets()} */}
 
         <DisplaySubmittedTicketsList_table

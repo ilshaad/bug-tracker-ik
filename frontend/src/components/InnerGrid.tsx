@@ -7,7 +7,7 @@ type Props = { children: JSX.Element };
 export default function InnerGrid({ children }: Props) {
   return (
     <div id="InnerGrid">
-      <Container id="InnerGrid-main">{children}</Container>
+      <div id="InnerGrid-main">{children}</div>
       <footer id="InnerGrid-footer">
         <Footer />
       </footer>

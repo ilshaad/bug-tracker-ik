@@ -1,22 +1,24 @@
 import React, { useEffect } from "react";
+import { Container } from "react-bootstrap";
 import DisplayTicketsList_table from "../components/DisplayTicketsList_table";
 import LogoutButton from "../components/LogoutButton";
 import Profile from "../components/Profiles";
 import SeoReactHelmet from "../components/SeoReactHelmet";
 import Ticket_anchorLinkToTicket from "../components/Ticket_anchorLinkToTicket";
+import TitlePage from "../components/TitlePage";
 
 export default function TicketList(): JSX.Element {
   return (
-    <div>
+    <Container>
       <SeoReactHelmet
         pageTitle="Tickets list / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali"
         metaDescriptionContent="Tickets list / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali"
         metaKeywordsContent="Tickets list Bug Tracker RechadSalma ilshaad Kheerdali"
       />
 
-      <h1>TicketList PAGE</h1>
+      <TitlePage titleName="Tickets list" />
 
       <DisplayTicketsList_table />
-    </div>
+    </Container>
   );
 } //END TicketList component

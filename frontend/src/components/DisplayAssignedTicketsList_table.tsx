@@ -43,6 +43,16 @@ export default function DisplayAssignedTicketsList_table({
   // starting off in descending order first
   const [ascendingOrder, setAscendingOrdered] = useState<boolean>(false);
 
+  // space & ascending up arrow or descending down arrow for the sort option
+  const ascendingArrowEntity = <>&nbsp;&#x002C6;</>;
+  const descendingArrowEntity = <>&nbsp;&#x002C7;</>;
+
+  const [currentSortOptionState, setCurrentSortOptionState] = useState("title");
+
+  // indicate to user the current sort option by highlighting the sort option selected
+  // it will change whenever user clicks on a different sort option
+  let sortOptionSelectedClass = "sortOptionSelectedClass";
+
   // table row will have anchor link to view the ticket page
   const navigateToViewTicket = (ticketId: string) => {
     navigate(`/viewticket/${ticketId}`);
@@ -50,6 +60,9 @@ export default function DisplayAssignedTicketsList_table({
 
   // sort tickets List by alphabetically
   const ticketSortByAlphabet = (ticketProperty: string) => {
+    // highlight user the selected sort option they have clicked on
+    setCurrentSortOptionState(ticketProperty);
+
     // sort by ascending order
     if (ascendingOrder) {
       const ascendingAlphabet = sortNameByAscendingOrder_array(
@@ -80,6 +93,9 @@ export default function DisplayAssignedTicketsList_table({
 
   // sort tickets List by priority
   const ticketSortByPriority = () => {
+    // highlight user the selected sort option they have clicked on
+    setCurrentSortOptionState("priority");
+
     // sort by ascending order
     if (ascendingOrder) {
       const ascendingPriority = sortPriorityByAscendingOrder_array(
@@ -108,6 +124,9 @@ export default function DisplayAssignedTicketsList_table({
 
   // sort tickets List by date
   const ticketSortByDate = () => {
+    // highlight user the selected sort option they have clicked on
+    setCurrentSortOptionState("created_on");
+
     // sort by ascending order
     if (ascendingOrder) {
       const ascendingDate = sortDateByOldestFirst_array(sortedTicketsListState);
@@ -172,20 +191,73 @@ export default function DisplayAssignedTicketsList_table({
     <Table striped bordered hover responsive>
       <thead>
         <tr>
-          <th onClick={() => ticketSortByAlphabet("title")}>Title</th>
-          <th onClick={() => ticketSortByPriority()}>Priority</th>
-          <th onClick={() => ticketSortByAlphabet("status")}>Status</th>
-          <th onClick={() => ticketSortByAlphabet("app_name")}>App name</th>
+          <th
+            onClick={() => ticketSortByAlphabet("title")}
+            className={`tableTitles ${
+              currentSortOptionState === "title" ? sortOptionSelectedClass : ""
+            }`}
+          >
+            Title{ascendingOrder ? ascendingArrowEntity : descendingArrowEntity}
+          </th>
+          <th
+            onClick={() => ticketSortByPriority()}
+            className={`tableTitles ${
+              currentSortOptionState === "priority"
+                ? sortOptionSelectedClass
+                : ""
+            }`}
+          >
+            Priority
+            {ascendingOrder ? ascendingArrowEntity : descendingArrowEntity}
+          </th>
+          <th
+            onClick={() => ticketSortByAlphabet("status")}
+            className={`tableTitles ${
+              currentSortOptionState === "status" ? sortOptionSelectedClass : ""
+            }`}
+          >
+            Status
+            {ascendingOrder ? ascendingArrowEntity : descendingArrowEntity}
+          </th>
+          <th
+            onClick={() => ticketSortByAlphabet("app_name")}
+            className={`tableTitles ${
+              currentSortOptionState === "app_name"
+                ? sortOptionSelectedClass
+                : ""
+            }`}
+          >
+            App name
+            {ascendingOrder ? ascendingArrowEntity : descendingArrowEntity}
+          </th>
           {/* <th onClick={() => ticketSortByAlphabet("app_version")}>
             App version number
           </th> */}
-          <th onClick={() => ticketSortByAlphabet("submitted_by")}>
+          <th
+            onClick={() => ticketSortByAlphabet("submitted_by")}
+            className={`tableTitles ${
+              currentSortOptionState === "submitted_by"
+                ? sortOptionSelectedClass
+                : ""
+            }`}
+          >
             Submitted by
+            {ascendingOrder ? ascendingArrowEntity : descendingArrowEntity}
           </th>
           {/* <th onClick={() => ticketSortByAlphabet("assigned_user")}>
             Assigned user
           </th> */}
-          <th onClick={() => ticketSortByDate()}>Date Submitted</th>
+          <th
+            onClick={() => ticketSortByDate()}
+            className={`tableTitles ${
+              currentSortOptionState === "created_on"
+                ? sortOptionSelectedClass
+                : ""
+            }`}
+          >
+            Date Submitted
+            {ascendingOrder ? ascendingArrowEntity : descendingArrowEntity}
+          </th>
         </tr>
       </thead>
 

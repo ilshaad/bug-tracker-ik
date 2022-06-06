@@ -7,9 +7,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap");
 // @import "../components/OuterGrid.scss";
 
+// iK xx-small small phones (above 320px)
 // X-Small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 // No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+
+// #####################################################
+// iK? x-Small devices (small phones, 360px and up)
+// #####################################################
 
 // body {
 //   background-color: red;
@@ -108,6 +113,20 @@ body,
     // border-left: black 6px solid;
     // background-color: slateblue;
     // border: blue 3px solid;
+  }
+
+  // the title names sort option of the tables for ticketlist table / user assigned table / user sumbitted table
+  .tableTitles:hover {
+    background-color: $secondary;
+    // filter: brightness(2);
+    color: white;
+    cursor: pointer;
+  }
+
+  // indicate to user the current sort option selected in the ticketlist table / user assigned table / user submitted table
+  .sortOptionSelectedClass {
+    background-color: $secondary;
+    color: white;
   }
 }
 

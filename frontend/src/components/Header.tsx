@@ -62,7 +62,7 @@ export default function Header({}: Props) {
       expand="sm"
       bg="primary"
       variant="dark"
-      className="border-bottom border-dark border-3"
+      className="border-bottom border-dark border-3 bg-gradient"
     >
       <Container fluid={true}>
         {/* the bug tracker logo image to link to dashboard route */}
@@ -108,17 +108,20 @@ export default function Header({}: Props) {
             </Nav.Link> */}
 
             {/* using react-router Link component */}
+            {/* dashboard link */}
             <Link
               to="/"
-              className={`Header-navLinks p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold ${
+              className={`Header-navLinks p-2 border border-dark border-1 rounded text-decoration-none fs-5 fw-bold ${
                 uselocation.pathname === "/" ? "Header-navLinks-current" : ""
               }`}
             >
               My dashboard
             </Link>
+
+            {/* ticket list link */}
             <Link
               to="/ticketlist"
-              className={`Header-navLinks p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold ${
+              className={`Header-navLinks p-2 border border-dark border-1 rounded text-decoration-none fs-5 fw-bold ${
                 uselocation.pathname === "/ticketlist"
                   ? "Header-navLinks-current"
                   : ""
@@ -126,9 +129,11 @@ export default function Header({}: Props) {
             >
               Tickets list
             </Link>
+
+            {/* create ticket link */}
             <Link
               to="/createticket"
-              className={`Header-navLinks p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold ${
+              className={`Header-navLinks p-2 border border-dark border-1 rounded text-decoration-none fs-5 fw-bold ${
                 uselocation.pathname === "/createticket"
                   ? "Header-navLinks-current"
                   : ""
@@ -136,7 +141,9 @@ export default function Header({}: Props) {
             >
               Create new ticket
             </Link>
-            <div className="Header-navLinks text-light p-2 border border-dark border-2 rounded text-decoration-none fs-5 fw-bold">
+
+            {/* logout button */}
+            <div className="Header-navLinks text-light p-2 border border-dark border-1 rounded text-decoration-none fs-5 fw-bold">
               <LogoutButton />
             </div>
 

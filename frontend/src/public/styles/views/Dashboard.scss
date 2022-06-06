@@ -1,6 +1,35 @@
 @import "./../global.scss";
 
-#InnerGrid-main {
+// start from 360px breakpoint
+#InnerGrid-main div {
+  // position: relative;
+
+  // the assigned table container of the user
+  #Dashboard-assignedTable {
+    h2 {
+      margin-top: -1rem;
+    }
+
+    // table of assigned user in dashboard
+    div {
+      margin-top: -1rem;
+      cursor: pointer;
+    }
+  }
+
+  //  the submitted table container of the user
+  #Dashboard-submittedTable {
+    h2 {
+      margin-top: 1rem;
+    }
+
+    // table of submitted user in dashboard
+    div {
+      margin-top: -1rem;
+      cursor: pointer;
+    }
+  }
+
   // * breakpoint of > 576px (sm)
   @include media-breakpoint-up(sm) {
   } //END breakpoint of > 576px (sm)
