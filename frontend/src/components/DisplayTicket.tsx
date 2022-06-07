@@ -12,7 +12,6 @@ export default function DisplayTicket({ ticket }: Props) {
 
   return (
     <div>
-      <h1>ViewTicket:ticketid PAGE</h1>
       <h2>title: {ticket.title}</h2>
       <code>description: {ticket.description}</code>
       <p>priority: {ticket.priority}</p>

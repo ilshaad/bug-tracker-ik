@@ -15,6 +15,8 @@ import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { get_allCommentsForASingleTicket_actions } from "../models/reducers/comments_slice";
 import auth0User from "../helpers/auth0User";
 import CreateNewCommentBox from "../components/CreateNewCommentBox";
+import TitlePage from "../components/TitlePage";
+import { Container } from "react-bootstrap";
 
 export default function ViewTicket(): JSX.Element | null {
   const auth0UserObject = auth0User(
@@ -32,14 +34,15 @@ export default function ViewTicket(): JSX.Element | null {
     useState<boolean>(false);
 
   return (
-    <div>
+    <Container>
       <SeoReactHelmet
         pageTitle={`${ticket?.title} / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali`}
         metaDescriptionContent={`${ticket?.title} / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali`}
         metaKeywordsContent={`${ticket?.title} Bug Tracker RechadSalma ilshaad Kheerdali`}
       />
 
-      <h1>view ticket</h1>
+      <TitlePage titleName="Ticket" />
+
       {/* Show all the ticket info */}
       <DisplayTicket ticket={ticket} />
 
@@ -83,6 +86,6 @@ export default function ViewTicket(): JSX.Element | null {
 
       {/* toast message whenever user update ticket in some way */}
       <Message_toast />
-    </div>
+    </Container>
   );
 } //END ViewTicket component

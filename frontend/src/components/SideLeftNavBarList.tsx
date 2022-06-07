@@ -25,7 +25,7 @@ const SideLeftNavBarList = (props: Props) => {
               location.pathname === "/" ? "hoverNav" : ""
             }`}
           >
-            Dashboard
+            My Dashboard
           </ListGroup.Item>
         </Link>
 
@@ -51,7 +51,7 @@ const SideLeftNavBarList = (props: Props) => {
               location.pathname === "/createticket" ? "hoverNav" : ""
             }`}
           >
-            Create a ticket
+            Create Ticket
           </ListGroup.Item>
         </Link>
 

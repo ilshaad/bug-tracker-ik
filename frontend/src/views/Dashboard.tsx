@@ -74,7 +74,7 @@ export default function Dashboard(): JSX.Element {
 
   // return user nickname (username) from auth0 user object
   const displayUserName = () => {
-    if (auth0UserObject === null) return "...loading";
+    if (auth0UserObject === null) return "...";
 
     return auth0UserObject.nickname;
   };
@@ -90,9 +90,9 @@ export default function Dashboard(): JSX.Element {
       {/* message toast for user confirmation such as success or failure in creating a ticket */}
       <Message_toast />
 
-      <TitlePage titleName="Dashboard" />
+      <TitlePage titleName="My Dashboard" />
 
-      <div id="Dashboard-assignedTable" className="container">
+      <div id="Dashboard-assignedTable">
         <h2 className="text-secondary">Assigned tickets</h2>
         {/* {listOfUserAssignedTickets()} */}
         <DisplayAssignedTicketsList_table
@@ -101,7 +101,7 @@ export default function Dashboard(): JSX.Element {
         />
       </div>
 
-      <div id="Dashboard-submittedTable" className="container">
+      <div id="Dashboard-submittedTable">
         <h2 className="text-secondary">Submitted tickets</h2>
         {/* {listOfUserSubmittedTickets()} */}
 
@@ -111,7 +111,7 @@ export default function Dashboard(): JSX.Element {
         />
       </div>
 
-      <BackToTop_link />
+      <BackToTop_link className="dashboard-backToTop_link" />
     </Container>
   );
 } //END Dashboard component

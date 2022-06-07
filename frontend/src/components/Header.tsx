@@ -115,7 +115,7 @@ export default function Header({}: Props) {
                 uselocation.pathname === "/" ? "Header-navLinks-current" : ""
               }`}
             >
-              My dashboard
+              My Dashboard
             </Link>
 
             {/* ticket list link */}
@@ -139,7 +139,7 @@ export default function Header({}: Props) {
                   : ""
               }`}
             >
-              Create new ticket
+              Create Ticket
             </Link>
 
             {/* logout button */}
