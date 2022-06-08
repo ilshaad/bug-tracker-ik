@@ -13,6 +13,7 @@ import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
 import { useNavigate } from "react-router-dom";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
 import capitaliseString from "../helpers/capitaliseString";
+import { Col, Container, Row, Stack } from "react-bootstrap";
 
 // ticket_id / title / description / submitted_by / priority / assigned_user / status / app_name / app_version / created_on
 
@@ -45,6 +46,12 @@ export default function CreateTicket_form({}: Props) {
     }
 
     if (!values.priority) {
+      errors.priority = "Required";
+    } else if (
+      values.priority !== "High" &&
+      values.priority !== "Medium" &&
+      values.priority !== "Low"
+    ) {
       errors.priority = "Required";
     }
 
@@ -172,139 +179,259 @@ export default function CreateTicket_form({}: Props) {
     >
       {/* <Formik> component is like a react context api & that it passes formikProps which gives you access to numerous of props to use such as errors / touched / values etc... */}
       {(formikProps) => (
-        <Form id="CreateTicket_form" className={`row g-2`}>
-          <div className={`col-sm`}>
-            <label htmlFor="createTitle" className={`d-block`}>
-              Title *
-            </label>
-            {/* <Field/> is like input[type] element but is connected to formik component */}
-            <Field
-              type="text"
-              id="createTitle"
-              name="title"
-              placeholder="Title name"
-              className={`w-100`}
-            />
+        <Form id="CreateTicket_form" className={`w-100 g-2`}>
+          <Container>
+            {/* title input */}
+            <Row className="textInputForm mx-auto mb-3">
+              <Col xs={12} sm={2} lg={1}>
+                <label htmlFor="createTitle" className={`form-label`}>
+                  Title
+                </label>
+                <span>*</span>
+              </Col>
 
-            {/* this will display jsx error message if user leaves text box empty or incorrectly types something (accordingly to your validate function) */}
-            {formikProps.errors.title && formikProps.touched.title ? (
-              <div>{formikProps.errors.title}</div>
-            ) : null}
-          </div>
+              <Col xs={12} sm={10} lg={11}>
+                {/* <Field/> is like input[type] element but is connected to formik component */}
+                <Field
+                  type="text"
+                  id="createTitle"
+                  name="title"
+                  className={`form-control`}
+                />
+              </Col>
 
-          <div></div>
+              <Col
+                xs={12}
+                sm={{ span: 10, offset: 2 }}
+                lg={{ span: 11, offset: 1 }}
+              >
+                {/* this will display jsx error message if user leaves text box empty or incorrectly types something (accordingly to your validate function) */}
+                {formikProps.errors.title && formikProps.touched.title ? (
+                  <div className={`inputErrorResponse`}>
+                    {formikProps.errors.title}
+                  </div>
+                ) : null}
+              </Col>
+            </Row>
 
-          <label htmlFor="createDescription">Description *</label>
-          <Field
-            type="text"
-            id="createDescription"
-            name="description"
-            placeholder="Describe the problem"
-          />
+            {/* description input  */}
+            <Row className="textInputForm mx-auto mb-3">
+              <Col xs={12}>
+                <label htmlFor="createDescription" className="form-label">
+                  Description
+                </label>
+                <span>*</span>
+              </Col>
 
-          {formikProps.errors.description && formikProps.touched.description ? (
-            <div>{formikProps.errors.description}</div>
-          ) : null}
+              <Col xs={12}>
+                <Field
+                  as="textarea"
+                  type="text"
+                  id="createDescription"
+                  name="description"
+                  className={`form-control`}
+                />
+              </Col>
 
-          <div></div>
+              <Col xs={12}>
+                {formikProps.errors.description &&
+                formikProps.touched.description ? (
+                  <div className="inputErrorResponse">
+                    {formikProps.errors.description}
+                  </div>
+                ) : null}
+              </Col>
+            </Row>
 
-          <div role="group" aria-labelledby="priority-radio-group">
-            Priority *:
-            <label>
-              <Field type="radio" name="priority" value="High" />
-              High
-            </label>
-            <label>
-              <Field type="radio" name="priority" value="Medium" />
-              Medium
-            </label>
-            <label>
-              <Field type="radio" name="priority" value="Low" />
-              Low
-            </label>
-          </div>
+            {/* priority radio input */}
+            <Row className="createTicketSelectForm-priority mx-auto mb-3">
+              <Col
+                // role="group"
+                // aria-labelledby="priority-radio-group"
+                className="ticketTitle-priority"
+                xs={12}
+              >
+                <div>Priority</div>
+                <span>*</span>
+              </Col>
 
-          {formikProps.errors.priority && formikProps.touched.priority ? (
-            <div>{formikProps.errors.priority}</div>
-          ) : null}
+              <Col xs={12}>
+                <Field as="select" name="priority" className="form-select">
+                  <option selected>Select one</option>
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </Field>
+              </Col>
 
-          <div></div>
+              <Col xs={12}>
+                {formikProps.errors.priority && formikProps.touched.priority ? (
+                  <div className="inputErrorResponse">
+                    {formikProps.errors.priority}
+                  </div>
+                ) : null}
+              </Col>
 
-          <label htmlFor="createAssignedUser">Assigned user</label>
-          <Field
-            type="text"
-            id="createAssignedUser"
-            name="assigned_user"
-            placeholder="Unassigned"
-          />
+              {/* <Col
+                role="group"
+                aria-labelledby="priority-radio-group"
+                className="form-label ticketTitle-priority"
+                xs={12}
+              >
+                <div>Priority</div>
+                <span>*</span>
+              </Col>
 
-          <div></div>
-
-          <div role="group" aria-labelledby="status-radio-group">
-            Status *:
-            <label>
-              <Field type="radio" name="status" value="Pending" checked />
-              Pending
-            </label>
-            <label>
-              <Field type="radio" name="status" value="Resolved" />
-              Resolved
-            </label>
-          </div>
-
-          {formikProps.errors.status && formikProps.touched.status ? (
-            <div>{formikProps.errors.status}</div>
-          ) : null}
-
-          <div></div>
-
-          <label htmlFor="createAppName">App Name *</label>
-          <Field
-            type="text"
-            id="createAppName"
-            name="app_name"
-            placeholder="Name of the app"
-          />
-
-          {formikProps.errors.app_name && formikProps.touched.app_name ? (
-            <div>{formikProps.errors.app_name}</div>
-          ) : null}
-
-          <div></div>
-
-          <label htmlFor="createAppVersion">App version *</label>
-          <Field
-            type="text"
-            id="createAppVersion"
-            name="app_version"
-            placeholder="App verison"
-          />
-
-          {formikProps.errors.app_version && formikProps.touched.app_version ? (
-            <div>{formikProps.errors.app_version}</div>
-          ) : null}
-
-          <div></div>
-
-          {/* only admin can see & change the submitted_by property when creating a new ticket */}
-          {(() => {
-            if (auth0UserObject.email === process.env.ADMIN_EMAIL) {
-              return (
-                <>
-                  <label htmlFor="createSubmittedBy">Submitted by</label>
+              <Col xs={4}>
+                <label>
                   <Field
-                    type="text"
-                    id="createSubmittedBy"
-                    name="submitted_by"
-                    placeholder="Only admin can see &amp; change submitted_by property when creating new ticket"
+                    type="radio"
+                    name="priority"
+                    value="High"
+                    className="text-primary"
                   />
-                </>
-              );
-            }
-            return null;
-          })()}
+                  High
+                </label>
+              </Col>
 
-          <button type="submit">Submit</button>
+              <Col xs={4}>
+                <label>
+                  <Field type="radio" name="priority" value="Medium" />
+                  Medium
+                </label>
+              </Col>
+
+              <Col xs={4}>
+                <label>
+                  <Field type="radio" name="priority" value="Low" />
+                  Low
+                </label>
+              </Col> */}
+
+              {/* <Col>
+                {formikProps.errors.priority && formikProps.touched.priority ? (
+                  <div className="inputErrorResponse">
+                    {formikProps.errors.priority}
+                  </div>
+                ) : null}
+              </Col> */}
+            </Row>
+
+            {/* assigned_user input */}
+            <Row>
+              <Col>
+                <label htmlFor="createAssignedUser">Assigned user</label>
+                <Field
+                  type="text"
+                  id="createAssignedUser"
+                  name="assigned_user"
+                  placeholder="Unassigned"
+                />
+              </Col>
+            </Row>
+            {/* <Col>
+                {formikProps.errors.priority && formikProps.touched.priority ? (
+                  <div className="inputErrorResponse">
+                    {formikProps.errors.priority}
+                  </div>
+                ) : null}
+              </Col>              {/* <Col>
+                {formikProps.errors.priority && formikProps.touched.priority ? (
+                  <div className="inputErrorResponse">
+                    {formikProps.errors.priority}
+                  </div>
+                ) : null}
+              </Col>              {/* <Col>
+                {formikProps.errors.priority && formikProps.touched.priority ? (
+                  <div className="inputErrorResponse">
+                    {formikProps.errors.priority}
+                  </div>
+                ) : null}
+              </Col>
+            {/* status radio input */}
+            <Row>
+              <Col>
+                <div role="group" aria-labelledby="status-radio-group">
+                  Status *:
+                  <label>
+                    <Field type="radio" name="status" value="Pending" checked />
+                    Pending
+                  </label>
+                  <label>
+                    <Field type="radio" name="status" value="Resolved" />
+                    Resolved
+                  </label>
+                </div>
+
+                {formikProps.errors.status && formikProps.touched.status ? (
+                  <div>{formikProps.errors.status}</div>
+                ) : null}
+              </Col>
+            </Row>
+
+            {/* app_name input */}
+            <Row>
+              <Col>
+                <label htmlFor="createAppName">App Name *</label>
+                <Field
+                  type="text"
+                  id="createAppName"
+                  name="app_name"
+                  placeholder="Name of the app"
+                />
+
+                {formikProps.errors.app_name && formikProps.touched.app_name ? (
+                  <div>{formikProps.errors.app_name}</div>
+                ) : null}
+              </Col>
+            </Row>
+
+            {/* app_version input */}
+            <Row>
+              <Col>
+                <label htmlFor="createAppVersion">App version *</label>
+                <Field
+                  type="text"
+                  id="createAppVersion"
+                  name="app_version"
+                  placeholder="App verison"
+                />
+
+                {formikProps.errors.app_version &&
+                formikProps.touched.app_version ? (
+                  <div>{formikProps.errors.app_version}</div>
+                ) : null}
+              </Col>
+            </Row>
+
+            {/* submitted_by input */}
+            {/* only admin can see & change the submitted_by property when creating a new ticket */}
+            {(() => {
+              if (auth0UserObject.email === process.env.ADMIN_EMAIL) {
+                return (
+                  <Row>
+                    <Col>
+                      <label htmlFor="createSubmittedBy">Submitted by</label>
+                      <Field
+                        type="text"
+                        id="createSubmittedBy"
+                        name="submitted_by"
+                        placeholder="Only admin can see &amp; change submitted_by property when creating new ticket"
+                      />
+                    </Col>
+                  </Row>
+                );
+              }
+              return null;
+            })()}
+
+            {/* submit button */}
+            <Row>
+              <Col>
+                <button type="submit">Submit</button>
+              </Col>
+            </Row>
+          </Container>
         </Form>
       )}
     </Formik>

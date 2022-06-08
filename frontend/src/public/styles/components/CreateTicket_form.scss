@@ -5,17 +5,95 @@
 
   background-color: cornsilk;
 
+  // The input[type:text] container. The actual input text is within this container
+  .textInputForm {
+    // background-color: inherit;
+
+    label {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: $secondary;
+    }
+
+    // the asterick within the label to indicate to user they must enter something
+    span {
+      font-weight: 300;
+      color: $danger;
+    }
+
+    .inputErrorResponse {
+      color: $danger;
+      margin-top: 0.5em;
+    }
+  } // END .textInputForm
+
+  // select option input for priority (container)
+  .createTicketSelectForm-priority {
+    // the priority heading
+    .ticketTitle-priority {
+      div {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: $secondary;
+        display: inline-block;
+      }
+
+      span {
+        font-weight: 300;
+        color: $danger;
+      }
+    }
+
+    .inputErrorResponse {
+      color: $danger;
+      margin-top: 0.5em;
+    }
+  } //END createTicketSelectForm-priority
+
+  // .radioCheckForm {
+  //   .ticketTitle-priority {
+  //     div {
+  //       font-size: 1.5rem;
+  //       font-weight: 600;
+  //       color: $secondary;
+  //       display: inline-block;
+  //     }
+
+  //     span {
+  //       font-weight: 300;
+  //       color: $danger;
+  //     }
+  //   }
+
+  //   .radioCheck-priority {
+  //     font-size: 1.5rem;
+  //     font-weight: 600;
+  //     color: $secondary;
+  //   }
+
+  //   .inputErrorResponse {
+  //     color: $danger;
+  //     margin-top: 0.5em;
+  //   }
+  // }
+
   // * breakpoint of > 576px (sm)
-  //  @include media-breakpoint-up(sm) {
-  //  } //END breakpoint of > 576px (sm)
+  // @include media-breakpoint-up(sm) {
+  //   .textInputForm {
+  //     label {
+  //       font-size: 1rem;
+  //     }
+  //   }
+  // } //END breakpoint of > 576px (sm)
 
   // * breakpoint of > 768px (md)
   //  @include media-breakpoint-up(md) {
   //  } //END breakpoint of > 768px (md)
 
   // * breakpoint of > 992 (lg)
-  //  @include media-breakpoint-up(lg) {
-  //  } //END breakpoint of > 992 (lg)
+  // @include media-breakpoint-up(lg) {
+  //   font-size: 1.25rem;
+  // } //END breakpoint of > 992 (lg)
 
   // * breakpoint of > 1200px (xl)
   //  @include media-breakpoint-up(xl) {
