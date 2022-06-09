@@ -3,7 +3,8 @@
 #CreateTicket_form {
   // iK? begin from 360px & up for starting breakpoint
 
-  background-color: cornsilk;
+  // background-color: cornsilk;
+  margin-top: -1.25rem;
 
   // The input[type:text] container. The actual input text is within this container
   .textInputForm {
@@ -23,14 +24,20 @@
 
     .inputErrorResponse {
       color: $danger;
-      margin-top: 0.5em;
+      font-size: 1.1rem;
+      margin-top: 0.3em;
     }
+
+    // #createTicketRowTitle {
+    //   margin-bottom: 0.25rem !important;
+    // }
   } // END .textInputForm
 
   // select option input for priority (container)
-  .createTicketSelectForm-priority {
-    // the priority heading
-    .ticketTitle-priority {
+  .createTicketSelectForm-priorityNStatus {
+    // the priority & status heading
+    .createTicketHeading-priority,
+    .createTicketHeading-status {
       div {
         font-size: 1.5rem;
         font-weight: 600;
@@ -46,54 +53,95 @@
 
     .inputErrorResponse {
       color: $danger;
-      margin-top: 0.5em;
+      font-size: 1.1rem;
+      margin-top: 0.3em;
     }
-  } //END createTicketSelectForm-priority
 
-  // .radioCheckForm {
-  //   .ticketTitle-priority {
-  //     div {
-  //       font-size: 1.5rem;
-  //       font-weight: 600;
-  //       color: $secondary;
-  //       display: inline-block;
-  //     }
+    // a small margin for when in mobile mode until in md size, but convert back to zero back in md
+    .createTicketHeading-status {
+      margin-top: 0.25rem;
+    }
+  } //END createTicketSelectForm-priorityNStatus
 
-  //     span {
-  //       font-weight: 300;
-  //       color: $danger;
-  //     }
-  //   }
+  // container Row for assigned_user / app_name / app_version
+  .createTicketSelectForm-assignedUserNAppNameNAppVersion {
+    .createTicketHeading-assignedUser,
+    .createTicketHeading-app_name,
+    .createTicketHeading-app_version {
+      label {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: $secondary;
+      }
 
-  //   .radioCheck-priority {
-  //     font-size: 1.5rem;
-  //     font-weight: 600;
-  //     color: $secondary;
-  //   }
+      // the asterick within the label to indicate to user they must enter something
+      span {
+        font-weight: 300;
+        color: $danger;
+      }
+    }
 
-  //   .inputErrorResponse {
-  //     color: $danger;
-  //     margin-top: 0.5em;
-  //   }
+    .inputErrorResponse {
+      color: $danger;
+      font-size: 1.1rem;
+      margin-top: 0.3em;
+    }
+
+    // a small margin for when in mobile mode until in md size which will separate to to box
+    .createTicketHeading-app_name,
+    .createTicketHeading-app_version {
+      margin-top: 0.25rem;
+    }
+  }
+
+  // .createTicketHeading-status {
+  //   margin-top: 0.25rem;
   // }
 
   // * breakpoint of > 576px (sm)
   // @include media-breakpoint-up(sm) {
-  //   .textInputForm {
-  //     label {
-  //       font-size: 1rem;
-  //     }
-  //   }
   // } //END breakpoint of > 576px (sm)
 
   // * breakpoint of > 768px (md)
-  //  @include media-breakpoint-up(md) {
-  //  } //END breakpoint of > 768px (md)
+  @include media-breakpoint-up(md) {
+    .createTicketSelectForm-priorityNStatus {
+      // a small margin for when in mobile mode until in md size, but convert back to zero back in md
+      .createTicketHeading-status {
+        margin-top: 0rem;
+      }
+    }
+  } //END breakpoint of > 768px (md)
 
   // * breakpoint of > 992 (lg)
-  // @include media-breakpoint-up(lg) {
-  //   font-size: 1.25rem;
-  // } //END breakpoint of > 992 (lg)
+  @include media-breakpoint-up(lg) {
+    width: 75% !important;
+    display: flex;
+    // justify-content: center;
+    margin: auto;
+
+    // * iK I place because for some bizare reason bootstrap order is not working for this <Col>
+    #app_versionLgflex {
+      order: 6 !important;
+    }
+
+    #app_nameErrorFlexOrder7 {
+      order: 7 !important;
+    }
+
+    #app_versionErrorFlexOrder8 {
+      order: 8 !important;
+    }
+
+    // a small margin for when in mobile mode until in md size which will separate to to box
+    .createTicketHeading-app_name,
+    .createTicketHeading-app_version {
+      margin-top: 0rem !important;
+    }
+
+    // #createTicketRowTitle {
+    //   margin-bottom: 0.5rem !important;
+    // }
+  } //END breakpoint of > 992 (lg)
 
   // * breakpoint of > 1200px (xl)
   //  @include media-breakpoint-up(xl) {

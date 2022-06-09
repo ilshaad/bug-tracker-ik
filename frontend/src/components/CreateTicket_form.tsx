@@ -13,7 +13,7 @@ import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
 import { useNavigate } from "react-router-dom";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
 import capitaliseString from "../helpers/capitaliseString";
-import { Col, Container, Row, Stack } from "react-bootstrap";
+import { Button, Col, Container, Row, Stack } from "react-bootstrap";
 
 // ticket_id / title / description / submitted_by / priority / assigned_user / status / app_name / app_version / created_on
 
@@ -57,6 +57,8 @@ export default function CreateTicket_form({}: Props) {
 
     if (!values.status) {
       errors.status = "Required";
+    } else if (values.status !== "Pending" && values.status !== "Resolved") {
+      errors.status = "Required";
     }
 
     if (!values.app_name) {
@@ -92,7 +94,7 @@ export default function CreateTicket_form({}: Props) {
         description: "",
         priority: "",
         assigned_user: "", // default to Unassigned if user types nothing
-        status: "Pending", // Pending is default value
+        status: "",
         app_name: "",
         app_version: "",
         submitted_by: "", //only the admin can use this
@@ -182,7 +184,10 @@ export default function CreateTicket_form({}: Props) {
         <Form id="CreateTicket_form" className={`w-100 g-2`}>
           <Container>
             {/* title input */}
-            <Row className="textInputForm mx-auto mb-3">
+            <Row
+              className="textInputForm mx-auto mb-1 mb-lg-4"
+              id="createTicketRowTitle"
+            >
               <Col xs={12} sm={2} lg={1}>
                 <label htmlFor="createTitle" className={`form-label`}>
                   Title
@@ -215,7 +220,10 @@ export default function CreateTicket_form({}: Props) {
             </Row>
 
             {/* description input  */}
-            <Row className="textInputForm mx-auto mb-3">
+            <Row
+              className="textInputForm mx-auto mb-1 mb-lg-4"
+              id="createTicketRowDescription"
+            >
               <Col xs={12}>
                 <label htmlFor="createDescription" className="form-label">
                   Description
@@ -243,20 +251,26 @@ export default function CreateTicket_form({}: Props) {
               </Col>
             </Row>
 
-            {/* priority radio input */}
-            <Row className="createTicketSelectForm-priority mx-auto mb-3">
+            {/* priority & status input together in Row because of responsive design */}
+            <Row className="createTicketSelectForm-priorityNStatus mx-auto mb-1 mb-lg-4">
+              {/* priority select input */}
               <Col
                 // role="group"
                 // aria-labelledby="priority-radio-group"
-                className="ticketTitle-priority"
+                className="createTicketHeading-priority"
                 xs={12}
+                md={{ order: 0, span: 6 }}
               >
                 <div>Priority</div>
                 <span>*</span>
               </Col>
 
-              <Col xs={12}>
-                <Field as="select" name="priority" className="form-select">
+              <Col xs={12} md={{ order: 2, span: 6 }}>
+                <Field
+                  as="select"
+                  name="priority"
+                  className="form-select createSelectPriority"
+                >
                   <option selected>Select one</option>
                   <option value="High">High</option>
                   <option value="Medium">Medium</option>
@@ -264,7 +278,7 @@ export default function CreateTicket_form({}: Props) {
                 </Field>
               </Col>
 
-              <Col xs={12}>
+              <Col xs={12} md={{ order: 4, span: 6 }}>
                 {formikProps.errors.priority && formikProps.touched.priority ? (
                   <div className="inputErrorResponse">
                     {formikProps.errors.priority}
@@ -272,134 +286,122 @@ export default function CreateTicket_form({}: Props) {
                 ) : null}
               </Col>
 
-              {/* <Col
-                role="group"
-                aria-labelledby="priority-radio-group"
-                className="form-label ticketTitle-priority"
+              {/* status select input */}
+              <Col
+                className="createTicketHeading-status"
                 xs={12}
+                md={{ order: 1, span: 6 }}
               >
-                <div>Priority</div>
+                <div>Status</div>
                 <span>*</span>
               </Col>
 
-              <Col xs={4}>
-                <label>
-                  <Field
-                    type="radio"
-                    name="priority"
-                    value="High"
-                    className="text-primary"
-                  />
-                  High
-                </label>
+              <Col xs={12} md={{ order: 3, span: 6 }}>
+                <Field
+                  as="select"
+                  name="status"
+                  className="form-select createSelectStatus"
+                >
+                  <option selected>Select one</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Resolved">Resolved</option>
+                </Field>
               </Col>
 
-              <Col xs={4}>
-                <label>
-                  <Field type="radio" name="priority" value="Medium" />
-                  Medium
-                </label>
-              </Col>
-
-              <Col xs={4}>
-                <label>
-                  <Field type="radio" name="priority" value="Low" />
-                  Low
-                </label>
-              </Col> */}
-
-              {/* <Col>
-                {formikProps.errors.priority && formikProps.touched.priority ? (
-                  <div className="inputErrorResponse">
-                    {formikProps.errors.priority}
+              <Col xs={12} md={{ order: 5, span: 6 }}>
+                {formikProps.errors.status && formikProps.touched.status ? (
+                  <div className={`inputErrorResponse`}>
+                    {formikProps.errors.status}
                   </div>
                 ) : null}
-              </Col> */}
+              </Col>
             </Row>
 
-            {/* assigned_user input */}
-            <Row>
-              <Col>
-                <label htmlFor="createAssignedUser">Assigned user</label>
+            {/* assigned_user / app_name / app-version  input together in Row because of responsive design */}
+            <Row className="createTicketSelectForm-assignedUserNAppNameNAppVersion mx-auto">
+              {/* assigned_user input */}
+              <Col
+                xs={12}
+                lg={{ span: 4, order: 1 }}
+                className="createTicketHeading-assignedUser"
+              >
+                <label htmlFor="createAssignedUser" className={`form-label`}>
+                  Assigned user
+                </label>
+              </Col>
+
+              <Col xs={12} lg={{ span: 4, order: 4 }}>
                 <Field
                   type="text"
                   id="createAssignedUser"
                   name="assigned_user"
                   placeholder="Unassigned"
+                  className={`form-control`}
                 />
               </Col>
-            </Row>
-            {/* <Col>
-                {formikProps.errors.priority && formikProps.touched.priority ? (
-                  <div className="inputErrorResponse">
-                    {formikProps.errors.priority}
-                  </div>
-                ) : null}
-              </Col>              {/* <Col>
-                {formikProps.errors.priority && formikProps.touched.priority ? (
-                  <div className="inputErrorResponse">
-                    {formikProps.errors.priority}
-                  </div>
-                ) : null}
-              </Col>              {/* <Col>
-                {formikProps.errors.priority && formikProps.touched.priority ? (
-                  <div className="inputErrorResponse">
-                    {formikProps.errors.priority}
-                  </div>
-                ) : null}
-              </Col>
-            {/* status radio input */}
-            <Row>
-              <Col>
-                <div role="group" aria-labelledby="status-radio-group">
-                  Status *:
-                  <label>
-                    <Field type="radio" name="status" value="Pending" checked />
-                    Pending
-                  </label>
-                  <label>
-                    <Field type="radio" name="status" value="Resolved" />
-                    Resolved
-                  </label>
-                </div>
 
-                {formikProps.errors.status && formikProps.touched.status ? (
-                  <div>{formikProps.errors.status}</div>
-                ) : null}
+              {/* app_name input */}
+              <Col
+                xs={12}
+                lg={{ span: 4, order: 2 }}
+                className="createTicketHeading-app_name"
+              >
+                <label htmlFor="createAppName">App Name</label>
+                <span>*</span>
               </Col>
-            </Row>
 
-            {/* app_name input */}
-            <Row>
-              <Col>
-                <label htmlFor="createAppName">App Name *</label>
+              <Col xs={12} lg={{ span: 4, order: 5 }}>
                 <Field
                   type="text"
                   id="createAppName"
                   name="app_name"
                   placeholder="Name of the app"
+                  className="form-control"
                 />
+              </Col>
 
+              <Col
+                xs={12}
+                lg={{ span: 4, order: 7, offset: 4 }}
+                id="app_nameErrorFlexOrder7"
+              >
                 {formikProps.errors.app_name && formikProps.touched.app_name ? (
-                  <div>{formikProps.errors.app_name}</div>
+                  <div className="inputErrorResponse">
+                    {formikProps.errors.app_name}
+                  </div>
                 ) : null}
               </Col>
-            </Row>
 
-            {/* app_version input */}
-            <Row>
-              <Col>
-                <label htmlFor="createAppVersion">App version *</label>
+              {/* app_version input */}
+              <Col
+                xs={12}
+                lg={{ span: 4, order: 3 }}
+                className={`createTicketHeading-app_version`}
+              >
+                <label htmlFor="createAppVersion">App version</label>
+                <span>*</span>
+              </Col>
+
+              <Col xs={12} lg={{ span: 4, order: 6 }} id="app_versionLgflex">
                 <Field
                   type="text"
                   id="createAppVersion"
                   name="app_version"
                   placeholder="App verison"
+                  className={`form-control`}
                 />
+              </Col>
 
+              <Col
+                xs={12}
+                lg={{ span: 4, order: 8 }}
+                id="app_versionErrorFlexOrder8"
+              >
                 {formikProps.errors.app_version &&
                 formikProps.touched.app_version ? (
-                  <div>{formikProps.errors.app_version}</div>
+                  <div className="inputErrorResponse">
+                    {formikProps.errors.app_version}
+                  </div>
                 ) : null}
               </Col>
             </Row>
@@ -426,9 +428,16 @@ export default function CreateTicket_form({}: Props) {
             })()}
 
             {/* submit button */}
-            <Row>
-              <Col>
-                <button type="submit">Submit</button>
+            <Row className="mt-3 mt-lg-4 mb-1 mx-auto">
+              <Col xs={12} md={6} xl={4} className="d-grid">
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="lg"
+                  className="fw-bold"
+                >
+                  Submit
+                </Button>
               </Col>
             </Row>
           </Container>
@@ -436,5 +445,4 @@ export default function CreateTicket_form({}: Props) {
       )}
     </Formik>
   ); //END return jsx component
-  // </div>
 } //END CreateTicket_form

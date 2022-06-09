@@ -10,9 +10,22 @@ export default function DisplayTicket({ ticket }: Props) {
     return <Navigate to={"/"} />;
   }
 
+  const {
+    title,
+    description,
+    priority,
+    assigned_user,
+    status,
+    app_name,
+    app_version,
+    submitted_by,
+    created_on,
+  } = ticket;
+
   return (
     <div>
-      <h2>title: {ticket.title}</h2>
+      <h2 className="text-secondary">Title</h2>
+      <h3>{title}</h3>
       <code>description: {ticket.description}</code>
       <p>priority: {ticket.priority}</p>
       <p>assigned_user: {ticket.assigned_user}</p>
