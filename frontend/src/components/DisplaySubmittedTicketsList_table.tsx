@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import auth0User from "../helpers/auth0User";
+import dateOnly from "../helpers/dateOnly";
 import {
   sortNameByAscendingOrder_array,
   sortNameByDescendingOrder_array,
@@ -160,6 +161,9 @@ export default function DisplaySubmittedTicketsList_table({
     const tbodyTicketList_array: Array<JSX.Element> = [];
 
     for (let ticketObject of sortedTicketsListState) {
+      // eg. 2021-06-01 11:08:01 =  2021-06-01
+      const date = dateOnly({ dateTime: ticketObject.created_on });
+
       tbodyTicketList_array.push(
         <tr
           onClick={() => navigateToViewTicket(ticketObject.ticket_id)}
@@ -172,7 +176,7 @@ export default function DisplaySubmittedTicketsList_table({
           {/* <td>{ticketObject.app_version}</td> */}
           {/* <td>{ticketObject.submitted_by}</td> */}
           <td>{ticketObject.assigned_user}</td>
-          <td>{ticketObject.created_on}</td>
+          <td>{date}</td>
         </tr>
       );
     }

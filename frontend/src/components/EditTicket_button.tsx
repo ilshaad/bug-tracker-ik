@@ -2,8 +2,10 @@
 // edit button will display the edit modal & should have the edit form the user will need to fill out
 
 import React, { useState } from "react";
+import { Button, Col } from "react-bootstrap";
 import auth0User from "../helpers/auth0User";
 import EditTicket_modal from "./EditTicket_modal";
+import PopoverForButton from "./PopoverForButton";
 
 type Props = { ticketSubmitted_by: string; ticketAssigned_user: string };
 
@@ -26,20 +28,27 @@ export default function EditTicket_button({
     // show modal for edit form
     if (enabledButton)
       return (
-        <>
-          <button onClick={() => setModalShow(true)}>
-            Enabled EditTicket_button
-          </button>
+        <Col xs={12} className="d-grid">
+          <Button onClick={() => setModalShow(true)}>Update ticket</Button>
 
           <EditTicket_modal
             showModal={modalShow}
             // closeModal_function={() => setModalShow(false)}
             closeModal_function={setModalShow}
           />
-        </>
+        </Col>
       );
 
-    return <button disabled>Disable EditTicket_buttons</button>;
+    return (
+      <Col xs={12} className="d-grid">
+        <PopoverForButton
+          position="bottom"
+          textInfo="You must be the submitted user or assigned user to edit this ticket"
+        >
+          <Button style={{ opacity: "50%" }}>Update ticket</Button>
+        </PopoverForButton>
+      </Col>
+    );
   };
 
   // while loading or user not logged in

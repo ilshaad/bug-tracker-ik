@@ -16,7 +16,8 @@ import { get_allCommentsForASingleTicket_actions } from "../models/reducers/comm
 import auth0User from "../helpers/auth0User";
 import CreateNewCommentBox from "../components/CreateNewCommentBox";
 import TitlePage from "../components/TitlePage";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
+import PopoverForButton from "../components/PopoverForButton";
 
 export default function ViewTicket(): JSX.Element | null {
   const auth0UserObject = auth0User(
@@ -46,23 +47,25 @@ export default function ViewTicket(): JSX.Element | null {
       {/* Show all the ticket info */}
       <DisplayTicket ticket={ticket} />
 
-      {/* button & modal form to edit the ticket */}
-      <EditTicket_button
-        ticketSubmitted_by={ticket?.submitted_by}
-        ticketAssigned_user={ticket?.assigned_user}
-      />
+      <Row className="mx-auto gap-2">
+        {/* button & modal form to edit the ticket */}
+        <EditTicket_button
+          ticketSubmitted_by={ticket?.submitted_by}
+          ticketAssigned_user={ticket?.assigned_user}
+        />
 
-      {/* button & modal form to delete the ticket, which will then redirect to dashboard */}
-      <DeleteTicket_button ticketSubmitted_by={ticket?.submitted_by} />
+        {/* button & modal form to delete the ticket, which will then redirect to dashboard */}
+        <DeleteTicket_button ticketSubmitted_by={ticket?.submitted_by} />
 
-      {/* button to apply to become assigned user for the ticket. However just display a dummy toast message to user than submitted_user received notification */}
-      <ApplyToAssignForTicket_button
-        ticketSubmitted_by={ticket?.submitted_by}
-        ticketAssigned_user={ticket?.assigned_user}
-      />
+        {/* button to apply to become assigned user for the ticket. However just display a dummy toast message to user than submitted_user received notification */}
+        <ApplyToAssignForTicket_button
+          ticketSubmitted_by={ticket?.submitted_by}
+          ticketAssigned_user={ticket?.assigned_user}
+        />
 
-      {/* button to toggle the status of the ticket between Resolved or Pending */}
-      <MarkAsResolvedOrPending_button ticketObject={ticket} />
+        {/* button to toggle the status of the ticket between Resolved or Pending */}
+        <MarkAsResolvedOrPending_button ticketObject={ticket} />
+      </Row>
 
       <h2>comments</h2>
 

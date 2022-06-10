@@ -201,6 +201,7 @@ export default function CreateTicket_form({}: Props) {
                   type="text"
                   id="createTitle"
                   name="title"
+                  placeholder="Give your ticket a title"
                   className={`form-control`}
                 />
               </Col>
@@ -237,6 +238,7 @@ export default function CreateTicket_form({}: Props) {
                   type="text"
                   id="createDescription"
                   name="description"
+                  placeholder="Describe the issue"
                   className={`form-control`}
                 />
               </Col>
@@ -387,7 +389,7 @@ export default function CreateTicket_form({}: Props) {
                   type="text"
                   id="createAppVersion"
                   name="app_version"
-                  placeholder="App verison"
+                  placeholder="Version of the app"
                   className={`form-control`}
                 />
               </Col>
@@ -428,7 +430,7 @@ export default function CreateTicket_form({}: Props) {
             })()}
 
             {/* submit button */}
-            <Row className="mt-3 mt-lg-4 mb-1 mx-auto">
+            <Row className="mt-3 mt-lg-4 mb-3 mb-lg-4 mx-auto">
               <Col xs={12} md={6} xl={4} className="d-grid">
                 <Button
                   type="submit"

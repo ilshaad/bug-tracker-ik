@@ -6,6 +6,7 @@ import auth0User from "../helpers/auth0User";
 import { ticket_type } from "../types/tickets_type";
 import { useAppDispatch } from "../models/hooks";
 import { patch_updateTicket_actions } from "../models/reducers/tickets_slice";
+import { Button, Col } from "react-bootstrap";
 
 type Props = {
   ticketObject: ticket_type;
@@ -46,14 +47,20 @@ export default function MarkAsResolvedOrPending_button({
       // is user submitted_by / assigned_user / admin, then give them the ability to update the ticket status to 'Pending'
       if (authorised) {
         return (
-          <button onClick={updateTicketToPending}>
-            Pending MarkAsResolvedOrPending_button
-          </button>
+          <Col xs={12} className={`d-grid`}>
+            <Button onClick={updateTicketToPending}>
+              Tag ticket as Pending
+            </Button>
+          </Col>
         );
       }
       // if not authorized, display disabled button
       else {
-        return <button disabled>Pending MarkAsResolvedOrPending_button</button>;
+        return (
+          <Col xs={12} className={`d-grid`}>
+            <Button disabled>Tag ticket as Pending</Button>
+          </Col>
+        );
       }
     }
     // if ticket status is 'Pending'
@@ -61,15 +68,19 @@ export default function MarkAsResolvedOrPending_button({
       // if user submitted_by / assigned_user / admin, then give them the ability to update the ticket status to 'Resovled'
       if (authorised) {
         return (
-          <button onClick={updateTicketToResolved}>
-            Resolved MarkAsResolvedOrPending_button
-          </button>
+          <Col xs={12} className={`d-grid`}>
+            <Button onClick={updateTicketToResolved}>
+              Tag ticket as Resolved
+            </Button>
+          </Col>
         );
       }
       // if not authorized display disabled button
       else {
         return (
-          <button disabled>Resolved MarkAsResolvedOrPending_button</button>
+          <Col xs={12} className={`d-grid`}>
+            <Button disabled>Tag ticket as Resolved</Button>
+          </Col>
         );
       }
     }

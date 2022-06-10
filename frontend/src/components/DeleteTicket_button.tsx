@@ -2,8 +2,10 @@
 // delete button will display modal which should contain the delete form for the user
 
 import React, { useState } from "react";
+import { Button, Col } from "react-bootstrap";
 import auth0User from "../helpers/auth0User";
 import DeleteTicket_modal from "./DeleteTicket_modal";
+import PopoverForButton from "./PopoverForButton";
 
 type Props = { ticketSubmitted_by: string };
 
@@ -22,19 +24,26 @@ export default function DeleteTicket_button({ ticketSubmitted_by }: Props) {
   const deleteButton = (enabledButton: boolean) => {
     if (enabledButton)
       return (
-        <>
-          <button onClick={() => setModalShow(true)}>
-            Enabled DeleteTicket_button
-          </button>
+        <Col xs={12} className={`d-grid`}>
+          <Button onClick={() => setModalShow(true)}>Delete ticket</Button>
 
           <DeleteTicket_modal
             showModal={modalShow}
             closeModal_function={setModalShow}
           />
-        </>
+        </Col>
       );
 
-    return <button disabled>Disabled DeleteTicet_button</button>;
+    return (
+      <Col xs={12} className={`d-grid`}>
+        <PopoverForButton
+          position="bottom"
+          textInfo="You must be the submitted user or assigned user to delete this ticket"
+        >
+          <Button style={{ opacity: "50%" }}>Delete ticket</Button>
+        </PopoverForButton>
+      </Col>
+    );
   };
 
   // while loading or user not logged in

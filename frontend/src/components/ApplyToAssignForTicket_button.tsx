@@ -4,9 +4,11 @@
 //    - disable button after click
 
 import React, { useRef, createRef } from "react";
+import { Button, Col } from "react-bootstrap";
 import auth0User from "../helpers/auth0User";
 import { useAppDispatch } from "../models/hooks";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
+import PopoverForButton from "./PopoverForButton";
 
 type Props = { ticketSubmitted_by: string; ticketAssigned_user: string };
 
@@ -41,16 +43,26 @@ export default function ApplyToAssignForTicket_button({
   const ApplyToAssignedButton = (enabledButton: boolean) => {
     if (enabledButton)
       return (
-        <button
-          type="button"
-          ref={buttonEnabled}
-          onClick={disableTheEnabledButton}
-        >
-          Enabled applyToAssignForTicket_button
-        </button>
+        <Col xs={12} className={`d-grid`}>
+          <PopoverForButton position="top" textInfo="acive">
+            <Button
+              type="button"
+              ref={buttonEnabled}
+              onClick={disableTheEnabledButton}
+            >
+              Apply for assignee
+            </Button>
+          </PopoverForButton>
+        </Col>
       );
 
-    return <button disabled>Disabled applyToAssignForTicket_button</button>;
+    return (
+      <Col xs={12} className={`d-grid`}>
+        <PopoverForButton position="top" textInfo="ik testing">
+          <Button style={{ opacity: "50%" }}>Apply for assignee</Button>
+        </PopoverForButton>
+      </Col>
+    );
   };
 
   // while loading or user not logged in
