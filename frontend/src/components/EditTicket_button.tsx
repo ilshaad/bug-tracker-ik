@@ -40,14 +40,14 @@ export default function EditTicket_button({
       );
 
     return (
-      <Col xs={12} className="d-grid">
+      <>
         <PopoverForButton
-          position="bottom"
+          position="top"
           textInfo="You must be the submitted user or assigned user to edit this ticket"
         >
           <Button style={{ opacity: "50%" }}>Update ticket</Button>
         </PopoverForButton>
-      </Col>
+      </>
     );
   };
 

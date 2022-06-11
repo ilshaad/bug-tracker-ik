@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+
+import "../public/styles/views/ViewTicket.scss";
 import ApplyToAssignForTicket_button from "../components/ApplyToAssignForTicket_button";
 import CreateNewComment_button from "../components/CreateNewComment_button";
 import DeleteTicket_button from "../components/DeleteTicket_button";
@@ -16,7 +18,7 @@ import { get_allCommentsForASingleTicket_actions } from "../models/reducers/comm
 import auth0User from "../helpers/auth0User";
 import CreateNewCommentBox from "../components/CreateNewCommentBox";
 import TitlePage from "../components/TitlePage";
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import PopoverForButton from "../components/PopoverForButton";
 
 export default function ViewTicket(): JSX.Element | null {
@@ -35,7 +37,7 @@ export default function ViewTicket(): JSX.Element | null {
     useState<boolean>(false);
 
   return (
-    <Container>
+    <Container id="ViewTicket-view-Container">
       <SeoReactHelmet
         pageTitle={`${ticket?.title} / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali`}
         metaDescriptionContent={`${ticket?.title} / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali`}
@@ -45,36 +47,75 @@ export default function ViewTicket(): JSX.Element | null {
       <TitlePage titleName="Ticket" />
 
       {/* Show all the ticket info */}
-      <DisplayTicket ticket={ticket} />
-
-      <Row className="mx-auto gap-2">
-        {/* button & modal form to edit the ticket */}
-        <EditTicket_button
-          ticketSubmitted_by={ticket?.submitted_by}
-          ticketAssigned_user={ticket?.assigned_user}
-        />
-
-        {/* button & modal form to delete the ticket, which will then redirect to dashboard */}
-        <DeleteTicket_button ticketSubmitted_by={ticket?.submitted_by} />
-
-        {/* button to apply to become assigned user for the ticket. However just display a dummy toast message to user than submitted_user received notification */}
-        <ApplyToAssignForTicket_button
-          ticketSubmitted_by={ticket?.submitted_by}
-          ticketAssigned_user={ticket?.assigned_user}
-        />
-
-        {/* button to toggle the status of the ticket between Resolved or Pending */}
-        <MarkAsResolvedOrPending_button ticketObject={ticket} />
+      <Row
+        className={`mx-auto`}
+        style={{ marginTop: "-3rem" }}
+        id="DisplayTicket-component"
+      >
+        <Col
+          xs={{ span: 10, offset: 1 }}
+          md={{ span: 9, offset: 1 }}
+          lg={{ span: 8, offset: 2 }}
+        >
+          <DisplayTicket ticket={ticket} />
+        </Col>
       </Row>
 
-      <h2>comments</h2>
+      {/* row responsive design for all the ticket crud buttons */}
+      <Row className="mx-auto gap-2" id="ticketButtonsCrud">
+        {/* button & modal form to edit the ticket */}
+        <Col
+          xs={12}
+          md={{ span: 5, offset: 1 }}
+          lg={{ span: 4, offset: 2 }}
+          className="d-grid"
+        >
+          <EditTicket_button
+            ticketSubmitted_by={ticket?.submitted_by}
+            ticketAssigned_user={ticket?.assigned_user}
+          />
+        </Col>
+
+        {/* button & modal form to delete the ticket, which will then redirect to dashboard */}
+        <Col xs={12} md={{ span: 5 }} lg={{ span: 4 }} className={`d-grid`}>
+          <DeleteTicket_button ticketSubmitted_by={ticket?.submitted_by} />
+        </Col>
+
+        {/* button to apply to become assigned user for the ticket. However just display a dummy toast message to user than submitted_user received notification */}
+        <Col
+          xs={12}
+          md={{ span: 5, offset: 1 }}
+          lg={{ span: 4, offset: 2 }}
+          className={`d-grid`}
+        >
+          <ApplyToAssignForTicket_button
+            ticketSubmitted_by={ticket?.submitted_by}
+            ticketAssigned_user={ticket?.assigned_user}
+          />
+        </Col>
+
+        {/* button to toggle the status of the ticket between Resolved or Pending */}
+        <Col xs={12} md={{ span: 5 }} lg={{ span: 4 }} className={`d-grid`}>
+          <MarkAsResolvedOrPending_button ticketObject={ticket} />
+        </Col>
+      </Row>
+
+      <Row className="mt-3 mb-3">
+        <Col as="h2" xs={{ offset: 2 }}>
+          Comments
+        </Col>
+      </Row>
 
       {/* button to user if they want to create a new comment */}
-      <CreateNewComment_button
-        showCreateCommentBox={showCreateCommentBox}
-        setShowCreateCommentBox={setShowCreateCommentBox}
-        auth0UserObject={auth0UserObject}
-      />
+      <Row>
+        <Col>
+          <CreateNewComment_button
+            showCreateCommentBox={showCreateCommentBox}
+            setShowCreateCommentBox={setShowCreateCommentBox}
+            auth0UserObject={auth0UserObject}
+          />
+        </Col>
+      </Row>
 
       {/* textarea form for user to create a new comment */}
       <CreateNewCommentBox

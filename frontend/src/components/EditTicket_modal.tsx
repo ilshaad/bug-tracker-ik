@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Container, Modal } from "react-bootstrap";
 import EditTicket_form from "./EditTicket_form";
 
 type Props = {
@@ -23,8 +23,11 @@ export default function EditTicket_modal({
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+        <Modal.Title
+          id="contained-modal-title-vcenter"
+          className="fs-1 fw-bold text-primary"
+        >
+          <Container>Update ticket</Container>
         </Modal.Title>
       </Modal.Header>
 

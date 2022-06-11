@@ -7,6 +7,7 @@ import { ticket_type } from "../types/tickets_type";
 import { useAppDispatch } from "../models/hooks";
 import { patch_updateTicket_actions } from "../models/reducers/tickets_slice";
 import { Button, Col } from "react-bootstrap";
+import PopoverForButton from "./PopoverForButton";
 
 type Props = {
   ticketObject: ticket_type;
@@ -47,19 +48,24 @@ export default function MarkAsResolvedOrPending_button({
       // is user submitted_by / assigned_user / admin, then give them the ability to update the ticket status to 'Pending'
       if (authorised) {
         return (
-          <Col xs={12} className={`d-grid`}>
+          <>
             <Button onClick={updateTicketToPending}>
               Tag ticket as Pending
             </Button>
-          </Col>
+          </>
         );
       }
       // if not authorized, display disabled button
       else {
         return (
-          <Col xs={12} className={`d-grid`}>
-            <Button disabled>Tag ticket as Pending</Button>
-          </Col>
+          <>
+            <PopoverForButton
+              position="bottom"
+              textInfo="You must be the submitted user or assigned user to change the status of the ticket"
+            >
+              <Button style={{ opacity: "50%" }}>Tag ticket as Pending</Button>
+            </PopoverForButton>
+          </>
         );
       }
     }
@@ -68,19 +74,24 @@ export default function MarkAsResolvedOrPending_button({
       // if user submitted_by / assigned_user / admin, then give them the ability to update the ticket status to 'Resovled'
       if (authorised) {
         return (
-          <Col xs={12} className={`d-grid`}>
+          <>
             <Button onClick={updateTicketToResolved}>
               Tag ticket as Resolved
             </Button>
-          </Col>
+          </>
         );
       }
       // if not authorized display disabled button
       else {
         return (
-          <Col xs={12} className={`d-grid`}>
-            <Button disabled>Tag ticket as Resolved</Button>
-          </Col>
+          <>
+            <PopoverForButton
+              position="bottom"
+              textInfo="You must be the submitted user or assigned user to change the status of the ticket"
+            >
+              <Button style={{ opacity: "50%" }}>Tag ticket as Resolved</Button>
+            </PopoverForButton>
+          </>
         );
       }
     }

@@ -43,25 +43,26 @@ export default function ApplyToAssignForTicket_button({
   const ApplyToAssignedButton = (enabledButton: boolean) => {
     if (enabledButton)
       return (
-        <Col xs={12} className={`d-grid`}>
-          <PopoverForButton position="top" textInfo="acive">
-            <Button
-              type="button"
-              ref={buttonEnabled}
-              onClick={disableTheEnabledButton}
-            >
-              Apply for assignee
-            </Button>
-          </PopoverForButton>
-        </Col>
+        <>
+          <Button
+            type="button"
+            ref={buttonEnabled}
+            onClick={disableTheEnabledButton}
+          >
+            Apply for assignee
+          </Button>
+        </>
       );
 
     return (
-      <Col xs={12} className={`d-grid`}>
-        <PopoverForButton position="top" textInfo="ik testing">
+      <>
+        <PopoverForButton
+          position="bottom"
+          textInfo="Unable to assign for the ticket"
+        >
           <Button style={{ opacity: "50%" }}>Apply for assignee</Button>
         </PopoverForButton>
-      </Col>
+      </>
     );
   };
 

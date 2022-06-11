@@ -12,13 +12,15 @@
 import { Field, Form, Formik, FormikErrors } from "formik";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+
+import "../public/styles/components/EditTicket_form.scss";
 import auth0User from "../helpers/auth0User";
 import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { patch_updateTicket_actions } from "../models/reducers/tickets_slice";
 import { ticket_type } from "../types/tickets_type";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 
 type Props = { closeModal_function: Function };
 
@@ -40,7 +42,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
     if (priorityValue === ticket.priority) return true;
     if (priorityValue === ticket.priority) return true;
 
-    return null;
+    return false;
   };
 
   // form validation,for if user incorrectly mistype within the form
@@ -80,9 +82,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
 
   // return formik jsx component
   return (
-    <div>
-      <h1>Update ticket</h1>
-
+    <div id="EditTicket-form-component">
       {/* Most of these code were collect in Formik documentation & I modified it to work the way I need it to */}
       <Formik
         // initial values for the ticket form object
@@ -156,152 +156,214 @@ export default function EditTicket_form({ closeModal_function }: Props) {
         {(formikProps) => (
           <Form>
             <Modal.Body>
-              <label htmlFor="editTitle">Title *</label>
-              {/* <Field/> is like input[type] element but is connected to formik component */}
-              <Field
-                type="text"
-                id="editTitle"
-                name="title"
-                placeholder={ticket.title ? ticket.title : "Ticket title"}
-              />
+              <Container id="editTicket-form-container">
+                {/* title input */}
+                <Row className="editTicketForm">
+                  <Col xs={12}>
+                    <label htmlFor="editTitle">Title</label>
+                    <span>*</span>
+                  </Col>
 
-              {/* this will display jsx error message if user leaves text box empty or incorrectly types something (accordingly to your validate function) */}
-              {formikProps.errors.title && formikProps.touched.title ? (
-                <div>{formikProps.errors.title}</div>
-              ) : null}
+                  {/* <Field/> is like input[type] element but is connected to formik component */}
+                  <Col xs={12}>
+                    <Field
+                      type="text"
+                      id="editTitle"
+                      name="title"
+                      placeholder={ticket.title ? ticket.title : "Ticket title"}
+                      className="form-control"
+                    />
+                  </Col>
 
-              <div></div>
+                  {/* this will display jsx error message if user leaves text box empty or incorrectly types something (accordingly to your validate function) */}
+                  <Col xs={12}>
+                    {formikProps.errors.title && formikProps.touched.title ? (
+                      <div className="EditInputErrorResponse">
+                        {formikProps.errors.title}
+                      </div>
+                    ) : null}
+                  </Col>
+                </Row>
 
-              <label htmlFor="editDescription">Description *</label>
-              <Field
-                type="text"
-                id="editDescription"
-                name="description"
-                placeholder={
-                  ticket.description ? ticket.description : "Ticket description"
-                }
-              />
+                {/* description textarea */}
+                <Row className="mt-2">
+                  <Col xs={12} className="editTicketForm">
+                    <label htmlFor="editDescription">Description</label>
+                    <span>*</span>
+                  </Col>
 
-              {formikProps.errors.description &&
-              formikProps.touched.description ? (
-                <div>{formikProps.errors.description}</div>
-              ) : null}
+                  <Col xs={12}>
+                    <Field
+                      as="textarea"
+                      type="text"
+                      id="editDescription"
+                      name="description"
+                      placeholder={
+                        ticket.description
+                          ? ticket.description
+                          : "Ticket description"
+                      }
+                      className="form-control"
+                    />
+                  </Col>
 
-              <div></div>
+                  <Col xs={12}>
+                    {formikProps.errors.description &&
+                    formikProps.touched.description ? (
+                      <div className="EditInputErrorResponse">
+                        {formikProps.errors.description}
+                      </div>
+                    ) : null}
+                  </Col>
+                </Row>
 
-              <div role="group" aria-labelledby="priority-radio-group">
-                Priority *:
-                <label>
-                  <Field
-                    type="radio"
-                    name="priority"
-                    value="High"
-                    checked={autoCheckPriority("High")}
-                    // checked={true}
-                  />
-                  High
-                </label>
-                <label>
-                  <Field
-                    type="radio"
-                    name="priority"
-                    value="Medium"
-                    checked={autoCheckPriority("Medium")}
-                  />
-                  Medium
-                </label>
-                <label>
-                  <Field
-                    type="radio"
-                    name="priority"
-                    value="Low"
-                    checked={autoCheckPriority("Low")}
-                  />
-                  Low
-                </label>
-              </div>
+                {/* priority selected input */}
+                <Row className="mt-2">
+                  <Col xs={12} className="editTicketForm-selected">
+                    <div>Priority</div>
+                    <span>*</span>
+                  </Col>
 
-              {formikProps.errors.priority && formikProps.touched.priority ? (
-                <div>{formikProps.errors.priority}</div>
-              ) : null}
+                  <Col xs={12}>
+                    <Field as="select" name="priority" className="form-select">
+                      <option value="High" selected={autoCheckPriority("High")}>
+                        High
+                      </option>
+                      <option
+                        value="Medium"
+                        selected={autoCheckPriority("Medium")}
+                      >
+                        Medium
+                      </option>
+                      <option value="Low" selected={autoCheckPriority("Low")}>
+                        Low
+                      </option>
+                    </Field>
+                  </Col>
 
-              <div></div>
+                  <Col xs={12}>
+                    {formikProps.errors.priority &&
+                    formikProps.touched.priority ? (
+                      <div>{formikProps.errors.priority}</div>
+                    ) : null}
+                  </Col>
+                </Row>
 
-              <label htmlFor="editAssignedUser">Assigned user</label>
-              <Field
-                type="text"
-                id="editAssignedUser"
-                name="assigned_user"
-                placeholder={
-                  ticket.assigned_user
-                    ? ticket.assigned_user
-                    : "Ticket assigned user"
-                }
-              />
+                {/* assigned_user input */}
+                <Row className="mt-2">
+                  <Col xs={12} className="editTicketForm">
+                    <label htmlFor="editAssignedUser">Assigned user</label>
+                  </Col>
 
-              <div></div>
+                  <Col xs={12}>
+                    <Field
+                      type="text"
+                      id="editAssignedUser"
+                      name="assigned_user"
+                      placeholder={
+                        ticket.assigned_user
+                          ? ticket.assigned_user
+                          : "Ticket assigned user"
+                      }
+                      className="form-control"
+                    />
+                  </Col>
+                </Row>
 
-              <label htmlFor="editAppName">App Name *</label>
-              <Field
-                type="text"
-                id="editAppName"
-                name="app_name"
-                placeholder={
-                  ticket.app_name ? ticket.app_name : "Ticket app name"
-                }
-              />
+                {/* app_name input */}
+                <Row className="mt-2">
+                  <Col xs={12} className="editTicketForm">
+                    <label htmlFor="editAppName">App Name</label>
+                    <span>*</span>
+                  </Col>
 
-              {formikProps.errors.app_name && formikProps.touched.app_name ? (
-                <div>{formikProps.errors.app_name}</div>
-              ) : null}
+                  <Col xs={12}>
+                    <Field
+                      type="text"
+                      id="editAppName"
+                      name="app_name"
+                      placeholder={
+                        ticket.app_name ? ticket.app_name : "Ticket app name"
+                      }
+                      className="form-control"
+                    />
+                  </Col>
 
-              <div></div>
+                  <Col xs={12}>
+                    {formikProps.errors.app_name &&
+                    formikProps.touched.app_name ? (
+                      <div className="EditInputErrorResponse">
+                        {formikProps.errors.app_name}
+                      </div>
+                    ) : null}
+                  </Col>
+                </Row>
 
-              <label htmlFor="editAppVersion">App version *</label>
-              <Field
-                type="text"
-                id="editAppVersion"
-                name="app_version"
-                placeholder={
-                  ticket.app_version ? ticket.app_version : "ticket app version"
-                }
-              />
+                {/* app_version input */}
+                <Row className="mt-2">
+                  <Col xs={12} className="editTicketForm">
+                    <label htmlFor="editAppVersion">App version</label>
+                    <span>*</span>
+                  </Col>
 
-              {formikProps.errors.app_version &&
-              formikProps.touched.app_version ? (
-                <div>{formikProps.errors.app_version}</div>
-              ) : null}
+                  <Col xs={12}>
+                    <Field
+                      type="text"
+                      id="editAppVersion"
+                      name="app_version"
+                      placeholder={
+                        ticket.app_version
+                          ? ticket.app_version
+                          : "ticket app version"
+                      }
+                      className="form-control"
+                    />
+                  </Col>
 
-              <div></div>
+                  <Col xs={12}>
+                    {formikProps.errors.app_version &&
+                    formikProps.touched.app_version ? (
+                      <div className="EditInputErrorResponse">
+                        {formikProps.errors.app_version}
+                      </div>
+                    ) : null}
+                  </Col>
+                </Row>
 
-              {/* only admin can see & change the submitted_by property when editing the ticket */}
-              {(() => {
-                if (auth0UserObject.email === process.env.ADMIN_EMAIL) {
-                  return (
-                    <>
-                      <label htmlFor="editSubmittedBy">Submitted by</label>
-                      <Field
-                        type="text"
-                        id="editSubmittedBy"
-                        name="submitted_by"
-                        placeholder={
-                          ticket.submitted_by
-                            ? ticket.submitted_by
-                            : "Ticket submitted user"
-                        }
-                      />
-                    </>
-                  );
-                }
-                return null;
-              })()}
-
-              <div></div>
+                {/* only admin can see & change the submitted_by property when editing the ticket */}
+                {(() => {
+                  if (auth0UserObject.email === process.env.ADMIN_EMAIL) {
+                    return (
+                      <>
+                        <label htmlFor="editSubmittedBy">Submitted by</label>
+                        <Field
+                          type="text"
+                          id="editSubmittedBy"
+                          name="submitted_by"
+                          placeholder={
+                            ticket.submitted_by
+                              ? ticket.submitted_by
+                              : "Ticket submitted user"
+                          }
+                        />
+                      </>
+                    );
+                  }
+                  return null;
+                })()}
+              </Container>
             </Modal.Body>
 
             <Modal.Footer>
-              <Button type="submit">iK submit button</Button>
-              <Button onClick={() => closeModal_function(false)}>Close</Button>
+              <Button type="submit" className="editTicket-form-modal-buttons">
+                Submit
+              </Button>
+              <Button
+                onClick={() => closeModal_function(false)}
+                className="editTicket-form-modal-buttons bg-danger"
+              >
+                Cancel
+              </Button>
             </Modal.Footer>
           </Form>
         )}

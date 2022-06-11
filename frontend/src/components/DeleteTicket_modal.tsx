@@ -21,7 +21,7 @@ export default function DeleteTicket_modal({
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title>iK delete title</Modal.Title>
+        <Modal.Title>Delete Ticket</Modal.Title>
       </Modal.Header>
 
       <DeleteTicket_form closeModal_function={closeModal_function} />
