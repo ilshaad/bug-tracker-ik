@@ -23,17 +23,20 @@ export default function Message_toast({}: Props) {
   };
 
   return (
-    <ToastContainer className="p-3" position="bottom-end">
+    <ToastContainer
+      className="p-3"
+      style={{ position: "fixed", bottom: 0, right: 0 }}
+    >
       <Toast
         show={messageToast_reduxAction()}
         onClose={nullTheMessageToast_reduxAction}
         delay={4000}
         autohide
       >
-        <Toast.Header>
-          <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
-          <strong className="me-auto">Bug Tracker</strong>
-          <small>0 mins ago</small>
+        <Toast.Header className="bg-primary">
+          {/* <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" /> */}
+          <strong className="me-auto text-light">Bug Tracker</strong>
+          <small className="text-light">0 mins ago</small>
         </Toast.Header>
         <Toast.Body>{messageToast}</Toast.Body>
       </Toast>

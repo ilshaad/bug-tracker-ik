@@ -168,7 +168,7 @@ export default function CreateTicket_form({}: Props) {
             );
 
             // navigate to dashboard with failed message
-            navigate("/");
+            navigate("/#top");
 
             // trigger message toast on the dashboard route of failed create ticket
             dispatch(

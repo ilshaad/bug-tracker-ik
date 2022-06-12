@@ -29,8 +29,9 @@ export default function CreateNewComment_button({
         return (
           <Button
             onClick={() => setShowCreateCommentBox(!showCreateCommentBox)}
+            size="sm"
           >
-            Create A new comment
+            Add comment
           </Button>
         );
       }

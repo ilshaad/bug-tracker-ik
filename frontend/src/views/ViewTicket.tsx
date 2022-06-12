@@ -20,6 +20,7 @@ import CreateNewCommentBox from "../components/CreateNewCommentBox";
 import TitlePage from "../components/TitlePage";
 import { Col, Container, Row } from "react-bootstrap";
 import PopoverForButton from "../components/PopoverForButton";
+import Comment_sortOption_selectForm from "../components/Comment_sortOption_selectForm";
 
 export default function ViewTicket(): JSX.Element | null {
   const auth0UserObject = auth0User(
@@ -36,6 +37,11 @@ export default function ViewTicket(): JSX.Element | null {
   const [showCreateCommentBox, setShowCreateCommentBox] =
     useState<boolean>(false);
 
+  // Boolean value for comment sort option to pass to Comment_sortOption_selectForm & DisplayCommentList component
+  // true = newest comments first || false = oldest comments fist
+  const [newestCommentFirst_state, setNewestCommentFirst_state] =
+    useState<boolean>(true);
+
   return (
     <Container id="ViewTicket-view-Container">
       <SeoReactHelmet
@@ -49,7 +55,7 @@ export default function ViewTicket(): JSX.Element | null {
       {/* Show all the ticket info */}
       <Row
         className={`mx-auto`}
-        style={{ marginTop: "-3rem" }}
+        style={{ marginTop: "-2.7em" }}
         id="DisplayTicket-component"
       >
         <Col
@@ -100,33 +106,54 @@ export default function ViewTicket(): JSX.Element | null {
         </Col>
       </Row>
 
-      <Row className="mt-3 mb-3">
-        <Col as="h2" xs={{ offset: 2 }}>
+      <Row className="mt-3 mb-3 mx-auto w-75">
+        <Col
+          as="h2"
+          // xs={{ span: 10 }}
+          lg={{ offset: 1, span: 10 }}
+          className="mt-md-1 mt-lg-2"
+        >
           Comments
         </Col>
       </Row>
 
-      {/* button to user if they want to create a new comment */}
-      <Row>
-        <Col>
+      {/* create comment & sort option */}
+      <Row className="mx-auto" id="creatCommentSortOption_buttons">
+        <Col xs={{ span: 6 }} className="mx-auto">
+          {/* button to user if they want to create a new comment */}
           <CreateNewComment_button
             showCreateCommentBox={showCreateCommentBox}
             setShowCreateCommentBox={setShowCreateCommentBox}
             auth0UserObject={auth0UserObject}
           />
         </Col>
+
+        {/* sort option */}
+        <Col xs={{ span: 6 }} className="mx-auto">
+          <Comment_sortOption_selectForm
+            newestCommentFirst_state={newestCommentFirst_state}
+            setNewestCommentFirst_state={setNewestCommentFirst_state}
+          />
+        </Col>
       </Row>
 
       {/* textarea form for user to create a new comment */}
-      <CreateNewCommentBox
-        showCreateCommentBox={showCreateCommentBox}
-        setShowCreateCommentBox={setShowCreateCommentBox}
-        auth0UserObject={auth0UserObject}
-        ticket_id={ticket?.ticket_id}
-      />
+      <Row className="mx-auto w-75 createNewCommentBox_component-viewTicket-Row-Container">
+        <CreateNewCommentBox
+          showCreateCommentBox={showCreateCommentBox}
+          setShowCreateCommentBox={setShowCreateCommentBox}
+          auth0UserObject={auth0UserObject}
+          ticket_id={ticket?.ticket_id}
+        />
+      </Row>
 
       {/* display all the comments under the ticket info */}
-      <DisplayCommentList ticketId={ticket?.ticket_id!} />
+      <Row className="mx-auto w-75 mt-1">
+        <DisplayCommentList
+          ticketId={ticket?.ticket_id!}
+          newestCommentFirst_state={newestCommentFirst_state}
+        />
+      </Row>
 
       {/* toast message whenever user update ticket in some way */}
       <Message_toast />

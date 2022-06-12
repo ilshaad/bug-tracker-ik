@@ -4,8 +4,10 @@
 
 import { Field, Form, Formik, FormikErrors, FormikProps } from "formik";
 import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+
+import "../public/styles/components/DeleteTicket_form.scss";
 import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
@@ -33,16 +35,24 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
     // if user has typed the correct matching ticket title, return the enable submit button
     if (enableSubmitButton) {
       return (
-        <Button type="submit" onClick={() => closeModal_function(false)}>
-          Submit button ENABLED
+        <Button
+          type="submit"
+          onClick={() => closeModal_function(false)}
+          className="deleteTicket-form-modal-buttons"
+        >
+          Delete
         </Button>
       );
     }
     // if user mistyped the ticket title, return disable submit button
     else {
       return (
-        <Button disabled type="submit">
-          Submit button DISABLED
+        <Button
+          disabled
+          type="submit"
+          className="deleteTicket-form-modal-buttons"
+        >
+          Delete
         </Button>
       );
     }
@@ -60,7 +70,7 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
     }
     // error if user input value does not match ticket title
     else if (values.title !== ticket.title) {
-      errors.title = "Text does not match ticket title";
+      errors.title = "Text does not match the ticket title";
       setEnableSubmitButton(false);
     }
     // if not error, that means user has typed the correct title input & you should set & return the enabled submit button
@@ -73,9 +83,7 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
 
   // return formik jsx component
   return (
-    <div>
-      <h1>delete ticket</h1>
-
+    <div id="DeleteTicket_form-component">
       {/* Most of these code were collect in Formik documentation & I modified it to work the way I need it to */}
       <Formik
         // initial values for the ticket form object
@@ -138,32 +146,63 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
         {(formikProps) => (
           <Form>
             <Modal.Body>
-              <h3>
-                Type {ticket ? <code>'{ticket.title}'</code> : null} in the box
-                for deletion
-              </h3>
-              <label htmlFor="deleteTitle">Title *</label>
-              {/* <Field/> is like input[type] element but is connected to formik component */}
-              <Field
-                type="text"
-                id="deleteTitle"
-                name="title"
-                placeholder="Enter the ticket title name for deletion"
-              />
+              <Container>
+                {/* Explain user to type ticket title name to delete ticket */}
+                <Row>
+                  <h3>
+                    Please type &quot;
+                    {ticket ? (
+                      <code className="text-secondary">{ticket.title}</code>
+                    ) : null}
+                    &quot; within the text box for delete confirmation.
+                  </h3>
+                </Row>
 
-              {/* this will display jsx error message if user leaves text box empty or incorrectly types something (accordingly to your validate function) */}
-              {formikProps.errors.title && formikProps.touched.title ? (
-                <div>{formikProps.errors.title}</div>
-              ) : null}
+                <Row>
+                  {/* delete title */}
+                  {/* <Col xs={12} className="deleteTicket_form-titleHeading">
+                    <label htmlFor="deleteTitle" className="form-label">
+                      Title
+                    </label>
+                    <span>*</span>
+                  </Col> */}
+
+                  {/* <Field/> is like input[type] element but is connected to formik component */}
+                  <Col xs={12}>
+                    <Field
+                      type="text"
+                      id="deleteTitle"
+                      name="title"
+                      // placeholder="Enter the ticket title name for deletion"
+                      className="form-control"
+                    />
+                  </Col>
+
+                  {/* this will display jsx error message if user leaves text box empty or incorrectly types something (accordingly to your validate function) */}
+                  <Col xs={12}>
+                    {formikProps.errors.title && formikProps.touched.title ? (
+                      <div className="deleteInputErrorResponse">
+                        {formikProps.errors.title}
+                      </div>
+                    ) : null}
+                  </Col>
+                </Row>
+              </Container>
             </Modal.Body>
 
+            {/* submit & cancel buttons */}
             <Modal.Footer>
               {submitButton()}
               {/* <Button type="submit" onClick={() => closeModal_function(false)}>
                 Submit
               </Button> */}
 
-              <Button onClick={() => closeModal_function(false)}>Close</Button>
+              <Button
+                onClick={() => closeModal_function(false)}
+                className="deleteTicket-form-modal-buttons bg-danger"
+              >
+                Cancel
+              </Button>
             </Modal.Footer>
           </Form>
         )}

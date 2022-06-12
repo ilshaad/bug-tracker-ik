@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import {
   sortDateByNewestFirst_array,
@@ -11,9 +11,12 @@ import { comment_type } from "../types/comments_type";
 import { ticket_type } from "../types/tickets_type";
 import CommentBox from "./CommentBox";
 
-type Props = { ticketId: string };
+type Props = { ticketId: string; newestCommentFirst_state: boolean };
 
-export default function DisplayCommentList({ ticketId }: Props) {
+export default function DisplayCommentList({
+  ticketId,
+  newestCommentFirst_state,
+}: Props) {
   const dispatch = useAppDispatch();
 
   const comments_array = useAppSelector((state) => state.comments);
@@ -28,33 +31,69 @@ export default function DisplayCommentList({ ticketId }: Props) {
 
   // if there is 0 items in the array, than no one has written comments for this ticket
   if (comments_array.length === 0) {
-    return <Row className="border">There are no comments for this ticket</Row>;
-  }
-
-  // sort out date using the sortDateByNewestFirst_arry helper function
-  const newestDateFirst_array = sortDateByNewestFirst_array(comments_array);
-
-  // new jsx array with the sorted date array with newest first
-  const sortedNewestComments_array: Array<JSX.Element> = [];
-
-  // create each jsx comment box individually
-  for (let comment of newestDateFirst_array) {
-    const commentObject: comment_type = {
-      comment_id: comment.comment_id,
-      text_comment: comment.text_comment,
-      created_on: comment.created_on,
-      ticket_id: comment.ticket_id,
-      name: comment.name,
-      email: comment.email,
-    };
-
-    sortedNewestComments_array.push(
-      <CommentBox
-        key={commentObject.comment_id}
-        commentObject={commentObject}
-      />
+    return (
+      <Col
+        xs={{ span: 10, offset: 1 }}
+        className="border-top border-2 border-primary mt-1 mx-auto"
+      >
+        <p className="fs-5">No comments</p>
+      </Col>
     );
   }
 
-  return <Container>{sortedNewestComments_array}</Container>;
+  // new jsx array with the sorted date array with newest or oldest first
+  const sortedComments_array: Array<JSX.Element> = [];
+
+  // if newestCommentFirst_state is true (meaning user chose newest option in the select form. Also newest is the default value too)
+  if (newestCommentFirst_state) {
+    // sort out date using the sortDateByNewestFirst_arry helper function
+    const newestDateFirst_array = sortDateByNewestFirst_array(comments_array);
+
+    // create each jsx comment box individually
+    for (let comment of newestDateFirst_array) {
+      const commentObject: comment_type = {
+        comment_id: comment.comment_id,
+        text_comment: comment.text_comment,
+        created_on: comment.created_on,
+        ticket_id: comment.ticket_id,
+        name: comment.name,
+        email: comment.email,
+      };
+
+      // return array of newest comment first
+      sortedComments_array.push(
+        <CommentBox
+          key={commentObject.comment_id}
+          commentObject={commentObject}
+        />
+      );
+    }
+  } //END newestCommentFirst_state if statement
+  // if newestCommentFirst_state is false than oldest date option is selected by the user
+  else if (!newestCommentFirst_state) {
+    // sort out date using the sortDateByOldestFirst_array helper function
+    const oldestDateFirst_array = sortDateByOldestFirst_array(comments_array);
+
+    // create each jsx comment box individually
+    for (let comment of oldestDateFirst_array) {
+      const commentObject: comment_type = {
+        comment_id: comment.comment_id,
+        text_comment: comment.text_comment,
+        created_on: comment.created_on,
+        ticket_id: comment.ticket_id,
+        name: comment.name,
+        email: comment.email,
+      };
+
+      // return array of oldest comment first
+      sortedComments_array.push(
+        <CommentBox
+          key={commentObject.comment_id}
+          commentObject={commentObject}
+        />
+      );
+    }
+  }
+
+  return <Col className="mt-1">{sortedComments_array}</Col>;
 }

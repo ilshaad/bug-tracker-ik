@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import auth0User from "../helpers/auth0User";
 import { comment_type } from "../types/comments_type";
 import DeleteComment_button from "./DeleteComment_button";
@@ -22,11 +22,13 @@ export default function CommentBox({ commentObject }: Props) {
     useState<boolean>(false);
 
   return (
-    <Row className="border">
-      <h4>{name}</h4>
-      <p>{email}</p>
-      <h5>{text_comment}</h5>
-      <i>{created_on}</i>
+    <Container className="border-top border-2 border-primary mx-auto mb-2">
+      <h3 className="mt-2 mb-2 text-secondary">{name}</h3>
+      <p className="mt-1 mb-2">{email}</p>
+      <h4 className="mt-1 mb-2">{text_comment}</h4>
+      <time dateTime={created_on} className="fst-italic">
+        {created_on}
+      </time>
 
       {/* Edit button to to open the edit textarea for user to update comment */}
       <EditComment_button
@@ -49,6 +51,6 @@ export default function CommentBox({ commentObject }: Props) {
         commentEmail={email}
         commentId={comment_id}
       />
-    </Row>
+    </Container>
   );
 }

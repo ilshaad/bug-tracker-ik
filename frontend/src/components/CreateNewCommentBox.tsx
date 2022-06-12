@@ -1,4 +1,5 @@
 import React from "react";
+import { Col } from "react-bootstrap";
 import CreateNewCommentBox_textarea from "./CreateNewCommentBox_textarea";
 
 type Props = {
@@ -16,15 +17,15 @@ export default function CreateNewCommentBox({
 }: Props) {
   if (showCreateCommentBox) {
     return (
-      <div>
-        <h4>create a comment</h4>
+      <Col>
+        <h4 className="mb-1">Add comment</h4>
         {/* CreateNewCommentBox_textarea */}
         <CreateNewCommentBox_textarea
           setShowCreateCommentBox={setShowCreateCommentBox}
           auth0UserObject={auth0UserObject}
           ticket_id={ticket_id}
         />
-      </div>
+      </Col>
     );
   }
 
