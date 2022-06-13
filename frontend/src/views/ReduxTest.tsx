@@ -175,7 +175,7 @@ export default function ReduxRoute(): JSX.Element {
   const messageAlert = useAppSelector((state) => state.messageToasts.message);
 
   const messageAlertReduxAction = () => {
-    dispatchy(messageToast_actions("salma kheerdali"));
+    dispatchy(messageToast_actions("mum"));
   };
 
   const nullTheMessageAlertReduxAction = () => {

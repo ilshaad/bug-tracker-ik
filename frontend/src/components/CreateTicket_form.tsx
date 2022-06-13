@@ -1,5 +1,6 @@
 // Form component for /createticket route when user wants to create a new ticket
 // Used Formik package to create the form for a new ticket, & when submitted it will be passed the newly created ticket object to redux actions to post the new ticket on the server & if successful it will also update redux tickets store
+// user will be send to the newly ticket route if ticket was creted successfully
 
 import React from "react";
 import { Formik, FormikHelpers, Form, Field, FormikErrors } from "formik";
@@ -139,7 +140,7 @@ export default function CreateTicket_form({}: Props) {
               );
 
               // navigate to dashboard with failed message
-              navigate("/");
+              navigate("/#top");
 
               // trigger message toast on the dashboard route of failed create ticket
               dispatch(
@@ -151,12 +152,12 @@ export default function CreateTicket_form({}: Props) {
 
             // succeeded to create ticket on the server psql database
             if (res.type === "post/createTicket/fulfilled") {
-              // navigate to dashboard with success message
-              navigate("/");
+              // navigate to newly created ticket with success message
+              navigate(`/viewticket/${res.payload.ticket_id}`);
 
               // trigger message toast on the dashboard route of success create ticket
               dispatch(
-                messageToast_actions("Successfully created a new ticket.")
+                messageToast_actions("Successfully created the ticket.")
               );
             }
           })
@@ -173,7 +174,7 @@ export default function CreateTicket_form({}: Props) {
             // trigger message toast on the dashboard route of failed create ticket
             dispatch(
               messageToast_actions(
-                "Unfortunately ticket was not created, refresh the page and try again please."
+                "Unfortunately ticket was not created, please refresh the page and try again."
               )
             );
           });

@@ -21,6 +21,7 @@ import TitlePage from "../components/TitlePage";
 import { Col, Container, Row } from "react-bootstrap";
 import PopoverForButton from "../components/PopoverForButton";
 import Comment_sortOption_selectForm from "../components/Comment_sortOption_selectForm";
+import BackToTop_link from "../components/BackToTop_link";
 
 export default function ViewTicket(): JSX.Element | null {
   const auth0UserObject = auth0User(
@@ -118,7 +119,7 @@ export default function ViewTicket(): JSX.Element | null {
       </Row>
 
       {/* create comment & sort option */}
-      <Row className="mx-auto" id="creatCommentSortOption_buttons">
+      <Row className="mx-auto mb-1" id="creatCommentSortOption_buttons">
         <Col xs={{ span: 6 }} className="mx-auto">
           {/* button to user if they want to create a new comment */}
           <CreateNewComment_button
@@ -148,11 +149,23 @@ export default function ViewTicket(): JSX.Element | null {
       </Row>
 
       {/* display all the comments under the ticket info */}
-      <Row className="mx-auto w-75 mt-1">
+      <Row className="mx-auto w-75 mt-3">
         <DisplayCommentList
           ticketId={ticket?.ticket_id!}
           newestCommentFirst_state={newestCommentFirst_state}
         />
+      </Row>
+
+      <Row className="mb-2 mt-1">
+        <Col
+          xs={{ span: 4, offset: 2 }}
+          lg={{ span: 3, offset: 2 }}
+          className="w-75 mt-1"
+        >
+          <div className="ViewTicket-backToTopLink-component">
+            <BackToTop_link className="" />
+          </div>
+        </Col>
       </Row>
 
       {/* toast message whenever user update ticket in some way */}

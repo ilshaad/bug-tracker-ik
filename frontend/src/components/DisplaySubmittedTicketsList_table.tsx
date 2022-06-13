@@ -176,7 +176,9 @@ export default function DisplaySubmittedTicketsList_table({
           {/* <td>{ticketObject.app_version}</td> */}
           {/* <td>{ticketObject.submitted_by}</td> */}
           <td>{ticketObject.assigned_user}</td>
-          <td>{date}</td>
+          <td>
+            <time dateTime={date}>{date}</time>
+          </td>
         </tr>
       );
     }

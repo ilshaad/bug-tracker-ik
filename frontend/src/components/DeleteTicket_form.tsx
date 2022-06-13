@@ -112,7 +112,7 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
                 // trigger toast message that deletion of ticket failed
                 dispatch(
                   messageToast_actions(
-                    "Unfortunately ticket was not deleted, refresh the page and try again please!"
+                    "Unfortunately ticket was not deleted, Please refresh the page and try again!"
                   )
                 );
               }

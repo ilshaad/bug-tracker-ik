@@ -18,7 +18,7 @@
   "author": "Rechad Salma",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.18.2",
+    "@babel/core": "^7.18.5",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
@@ -46,7 +46,7 @@
     "ts-loader": "^9.3.0",
     "typescript": "^4.7.3",
     "webpack": "^5.73.0",
-    "webpack-cli": "^4.9.1",
+    "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.2",
     "workbox-webpack-plugin": "^6.5.3"
   },

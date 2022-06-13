@@ -5,12 +5,17 @@
 @import "../../../node_modules/bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
-$primary: #123e24;
+// $primary: #123e24;
+$primary: #2c4a38;
 // $secondary: #ffffff;
 $secondary: #207846;
 // $primary: #30b96b;
 // // $secondary: #ffffff;
 // $secondary: #195b35;
+$danger: #ad0c00;
+
+// $myLightBg: #fffae6;
+
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../../node_modules/bootstrap/scss/variables";
 @import "../../../node_modules/bootstrap/scss/mixins";

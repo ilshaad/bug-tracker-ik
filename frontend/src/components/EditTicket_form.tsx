@@ -129,7 +129,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
                 closeModal_function(false);
 
                 // display a toast message to user that update form was successful
-                dispatch(messageToast_actions("Update was successful."));
+                dispatch(messageToast_actions("Ticket update was successful."));
               }
             }) //END thenable handler for dispatch( patch_updateTicket_actions())
             .catch((err) => {

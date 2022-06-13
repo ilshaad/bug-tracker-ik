@@ -95,5 +95,9 @@ export default function DisplayCommentList({
     }
   }
 
-  return <Col className="mt-1">{sortedComments_array}</Col>;
+  return (
+    <Col xs={12} lg={{ span: 10, offset: 1 }} className="mt-1">
+      {sortedComments_array}
+    </Col>
+  );
 }

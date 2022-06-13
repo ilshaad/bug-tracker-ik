@@ -84,6 +84,9 @@ export default function CreateNewCommentBox_textarea({
             if (res.type === "post/createComment/fulfilled") {
               // close comment box
               setShowCreateCommentBox(false);
+
+              // dispatch message toast to user ticket was created successfully
+              dispatch(messageToast_actions("Successfully created ticket!"));
             }
           }) //END of post_createComments_action() thenable handler
           .catch((err) => {
@@ -132,9 +135,15 @@ export default function CreateNewCommentBox_textarea({
               {errors.createComment}
             </Form.Control.Feedback>
           </Form.Group>
-
-          <Button type="submit">Add comment</Button>
-          <Button onClick={() => setShowCreateCommentBox(false)}>Cancel</Button>
+          <div className="d-flex justify-content-end mt-1 gap-2">
+            <Button type="submit">Add comment</Button>
+            <Button
+              onClick={() => setShowCreateCommentBox(false)}
+              className="bg-danger"
+            >
+              Cancel
+            </Button>
+          </div>
         </Form>
       )}
     </Formik>

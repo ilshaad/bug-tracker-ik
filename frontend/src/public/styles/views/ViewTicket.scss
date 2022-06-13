@@ -23,7 +23,7 @@
 
   //
   .createNewCommentBox_component-viewTicket-Row-Container {
-    margin-top: 1rem;
+    margin-top: -1rem;
   }
 
   // * breakpoint of > 576px (sm)
@@ -49,6 +49,15 @@
         width: 70%;
       }
     }
+
+    .createNewCommentBox_component-viewTicket-Row-Container {
+      width: 60% !important;
+    }
+
+    // back to top link component
+    .ViewTicket-backToTopLink-component {
+      margin-left: 2rem;
+    }
   } //END breakpoint of > 992 (lg)
 
   // * breakpoint of > 1200px (xl)
@@ -59,6 +68,9 @@
   } //END breakpoint of 1200px
 
   // * breakpoint of > 1400px (xxl)
-  //  @include media-breakpoint-up(xxl) {
-  //  } //END breakpoint of 1400px
+  @include media-breakpoint-up(xxl) {
+    #creatCommentSortOption_buttons {
+      margin-left: 12rem !important;
+    }
+  } //END breakpoint of 1400px
 }

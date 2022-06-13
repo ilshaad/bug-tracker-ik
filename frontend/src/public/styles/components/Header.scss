@@ -14,8 +14,8 @@
   // }
 
   .Header-logo {
-    width: 60px;
-    margin-top: -0.1em;
+    width: 55px;
+    margin-top: 0em;
     margin-bottom: -0.25em;
     margin-left: 0.5rem;
     // position: absolute;
@@ -107,7 +107,7 @@
     .Header-logo {
       width: 75px;
       margin-top: 10%;
-      margin-left: 10%;
+      margin-left: 15%;
     }
   }
 
@@ -116,12 +116,20 @@
     .Header-brandHeading {
       right: 80px;
     }
+
+    .Header-logo {
+      margin-left: 18px;
+    }
   }
 
   // * breakpoint of > 1400px (xxl)
   @include media-breakpoint-up(xxl) {
     .Header-brandHeading {
       right: 100px;
+    }
+
+    .Header-logo {
+      margin-left: 30%;
     }
   }
 }

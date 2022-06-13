@@ -83,7 +83,7 @@ export default function Header({}: Props) {
         </Navbar.Brand>
 
         {/* to display user their user name */}
-        <Navbar.Brand>
+        <Navbar.Brand style={{ marginRight: "5px" }}>
           <div id="Header-userName">
             <span className="fs-6">logged in as:</span>&nbsp;
             {displayUserName()}

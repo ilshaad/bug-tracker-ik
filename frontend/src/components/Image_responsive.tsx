@@ -5,6 +5,7 @@ import { Image } from "react-bootstrap";
 
 import BugLogo from "../public/images/Bug-Tracker.png";
 
+// you would insert the image within img... props
 type Props = {
   imageSrc: any;
   img767?: any;
@@ -30,7 +31,7 @@ export default function Image_responsive({
       <source media="(min-width: 768px)" srcSet={img991} />
       <source media="(min-width: 576px)" srcSet={img767} />
       {/* <img src={imageSrc} alt="BugLogo" style={{ width: "50px" }} /> */}
-      <Image src={imageSrc} alt={altString} className="w-100" />
+      <Image src={imageSrc} alt={altString} rounded className="w-100" />
     </picture>
   );
 }

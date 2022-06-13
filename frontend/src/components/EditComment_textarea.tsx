@@ -124,10 +124,18 @@ export default function EditComment_textarea({
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Button type="submit">Update comment</Button>
-          <Button onClick={() => setDisplayEditCommentBox(false)}>
-            Cancel
-          </Button>
+          <div className="d-flex justify-content-end gap-2 mt-1">
+            <Button type="submit" size="sm">
+              Update comment
+            </Button>
+            <Button
+              onClick={() => setDisplayEditCommentBox(false)}
+              size="sm"
+              className="bg-danger"
+            >
+              Cancel
+            </Button>
+          </div>
         </Form>
       )}
     </Formik>
