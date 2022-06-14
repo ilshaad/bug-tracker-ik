@@ -23,6 +23,9 @@
     // top: 3px;
   }
 
+  #Header-component-navbarBrandUsername {
+    margin-right: 5px;
+  }
   // #Header-userName {
   //   position: absolute;
   //   left: 35%;
@@ -64,6 +67,10 @@
       margin-left: 10%;
     }
 
+    #Header-component-navbarBrandUsername {
+      margin-left: 3%;
+    }
+
     #Header-userName {
       // border: red 5px solid;
       width: 100%;
@@ -73,7 +80,7 @@
       // filter: brightness(2);
       // font-size: 2rem;
       // margin-right: auto;
-      // margin-left: 10%;
+      // margin-left: 3%;
       margin-top: 30%;
       // margin-bottom: 10%;
       // vertical-align: bottom;
@@ -92,9 +99,13 @@
 
   // * breakpoint of > 768px (md)
   @include media-breakpoint-up(md) {
+    #Header-component-navbarBrandUsername {
+      margin-left: 5%;
+    }
+
     #Header-userName {
       margin-top: 33%;
-      margin-left: 32%;
+      // margin-left: 32%;
     }
   }
 

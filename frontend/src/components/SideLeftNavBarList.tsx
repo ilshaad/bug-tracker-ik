@@ -16,7 +16,7 @@ const SideLeftNavBarList = (props: Props) => {
     <>
       <ListGroup as="ul">
         {/* dashboard route */}
-        <Link to="/">
+        <Link to="/#top">
           <ListGroup.Item
             as="li"
             active={location.pathname === "/" ? true : false}
@@ -30,7 +30,7 @@ const SideLeftNavBarList = (props: Props) => {
         </Link>
 
         {/* ticketlist route */}
-        <Link to="/ticketlist">
+        <Link to="/ticketlist#top">
           <ListGroup.Item
             as="li"
             // active={location.pathname === "/ticketlist" ? true : false}
@@ -43,7 +43,7 @@ const SideLeftNavBarList = (props: Props) => {
         </Link>
 
         {/* create list route */}
-        <Link to="/createticket">
+        <Link to="/createticket#top">
           <ListGroup.Item
             as="li"
             active={location.pathname === "/createticket" ? true : false}

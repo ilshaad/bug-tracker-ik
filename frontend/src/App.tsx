@@ -22,7 +22,7 @@ import Layout from "./components/Layout";
 
 import { useAppDispatch } from "./models/hooks";
 import { get_ticketList_actions } from "./models/reducers/tickets_slice";
-import FoldPageLoadingScreen from "./views/FoldPageLoadingScreen";
+import LoadingScreen_foldingPage from "./components/LoadingScreen_foldingPage";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -87,7 +87,7 @@ const App = () => {
         /> */}
 
         {/* ! TEST THE FOLD PAGE WITH THE LOADING SCREEN */}
-        {/* <Route path="/foldpage" element={<FoldPageLoadingScreen />} /> */}
+        {/* <Route path="/foldpage" element={<LoadingScreen_foldingPage />} /> */}
 
         <Route path="*" element={<Dashboard_Auth />} />
       </Routes>

@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LoginScreen from "../views/LoginScreen";
 import Layout from "./Layout";
 import { Spinner } from "react-bootstrap";
-import FoldPageLoadingScreen from "../views/FoldPageLoadingScreen";
+import LoadingScreen_foldingPage from "../components/LoadingScreen_foldingPage";
 
 export default function AuthenticateRoute_HOC(PageComponent: any) {
   const {
@@ -23,7 +23,7 @@ export default function AuthenticateRoute_HOC(PageComponent: any) {
 
   function Component() {
     if (isLoading) {
-      return <FoldPageLoadingScreen />;
+      return <LoadingScreen_foldingPage />;
     }
 
     // Auth0 will authenticate each routes & if false user will be redirected to the login screen everytime

@@ -3,14 +3,20 @@ import { useAuth0 } from "@auth0/auth0-react";
 import lizardImage from "../public/images/li.jpg";
 import { Button } from "react-bootstrap";
 
-const LoginButton = () => {
+type Props = { classStyle?: string };
+
+const LoginButton = ({ classStyle }: Props) => {
   const { loginWithRedirect } = useAuth0();
 
   // useEffect(() => {
   //   console.log(lizardImage);
   // });
 
-  return <Button onClick={() => loginWithRedirect()}>Login / Signup</Button>;
+  return (
+    <Button onClick={() => loginWithRedirect()} className={classStyle}>
+      Login / Signup
+    </Button>
+  );
 
   // return (
   //   <div className="card text-center mx-3">

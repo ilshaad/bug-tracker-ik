@@ -14,7 +14,11 @@ $secondary: #207846;
 // $secondary: #195b35;
 $danger: #ad0c00;
 
-// $myLightBg: #fffae6;
+// A lighter version of cornsilk colour
+$myLightBg: #fffae6;
+
+// linean gradient colour of white & green. Mainly used for the loading screen fold page
+$myGradientWhiteGreen: linear-gradient(white 20%, $secondary 50%);
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../../node_modules/bootstrap/scss/variables";

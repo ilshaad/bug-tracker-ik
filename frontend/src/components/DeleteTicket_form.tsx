@@ -99,7 +99,7 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
           dispatch(delete_deleteTicket_actions(ticketId_params!))
             .then((res) => {
               // navigate to dashboard route page because the ticket viewpage will no longer exist
-              navigate("/");
+              navigate("/#top");
 
               // failed to delete ticket on ss psql
               if (res.type === "delete/deleteTicket/rejected") {
@@ -125,7 +125,7 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
             }) //END thanable handler
             .catch((err) => {
               // navigate to dashboard route page because the ticket viewpage will no longer exist
-              navigate("/");
+              navigate("/#top");
 
               catchHandlerForReduxSlices(
                 "delete/delete_deleteTicket_actions",

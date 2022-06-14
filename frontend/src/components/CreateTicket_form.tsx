@@ -153,7 +153,7 @@ export default function CreateTicket_form({}: Props) {
             // succeeded to create ticket on the server psql database
             if (res.type === "post/createTicket/fulfilled") {
               // navigate to newly created ticket with success message
-              navigate(`/viewticket/${res.payload.ticket_id}`);
+              navigate(`/viewticket/${res.payload.ticket_id}#top`);
 
               // trigger message toast on the dashboard route of success create ticket
               dispatch(

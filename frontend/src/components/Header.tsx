@@ -66,9 +66,9 @@ export default function Header({}: Props) {
     >
       <Container fluid={true}>
         {/* the bug tracker logo image to link to dashboard route */}
-        <Navbar.Brand>
-          <Link to="/">
-            <div className="Header-logo" id="top">
+        <Navbar.Brand id="top">
+          <Link to="/#top">
+            <div className="Header-logo">
               <Image_responsive
                 imageSrc={buglogo575}
                 img767={buglogo767}
@@ -83,17 +83,17 @@ export default function Header({}: Props) {
         </Navbar.Brand>
 
         {/* to display user their user name */}
-        <Navbar.Brand style={{ marginRight: "5px" }}>
+        <Navbar.Brand id="Header-component-navbarBrandUsername">
           <div id="Header-userName">
-            <span className="fs-6">logged in as:</span>&nbsp;
+            <span className="fs-6">Logged in as:</span>&nbsp;
             {displayUserName()}
           </div>
         </Navbar.Brand>
 
         {/* display the Bug tracker heading only when >576 design */}
-        <Navbar.Brand className="Header-brandHeading d-none d-sm-block text-secondary">
-          <h1>Bug Tracker app</h1>
-        </Navbar.Brand>
+        {/* <Navbar.Brand className="Header-brandHeading d-none d-sm-block text-secondary">
+          <h1>Bug Tracker</h1>
+        </Navbar.Brand> */}
 
         {/* iK? this is the sandwich bar when <575 design */}
         <Navbar.Toggle
@@ -110,7 +110,7 @@ export default function Header({}: Props) {
             {/* using react-router Link component */}
             {/* dashboard link */}
             <Link
-              to="/"
+              to="/#top"
               className={`Header-navLinks p-2 border border-dark border-1 rounded text-decoration-none fs-5 fw-bold ${
                 uselocation.pathname === "/" ? "Header-navLinks-current" : ""
               }`}
@@ -120,7 +120,7 @@ export default function Header({}: Props) {
 
             {/* ticket list link */}
             <Link
-              to="/ticketlist"
+              to="/ticketlist#top"
               className={`Header-navLinks p-2 border border-dark border-1 rounded text-decoration-none fs-5 fw-bold ${
                 uselocation.pathname === "/ticketlist"
                   ? "Header-navLinks-current"
@@ -132,7 +132,7 @@ export default function Header({}: Props) {
 
             {/* create ticket link */}
             <Link
-              to="/createticket"
+              to="/createticket#top"
               className={`Header-navLinks p-2 border border-dark border-1 rounded text-decoration-none fs-5 fw-bold ${
                 uselocation.pathname === "/createticket"
                   ? "Header-navLinks-current"

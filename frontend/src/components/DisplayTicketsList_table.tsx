@@ -60,7 +60,7 @@ export default function DisplayTicketsList_table({}: Props) {
 
   // table row will have anchor link to view the ticket page
   const navigateToViewTicket = (ticketId: string) => {
-    navigate(`/viewticket/${ticketId}`);
+    navigate(`/viewticket/${ticketId}#top`);
   };
 
   // sort tickets List by alphabetically

@@ -2,15 +2,16 @@
 
 // iK? begin from 360px & up for starting breakpoint
 
-div#FoldPageLoadingScreen-views {
+div#LoadingScreen_foldingPage-views {
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  // background: linear-gradient($primary, $secondary);
+  background: $myGradientWhiteGreen;
   // background: cornsilk;
-  background: linear-gradient($primary, $secondary);
   // background: linear-gradient($primary, cornsilk);
   // color: $primary;
   color: $secondary;

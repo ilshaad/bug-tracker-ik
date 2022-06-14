@@ -1,5 +1,7 @@
 // import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
+
+import "../public/styles/views/LoginScreen.scss";
 import LoginButton from "../components/LoginButton";
 import { useAppDispatch } from "../models/hooks";
 import { loginAction } from "../models/reducers/userProfileSlice";
@@ -20,15 +22,16 @@ type Props = {};
 // * This page is only called from the AuthenticateRoute.tsx
 export default function LoginScreen({}: Props) {
   return (
-    <Container fluid={true} className="bg-primary bg-gradient h-100 my-auto">
+    <Container fluid={true} id="LoginScreen-view" className="mx-auto">
       <SeoReactHelmet
         pageTitle="Login screen / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali"
         metaDescriptionContent="Login screen / Bug Tracker - Github user: RechadSalma | Developer: ilshaad Kheerdali"
         metaKeywordsContent="Login screen Bug Tracker RechadSalma ilshaad Kheerdali"
       />
+
       {/* image of bug logo */}
-      <Row>
-        <Col xs={6} className="mx-auto">
+      <Row id="LoginScreen-view-imageHeaderContainer" className="w-100 mx-auto">
+        <Col xs={6} sm={4} md={3} lg={2} className="mx-auto">
           <Image_responsive
             imageSrc={buglogo575}
             img767={buglogo767}
@@ -55,48 +58,52 @@ export default function LoginScreen({}: Props) {
 
       {/* card telling user how to login with guest account for demo */}
       <Row className="mx-auto">
-        <Col>
-          <Card className="text-center">
-            <Card.Header>
-              <h3>Login / Signup to your Bug tracker account</h3>
-            </Card.Header>
-            <Card.Body>
+        <Col xs={12} sm={10} md={8} lg={6} xl={4} className="mx-auto">
+          <Card border="dark" className="text-center border border-3">
+            <Card.Body id="LoginScreen-view-cardHeader">
+              <Card.Title as="h2" className="text-secondary mt-0">
+                Login to your dashboard
+              </Card.Title>
+
+              <div
+                id="LoginScreen-view-loginButton"
+                className="d-grid mx-auto mb-1"
+              >
+                <LoginButton classStyle="bg-secondary text-bold mx-auto w-100" />
+              </div>
+
+              <Card.Link href="https://auth0.com/" target="blank">
+                <small className="d-block">
+                  Authentication powered by Auth0
+                </small>
+              </Card.Link>
+            </Card.Body>
+
+            <Card.Footer>
               <Card.Title>
-                {/* <h4>
-                  Use 'guest' account for demostration if you do not wish to
-                  signup
-                </h4> */}
-                <h3>Don't want to signup!!</h3>
-                <h4>You can use the 'guest' account for demo</h4>
+                <h3 id="LoginScreen-view-dontSignup" className="text-danger">
+                  Don't want to signup!
+                </h3>
+                <h4>You can use the 'guest' account as demo:</h4>
               </Card.Title>
               <Card.Text>
                 <div>
                   <div>
                     <span>Username:</span>
-                    <p className="d-inline">guest</p>
+                    &nbsp;
+                    <p className="d-inline fw-bold">guest</p>
                   </div>
                   <div>
                     <span>Password:</span>
-                    <p className="d-inline">Guest@12</p>
+                    &nbsp;
+                    <p className="d-inline fw-bold">Guest@12</p>
                   </div>
                 </div>
               </Card.Text>
-              {/* <Button variant="primary">Go somewhere</Button> */}
-            </Card.Body>
-            <Card.Footer>
-              <LoginButton />
-
-              <a href="https://auth0.com/" target="blank">
-                <small className="d-block">
-                  Authentication powered by Auth0
-                </small>
-              </a>
             </Card.Footer>
           </Card>
         </Col>
       </Row>
-
-      {/* <LoginButton /> */}
     </Container>
   );
 }
