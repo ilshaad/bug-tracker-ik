@@ -4,8 +4,6 @@
 
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import { useAppDispatch } from "../models/hooks";
-import { delete_deleteComment_actions } from "../models/reducers/comments_slice";
 import DeleteCommentConfirmation_modal from "./DeleteCommentConfirmation_modal";
 
 type Props = {

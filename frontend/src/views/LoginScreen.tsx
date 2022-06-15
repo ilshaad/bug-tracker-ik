@@ -1,20 +1,17 @@
 // import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 
-import "../public/styles/views/LoginScreen.scss";
-import LoginButton from "../components/LoginButton";
-import { useAppDispatch } from "../models/hooks";
-import { loginAction } from "../models/reducers/userProfileSlice";
-import SeoReactHelmet from "../components/SeoReactHelmet";
-import isAdmin_hook from "../helpers/isAdmin_hook";
 import { Card, Col, Container, Row } from "react-bootstrap";
+import LoginButton from "../components/LoginButton";
+import SeoReactHelmet from "../components/SeoReactHelmet";
+import "../public/styles/views/LoginScreen.scss";
 
 import Image_responsive from "../components/Image_responsive";
+import buglogo1199 from "../public/images/Bug-Tracker-1199.jpg";
+import buglogo1399 from "../public/images/Bug-Tracker-1399.jpg";
 import buglogo575 from "../public/images/Bug-Tracker-575.jpg";
 import buglogo767 from "../public/images/Bug-Tracker-767.jpg";
 import buglogo991 from "../public/images/Bug-Tracker-991.jpg";
-import buglogo1199 from "../public/images/Bug-Tracker-1199.jpg";
-import buglogo1399 from "../public/images/Bug-Tracker-1399.jpg";
 
 type Props = {};
 
@@ -31,7 +28,8 @@ export default function LoginScreen({}: Props) {
 
       {/* image of bug logo */}
       <Row id="LoginScreen-view-imageHeaderContainer" className="w-100 mx-auto">
-        <Col xs={6} sm={4} md={3} lg={2} className="mx-auto">
+        <Col xs={6} sm={4} md={3} lg={2} className="mx-auto h-100">
+          {/* <div id="LoginScreen-views-bugLogoImageContainerFallback"> */}
           <Image_responsive
             imageSrc={buglogo575}
             img767={buglogo767}
@@ -41,6 +39,7 @@ export default function LoginScreen({}: Props) {
             altString="bug tracker logo"
             // style={{ width: "60px" }}
           />
+          {/* </div> */}
         </Col>
       </Row>
 
@@ -84,7 +83,7 @@ export default function LoginScreen({}: Props) {
                 <h3 id="LoginScreen-view-dontSignup" className="text-danger">
                   Don't want to signup!
                 </h3>
-                <h4>You can use the 'guest' account as demo:</h4>
+                <h4>You can use the 'guest' account as demo user:</h4>
               </Card.Title>
               <Card.Text>
                 <div>

@@ -3,15 +3,10 @@
 // - not showing ticket_id / description
 // the tickets will be listed by title ascending order first, & than user can choose to rearrange sort option if they wish to
 
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import { Table } from "react-bootstrap";
-import { useAppSelector } from "../models/hooks";
-import Ticket_anchorLinkToTicket from "./Ticket_anchorLinkToTicket";
-import {
-  sortPriorityByAscendingOrder_array,
-  sortPriorityByDescendingOrder_array,
-} from "../helpers/sortByPriority";
+import { useNavigate } from "react-router-dom";
+import dateOnly from "../helpers/dateOnly";
 import {
   sortNameByAscendingOrder_array,
   sortNameByDescendingOrder_array,
@@ -20,8 +15,11 @@ import {
   sortDateByNewestFirst_array,
   sortDateByOldestFirst_array,
 } from "../helpers/sortByDate";
-import timeStamp from "../helpers/timeStamp";
-import dateOnly from "../helpers/dateOnly";
+import {
+  sortPriorityByAscendingOrder_array,
+  sortPriorityByDescendingOrder_array,
+} from "../helpers/sortByPriority";
+import { useAppSelector } from "../models/hooks";
 
 type Props = {};
 

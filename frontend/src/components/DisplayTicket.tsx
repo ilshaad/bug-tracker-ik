@@ -1,5 +1,4 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
 
 import "../public/styles/components/DisplayTicket.scss";

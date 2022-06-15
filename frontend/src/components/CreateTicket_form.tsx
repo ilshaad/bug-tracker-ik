@@ -2,19 +2,18 @@
 // Used Formik package to create the form for a new ticket, & when submitted it will be passed the newly created ticket object to redux actions to post the new ticket on the server & if successful it will also update redux tickets store
 // user will be send to the newly ticket route if ticket was creted successfully
 
+import { Field, Form, Formik, FormikErrors } from "formik";
 import React from "react";
-import { Formik, FormikHelpers, Form, Field, FormikErrors } from "formik";
 
+import { Button, Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import auth0User from "../helpers/auth0User";
+import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
+import { useAppDispatch } from "../models/hooks";
+import { messageToast_actions } from "../models/reducers/messageToast_slice";
+import { post_createTicket_actions } from "../models/reducers/tickets_slice";
 import "../public/styles/components/CreateTicket_form.scss";
 import { createTicket_dispatch_type } from "../types/tickets_type";
-import auth0User from "../helpers/auth0User";
-import { useAppDispatch } from "../models/hooks";
-import { post_createTicket_actions } from "../models/reducers/tickets_slice";
-import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
-import { useNavigate } from "react-router-dom";
-import { messageToast_actions } from "../models/reducers/messageToast_slice";
-import capitaliseString from "../helpers/capitaliseString";
-import { Button, Col, Container, Row, Stack } from "react-bootstrap";
 
 // ticket_id / title / description / submitted_by / priority / assigned_user / status / app_name / app_version / created_on
 
@@ -70,10 +69,10 @@ export default function CreateTicket_form({}: Props) {
       errors.app_version = "Required";
     }
 
-    console.log(
-      "🚀 ~ file: CreateTicketForm.tsx ~ line 19 ~ validate ~ errors",
-      errors
-    );
+    // console.log(
+    //   "🚀 ~ file: CreateTicketForm.tsx ~ line 19 ~ validate ~ errors",
+    //   errors
+    // );
 
     return errors;
   }; //END validate method function

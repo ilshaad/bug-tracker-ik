@@ -3,8 +3,6 @@
 import React from "react";
 import { Image } from "react-bootstrap";
 
-import BugLogo from "../public/images/Bug-Tracker.png";
-
 // you would insert the image within img... props
 type Props = {
   imageSrc: any;

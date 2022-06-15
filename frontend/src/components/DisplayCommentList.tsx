@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Col } from "react-bootstrap";
 import {
   sortDateByNewestFirst_array,
   sortDateByOldestFirst_array,
@@ -8,7 +7,6 @@ import {
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { get_allCommentsForASingleTicket_actions } from "../models/reducers/comments_slice";
 import { comment_type } from "../types/comments_type";
-import { ticket_type } from "../types/tickets_type";
 import CommentBox from "./CommentBox";
 
 type Props = { ticketId: string; newestCommentFirst_state: boolean };

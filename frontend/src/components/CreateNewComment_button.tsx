@@ -1,7 +1,6 @@
 // button to open create a new comment textarea
 // only user & admin can create comment
 
-import { Auth0ContextInterface, User } from "@auth0/auth0-react";
 import React from "react";
 import { Button } from "react-bootstrap";
 

@@ -1,28 +1,25 @@
-import "./App.css";
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // ! these are dummy routes & remove when you done
-import TestingRequest from "./components/TestingRequest";
-import ReduxTest from "./views/ReduxTest";
+// import TestingRequest from "./components/TestingRequest";
+// import ReduxTest from "./views/ReduxTest";
 
 /**page routes */
-import Dashboard from "./views/Dashboard"; // * shares the / rul with login screen route
 import CreateTicket from "./views/CreateTicket";
+import Dashboard from "./views/Dashboard"; // * shares the / rul with login screen route
 import TicketList from "./views/TicketList";
 import ViewTicket from "./views/ViewTicket";
-import NotFound from "./views/NotFound";
+// import NotFound from "./views/NotFound";
 
 // HOC function for Auth0 protected routes
 // * It is also the login screen route which share the / url with dashboard
 import AuthenticateRoute_HOC from "./components/AuthenticateRoute_HOC";
 
 // Layout component for non authenticated routes (eg error page) because AuthentcateRoute sets Layout component to all protected routes
-import Layout from "./components/Layout";
 
 import { useAppDispatch } from "./models/hooks";
 import { get_ticketList_actions } from "./models/reducers/tickets_slice";
-import LoadingScreen_foldingPage from "./components/LoadingScreen_foldingPage";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -41,28 +38,28 @@ const App = () => {
   const ViewTicket_Auth = AuthenticateRoute_HOC(() => <ViewTicket />);
 
   // routes only for development mode to testing your fetch request crud
-  const devRoutes = () => {
-    if (process.env.NODE_ENV !== "production") {
-      return [
-        <Route
-          path="/fetch"
-          element={
-            <Layout>
-              <TestingRequest />
-            </Layout>
-          }
-        />,
-        <Route
-          path="/reduxtest"
-          element={
-            <Layout>
-              <ReduxTest />
-            </Layout>
-          }
-        />,
-      ];
-    }
-  };
+  // const devRoutes = () => {
+  //   if (process.env.NODE_ENV !== "production") {
+  //     return [
+  //       <Route
+  //         path="/fetch"
+  //         element={
+  //           <Layout>
+  //             <TestingRequest />
+  //           </Layout>
+  //         }
+  //       />,
+  //       <Route
+  //         path="/reduxtest"
+  //         element={
+  //           <Layout>
+  //             <ReduxTest />
+  //           </Layout>
+  //         }
+  //       />,
+  //     ];
+  //   }
+  // };
 
   return (
     <BrowserRouter>

@@ -6,7 +6,6 @@
 import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import auth0User from "../helpers/auth0User";
 import dateOnly from "../helpers/dateOnly";
 import {
   sortNameByAscendingOrder_array,

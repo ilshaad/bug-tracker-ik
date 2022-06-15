@@ -1,27 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 
-import "../public/styles/views/ViewTicket.scss";
+import { Col, Container, Row } from "react-bootstrap";
 import ApplyToAssignForTicket_button from "../components/ApplyToAssignForTicket_button";
+import BackToTop_link from "../components/BackToTop_link";
+import Comment_sortOption_selectForm from "../components/Comment_sortOption_selectForm";
+import CreateNewCommentBox from "../components/CreateNewCommentBox";
 import CreateNewComment_button from "../components/CreateNewComment_button";
 import DeleteTicket_button from "../components/DeleteTicket_button";
 import DisplayCommentList from "../components/DisplayCommentList";
 import DisplayTicket from "../components/DisplayTicket";
 import EditTicket_button from "../components/EditTicket_button";
-import EditTicket_modal from "../components/EditTicket_modal";
 import MarkAsResolvedOrPending_button from "../components/MarkAsResolvedOrPending_button";
 import Message_toast from "../components/Message_toast";
 import SeoReactHelmet from "../components/SeoReactHelmet";
-import { sortDateByOldestFirst_array } from "../helpers/sortByDate";
-import { useAppDispatch, useAppSelector } from "../models/hooks";
-import { get_allCommentsForASingleTicket_actions } from "../models/reducers/comments_slice";
-import auth0User from "../helpers/auth0User";
-import CreateNewCommentBox from "../components/CreateNewCommentBox";
 import TitlePage from "../components/TitlePage";
-import { Col, Container, Row } from "react-bootstrap";
-import PopoverForButton from "../components/PopoverForButton";
-import Comment_sortOption_selectForm from "../components/Comment_sortOption_selectForm";
-import BackToTop_link from "../components/BackToTop_link";
+import auth0User from "../helpers/auth0User";
+import { useAppSelector } from "../models/hooks";
+import "../public/styles/views/ViewTicket.scss";
 
 export default function ViewTicket(): JSX.Element | null {
   const auth0UserObject = auth0User(

@@ -2,11 +2,11 @@
 // update ticket as resolved or pending status using redux update ticket action which will also update psql & the redux tickets store
 
 import React from "react";
+import { Button } from "react-bootstrap";
 import auth0User from "../helpers/auth0User";
-import { ticket_type } from "../types/tickets_type";
 import { useAppDispatch } from "../models/hooks";
 import { patch_updateTicket_actions } from "../models/reducers/tickets_slice";
-import { Button, Col } from "react-bootstrap";
+import { ticket_type } from "../types/tickets_type";
 import PopoverForButton from "./PopoverForButton";
 
 type Props = {

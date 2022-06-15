@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import lizardImage from "../public/images/li.jpg";
+import React from "react";
 import { Button } from "react-bootstrap";
 
 type Props = { classStyle?: string };

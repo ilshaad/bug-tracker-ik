@@ -4,16 +4,15 @@
 // Similar to Formik but React-bootstrap does most of the styles for you
 // - collected & modified from React-bootstrap doc under form validaion section
 
-import React from "react";
 import { Formik } from "formik";
+import React from "react";
+import { Button, Form } from "react-bootstrap";
 import * as yup from "yup";
-import { Form, Row, Col, InputGroup, Button } from "react-bootstrap";
+import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
 import { useAppDispatch } from "../models/hooks";
 import { post_createComments_action } from "../models/reducers/comments_slice";
-import { createComment_dispatch_type } from "../types/comments_type";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
-import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
-import capitaliseString from "../helpers/capitaliseString";
+import { createComment_dispatch_type } from "../types/comments_type";
 
 type Props = {
   setShowCreateCommentBox: Function;

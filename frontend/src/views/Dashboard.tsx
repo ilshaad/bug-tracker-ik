@@ -1,33 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 
 import "../public/styles/views/Dashboard.scss";
 
-import Button from "react-bootstrap/Button";
-import Toast from "react-bootstrap/Toast";
-import ToastContainer from "react-bootstrap/ToastContainer"; // import "bootstrap/js/dist/toast";
 // import * as bootstrap from "bootstrap";
 
-import LogoutButton from "../components/LogoutButton";
-import Profile from "../components/Profiles";
-import HomeLogin from "../components/HomeLogin";
-import { Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import BackToTop_link from "../components/BackToTop_link";
+import DisplayAssignedTicketsList_table from "../components/DisplayAssignedTicketsList_table";
+import DisplaySubmittedTicketsList_table from "../components/DisplaySubmittedTicketsList_table";
+import Message_toast from "../components/Message_toast";
 import SeoReactHelmet from "../components/SeoReactHelmet";
-import { useAuth0, User } from "@auth0/auth0-react";
-import isAdmin_hook from "../helpers/isAdmin_hook";
+import TitlePage from "../components/TitlePage";
 import auth0User from "../helpers/auth0User";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
-import Ticket_anchorLinkToTicket from "../components/Ticket_anchorLinkToTicket";
-import {
-  messageToast_actions,
-  nullTheMessageToast_actions,
-} from "../models/reducers/messageToast_slice";
-import Message_toast from "../components/Message_toast";
-import DisplayAssignedTicketsList_table from "../components/DisplayAssignedTicketsList_table";
 import { ticket_type } from "../types/tickets_type";
-import DisplaySubmittedTicketsList_table from "../components/DisplaySubmittedTicketsList_table";
-import BackToTop_link from "../components/BackToTop_link";
-import { Container } from "react-bootstrap";
-import TitlePage from "../components/TitlePage";
 
 export default function Dashboard(): JSX.Element {
   const auth0UserObject = auth0User(

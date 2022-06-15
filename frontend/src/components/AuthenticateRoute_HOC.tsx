@@ -1,9 +1,8 @@
-import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import React from "react";
+import LoadingScreen_foldingPage from "../components/LoadingScreen_foldingPage";
 import LoginScreen from "../views/LoginScreen";
 import Layout from "./Layout";
-import { Spinner } from "react-bootstrap";
-import LoadingScreen_foldingPage from "../components/LoadingScreen_foldingPage";
 
 export default function AuthenticateRoute_HOC(PageComponent: any) {
   const {
@@ -28,8 +27,8 @@ export default function AuthenticateRoute_HOC(PageComponent: any) {
 
     // Auth0 will authenticate each routes & if false user will be redirected to the login screen everytime
     if (isAuthenticated) {
-      console.log(user);
-      console.log("iK authenticated");
+      // console.log(user);
+      // console.log("iK authenticated");
       // dispatch( )
       return (
         <Layout>
@@ -37,8 +36,8 @@ export default function AuthenticateRoute_HOC(PageComponent: any) {
         </Layout>
       );
     } else {
-      console.log(user);
-      console.log("iK unauthenticated");
+      // console.log(user);
+      // console.log("iK unauthenticated");
       return <LoginScreen />;
     }
   }
