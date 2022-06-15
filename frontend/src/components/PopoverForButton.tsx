@@ -2,7 +2,7 @@
 // react-bootstrap overlay & popover
 
 import React from "react";
-import { Button, OverlayTrigger, Popover } from "react-bootstrap";
+import { OverlayTrigger, Popover } from "react-bootstrap";
 
 type Props = { position: any; textInfo: string; children: JSX.Element };
 

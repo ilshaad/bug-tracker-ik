@@ -3,8 +3,8 @@
 // - so we will just return a toast message to user that their request to assign has been sent to the submitted_by user & will soon confirm if they are accepted or decline as assigned_user for the ticket
 //    - disable button after click
 
-import React, { useRef, createRef } from "react";
-import { Button, Col } from "react-bootstrap";
+import React, { useRef } from "react";
+import { Button } from "react-bootstrap";
 import auth0User from "../helpers/auth0User";
 import { useAppDispatch } from "../models/hooks";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";

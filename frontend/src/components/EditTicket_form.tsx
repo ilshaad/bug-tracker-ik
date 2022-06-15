@@ -10,17 +10,17 @@
 // I did not use controllerd input as recommended but it seems to be working fine
 
 import { Field, Form, Formik, FormikErrors } from "formik";
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 
-import "../public/styles/components/EditTicket_form.scss";
+import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import auth0User from "../helpers/auth0User";
 import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
-import { patch_updateTicket_actions } from "../models/reducers/tickets_slice";
-import { ticket_type } from "../types/tickets_type";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
-import { Button, Col, Container, Modal, Row } from "react-bootstrap";
+import { patch_updateTicket_actions } from "../models/reducers/tickets_slice";
+import "../public/styles/components/EditTicket_form.scss";
+import { ticket_type } from "../types/tickets_type";
 
 type Props = { closeModal_function: Function };
 
@@ -92,8 +92,8 @@ export default function EditTicket_form({ closeModal_function }: Props) {
         // complete your transaction you want to do when user successfully filled out the form correctly
         // submit the ticket form object to redux to PATCH SS the edited ticket object & if successful update the redux tickets store too
         onSubmit={(ticketObject: ticket_type) => {
-          console.log(ticketObject);
-          console.log(333);
+          // console.log(ticketObject);
+          // console.log(333);
 
           // if user assigned guest as 'guest', than capitalise first letter
           if (ticketObject.assigned_user === "guest") {

@@ -2,7 +2,7 @@
 // delete button will display modal which should contain the delete form for the user
 
 import React, { useState } from "react";
-import { Button, Col } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import auth0User from "../helpers/auth0User";
 import DeleteTicket_modal from "./DeleteTicket_modal";
 import PopoverForButton from "./PopoverForButton";

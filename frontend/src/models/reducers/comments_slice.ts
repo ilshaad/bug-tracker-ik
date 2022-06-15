@@ -6,26 +6,20 @@
  * resetInitialComment_actions()  (non-thunk action creator)
  */
 
-import {
-  createAsyncThunk,
-  createSlice,
-  current,
-  PayloadAction,
-} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-import {
-  comment_type,
-  createComment_dispatch_type,
-} from "../../types/comments_type";
 import delete_deleteComment from "../../controllers/commentsFetch/delete_deleteComment";
 import get_allCommentsForASingleTicket from "../../controllers/commentsFetch/get_allCommentsForASingleTicket";
 import patch_updateComment from "../../controllers/commentsFetch/patch_updateComment";
 import post_createComment from "../../controllers/commentsFetch/post_createComment";
 import catchHandlerForReduxSlices from "../../helpers/catchHandlerForReduxSlices";
+import {
+  comment_type,
+  createComment_dispatch_type,
+} from "../../types/comments_type";
 // import { get_allCommentsForASingleTicket } from "../../../controllers/commentsFetch";
 import parseTimestamp from "../../helpers/parseTimestamp";
 import timeStamp from "../../helpers/timeStamp";
-import type { RootState } from "../store";
 
 /************************************** */
 // * get_allCommentsForASingleTicket_actions function

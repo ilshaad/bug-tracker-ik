@@ -42,7 +42,7 @@ interface userP {
 }
 
 export default function ReduxRoute(): JSX.Element {
-  const countN = useAppSelector((state) => state.counter.value);
+  // const countN = useAppSelector((state) => state.counter.value);
 
   const dispatchy = useAppDispatch();
 
@@ -185,7 +185,7 @@ export default function ReduxRoute(): JSX.Element {
   return (
     <div>
       <h1>I am redux page</h1>
-      <h1>{countN}</h1>
+      {/* <h1>{countN}</h1> */}
       <button onClick={incrementAction}>increment button</button>
       <button onClick={decrementAction}>decrement button</button>
       <button onClick={incrementByAmountAction}>

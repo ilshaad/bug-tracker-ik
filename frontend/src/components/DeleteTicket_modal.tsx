@@ -3,7 +3,7 @@
 // only admin & submitted_user can delete ticket, noone else
 
 import React from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import DeleteTicket_form from "./DeleteTicket_form";
 
 type Props = { showModal: boolean; closeModal_function: Function };

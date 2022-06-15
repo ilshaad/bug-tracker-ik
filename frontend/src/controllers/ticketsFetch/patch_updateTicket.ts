@@ -1,7 +1,7 @@
+import capitaliseString from "../../helpers/capitaliseString";
+import { ticket_type } from "../../types/tickets_type";
 import backendApi_fetchInstance from "./../backendApi_fetchInstance";
 import catchHandler from "./../backendCatchHandler";
-import { ticket_type } from "../../types/tickets_type";
-import capitaliseString from "../../helpers/capitaliseString";
 
 /**
  * * update a ticket

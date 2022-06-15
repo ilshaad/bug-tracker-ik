@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import auth0User from "../helpers/auth0User";
 import { comment_type } from "../types/comments_type";
 import DeleteComment_button from "./DeleteComment_button";

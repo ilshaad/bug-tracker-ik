@@ -5,18 +5,16 @@ import "../public/styles/components/Header.scss";
 
 import { Link, useLocation } from "react-router-dom";
 import LogoutButton from "./LogoutButton";
-import lizard from "../public/images/li.jpg";
 // import bugTrackerImg from "../public/manifest/mstile-150x150.png";
-import RouteList_anchorLinks from "./RouteList_anchorLinks";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import LoadSpinner from "./LoadSpinner";
-import Image_responsive from "./Image_responsive";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import buglogo575 from "../public/images/Bug-Tracker-575.jpg";
 import buglogo767 from "../public/images/Bug-Tracker-767.jpg";
-import buglogo991 from "../public/images/Bug-Tracker-991.jpg";
-import buglogo1199 from "../public/images/Bug-Tracker-1199.jpg";
-import buglogo1399 from "../public/images/Bug-Tracker-1399.jpg";
+import Image_responsive from "./Image_responsive";
+import LoadSpinner from "./LoadSpinner";
+// import buglogo991 from "../public/images/Bug-Tracker-991.jpg";
+// import buglogo1199 from "../public/images/Bug-Tracker-1199.jpg";
+// import buglogo1399 from "../public/images/Bug-Tracker-1399.jpg";
 
 type Props = {};
 

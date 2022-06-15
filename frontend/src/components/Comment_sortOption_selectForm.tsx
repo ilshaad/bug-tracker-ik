@@ -3,7 +3,7 @@
 // true = newest comment // false = oldest comment
 
 import React, { FormEvent } from "react";
-import { Container, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 type Props = {
   newestCommentFirst_state: boolean;

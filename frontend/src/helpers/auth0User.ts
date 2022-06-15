@@ -2,8 +2,7 @@
 //eg. auth0User(iKcallback1, iKcallback2)
 //eg. auth0User(() => {...}, user => {...})
 
-import { Auth0ContextInterface, useAuth0, User } from "@auth0/auth0-react";
-import React, { useEffect, useState } from "react";
+import { useAuth0, User } from "@auth0/auth0-react";
 
 // function type to return loading element or whatever while auth0 is loading or unauthenticated
 interface loadingCallback_type {
