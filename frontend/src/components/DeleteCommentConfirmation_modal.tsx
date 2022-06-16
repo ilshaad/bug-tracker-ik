@@ -4,12 +4,11 @@
 //  - use of action creator to delete comment
 
 import React from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Container, Modal } from "react-bootstrap";
 import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
 import { useAppDispatch } from "../models/hooks";
 import { delete_deleteComment_actions } from "../models/reducers/comments_slice";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
-import DeleteTicket_form from "./DeleteTicket_form";
 
 type Props = {
   displayDeleteCommentConfirmation_modal: boolean;
@@ -80,19 +79,23 @@ export default function DeleteCommentConfirmation_modal({
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title>Delete comment</Modal.Title>
+        <Modal.Title className="fs-1 fw-bold text-primary">
+          Delete comment
+        </Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
-        <h4>DeleteCommentConfirmation_modal</h4>
-        <p>Are you sure you want to delete comment?</p>
+        <Container>
+          <p>Are you sure you want to delete comment?</p>
+        </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={deleteComment}>Delete comment</Button>
+        <Button onClick={deleteComment}>Confirm</Button>
         <Button
           onClick={() => setDisplayDeleteCommentConfirmation_modal(false)}
+          className="bg-danger"
         >
-          Close
+          Cancel
         </Button>
       </Modal.Footer>
     </Modal>

@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 
-import "../public/styles/views/ViewTicket.scss";
+import { Col, Container, Row } from "react-bootstrap";
 import ApplyToAssignForTicket_button from "../components/ApplyToAssignForTicket_button";
+import BackToTop_link from "../components/BackToTop_link";
+import Comment_sortOption_selectForm from "../components/Comment_sortOption_selectForm";
+import CreateNewCommentBox from "../components/CreateNewCommentBox";
 import CreateNewComment_button from "../components/CreateNewComment_button";
 import DeleteTicket_button from "../components/DeleteTicket_button";
 import DisplayCommentList from "../components/DisplayCommentList";
 import DisplayTicket from "../components/DisplayTicket";
 import EditTicket_button from "../components/EditTicket_button";
-import EditTicket_modal from "../components/EditTicket_modal";
 import MarkAsResolvedOrPending_button from "../components/MarkAsResolvedOrPending_button";
 import Message_toast from "../components/Message_toast";
 import SeoReactHelmet from "../components/SeoReactHelmet";
-import { sortDateByOldestFirst_array } from "../helpers/sortByDate";
-import { useAppDispatch, useAppSelector } from "../models/hooks";
-import { get_allCommentsForASingleTicket_actions } from "../models/reducers/comments_slice";
-import auth0User from "../helpers/auth0User";
-import CreateNewCommentBox from "../components/CreateNewCommentBox";
 import TitlePage from "../components/TitlePage";
-import { Col, Container, Row } from "react-bootstrap";
-import PopoverForButton from "../components/PopoverForButton";
-import Comment_sortOption_selectForm from "../components/Comment_sortOption_selectForm";
+import auth0User from "../helpers/auth0User";
+import { useAppSelector } from "../models/hooks";
+import "../public/styles/views/ViewTicket.scss";
 
 export default function ViewTicket(): JSX.Element | null {
   const auth0UserObject = auth0User(
@@ -118,7 +115,7 @@ export default function ViewTicket(): JSX.Element | null {
       </Row>
 
       {/* create comment & sort option */}
-      <Row className="mx-auto" id="creatCommentSortOption_buttons">
+      <Row className="mx-auto mb-1" id="creatCommentSortOption_buttons">
         <Col xs={{ span: 6 }} className="mx-auto">
           {/* button to user if they want to create a new comment */}
           <CreateNewComment_button
@@ -148,11 +145,23 @@ export default function ViewTicket(): JSX.Element | null {
       </Row>
 
       {/* display all the comments under the ticket info */}
-      <Row className="mx-auto w-75 mt-1">
+      <Row className="mx-auto w-75 mt-3">
         <DisplayCommentList
           ticketId={ticket?.ticket_id!}
           newestCommentFirst_state={newestCommentFirst_state}
         />
+      </Row>
+
+      <Row className="mb-2 mt-1">
+        <Col
+          xs={{ span: 4, offset: 2 }}
+          lg={{ span: 3, offset: 2 }}
+          className="w-75 mt-1"
+        >
+          <div className="ViewTicket-backToTopLink-component">
+            <BackToTop_link className="" />
+          </div>
+        </Col>
       </Row>
 
       {/* toast message whenever user update ticket in some way */}

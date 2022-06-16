@@ -6,7 +6,6 @@
 import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import auth0User from "../helpers/auth0User";
 import dateOnly from "../helpers/dateOnly";
 import {
   sortNameByAscendingOrder_array,
@@ -56,7 +55,7 @@ export default function DisplayAssignedTicketsList_table({
 
   // table row will have anchor link to view the ticket page
   const navigateToViewTicket = (ticketId: string) => {
-    navigate(`/viewticket/${ticketId}`);
+    navigate(`/viewticket/${ticketId}#top`);
   };
 
   // sort tickets List by alphabetically
@@ -173,7 +172,9 @@ export default function DisplayAssignedTicketsList_table({
           {/* <td>{ticketObject.app_version}</td> */}
           <td>{ticketObject.submitted_by}</td>
           {/* <td>{ticketObject.assigned_user}</td> */}
-          <td>{date}</td>
+          <td>
+            <time dateTime={date}>{date}</time>
+          </td>
         </tr>
       );
     }

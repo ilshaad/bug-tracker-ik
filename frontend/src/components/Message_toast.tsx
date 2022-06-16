@@ -4,8 +4,8 @@
 // VIP this toast component will trigger when you dispatch the messageToast_actions() action creator
 
 import React from "react";
-import ToastContainer from "react-bootstrap/ToastContainer";
 import Toast from "react-bootstrap/Toast";
+import ToastContainer from "react-bootstrap/ToastContainer";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { nullTheMessageToast_actions } from "../models/reducers/messageToast_slice";
 
@@ -30,7 +30,7 @@ export default function Message_toast({}: Props) {
       <Toast
         show={messageToast_reduxAction()}
         onClose={nullTheMessageToast_reduxAction}
-        delay={4000}
+        delay={5000}
         autohide
       >
         <Toast.Header className="bg-primary">
@@ -38,13 +38,13 @@ export default function Message_toast({}: Props) {
           <strong className="me-auto text-light">Bug Tracker</strong>
           <small className="text-light">0 mins ago</small>
         </Toast.Header>
-        <Toast.Body>{messageToast}</Toast.Body>
+        <Toast.Body className="my-3 fw-bold">{messageToast}SDWSDW</Toast.Body>
       </Toast>
     </ToastContainer>
   );
 }
 
-/** eg. using button to dispatch the redux action messageToast_actions() which will trigger the Message_toast component for 4 seconds
+/** eg. using button to dispatch the redux action messageToast_actions() which will trigger the Message_toast component for 5 seconds
 
 <Button
   onClick={() => dispatch(messageToast_actions("messaging whatever"))}

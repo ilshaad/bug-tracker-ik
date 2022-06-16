@@ -22,8 +22,8 @@ export default function EditComment_button({
   const adminEmail = process.env.ADMIN_EMAIL;
 
   const editButton = () => (
-    <Button onClick={() => setDisplayEditCommentBox(true)}>
-      ENABLED Edit comment
+    <Button onClick={() => setDisplayEditCommentBox(true)} size="sm">
+      Edit comment
     </Button>
   ); //END editbutton
 

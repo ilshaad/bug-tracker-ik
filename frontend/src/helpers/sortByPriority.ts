@@ -2,7 +2,6 @@
 //  - but also sorted by title order by using another sort naming function
 // First arguments must be array of objects containing the priority property
 
-import { ticket_type } from "../types/tickets_type";
 import { sortNameByAscendingOrder_array } from "./sortByAlphabet";
 
 type Props = {

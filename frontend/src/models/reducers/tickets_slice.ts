@@ -5,17 +5,12 @@
  * delete_deleteTicket_actions( ticket_id )
  */
 
-import {
-  createAsyncThunk,
-  createSlice,
-  current,
-  PayloadAction,
-} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
-import type { RootState } from "../store";
-import timeStamp from "../../helpers/timeStamp";
+// import type { RootState } from "../store";
 import parseTimestamp from "../../helpers/parseTimestamp";
+import timeStamp from "../../helpers/timeStamp";
 
 // import {
 //   dictionary_ticketsState_type,
@@ -30,9 +25,9 @@ import {
 import get_ticketList from "../../controllers/ticketsFetch/get_ticketList";
 import post_createTicket from "../../controllers/ticketsFetch/post_createTicket";
 // import { createTicket_dispatch_type } from "../../../@types/ticketsSlice_types.t";
-import catchHandlerForReduxSlices from "../../helpers/catchHandlerForReduxSlices";
-import patch_updateTicket from "../../controllers/ticketsFetch/patch_updateTicket";
 import delete_deleteTicket from "../../controllers/ticketsFetch/delete_deleteTicket";
+import patch_updateTicket from "../../controllers/ticketsFetch/patch_updateTicket";
+import catchHandlerForReduxSlices from "../../helpers/catchHandlerForReduxSlices";
 
 /************************************* */
 /** *Fetch all tickets from psql > insert it within the ticket reducer */

@@ -1,5 +1,4 @@
-import React, { Children } from "react";
-import { Container } from "react-bootstrap";
+import React from "react";
 import Footer from "./Footer";
 
 type Props = { children: JSX.Element };

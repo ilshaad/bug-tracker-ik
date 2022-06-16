@@ -38,7 +38,6 @@ jobs:
           echo CLIENT_ID_AUTH0=${{ secrets.CLIENT_ID_AUTH0 }} >> .env
           echo BACKEND_URL=${{ secrets.BACKEND_URL }} >> .env
           echo ADMIN_EMAIL=${{ secrets.ADMIN_EMAIL }} >> .env
-          echo GTESTINGENV=${{ secrets.GTESTINGENV }} >> .env
           ls -la
           mv .env frontend
           ls -la frontend

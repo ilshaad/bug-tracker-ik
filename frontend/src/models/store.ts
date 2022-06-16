@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 // !delete
-import counterSlice from "./reducers/counterSlice";
+// import counterSlice from "./reducers/counterSlice";
+
+// ! no longer required since auth0 will handle my users details
+// import userProfileSlice from "./reducers/userProfileSlice";
 
 import ticketsSlice from "./reducers/tickets_slice";
 import commentsSlice from "./reducers/comments_slice";
-import userProfileSlice from "./reducers/userProfileSlice";
 import messageToast_slice from "./reducers/messageToast_slice";
 
 const store = configureStore({
@@ -14,8 +16,8 @@ const store = configureStore({
     comments: commentsSlice,
     messageToasts: messageToast_slice,
 
-    counter: counterSlice,
-    userProfile: userProfileSlice,
+    // counter: counterSlice,
+    // userProfile: userProfileSlice,
   },
   // devTools: false,
 });

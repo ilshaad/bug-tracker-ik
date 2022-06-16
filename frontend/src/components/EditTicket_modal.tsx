@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Button, Container, Modal } from "react-bootstrap";
+import React from "react";
+import { Container, Modal } from "react-bootstrap";
 import EditTicket_form from "./EditTicket_form";
 
 type Props = {

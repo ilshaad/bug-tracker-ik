@@ -10,16 +10,18 @@ export default function RouteList_anchorLinks({}: Props) {
       return (
         <>
           <li>
-            <Link to="/fetch">fetch</Link>
+            <Link to="/fetch#top">fetch</Link>
           </li>
           <li>
-            <Link to="/reduxtest">reduxtest</Link>
+            <Link to="/reduxtest#top">reduxtest</Link>
           </li>
           <li>
             <Link to="/*">error page</Link>
           </li>
           <li>
-            <Link to="/viewticket/ticketidparams">viewticket/:ticketid</Link>
+            <Link to="/viewticket/ticketidparams#top">
+              viewticket/:ticketid
+            </Link>
           </li>
         </>
       );
@@ -29,13 +31,13 @@ export default function RouteList_anchorLinks({}: Props) {
   return (
     <>
       <li>
-        <Link to="/">Dashboard</Link>
+        <Link to="/#top">Dashboard</Link>
       </li>
       <li>
-        <Link to="/createticket">create ticket</Link>
+        <Link to="/createticket#top">create ticket</Link>
       </li>
       <li>
-        <Link to="/ticketlist">ticketlist</Link>
+        <Link to="/ticketlist#top">ticketlist</Link>
       </li>
 
       {/** !! UNCOMMENT FOR DEVMODE TO DISPLAY OTHER ROUTES FOR TESTING

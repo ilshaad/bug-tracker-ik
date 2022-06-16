@@ -4,8 +4,6 @@
 
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import { useAppDispatch } from "../models/hooks";
-import { delete_deleteComment_actions } from "../models/reducers/comments_slice";
 import DeleteCommentConfirmation_modal from "./DeleteCommentConfirmation_modal";
 
 type Props = {
@@ -30,11 +28,12 @@ export default function DeleteComment_button({
 
   // delete button jsx
   const deleteButton = () => (
-    <div>
-      <Button onClick={() => setDisplayDeleteCommentConfirmation_modal(true)}>
-        ENABLED delete comment
-      </Button>
-    </div>
+    <Button
+      onClick={() => setDisplayDeleteCommentConfirmation_modal(true)}
+      size="sm"
+    >
+      Delete comment
+    </Button>
   ); //END deletebutton
 
   // if delete comment confirmation modal state is false than check comment belongs to user or user is admin & return the delete button
@@ -51,17 +50,15 @@ export default function DeleteComment_button({
   // if delete comment confirmation modal is true then return the react-bootstrap modal component
   else if (displayDeleteCommentConfirmation_modal) {
     return (
-      <div>
-        <DeleteCommentConfirmation_modal
-          displayDeleteCommentConfirmation_modal={
-            displayDeleteCommentConfirmation_modal
-          }
-          setDisplayDeleteCommentConfirmation_modal={
-            setDisplayDeleteCommentConfirmation_modal
-          }
-          commentId={commentId}
-        />
-      </div>
+      <DeleteCommentConfirmation_modal
+        displayDeleteCommentConfirmation_modal={
+          displayDeleteCommentConfirmation_modal
+        }
+        setDisplayDeleteCommentConfirmation_modal={
+          setDisplayDeleteCommentConfirmation_modal
+        }
+        commentId={commentId}
+      />
     );
   }
 

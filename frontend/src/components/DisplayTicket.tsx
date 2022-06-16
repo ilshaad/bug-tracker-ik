@@ -1,5 +1,4 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
 
 import "../public/styles/components/DisplayTicket.scss";
@@ -70,7 +69,9 @@ export default function DisplayTicket({ ticket }: Props) {
       <p>{submitted_by}</p>
 
       <h3 className={`viewTicket-headings text-secondary`}>Date Submitted:</h3>
-      <p>{created_on}</p>
+      <p>
+        <time dateTime={created_on}>{created_on}</time>
+      </p>
     </>
   );
 }

@@ -2,16 +2,16 @@
 // using Formik
 // if confirm by user, ticket will be deleted in ss psql & redux ticket store >> close the modal >> navigate to dashboard >> display toast message
 
-import { Field, Form, Formik, FormikErrors, FormikProps } from "formik";
+import { Field, Form, Formik, FormikErrors } from "formik";
 import React, { useState } from "react";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 
-import "../public/styles/components/DeleteTicket_form.scss";
 import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
 import { delete_deleteTicket_actions } from "../models/reducers/tickets_slice";
+import "../public/styles/components/DeleteTicket_form.scss";
 
 type Props = { closeModal_function: Function };
 
@@ -93,13 +93,13 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
         // complete your transaction you want to do when user successfully filled out the form correctly
         // submit the ticket form object to redux to POST SS the newly created ticket object & if successful update the redux tickets store too
         onSubmit={(ticketObject: ticketTitle) => {
-          console.log(ticketObject);
+          // console.log(ticketObject);
 
           // DELETE ticket on ss psql, & if successful then delete on redux store ticket
           dispatch(delete_deleteTicket_actions(ticketId_params!))
             .then((res) => {
               // navigate to dashboard route page because the ticket viewpage will no longer exist
-              navigate("/");
+              navigate("/#top");
 
               // failed to delete ticket on ss psql
               if (res.type === "delete/deleteTicket/rejected") {
@@ -112,7 +112,7 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
                 // trigger toast message that deletion of ticket failed
                 dispatch(
                   messageToast_actions(
-                    "Unfortunately ticket was not deleted, refresh the page and try again please!"
+                    "Unfortunately ticket was not deleted, Please refresh the page and try again!"
                   )
                 );
               }
@@ -125,7 +125,7 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
             }) //END thanable handler
             .catch((err) => {
               // navigate to dashboard route page because the ticket viewpage will no longer exist
-              navigate("/");
+              navigate("/#top");
 
               catchHandlerForReduxSlices(
                 "delete/delete_deleteTicket_actions",

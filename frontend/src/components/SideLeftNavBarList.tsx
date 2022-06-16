@@ -1,22 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { ListGroup } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import LogoutButton from "./LogoutButton";
-import RouteList_anchorLinks from "./RouteList_anchorLinks";
 import "../public/styles/components/SideLeftNavBarList.scss";
+import LogoutButton from "./LogoutButton";
 
 type Props = {};
 
 const SideLeftNavBarList = (props: Props) => {
   const location = useLocation();
 
-  useEffect(() => console.log(location.pathname));
+  // useEffect(() => console.log(location.pathname));
 
   return (
     <>
       <ListGroup as="ul">
         {/* dashboard route */}
-        <Link to="/">
+        <Link to="/#top">
           <ListGroup.Item
             as="li"
             active={location.pathname === "/" ? true : false}
@@ -30,7 +29,7 @@ const SideLeftNavBarList = (props: Props) => {
         </Link>
 
         {/* ticketlist route */}
-        <Link to="/ticketlist">
+        <Link to="/ticketlist#top">
           <ListGroup.Item
             as="li"
             // active={location.pathname === "/ticketlist" ? true : false}
@@ -43,7 +42,7 @@ const SideLeftNavBarList = (props: Props) => {
         </Link>
 
         {/* create list route */}
-        <Link to="/createticket">
+        <Link to="/createticket#top">
           <ListGroup.Item
             as="li"
             active={location.pathname === "/createticket" ? true : false}
