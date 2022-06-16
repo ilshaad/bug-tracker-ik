@@ -14,8 +14,11 @@ $secondary: #207846;
 // $secondary: #195b35;
 $danger: #ad0c00;
 
+// main background colour
+$myPrimaryLightBg: white;
+
 // A lighter version of cornsilk colour
-$myLightBg: #fffae6;
+$mySecondaryLightBg: #fffae6;
 
 // linean gradient colour of white & green. Mainly used for the loading screen fold page
 $myGradientWhiteGreen: linear-gradient(white 20%, $secondary 50%);

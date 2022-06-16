@@ -6,6 +6,7 @@
 import React from "react";
 import Toast from "react-bootstrap/Toast";
 import ToastContainer from "react-bootstrap/ToastContainer";
+import "../public/styles/components/Message_toast.scss";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { nullTheMessageToast_actions } from "../models/reducers/messageToast_slice";
 
@@ -25,6 +26,7 @@ export default function Message_toast({}: Props) {
   return (
     <ToastContainer
       className="p-3"
+      id="Message_toast-component"
       style={{ position: "fixed", bottom: 0, right: 0 }}
     >
       <Toast
@@ -32,13 +34,14 @@ export default function Message_toast({}: Props) {
         onClose={nullTheMessageToast_reduxAction}
         delay={5000}
         autohide
+        id="Message_toast-component-toast"
       >
         <Toast.Header className="bg-primary">
           {/* <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" /> */}
           <strong className="me-auto text-light">Bug Tracker</strong>
           <small className="text-light">0 mins ago</small>
         </Toast.Header>
-        <Toast.Body className="my-3 fw-bold">{messageToast}SDWSDW</Toast.Body>
+        <Toast.Body className="my-3 fw-bold">{messageToast}</Toast.Body>
       </Toast>
     </ToastContainer>
   );
