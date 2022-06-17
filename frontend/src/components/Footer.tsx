@@ -6,7 +6,10 @@ export default function Footer({}: Props) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <small className="d-flex flex-column justify-content-center align-items-center h-100 text-light bg-primary bg-gradient">
+    <small
+      className="d-flex flex-column justify-content-center align-items-center h-100 text-light bg-primary bg-gradient"
+      style={{ fontSize: "1em" }}
+    >
       <div>
         &copy; <time dateTime={`${currentYear}`}>{currentYear}</time> Copyright
         Ilshaad Kheerdali
