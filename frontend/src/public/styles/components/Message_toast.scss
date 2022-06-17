@@ -1,40 +1,9 @@
 @import "../global.scss";
 
-// for label elements
-@mixin labelSpan {
-  label {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: $secondary;
-  }
-
-  // the asterick within the label to indicate to user they must enter something
-  span {
-    font-weight: 300;
-    color: $danger;
-  }
-}
-
-#DeleteTicket_form-component {
+#Message_toast-component {
   // iK? begin from 360px & up for starting breakpoint
-
-  // input form
-  .DeleteTicket_form-input {
-    background-color: $mySecondaryInputBg;
-  }
-
-  .deleteTicket_form-titleHeading {
-    @include labelSpan();
-  }
-
-  .deleteInputErrorResponse {
-    color: $danger;
-    font-size: 1.1rem;
-    margin-top: 0.3em;
-  }
-
-  .deleteTicket-form-modal-buttons {
-    width: 30%;
+  #Message_toast-component-toast {
+    background-color: $mySecondaryLightBg;
   }
 
   // * breakpoint of > 576px (sm)

@@ -21,7 +21,7 @@ app.use(cors(corsOptionsDelegate));
 
 /**server route paths */
 app.get("/", (req, res) => {
-  console.log(process.env.NODE_ENV);
+  // console.log(process.env.NODE_ENV);
 
   res.json({ success: true, msg: "home route, but nothing to gain here" });
 });

@@ -89,19 +89,14 @@ body,
   height: 100%;
   justify-content: space-between;
 
-  // a lighter version of cornsilk
-  background-color: $myLightBg;
-  // background-color: $myLightBg;
-
-  // border: black 6px solid;
+  // primary background colour (iK I set it to white unless I changed it for some reason)
+  background-color: $myPrimaryLightBg;
 
   #InnerGrid-main {
     flex-basis: 1;
     height: 100%;
 
-    // border: rgb(202, 250, 104) 4px solid;
     margin-bottom: 0px;
-    // border: black 6px solid;
 
     & > * {
       height: 100%;
@@ -111,7 +106,7 @@ body,
 
   #InnerGrid-footer {
     width: 100%;
-    height: 50px;
+    height: 75px;
     margin-bottom: 0px;
     // border-left: black 6px solid;
     // background-color: slateblue;

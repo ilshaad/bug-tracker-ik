@@ -21,6 +21,11 @@
     @include labelSpan();
   }
 
+  // all the inputs & select form
+  .EditTicket_form-component-inputs {
+    background-color: $mySecondaryInputBg;
+  }
+
   .editTicketForm-selected {
     div {
       font-size: 1.5rem;

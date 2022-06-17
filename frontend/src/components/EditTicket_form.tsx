@@ -171,7 +171,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
                       id="editTitle"
                       name="title"
                       placeholder={ticket.title ? ticket.title : "Ticket title"}
-                      className="form-control"
+                      className="EditTicket_form-component-inputs form-control"
                     />
                   </Col>
 
@@ -203,7 +203,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
                           ? ticket.description
                           : "Ticket description"
                       }
-                      className="form-control"
+                      className="EditTicket_form-component-inputs form-control"
                     />
                   </Col>
 
@@ -225,7 +225,11 @@ export default function EditTicket_form({ closeModal_function }: Props) {
                   </Col>
 
                   <Col xs={12}>
-                    <Field as="select" name="priority" className="form-select">
+                    <Field
+                      as="select"
+                      name="priority"
+                      className="EditTicket_form-component-inputs form-select"
+                    >
                       <option value="High" selected={autoCheckPriority("High")}>
                         High
                       </option>
@@ -265,7 +269,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
                           ? ticket.assigned_user
                           : "Ticket assigned user"
                       }
-                      className="form-control"
+                      className="EditTicket_form-component-inputs form-control"
                     />
                   </Col>
                 </Row>
@@ -285,7 +289,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
                       placeholder={
                         ticket.app_name ? ticket.app_name : "Ticket app name"
                       }
-                      className="form-control"
+                      className=" EditTicket_form-component-inputs form-control"
                     />
                   </Col>
 
@@ -316,7 +320,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
                           ? ticket.app_version
                           : "ticket app version"
                       }
-                      className="form-control"
+                      className=" EditTicket_form-component-inputs form-control"
                     />
                   </Col>
 
@@ -345,6 +349,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
                               ? ticket.submitted_by
                               : "Ticket submitted user"
                           }
+                          className="EditTicket_form-component-inputs"
                         />
                       </>
                     );

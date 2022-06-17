@@ -29,9 +29,7 @@ export default function CreateNewCommentBox_textarea({
 
   // handle validation from Yum
   const schema = yup.object().shape({
-    createComment: yup
-      .string()
-      .required("iK optionally you can leave a invalid message to user here"),
+    createComment: yup.string().required("Comment is empty!"),
   });
 
   return (
@@ -128,9 +126,11 @@ export default function CreateNewCommentBox_textarea({
               onChange={handleChange}
               isInvalid={!!errors.createComment}
               placeholder="Enter comment"
+              // #f8f9fa is the same as the $mySecondaryInputBg
+              style={{ backgroundColor: "#f8f9fa" }}
             />
             {/* will display to user their input in the textarea is invalid */}
-            <Form.Control.Feedback type="invalid" tooltip>
+            <Form.Control.Feedback type="invalid">
               {errors.createComment}
             </Form.Control.Feedback>
           </Form.Group>

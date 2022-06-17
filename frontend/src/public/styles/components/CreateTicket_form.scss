@@ -6,6 +6,11 @@
   // background-color: cornsilk;
   margin-top: -1.25rem;
 
+  // all the inputs & select form area
+  .CreateTicket_form-formInput {
+    background-color: $mySecondaryInputBg;
+  }
+
   // The input[type:text] container. The actual input text is within this container
   .textInputForm {
     // background-color: inherit;
