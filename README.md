@@ -2,7 +2,7 @@
 
 ###### Frontend & Backend build (PERN stack)
 
-#### What is this app about?
+### What is this app about?
 
 It is a Bug Tracker app (aka. Issue Tracker). Intented for developer's as a social board for discovering bugs that may be plaguing application's.
 Developers can:
@@ -13,7 +13,7 @@ Developers can:
 - Commenting.
 - and more...
 
-#### Main technologies used in the app!
+### Main technologies used in the app!
 
 - React
 - Typescript / Javascript
@@ -28,7 +28,7 @@ Developers can:
 - Heroku
 - etc...
 
-#### Some key notes about the app:
+### Some key notes about the app:
 
 - _Frontend folder_:
 
