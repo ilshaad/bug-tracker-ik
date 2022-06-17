@@ -174,7 +174,7 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
                       id="deleteTitle"
                       name="title"
                       // placeholder="Enter the ticket title name for deletion"
-                      className="form-control"
+                      className="DeleteTicket_form-input form-control"
                     />
                   </Col>
 

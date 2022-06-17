@@ -202,7 +202,7 @@ export default function CreateTicket_form({}: Props) {
                   id="createTitle"
                   name="title"
                   placeholder="Give your ticket a title"
-                  className={`form-control`}
+                  className={`CreateTicket_form-formInput form-control`}
                 />
               </Col>
 
@@ -220,7 +220,7 @@ export default function CreateTicket_form({}: Props) {
               </Col>
             </Row>
 
-            {/* description input  */}
+            {/* description textarea input  */}
             <Row
               className="textInputForm mx-auto mb-1 mb-lg-4"
               id="createTicketRowDescription"
@@ -239,7 +239,7 @@ export default function CreateTicket_form({}: Props) {
                   id="createDescription"
                   name="description"
                   placeholder="Describe the issue"
-                  className={`form-control`}
+                  className={`CreateTicket_form-formInput form-control`}
                 />
               </Col>
 
@@ -271,7 +271,7 @@ export default function CreateTicket_form({}: Props) {
                 <Field
                   as="select"
                   name="priority"
-                  className="form-select createSelectPriority"
+                  className="form-select CreateTicket_form-formInput createSelectPriority"
                 >
                   <option selected>Select one</option>
                   <option value="High">High</option>
@@ -302,7 +302,7 @@ export default function CreateTicket_form({}: Props) {
                 <Field
                   as="select"
                   name="status"
-                  className="form-select createSelectStatus"
+                  className="form-select CreateTicket_form-formInput createSelectStatus"
                 >
                   <option selected>Select one</option>
                   <option value="Pending">Pending</option>
@@ -338,7 +338,7 @@ export default function CreateTicket_form({}: Props) {
                   id="createAssignedUser"
                   name="assigned_user"
                   placeholder="Unassigned"
-                  className={`form-control`}
+                  className={`CreateTicket_form-formInput form-control`}
                 />
               </Col>
 
@@ -358,7 +358,7 @@ export default function CreateTicket_form({}: Props) {
                   id="createAppName"
                   name="app_name"
                   placeholder="Name of the app"
-                  className="form-control"
+                  className="CreateTicket_form-formInput form-control"
                 />
               </Col>
 
@@ -390,7 +390,7 @@ export default function CreateTicket_form({}: Props) {
                   id="createAppVersion"
                   name="app_version"
                   placeholder="Version of the app"
-                  className={`form-control`}
+                  className={`CreateTicket_form-formInput form-control`}
                 />
               </Col>
 
@@ -421,6 +421,7 @@ export default function CreateTicket_form({}: Props) {
                         id="createSubmittedBy"
                         name="submitted_by"
                         placeholder="Only admin can see &amp; change submitted_by property when creating new ticket"
+                        className="CreateTicket_form-formInput"
                       />
                     </Col>
                   </Row>

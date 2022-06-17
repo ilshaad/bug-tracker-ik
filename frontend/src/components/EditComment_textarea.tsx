@@ -26,7 +26,7 @@ export default function EditComment_textarea({
 
   // handle validation from Yum
   const schema = yup.object().shape({
-    editComment: yup.string().required("Comment is required in this field"),
+    editComment: yup.string().required("Comment is empty!"),
   });
 
   // return null until user or admin has clicked on the edit button to update comment
@@ -117,9 +117,10 @@ export default function EditComment_textarea({
               onChange={handleChange}
               isInvalid={!!errors.editComment}
               placeholder="Enter comment"
+              style={{ backgroundColor: "#f8f9fa" }}
             />
             {/* will display to user their input in the textarea is invalid */}
-            <Form.Control.Feedback type="invalid" tooltip>
+            <Form.Control.Feedback type="invalid">
               {errors.editComment}
             </Form.Control.Feedback>
           </Form.Group>

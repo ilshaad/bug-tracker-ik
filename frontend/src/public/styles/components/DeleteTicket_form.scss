@@ -18,6 +18,11 @@
 #DeleteTicket_form-component {
   // iK? begin from 360px & up for starting breakpoint
 
+  // input form
+  .DeleteTicket_form-input {
+    background-color: $mySecondaryInputBg;
+  }
+
   .deleteTicket_form-titleHeading {
     @include labelSpan();
   }

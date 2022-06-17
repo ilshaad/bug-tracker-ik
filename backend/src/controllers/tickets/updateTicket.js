@@ -93,7 +93,6 @@ exports.updateTicket = (req, res) => {
 
   // sql query string to use for updating the psql tickets_table for the one specific ticket
   const sqlQuery = `UPDATE tickets_table SET title = '${titleC}', description = '${descriptionC}',${submitted_byC} priority = '${priorityC}', assigned_user = '${assigned_userC}', status = '${statusC}', app_name = '${app_nameC}', app_version = '${app_versionC}'${created_onC} WHERE ticket_id = '${ticket_idC}';`;
-  console.log("🚀 ~ file: updateTicket.js ~ line 95 ~ sqlQuery", sqlQuery);
 
   psqlDb.query(sqlQuery, null, (err, result) => {
     if (err) {

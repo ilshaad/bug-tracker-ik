@@ -20,6 +20,9 @@ $myPrimaryLightBg: white;
 // A lighter version of cornsilk colour
 $mySecondaryLightBg: #fffae6;
 
+// inputs secondary background-color (white is primary background-color unless white is already background then we use secondary to make the input stand out a bit
+$mySecondaryInputBg: #f8f9fa;
+
 // linean gradient colour of white & green. Mainly used for the loading screen fold page
 $myGradientWhiteGreen: linear-gradient(white 20%, $secondary 50%);
 
