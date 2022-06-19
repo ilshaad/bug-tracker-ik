@@ -1,6 +1,6 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
-import "../public/styles/components/LoadingScreen_foldingPage.scss";
+import "../styles/components/LoadingScreen_foldingPage.scss";
 
 type Props = {};
 

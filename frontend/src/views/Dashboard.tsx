@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../public/styles/views/Dashboard.scss";
+import "../styles/views/Dashboard.scss";
 
 // import * as bootstrap from "bootstrap";
 

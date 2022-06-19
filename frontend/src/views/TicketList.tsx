@@ -5,7 +5,7 @@ import DisplayTicketsList_table from "../components/DisplayTicketsList_table";
 import Message_toast from "../components/Message_toast";
 import SeoReactHelmet from "../components/SeoReactHelmet";
 import TitlePage from "../components/TitlePage";
-import "../public/styles/views/TicketList.scss";
+import "../styles/views/TicketList.scss";
 
 export default function TicketList(): JSX.Element {
   return (

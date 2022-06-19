@@ -19,7 +19,7 @@ import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
 import { patch_updateTicket_actions } from "../models/reducers/tickets_slice";
-import "../public/styles/components/EditTicket_form.scss";
+import "../styles/components/EditTicket_form.scss";
 import { ticket_type } from "../types/tickets_type";
 
 type Props = { closeModal_function: Function };

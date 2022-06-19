@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
-import "../public/styles/components/DisplayTicket.scss";
+import "../styles/components/DisplayTicket.scss";
 
 import { ticket_type } from "../types/tickets_type";
 

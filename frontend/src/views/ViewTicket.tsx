@@ -17,7 +17,7 @@ import SeoReactHelmet from "../components/SeoReactHelmet";
 import TitlePage from "../components/TitlePage";
 import auth0User from "../helpers/auth0User";
 import { useAppSelector } from "../models/hooks";
-import "../public/styles/views/ViewTicket.scss";
+import "../styles/views/ViewTicket.scss";
 
 export default function ViewTicket(): JSX.Element | null {
   const auth0UserObject = auth0User(

@@ -1,5 +1,5 @@
 import React from "react";
-import "../public/styles/components/BackToTop_link.scss";
+import "../styles/components/BackToTop_link.scss";
 
 type Props = { className: string };
 

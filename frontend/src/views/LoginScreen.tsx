@@ -4,7 +4,7 @@ import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import LoginButton from "../components/LoginButton";
 import SeoReactHelmet from "../components/SeoReactHelmet";
-import "../public/styles/views/LoginScreen.scss";
+import "../styles/views/LoginScreen.scss";
 
 import Image_responsive from "../components/Image_responsive";
 import buglogo1199 from "../public/images/Bug-Tracker-1199.jpg";

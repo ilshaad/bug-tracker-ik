@@ -1,7 +1,7 @@
 import React from "react";
 import { ListGroup } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import "../public/styles/components/SideLeftNavBarList.scss";
+import "../styles/components/SideLeftNavBarList.scss";
 import LogoutButton from "./LogoutButton";
 
 type Props = {};

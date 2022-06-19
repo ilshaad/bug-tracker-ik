@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-// import "../public/styles/views/CreateTicket.scss";
+// import "../styles/views/CreateTicket.scss";
 import CreateTicket_form from "../components/CreateTicket_form";
 import Message_toast from "../components/Message_toast";
 import SeoReactHelmet from "../components/SeoReactHelmet";

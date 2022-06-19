@@ -6,7 +6,7 @@
 import React from "react";
 import Toast from "react-bootstrap/Toast";
 import ToastContainer from "react-bootstrap/ToastContainer";
-import "../public/styles/components/Message_toast.scss";
+import "../styles/components/Message_toast.scss";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { nullTheMessageToast_actions } from "../models/reducers/messageToast_slice";
 
