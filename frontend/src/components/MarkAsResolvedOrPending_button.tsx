@@ -3,7 +3,7 @@
 
 import React from "react";
 import { Button } from "react-bootstrap";
-import auth0User from "../helpers/auth0User";
+import auth0User from "../scripts/auth0User";
 import { useAppDispatch } from "../models/hooks";
 import { patch_updateTicket_actions } from "../models/reducers/tickets_slice";
 import { ticket_type } from "../types/tickets_type";

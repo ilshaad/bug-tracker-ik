@@ -5,7 +5,7 @@
 
 import React from "react";
 import { Button, Container, Modal } from "react-bootstrap";
-import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
+import catchHandlerForReduxSlices from "../scripts/catchHandlerForReduxSlices";
 import { useAppDispatch } from "../models/hooks";
 import { delete_deleteComment_actions } from "../models/reducers/comments_slice";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";

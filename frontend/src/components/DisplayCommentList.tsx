@@ -3,7 +3,7 @@ import { Col } from "react-bootstrap";
 import {
   sortDateByNewestFirst_array,
   sortDateByOldestFirst_array,
-} from "../helpers/sortByDate";
+} from "../scripts/sortByDate";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { get_allCommentsForASingleTicket_actions } from "../models/reducers/comments_slice";
 import { comment_type } from "../types/comments_type";

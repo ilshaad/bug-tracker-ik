@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 
-import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
+import catchHandlerForReduxSlices from "../scripts/catchHandlerForReduxSlices";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
 import { delete_deleteTicket_actions } from "../models/reducers/tickets_slice";

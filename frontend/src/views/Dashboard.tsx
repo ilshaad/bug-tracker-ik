@@ -11,7 +11,7 @@ import DisplaySubmittedTicketsList_table from "../components/DisplaySubmittedTic
 import Message_toast from "../components/Message_toast";
 import SeoReactHelmet from "../components/SeoReactHelmet";
 import TitlePage from "../components/TitlePage";
-import auth0User from "../helpers/auth0User";
+import auth0User from "../scripts/auth0User";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { ticket_type } from "../types/tickets_type";
 

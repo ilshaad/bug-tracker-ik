@@ -7,8 +7,8 @@ import React from "react";
 
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import auth0User from "../helpers/auth0User";
-import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
+import auth0User from "../scripts/auth0User";
+import catchHandlerForReduxSlices from "../scripts/catchHandlerForReduxSlices";
 import { useAppDispatch } from "../models/hooks";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
 import { post_createTicket_actions } from "../models/reducers/tickets_slice";

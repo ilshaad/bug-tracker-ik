@@ -15,7 +15,7 @@ import MarkAsResolvedOrPending_button from "../components/MarkAsResolvedOrPendin
 import Message_toast from "../components/Message_toast";
 import SeoReactHelmet from "../components/SeoReactHelmet";
 import TitlePage from "../components/TitlePage";
-import auth0User from "../helpers/auth0User";
+import auth0User from "../scripts/auth0User";
 import { useAppSelector } from "../models/hooks";
 import "../styles/views/ViewTicket.scss";
 

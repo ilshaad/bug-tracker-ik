@@ -1,4 +1,4 @@
-import capitaliseString from "../../helpers/capitaliseString";
+import capitaliseString from "../../scripts/capitaliseString";
 import { ticket_type } from "../../types/tickets_type";
 import backendApi_fetchInstance from "./../backendApi_fetchInstance";
 import catchHandler from "./../backendCatchHandler";

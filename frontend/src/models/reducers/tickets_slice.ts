@@ -9,8 +9,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 // import type { RootState } from "../store";
-import parseTimestamp from "../../helpers/parseTimestamp";
-import timeStamp from "../../helpers/timeStamp";
+import parseTimestamp from "../../scripts/parseTimestamp";
+import timeStamp from "../../scripts/timeStamp";
 
 // import {
 //   dictionary_ticketsState_type,
@@ -27,7 +27,7 @@ import post_createTicket from "../../controllers/ticketsFetch/post_createTicket"
 // import { createTicket_dispatch_type } from "../../../@types/ticketsSlice_types.t";
 import delete_deleteTicket from "../../controllers/ticketsFetch/delete_deleteTicket";
 import patch_updateTicket from "../../controllers/ticketsFetch/patch_updateTicket";
-import catchHandlerForReduxSlices from "../../helpers/catchHandlerForReduxSlices";
+import catchHandlerForReduxSlices from "../../scripts/catchHandlerForReduxSlices";
 
 /************************************* */
 /** *Fetch all tickets from psql > insert it within the ticket reducer */

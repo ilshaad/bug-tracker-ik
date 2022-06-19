@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 import { Button, Col } from "react-bootstrap";
-import auth0User from "../helpers/auth0User";
+import auth0User from "../scripts/auth0User";
 import EditTicket_modal from "./EditTicket_modal";
 import PopoverForButton from "./PopoverForButton";
 

@@ -5,7 +5,7 @@
 
 import React, { useRef } from "react";
 import { Button } from "react-bootstrap";
-import auth0User from "../helpers/auth0User";
+import auth0User from "../scripts/auth0User";
 import { useAppDispatch } from "../models/hooks";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
 import PopoverForButton from "./PopoverForButton";

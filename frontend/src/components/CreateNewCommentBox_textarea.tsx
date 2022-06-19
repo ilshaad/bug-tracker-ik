@@ -8,7 +8,7 @@ import { Formik } from "formik";
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import * as yup from "yup";
-import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
+import catchHandlerForReduxSlices from "../scripts/catchHandlerForReduxSlices";
 import { useAppDispatch } from "../models/hooks";
 import { post_createComments_action } from "../models/reducers/comments_slice";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";

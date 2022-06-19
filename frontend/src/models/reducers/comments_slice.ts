@@ -12,14 +12,14 @@ import delete_deleteComment from "../../controllers/commentsFetch/delete_deleteC
 import get_allCommentsForASingleTicket from "../../controllers/commentsFetch/get_allCommentsForASingleTicket";
 import patch_updateComment from "../../controllers/commentsFetch/patch_updateComment";
 import post_createComment from "../../controllers/commentsFetch/post_createComment";
-import catchHandlerForReduxSlices from "../../helpers/catchHandlerForReduxSlices";
+import catchHandlerForReduxSlices from "../../scripts/catchHandlerForReduxSlices";
 import {
   comment_type,
   createComment_dispatch_type,
 } from "../../types/comments_type";
 // import { get_allCommentsForASingleTicket } from "../../../controllers/commentsFetch";
-import parseTimestamp from "../../helpers/parseTimestamp";
-import timeStamp from "../../helpers/timeStamp";
+import parseTimestamp from "../../scripts/parseTimestamp";
+import timeStamp from "../../scripts/timeStamp";
 
 /************************************** */
 // * get_allCommentsForASingleTicket_actions function

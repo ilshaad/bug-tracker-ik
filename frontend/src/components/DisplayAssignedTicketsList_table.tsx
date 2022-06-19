@@ -6,19 +6,19 @@
 import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import dateOnly from "../helpers/dateOnly";
+import dateOnly from "../scripts/dateOnly";
 import {
   sortNameByAscendingOrder_array,
   sortNameByDescendingOrder_array,
-} from "../helpers/sortByAlphabet";
+} from "../scripts/sortByAlphabet";
 import {
   sortDateByNewestFirst_array,
   sortDateByOldestFirst_array,
-} from "../helpers/sortByDate";
+} from "../scripts/sortByDate";
 import {
   sortPriorityByAscendingOrder_array,
   sortPriorityByDescendingOrder_array,
-} from "../helpers/sortByPriority";
+} from "../scripts/sortByPriority";
 import { ticket_type } from "../types/tickets_type";
 
 type Props = { userAssignedTickets_array: ticket_type[]; auth0UserObject: any };

@@ -14,8 +14,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
-import auth0User from "../helpers/auth0User";
-import catchHandlerForReduxSlices from "../helpers/catchHandlerForReduxSlices";
+import auth0User from "../scripts/auth0User";
+import catchHandlerForReduxSlices from "../scripts/catchHandlerForReduxSlices";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
 import { patch_updateTicket_actions } from "../models/reducers/tickets_slice";
