@@ -2,7 +2,7 @@
 
 ###### Frontend & Backend build (PERN stack)
 
-## What is this app about?
+## What is the app about?
 
 It is a Bug Tracker app (aka. Issue Tracker). Intented for developer's as a social board for discovering bugs that may be plaguing application's.
 Developers can:
@@ -13,7 +13,7 @@ Developers can:
 - Commenting.
 - and more...
 
-## Main technologies used in the app!
+## Main technologies I used in the app!
 
 - React
 - Typescript / Javascript
@@ -35,12 +35,12 @@ Developers can:
   - Build bundle with my personal _Webpack_ template.
   - _Redux_ as state management to reduce fetch request.
     - You can use _Redux devtool_ extension on the browser to view all the state data.
-  - First mobile responsive approach ranging from 320px - 1600px
+  - First mobile responsive approach ranging from `320px-1600px`
 
 - _Backend folder_:
 
   - Standard _Node.js_ & _Express_ build
-  - Heroku PostreSql as database
+  - _Heroku PostreSql_ as database
   - MVC structure
 
 - Client side render app.
@@ -51,7 +51,7 @@ Developers can:
 
 - Configured _Auth0_ to handle user authentication.
 
-- CI/CD pipeline configured with _Github Actions_, which automate to _Heroku_ as live site when push to master branch.
+- CI/CD pipeline configured with _Github Actions_, which automate to _Heroku_ as live site when push to `master` branch.
 
 #### Feel free to contact me if you want to know more about me or the app. Thanks
 
