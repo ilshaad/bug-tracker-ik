@@ -26,6 +26,7 @@ Developers can:
 - Docker
 - Github Actions (CI/CD)
 - Heroku
+- PWA (Workbox)
 - etc...
 
 ## Some key notes about the app:
