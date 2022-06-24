@@ -11,7 +11,7 @@
   "author": "Rechad Salma",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.18"
   },
   "dependencies": {
     "cors": "^2.8.5",
