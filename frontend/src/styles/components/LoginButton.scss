@@ -6,6 +6,10 @@
     background-color: $primary !important;
   }
 
+  &:active {
+    background-color: $primary !important;
+  }
+
   // * breakpoint of > 576px (sm)
   //  @include media-breakpoint-up(sm) {
   //  } //END breakpoint of > 576px (sm)
