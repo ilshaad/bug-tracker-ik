@@ -37,7 +37,7 @@ const SideLeftNavBarList = (props: Props) => {
               location.pathname === "/ticketlist" ? "hoverNav" : ""
             }`}
           >
-            Tickets List
+            Ticket List
           </ListGroup.Item>
         </Link>
 
