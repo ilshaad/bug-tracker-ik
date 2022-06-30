@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { Button } from "react-bootstrap";
+import "../styles/components/LoginButton.scss";
 
 type Props = { classStyle?: string };
 
@@ -12,7 +13,11 @@ const LoginButton = ({ classStyle }: Props) => {
   // });
 
   return (
-    <Button onClick={() => loginWithRedirect()} className={classStyle}>
+    <Button
+      onClick={() => loginWithRedirect()}
+      className={classStyle}
+      id="LoginButton_component"
+    >
       Login / Signup
     </Button>
   );

@@ -44,18 +44,6 @@ export default function LoginScreen({}: Props) {
         </Col>
       </Row>
 
-      {/* header title */}
-      {/* <Row className="mx-auto text-center">
-        <h1>Bug Tracker</h1>
-      </Row> */}
-
-      {/* Login button to auth0 */}
-      {/* <Row className="mx-auto">
-        <Col className="justify-content-center">
-          <button>dummy login button</button>
-        </Col>
-      </Row> */}
-
       {/* card telling user how to login with guest account for demo */}
       <Row className="mx-auto">
         <Col xs={12} sm={10} md={8} lg={6} xl={4} className="mx-auto">

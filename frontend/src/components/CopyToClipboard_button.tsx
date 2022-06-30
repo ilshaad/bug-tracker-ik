@@ -5,6 +5,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Overlay, Tooltip } from "react-bootstrap";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import "../styles/components/CopyToClipboard.scss";
 
 type Props = {};
 
