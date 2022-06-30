@@ -12,6 +12,7 @@ import buglogo1399 from "../public/images/Bug-Tracker-1399.jpg";
 import buglogo575 from "../public/images/Bug-Tracker-575.jpg";
 import buglogo767 from "../public/images/Bug-Tracker-767.jpg";
 import buglogo991 from "../public/images/Bug-Tracker-991.jpg";
+import CopyToClipboard_button from "../components/CopyToClipboard_button";
 
 type Props = {};
 
@@ -85,8 +86,8 @@ export default function LoginScreen({}: Props) {
                 </h3>
                 <h4>You can use the 'guest' account as demo user:</h4>
               </Card.Title>
-              <Card.Text>
-                <div>
+              <Card.Text className="mx-auto">
+                <div className="userPasswordTextBox">
                   <div>
                     <span>Username:</span>
                     &nbsp;
@@ -96,6 +97,7 @@ export default function LoginScreen({}: Props) {
                     <span>Password:</span>
                     &nbsp;
                     <p className="d-inline fw-bold">Guest@12</p>
+                    <CopyToClipboard_button />
                   </div>
                 </div>
               </Card.Text>

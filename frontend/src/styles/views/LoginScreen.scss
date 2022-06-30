@@ -24,6 +24,30 @@
     margin-bottom: -0.9rem;
   }
 
+  .userPasswordTextBox {
+    text-align: left;
+    // margin-left: 1rem;
+    margin-left: 13%;
+  }
+
+  @media screen and (min-width: 360px) {
+    .userPasswordTextBox {
+      margin-left: 18%;
+    }
+  }
+
+  // @media screen and (min-width: 400px) {
+  // .userPasswordTextBox {
+  //   margin-left: 4rem;
+  // }
+  // }
+
+  @media screen and (min-width: 500px) {
+    .userPasswordTextBox {
+      margin-left: 29%;
+    }
+  }
+
   // * breakpoint of > 576px (sm)
   @include media-breakpoint-up(sm) {
     #LoginScreen-view-imageHeaderContainer {
@@ -32,6 +56,10 @@
 
     #LoginScreen-view-loginButton {
       width: 80%;
+    }
+
+    .userPasswordTextBox {
+      margin-left: 32%;
     }
   } //END breakpoint of > 576px (sm)
 
@@ -50,10 +78,16 @@
   } //END breakpoint of > 992 (lg)
 
   // * breakpoint of > 1200px (xl)
-  //  @include media-breakpoint-up(xl) {
-  //  } //END breakpoint of 1200px
+  @include media-breakpoint-up(xl) {
+    .userPasswordTextBox {
+      margin-left: 27%;
+    }
+  } //END breakpoint of 1200px
 
   // * breakpoint of > 1400px (xxl)
-  //  @include media-breakpoint-up(xxl) {
-  //  } //END breakpoint of 1400px
+  @include media-breakpoint-up(xxl) {
+    .userPasswordTextBox {
+      margin-left: 32%;
+    }
+  } //END breakpoint of 1400px
 }

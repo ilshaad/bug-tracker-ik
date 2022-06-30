@@ -125,7 +125,7 @@ export default function Header({}: Props) {
                   : ""
               }`}
             >
-              Tickets list
+              Ticket list
             </Link>
 
             {/* create ticket link */}
