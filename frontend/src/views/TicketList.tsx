@@ -19,7 +19,7 @@ export default function TicketList(): JSX.Element {
       {/* message toast for user confirmation such as success or failure in creating a ticket */}
       <Message_toast />
 
-      <TitlePage titleName="Tickets list" />
+      <TitlePage titleName="Ticket list" />
 
       <DisplayTicketsList_table />
 

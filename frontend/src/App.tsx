@@ -18,17 +18,30 @@ import AuthenticateRoute_HOC from "./components/AuthenticateRoute_HOC";
 
 // Layout component for non authenticated routes (eg error page) because AuthentcateRoute sets Layout component to all protected routes
 
-import { useAppDispatch } from "./models/hooks";
+import { useAppDispatch, useAppSelector } from "./models/hooks";
 import { get_ticketList_actions } from "./models/reducers/tickets_slice";
 
 const App = () => {
   const dispatch = useAppDispatch();
+  const ticketsList_dictionary = useAppSelector((state) => state.tickets);
+  const numberOfTickets = Object.keys(ticketsList_dictionary).length;
 
-  useEffect(() => {
-    // when page first loads fetch all tickets list for redux ticket reducer store to collect
-    // still fetches in login screen so not ideal, but decide to leave it for now, you can optimize this later if you wish
-    dispatch(get_ticketList_actions());
-  }, []);
+  // * I removed useEffect() because I notice it would limit failed fetch request
+  // when page first loads fetch all tickets list for redux ticket reducer store to collect
+  // still fetches in login screen so not ideal, but decide to leave it for now, you can optimize this later if you wish
+
+  // only call the tickets 5 times before you give up (the one extra is react first render which does not count)
+  let numberOfFailedFetchCallbacksAllowed = 6;
+
+  // if no tickets in redux store than get all the tickets
+  if (numberOfTickets === 0) {
+    // you get 5 total request call otherwise give up fetching ticket
+    if (numberOfFailedFetchCallbacksAllowed !== 0) {
+      dispatch(get_ticketList_actions());
+
+      numberOfFailedFetchCallbacksAllowed -= 1;
+    }
+  }
 
   // ! /fetch & /reduxtest routes are dummy routes, remove afterwards
   // authenticate routes when user can view when they login/signup
