@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { Col, Container, Row } from "react-bootstrap";
@@ -16,14 +16,34 @@ import Message_toast from "../components/Message_toast";
 import SeoReactHelmet from "../components/SeoReactHelmet";
 import TitlePage from "../components/TitlePage";
 import auth0User from "../scripts/auth0User";
-import { useAppSelector } from "../models/hooks";
+import { useAppDispatch, useAppSelector } from "../models/hooks";
 import "../styles/views/ViewTicket.scss";
+import { get_ticketList_actions } from "../models/reducers/tickets_slice";
 
 export default function ViewTicket(): JSX.Element | null {
   const auth0UserObject = auth0User(
     () => null,
     (user) => user
   );
+
+  const dispatch = useAppDispatch();
+  const ticketsList_dictionary = useAppSelector((state) => state.tickets);
+  const numberOfTickets = Object.keys(ticketsList_dictionary).length;
+  // when page first loads fetch all tickets list for redux ticket reducer store to collect
+  // still fetches in login screen so not ideal, but decide to leave it for now, you can optimize this later if you wish
+  // only call the tickets 5 times before you give up (the one extra is react first render which does not count)
+  let numberOfFailedFetchCallbacksAllowed = 6;
+  useEffect(() => {
+    // if no tickets in redux store than get all the tickets
+    if (numberOfTickets === 0) {
+      // you get 5 total request call otherwise give up fetching ticket
+      if (numberOfFailedFetchCallbacksAllowed !== 0) {
+        dispatch(get_ticketList_actions());
+
+        numberOfFailedFetchCallbacksAllowed -= 1;
+      }
+    }
+  });
 
   const ticketId_Params = useParams().ticketid;
 

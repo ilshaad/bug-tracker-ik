@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "../styles/views/Dashboard.scss";
 
@@ -11,15 +11,35 @@ import DisplaySubmittedTicketsList_table from "../components/DisplaySubmittedTic
 import Message_toast from "../components/Message_toast";
 import SeoReactHelmet from "../components/SeoReactHelmet";
 import TitlePage from "../components/TitlePage";
-import auth0User from "../scripts/auth0User";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
+import auth0User from "../scripts/auth0User";
 import { ticket_type } from "../types/tickets_type";
+import { get_ticketList_actions } from "../models/reducers/tickets_slice";
 
 export default function Dashboard(): JSX.Element {
   const auth0UserObject = auth0User(
     () => null,
     (userObject) => userObject
   );
+
+  const dispatch = useAppDispatch();
+  const ticketsList_dictionary = useAppSelector((state) => state.tickets);
+  const numberOfTickets = Object.keys(ticketsList_dictionary).length;
+  // when page first loads fetch all tickets list for redux ticket reducer store to collect
+  // still fetches in login screen so not ideal, but decide to leave it for now, you can optimize this later if you wish
+  // only call the tickets 5 times before you give up (the one extra is react first render which does not count)
+  let numberOfFailedFetchCallbacksAllowed = 6;
+  useEffect(() => {
+    // if no tickets in redux store than get all the tickets
+    if (numberOfTickets === 0) {
+      // you get 5 total request call otherwise give up fetching ticket
+      if (numberOfFailedFetchCallbacksAllowed !== 0) {
+        dispatch(get_ticketList_actions());
+
+        numberOfFailedFetchCallbacksAllowed -= 1;
+      }
+    }
+  });
 
   // Array of tickets that user is assigned (assigned_user) to only
   // use for passing to DisplayAssignedTicketsList_table component props
@@ -55,15 +75,15 @@ export default function Dashboard(): JSX.Element {
     });
   });
 
-  const dispatch = useAppDispatch();
-  const messageToast = useAppSelector((state) => state.messageToasts.message);
+  // const dispatch = useAppDispatch();
+  // const messageToast = useAppSelector((state) => state.messageToasts.message);
 
   // return user nickname (username) from auth0 user object
-  const displayUserName = () => {
-    if (auth0UserObject === null) return "...";
+  // const displayUserName = () => {
+  //   if (auth0UserObject === null) return "...";
 
-    return auth0UserObject.nickname;
-  };
+  //   return auth0UserObject.nickname;
+  // };
 
   return (
     <Container>
