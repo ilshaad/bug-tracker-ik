@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // ! these are dummy routes & remove when you done
 // import TestingRequest from "./components/TestingRequest";
 // import ReduxTest from "./views/ReduxTest";
+// import LoadingScreen_foldingPage from "./components/LoadingScreen_foldingPage";
 
 /**page routes */
 import CreateTicket from "./views/CreateTicket";

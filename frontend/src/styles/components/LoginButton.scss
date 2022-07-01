@@ -2,6 +2,8 @@
 
 #LoginButton_component {
   // iK? begin from 360px & up for starting breakpoint
+  font-weight: 800;
+
   &:hover {
     background-color: $primary !important;
   }

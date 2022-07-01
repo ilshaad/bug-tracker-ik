@@ -55,7 +55,7 @@ export default function LoginScreen({}: Props) {
 
               <div
                 id="LoginScreen-view-loginButton"
-                className="d-grid mx-auto mb-1"
+                className="d-grid mx-auto mb-1 rounded"
               >
                 <LoginButton classStyle="bg-secondary text-bold mx-auto w-100" />
               </div>
