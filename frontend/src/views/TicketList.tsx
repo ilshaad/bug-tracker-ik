@@ -17,17 +17,22 @@ export default function TicketList(): JSX.Element {
   // still fetches in login screen so not ideal, but decide to leave it for now, you can optimize this later if you wish
   // only call the tickets 5 times before you give up (the one extra is react first render which does not count)
   let numberOfFailedFetchCallbacksAllowed = 6;
-  useEffect(() => {
-    // if no tickets in redux store than get all the tickets
-    if (numberOfTickets === 0) {
-      // you get 5 total request call otherwise give up fetching ticket
-      if (numberOfFailedFetchCallbacksAllowed !== 0) {
-        dispatch(get_ticketList_actions());
 
-        numberOfFailedFetchCallbacksAllowed -= 1;
+  useEffect(() => {
+    async function refetchRequest() {
+      // if no tickets in redux store than get all the tickets
+      if (numberOfTickets === 0) {
+        // you get 5 total request call otherwise give up fetching ticket
+        if (numberOfFailedFetchCallbacksAllowed !== 0) {
+          await dispatch(get_ticketList_actions());
+
+          numberOfFailedFetchCallbacksAllowed -= 1;
+        }
       }
     }
-  });
+
+    refetchRequest();
+  }); //END useEffect()
 
   return (
     <Container id="TicketList-component">

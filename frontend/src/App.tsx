@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // ! these are dummy routes & remove when you done
@@ -27,22 +27,26 @@ const App = () => {
   const ticketsList_dictionary = useAppSelector((state) => state.tickets);
   const numberOfTickets = Object.keys(ticketsList_dictionary).length;
 
-  // * I removed useEffect() because I notice it would limit failed fetch request
   // when page first loads fetch all tickets list for redux ticket reducer store to collect
   // still fetches in login screen so not ideal, but decide to leave it for now, you can optimize this later if you wish
-
   // only call the tickets 5 times before you give up (the one extra is react first render which does not count)
   let numberOfFailedFetchCallbacksAllowed = 6;
 
-  // if no tickets in redux store than get all the tickets
-  if (numberOfTickets === 0) {
-    // you get 5 total request call otherwise give up fetching ticket
-    if (numberOfFailedFetchCallbacksAllowed !== 0) {
-      dispatch(get_ticketList_actions());
+  useEffect(() => {
+    async function refetchRequest() {
+      // if no tickets in redux store than get all the tickets
+      if (numberOfTickets === 0) {
+        // you get 5 total request call otherwise give up fetching ticket
+        if (numberOfFailedFetchCallbacksAllowed !== 0) {
+          await dispatch(get_ticketList_actions());
 
-      numberOfFailedFetchCallbacksAllowed -= 1;
+          numberOfFailedFetchCallbacksAllowed -= 1;
+        }
+      }
     }
-  }
+
+    refetchRequest();
+  }); //END useEffect()
 
   // ! /fetch & /reduxtest routes are dummy routes, remove afterwards
   // authenticate routes when user can view when they login/signup

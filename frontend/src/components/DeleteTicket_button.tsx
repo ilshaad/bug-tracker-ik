@@ -38,7 +38,7 @@ export default function DeleteTicket_button({ ticketSubmitted_by }: Props) {
       <>
         <PopoverForButton
           position="top"
-          textInfo="You must be the submitted user or assigned user to delete this ticket"
+          textInfo="You must be the submitted user to delete this ticket"
         >
           <Button style={{ opacity: "50%" }}>Delete ticket</Button>
         </PopoverForButton>
