@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon src/server.js",
-    "ikcleanci": "rm -fr node_modules/ && npm cache clean -vf && npm ci && npm run server",
+    "ikcleanci": "rm -fr node_modules/ && npm cache clean -vf && npm ci && npm outdated",
     "ikupdate": "npm i && npm update && npm audit fix --force && npm outdated"
   },
   "author": "Rechad Salma",

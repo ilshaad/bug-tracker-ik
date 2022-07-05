@@ -33,14 +33,14 @@ Developers can:
 
 - _Frontend folder_:
 
-  - Build bundle with my personal _Webpack_ template.
   - _Redux_ as state management to reduce fetch request.
     - You can use _Redux devtool_ extension on the browser to view all the state data.
+  - Build bundle with my personal _Webpack_ template.
   - First mobile responsive approach ranging from `320px-1600px`
 
 - _Backend folder_:
 
-  - Standard _Node.js_ & _Express_ build
+  - _Node.js_ & _Express_
   - _Heroku PostreSql_ as database
   - MVC structure
 

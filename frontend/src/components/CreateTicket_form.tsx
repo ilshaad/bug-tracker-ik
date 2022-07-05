@@ -192,10 +192,16 @@ export default function CreateTicket_form({}: Props) {
                 <label htmlFor="createTitle" className={`form-label`}>
                   Title
                 </label>
+                &#160;
                 <span>*</span>
               </Col>
 
-              <Col xs={12} sm={10} lg={11}>
+              <Col
+                xs={12}
+                sm={10}
+                lg={10}
+                className={`createTicket_titleField ms-auto `}
+              >
                 {/* <Field/> is like input[type] element but is connected to formik component */}
                 <Field
                   type="text"
@@ -229,6 +235,7 @@ export default function CreateTicket_form({}: Props) {
                 <label htmlFor="createDescription" className="form-label">
                   Description
                 </label>
+                &#160;
                 <span>*</span>
               </Col>
 
@@ -264,6 +271,7 @@ export default function CreateTicket_form({}: Props) {
                 md={{ order: 0, span: 6 }}
               >
                 <div>Priority</div>
+                &#160;
                 <span>*</span>
               </Col>
 
@@ -295,6 +303,7 @@ export default function CreateTicket_form({}: Props) {
                 md={{ order: 1, span: 6 }}
               >
                 <div>Status</div>
+                &#160;
                 <span>*</span>
               </Col>
 
@@ -349,6 +358,7 @@ export default function CreateTicket_form({}: Props) {
                 className="createTicketHeading-app_name"
               >
                 <label htmlFor="createAppName">App Name</label>
+                &#160;
                 <span>*</span>
               </Col>
 
@@ -381,6 +391,7 @@ export default function CreateTicket_form({}: Props) {
                 className={`createTicketHeading-app_version`}
               >
                 <label htmlFor="createAppVersion">App version</label>
+                &#160;
                 <span>*</span>
               </Col>
 

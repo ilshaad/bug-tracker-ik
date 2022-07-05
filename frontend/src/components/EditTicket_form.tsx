@@ -161,6 +161,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
                 <Row className="editTicketForm">
                   <Col xs={12}>
                     <label htmlFor="editTitle">Title</label>
+                    &#160;
                     <span>*</span>
                   </Col>
 
@@ -189,6 +190,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
                 <Row className="mt-2">
                   <Col xs={12} className="editTicketForm">
                     <label htmlFor="editDescription">Description</label>
+                    &#160;
                     <span>*</span>
                   </Col>
 
@@ -221,6 +223,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
                 <Row className="mt-2">
                   <Col xs={12} className="editTicketForm-selected">
                     <div>Priority</div>
+                    &#160;
                     <span>*</span>
                   </Col>
 
@@ -278,6 +281,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
                 <Row className="mt-2">
                   <Col xs={12} className="editTicketForm">
                     <label htmlFor="editAppName">App Name</label>
+                    &#160;
                     <span>*</span>
                   </Col>
 
@@ -307,6 +311,7 @@ export default function EditTicket_form({ closeModal_function }: Props) {
                 <Row className="mt-2">
                   <Col xs={12} className="editTicketForm">
                     <label htmlFor="editAppVersion">App version</label>
+                    &#160;
                     <span>*</span>
                   </Col>
 
