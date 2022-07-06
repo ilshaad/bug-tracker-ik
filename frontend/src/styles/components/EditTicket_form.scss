@@ -24,6 +24,7 @@
   // all the inputs & select form
   .EditTicket_form-component-inputs {
     background-color: $mySecondaryInputBg;
+    font-family: "Tiro Bangla", serif !important;
   }
 
   .editTicketForm-selected {
@@ -49,6 +50,10 @@
   .editTicket-form-modal-buttons {
     width: 30%;
   }
+
+  // #editDescription {
+  //   font-family: "Tiro Bangla", serif !important;
+  // }
   // * breakpoint of > 576px (sm)
   //  @include media-breakpoint-up(sm) {
   //  } //END breakpoint of > 576px (sm)

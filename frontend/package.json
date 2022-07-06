@@ -10,7 +10,7 @@
     "dev": "eslint . && rm -rfv ./dist && mkdir dist && cp -rv ./src/public/manifest/* ./dist && webpack serve --config webpack.dev.config.js --hot",
     "server": "node src/server.js",
     "lint": "eslint .",
-    "ikclean": "rm -fr node_modules/ package-lock.json dist/ && npm cache clean -vf && npm run ikupdate && npm outdated",
+    "ikclean": "rm -fr node_modules/ package-lock.json dist/ && npm cache clean -vf && npm i && npm update && npm audit fix --force && npm outdated",
     "ikcleanci": "rm -fr node_modules/ dist/ && npm cache clean -vf && npm ci && npm outdated",
     "backend": "cd ../backend && npm run server"
   },
@@ -23,7 +23,7 @@
     "@babel/preset-react": "^7.18.6",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "@tsconfig/node16": "^1.0.3",
-    "@types/react": "^18.0.14",
+    "@types/react": "^18.0.15",
     "@types/react-copy-to-clipboard": "^5.0.3",
     "@types/react-dom": "^18.0.6",
     "@types/react-helmet": "^6.1.5",

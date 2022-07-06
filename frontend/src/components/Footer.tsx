@@ -14,8 +14,8 @@ export default function Footer({}: Props) {
       style={{ fontSize: "1em" }}
     >
       <div>
-        &copy; <time dateTime={`${currentYear}`}>{currentYear}</time> Copyright
-        Ilshaad Kheerdali
+        &copy;<time dateTime={`${currentYear}`}>{currentYear}</time> Ilshaad
+        Kheerdali
       </div>
 
       {/* github / linkedin / portolio links using bootstrap icons */}
@@ -71,7 +71,8 @@ export default function Footer({}: Props) {
             width="16"
             height="16"
             fill="currentColor"
-            className="bi bi-journal-code text-primary bg-light"
+            className="bi bi-journal-code text-light"
+            // className="bi bi-journal-code text-primary bg-light"
             viewBox="0 0 16 16"
           >
             <path

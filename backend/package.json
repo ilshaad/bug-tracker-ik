@@ -5,13 +5,14 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon src/server.js",
+    "ikclean": "rm -fr node_modules/ package-lock.json && npm cache clean -vf && npm i && npm update && npm audit fix --force && npm outdated",
     "ikcleanci": "rm -fr node_modules/ && npm cache clean -vf && npm ci && npm outdated",
     "ikupdate": "npm i && npm update && npm audit fix --force && npm outdated"
   },
   "author": "Rechad Salma",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.18"
+    "nodemon": "^2.0.19"
   },
   "dependencies": {
     "cors": "^2.8.5",
