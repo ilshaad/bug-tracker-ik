@@ -26,6 +26,9 @@ $mySecondaryInputBg: #f8f9fa;
 // linean gradient colour of white & green. Mainly used for the loading screen fold page
 $myGradientWhiteGreen: linear-gradient(white 30%, $secondary 60%);
 
+// secondary gradient screen for fold page loading screen because I do not like the first gradient as that
+$myGradientWhiteGreen2: linear-gradient(white 50%, $secondary 75%);
+
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/mixins";
