@@ -1,10 +1,12 @@
 # Bug Tracker app
 
+#####_< ilshaad Kheerdali \/>_
+
 ###### Frontend & Backend build (PERN stack)
 
 ## What is the app about?
 
-It is a Bug Tracker app (aka. Issue Tracker). Intented for developer's as a social board for discovering bugs that may be plaguing application's.
+It is a Bug Tracker app (aka. Issue Tracker). Intended for developers as a social board for discovering bugs that may be plaguing applications.
 Developers can:
 
 - Report new bugs they may have found.
@@ -29,33 +31,26 @@ Developers can:
 - PWA (Workbox)
 - etc...
 
-## Some key notes about the app:
+## Some key points about the app:
 
 - _Frontend folder_:
-
-  - _Redux_ as state management to reduce fetch request.
+  - _Redux_.
     - You can use _Redux devtool_ extension on the browser to view all the state data.
-  - Build bundle with my personal _Webpack_ template.
-  - First mobile responsive approach ranging from `320px-1600px`
-
+  - _Webpack_ template set up.
+  - Mobile first approach, design ranging `320px-1600px`.
 - _Backend folder_:
-
-  - _Node.js_ & _Express_
-  - _Heroku PostreSql_ as database
-  - MVC structure
-
-- Client side render app.
-
-- CRUD operation between client-side & server-side.
-
-- Stored within _Docker_ container to protect versioned package from possible bugs in the future.
-
-- Configured _Auth0_ to handle user authentication.
-
-- CI/CD pipeline configured with _Github Actions_, which automate to _Heroku_ as live site when push to `master` branch.
+  - _Node.js_ & _Express_.
+  - _Heroku PostreSql_ as database.
+  - MVC structure.
+- _Auth0_ setup for user authentication.
+- Client Side Render app.
+- App stored within _Docker_ containers.
+- _Github Actions_ CI/CD pipeline setup, automates to _Heroku_ as live site when git push to `master` branch.
+- CRUD operation
+- REST API
 
 #### Feel free to contact me if you want to know more about me or the app. Thanks
 
-#### [rechadsalma/bug-tracker-ik](https://github.com/RechadSalma/bug-tracker-ik)
+##### Site: [Bug Tracker app](https://bug-tracker-frontend-ik-202203.herokuapp.com/)
 
-_< ilshaad Kheerdali \/>_
+##### Github: [rechadsalma/bug-tracker-ik](https://github.com/RechadSalma/bug-tracker-ik)
