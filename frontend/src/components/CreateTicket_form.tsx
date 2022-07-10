@@ -216,6 +216,7 @@ export default function CreateTicket_form({}: Props) {
                 xs={12}
                 sm={{ span: 10, offset: 2 }}
                 lg={{ span: 11, offset: 1 }}
+                className={`createTicket_titleErrorMessageCol`}
               >
                 {/* this will display jsx error message if user leaves text box empty or incorrectly types something (accordingly to your validate function) */}
                 {formikProps.errors.title && formikProps.touched.title ? (

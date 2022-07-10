@@ -144,8 +144,13 @@
       margin-top: 0rem !important;
     }
 
-    .createTicket_titleField {
+    .createTicket_titleField,
+    .createTicket_titleErrorMessageCol {
       width: 89%;
+    }
+
+    .createTicket_titleErrorMessageCol {
+      margin-left: 11.3%;
     }
   } //END breakpoint of > 992 (lg)
 
