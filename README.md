@@ -1,7 +1,5 @@
 # Bug Tracker app
 
-##### _< ilshaad Kheerdali \/>_
-
 ###### Frontend & Backend build (PERN stack)
 
 ## What is the app about?
@@ -54,3 +52,5 @@ Developers can:
 ##### Site: [Bug Tracker app](https://bug-tracker-frontend-ik-202203.herokuapp.com/)
 
 ##### Github: [rechadsalma/bug-tracker-ik](https://github.com/RechadSalma/bug-tracker-ik)
+
+##### _< ilshaad Kheerdali \/>_
