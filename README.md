@@ -13,7 +13,7 @@ Developers can:
 - Commenting.
 - and more...
 
-## Main technologies I used in the app!
+## Main technologies I used in the app:
 
 - React
 - Typescript / Javascript
