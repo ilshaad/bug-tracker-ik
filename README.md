@@ -1,6 +1,6 @@
 # Bug Tracker app
 
-#####_< ilshaad Kheerdali \/>_
+##### _< ilshaad Kheerdali \/>_
 
 ###### Frontend & Backend build (PERN stack)
 
