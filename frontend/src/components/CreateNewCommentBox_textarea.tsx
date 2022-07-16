@@ -82,8 +82,8 @@ export default function CreateNewCommentBox_textarea({
               // close comment box
               setShowCreateCommentBox(false);
 
-              // dispatch message toast to user ticket was created successfully
-              dispatch(messageToast_actions("Successfully created ticket!"));
+              // dispatch message toast to user comment was created successfully
+              dispatch(messageToast_actions("Successfully created comment!"));
             }
           }) //END of post_createComments_action() thenable handler
           .catch((err) => {
