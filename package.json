@@ -7,12 +7,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RechadSalma/bug-tracker-ik.git"
+    "url": "git+https://github.com/ilshaad/bug-tracker-ik.git"
   },
   "author": "Rechad Salma",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RechadSalma/bug-tracker-ik/issues"
+    "url": "https://github.com/ilshaad/bug-tracker-ik/issues"
   },
-  "homepage": "https://github.com/RechadSalma/bug-tracker-ik#readme"
+  "homepage": "https://github.com/ilshaad/bug-tracker-ik#readme"
 }

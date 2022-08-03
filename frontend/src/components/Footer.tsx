@@ -22,7 +22,7 @@ export default function Footer({}: Props) {
       <Container className="d-flex justify-content-center mt-1">
         {/* github link to bug-tracker-ik repo */}
         <a
-          href="https://github.com/RechadSalma/bug-tracker-ik"
+          href="https://github.com/ilshaad/bug-tracker-ik"
           className="text-decoration-underline text-light mx-2"
           target="_blank"
           title="Github"
