@@ -51,6 +51,6 @@ Developers can:
 
 ##### Site: [Bug Tracker app](https://bug-tracker-frontend-ik-202203.herokuapp.com/)
 
-##### Github: [rechadsalma/bug-tracker-ik](https://github.com/ilshaad/bug-tracker-ik)
+##### Github: [ilshaad/bug-tracker-ik](https://github.com/ilshaad/bug-tracker-ik)
 
 ##### _< ilshaad Kheerdali \/>_
