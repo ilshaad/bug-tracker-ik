@@ -61,7 +61,7 @@ export default function Footer({}: Props) {
 
         {/* link to my porfolio site */}
         <a
-          href="#"
+          href="https://ilshaad.com/"
           className="text-decoration-underline text-light mx-2"
           target="_blank"
           title="Portfolio site"
