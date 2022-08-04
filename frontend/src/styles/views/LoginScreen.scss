@@ -39,11 +39,11 @@
     }
   }
 
-  // @media screen and (min-width: 400px) {
-  // .userPasswordTextBox {
-  //   margin-left: 4rem;
-  // }
-  // }
+  @media screen and (min-width: 400px) {
+    .userPasswordTextBox {
+      margin-left: 23%;
+    }
+  }
 
   @media screen and (min-width: 500px) {
     .userPasswordTextBox {
@@ -62,7 +62,7 @@
     }
 
     .userPasswordTextBox {
-      margin-left: 32%;
+      margin-left: 30%;
     }
   } //END breakpoint of > 576px (sm)
 

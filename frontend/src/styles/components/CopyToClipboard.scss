@@ -1,9 +1,17 @@
 @import "../global.scss";
 
 #CopyToClipboard_component {
-  // iK? begin from 360px & up for starting breakpoint
+  button {
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
+  }
+
   svg {
     color: $secondary;
+    padding: 0.3rem;
+    width: 100%;
+    height: 100%;
   }
 
   &:hover svg {
@@ -13,6 +21,23 @@
   &:active svg {
     color: black;
   }
+
+  // iK? begin from 360px & up for starting breakpoint
+  // * breakpint of > 360px
+  @media screen and (min-width: 360px) {
+    button {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  } // breakpoint of > 360px
+
+  // * breakpint of > 400px
+  // @media screen and (min-width: 400px) {
+  // } // breakpoint of > 400px
+
+  // * breakpint of > 500px
+  // @media screen and (min-width: 500px) {
+  // } // breakpoint of > 500px
 
   // * breakpoint of > 576px (sm)
   //  @include media-breakpoint-up(sm) {
