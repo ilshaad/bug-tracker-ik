@@ -9,12 +9,14 @@
     // margin-bottom: 1.25rem;
 
     h2 {
-      margin-top: -1rem;
+      // margin-top: -1rem;
+      font-weight: bold;
+      font-size: 1.5rem;
     }
 
     // table of assigned user in dashboard
     div {
-      margin-top: 1rem;
+      // margin-top: 1rem;
       cursor: pointer;
     }
   }
@@ -22,12 +24,14 @@
   //  the submitted table container of the user
   #Dashboard-submittedTable {
     h2 {
-      margin-top: 1rem;
+      // margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1.5rem;
     }
 
     // table of submitted user in dashboard
     div {
-      margin-top: 1rem;
+      // margin-top: 1rem;
       // margin-bottom: -1rem;
       cursor: pointer;
     }

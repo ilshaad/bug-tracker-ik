@@ -13,6 +13,10 @@
   #LoginScreen-view-cardHeader {
     background-color: $myPrimaryLightBg;
 
+    h2 {
+      font-weight: bold;
+    }
+
     small {
       margin-top: 10px;
     }
@@ -24,30 +28,47 @@
 
   #LoginScreen-view-dontSignup {
     margin-top: 0.5rem;
-    margin-bottom: -0.9rem;
+    // margin-bottom: -0.9rem;
+    font-size: 1.1rem;
+    font-weight: 800;
   }
 
-  .userPasswordTextBox {
-    text-align: left;
-    // margin-left: 1rem;
-    margin-left: 13%;
+  #LoginScreen-view-useGuestAccount {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  #userPasswordContainer {
+    margin-top: 1rem;
+
+    .userPasswordTextBox {
+      text-align: left;
+      // margin-left: 1rem;
+      margin-left: 13%;
+    }
   }
 
   @media screen and (min-width: 360px) {
-    .userPasswordTextBox {
-      margin-left: 18%;
+    #userPasswordContainer {
+      .userPasswordTextBox {
+        margin-left: 18%;
+      }
     }
   }
 
   @media screen and (min-width: 400px) {
-    .userPasswordTextBox {
-      margin-left: 23%;
+    #userPasswordContainer {
+      .userPasswordTextBox {
+        margin-left: 23%;
+      }
     }
   }
 
   @media screen and (min-width: 500px) {
-    .userPasswordTextBox {
-      margin-left: 29%;
+    #userPasswordContainer {
+      .userPasswordTextBox {
+        margin-left: 29%;
+      }
     }
   }
 
@@ -61,8 +82,10 @@
       width: 80%;
     }
 
-    .userPasswordTextBox {
-      margin-left: 30%;
+    #userPasswordContainer {
+      .userPasswordTextBox {
+        margin-left: 30%;
+      }
     }
   } //END breakpoint of > 576px (sm)
 
@@ -82,15 +105,25 @@
 
   // * breakpoint of > 1200px (xl)
   @include media-breakpoint-up(xl) {
-    .userPasswordTextBox {
-      margin-left: 27%;
+    #LoginScreen-view-cardHeader {
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    #userPasswordContainer {
+      .userPasswordTextBox {
+        margin-left: 27%;
+      }
     }
   } //END breakpoint of 1200px
 
   // * breakpoint of > 1400px (xxl)
   @include media-breakpoint-up(xxl) {
-    .userPasswordTextBox {
-      margin-left: 32%;
+    #userPasswordContainer {
+      .userPasswordTextBox {
+        margin-left: 32%;
+      }
     }
   } //END breakpoint of 1400px
 }

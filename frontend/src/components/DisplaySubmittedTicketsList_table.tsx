@@ -197,7 +197,7 @@ export default function DisplaySubmittedTicketsList_table({
 
   return (
     <Table striped bordered hover responsive>
-      <thead>
+      <thead className={`text-center`}>
         <tr>
           <th
             onClick={() => ticketSortByAlphabet("title")}

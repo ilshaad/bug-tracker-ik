@@ -2,7 +2,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const WorkboxPlugin = require("workbox-webpack-plugin");
+// const WorkboxPlugin = require("workbox-webpack-plugin");
 const webpack = require("webpack");
 
 require("dotenv").config();
@@ -75,7 +75,7 @@ module.exports = {
       publicPath: "/",
     }),
 
-    new WorkboxPlugin.GenerateSW(),
+    // new WorkboxPlugin.GenerateSW(),
 
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("production"),

@@ -72,9 +72,11 @@ export default function LoginScreen({}: Props) {
                 <h3 id="LoginScreen-view-dontSignup" className="text-danger">
                   Don't want to signup!
                 </h3>
-                <h4>You can use the 'guest' account as demo user:</h4>
+                <h4 id="LoginScreen-view-useGuestAccount">
+                  You can use the 'guest' account as demo user:
+                </h4>
               </Card.Title>
-              <Card.Text className="mx-auto">
+              <Card.Text className="mx-auto" id="userPasswordContainer">
                 <div className="userPasswordTextBox">
                   <div>
                     <span>Username:</span>

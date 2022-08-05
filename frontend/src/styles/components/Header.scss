@@ -17,7 +17,7 @@
     width: 55px;
     margin-top: 0em;
     margin-bottom: -0.25em;
-    margin-left: 0.5rem;
+    // margin-left: 0.5rem;
     // position: absolute;
     // left: 12px;
     // top: 3px;
@@ -63,7 +63,7 @@
   @include media-breakpoint-up(sm) {
     .Header-logo {
       width: 75px;
-      margin-top: 10%;
+      // margin-top: 10%;
       margin-left: 10%;
     }
 
@@ -117,7 +117,7 @@
 
     .Header-logo {
       width: 75px;
-      margin-top: 10%;
+      // margin-top: 10%;
       margin-left: 15%;
     }
   }
