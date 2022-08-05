@@ -42,7 +42,7 @@ export default function Footer({}: Props) {
 
         {/* link to linkedin  */}
         <a
-          href="https://www.linkedin.com/in/rob-c-a7aa08199/"
+          href="https://www.linkedin.com/in/ilshaad/"
           className="text-decoration-underline text-light mx-2"
           target="_blank"
           title="LinkedIn"
