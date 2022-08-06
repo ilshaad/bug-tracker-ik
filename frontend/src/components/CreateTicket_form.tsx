@@ -188,7 +188,13 @@ export default function CreateTicket_form({}: Props) {
               className="textInputForm mx-auto mb-1 mb-lg-4"
               id="createTicketRowTitle"
             >
-              <Col xs={12} sm={2} lg={1}>
+              <Col
+                xs={12}
+                sm={3}
+                md={2}
+                lg={2}
+                id={`createTicket_title_Col_container`}
+              >
                 <label htmlFor="createTitle" className={`form-label`}>
                   Title
                 </label>
@@ -198,8 +204,10 @@ export default function CreateTicket_form({}: Props) {
 
               <Col
                 xs={12}
-                sm={10}
+                sm={9}
+                md={10}
                 lg={10}
+                // xl={10}
                 className={`createTicket_titleField ms-auto `}
               >
                 {/* <Field/> is like input[type] element but is connected to formik component */}
@@ -214,8 +222,9 @@ export default function CreateTicket_form({}: Props) {
 
               <Col
                 xs={12}
-                sm={{ span: 10, offset: 2 }}
-                lg={{ span: 11, offset: 1 }}
+                sm={{ span: 9, offset: 3 }}
+                md={{ span: 10, offset: 2 }}
+                lg={{ span: 10, offset: 2 }}
                 className={`createTicket_titleErrorMessageCol`}
               >
                 {/* this will display jsx error message if user leaves text box empty or incorrectly types something (accordingly to your validate function) */}

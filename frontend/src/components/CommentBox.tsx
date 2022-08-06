@@ -39,8 +39,10 @@ export default function CommentBox({ commentObject }: Props) {
 
   return (
     <Container className="border-top border-2 border-primary mx-auto mb-2">
-      <h3 className="mt-2 mb-2 text-secondary">{name}</h3>
-      <h4 className="mt-1 mb-2">{email}</h4>
+      <h4 className="mt-2 mb-2 text-secondary fw-bold">{name}</h4>
+      <h4 className="mt-1 mb-2" style={{ fontWeight: 600, fontSize: "1.1rem" }}>
+        {email}
+      </h4>
       <p className="mt-1 mb-2">{text_comment}</p>
       <time dateTime={created_on} className="fst-italic">
         {created_on}

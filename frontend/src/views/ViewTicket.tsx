@@ -76,7 +76,7 @@ export default function ViewTicket(): JSX.Element | null {
       {/* Show all the ticket info */}
       <Row
         className={`mx-auto`}
-        style={{ marginTop: "-2.7em" }}
+        // style={{ marginTop: "-2.7em" }}
         id="DisplayTicket-component"
       >
         <Col
@@ -127,7 +127,7 @@ export default function ViewTicket(): JSX.Element | null {
         </Col>
       </Row>
 
-      <Row className="mt-3 mb-3 mx-auto w-75">
+      <Row className="mt-3 mx-auto w-75">
         <Col
           as="h2"
           // xs={{ span: 10 }}

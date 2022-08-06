@@ -34,7 +34,9 @@ export default function DisplayCommentList({
         xs={{ span: 10, offset: 1 }}
         className="border-top border-2 border-primary mt-1 mx-auto"
       >
-        <p className="fs-5">No comments</p>
+        <p className="fs-5" style={{ marginTop: "1rem" }}>
+          No comments
+        </p>
       </Col>
     );
   }

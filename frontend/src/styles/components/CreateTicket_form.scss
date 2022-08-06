@@ -4,7 +4,7 @@
   // iK? begin from 360px & up for starting breakpoint
 
   // background-color: cornsilk;
-  margin-top: -1.25rem;
+  // margin-top: -1.25rem;
 
   // all the inputs & select form area
   .CreateTicket_form-formInput {
@@ -144,19 +144,36 @@
       margin-top: 0rem !important;
     }
 
+    #createTicket_title_Col_container {
+      padding-right: 0;
+      width: 13%;
+    }
+
     .createTicket_titleField,
     .createTicket_titleErrorMessageCol {
-      width: 89%;
+      width: 87%;
     }
 
     .createTicket_titleErrorMessageCol {
-      margin-left: 11.3%;
+      margin-left: 13.3%;
     }
   } //END breakpoint of > 992 (lg)
 
   // * breakpoint of > 1200px (xl)
-  //  @include media-breakpoint-up(xl) {
-  //  } //END breakpoint of 1200px
+  @include media-breakpoint-up(xl) {
+    #createTicket_title_Col_container {
+      width: 10%;
+    }
+
+    .createTicket_titleField,
+    .createTicket_titleErrorMessageCol {
+      width: 90%;
+    }
+
+    .createTicket_titleErrorMessageCol {
+      margin-left: 10.3%;
+    }
+  } //END breakpoint of 1200px
 
   // * breakpoint of > 1400px (xxl)
   //  @include media-breakpoint-up(xxl) {

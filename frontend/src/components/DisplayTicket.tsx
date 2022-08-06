@@ -27,7 +27,9 @@ export default function DisplayTicket({ ticket }: Props) {
 
   return (
     <>
-      <h2 className={`text-center fs-2`}>{title}</h2>
+      <h2 className={`text-center fs-2`} id={`DisplayTicket_title`}>
+        {title}
+      </h2>
 
       <h3 className={`viewTicket-headings text-secondary`}>Priority:</h3>
       {(() => {

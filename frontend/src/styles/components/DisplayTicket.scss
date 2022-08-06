@@ -3,12 +3,14 @@
 // iK? begin from 360px &tup for starting breakpoint
 
 // ticket title heading
-h2 {
-  margin-bottom: -1rem;
+h2#DisplayTicket_title {
+  // margin-bottom: -1rem;
+  font-weight: bold;
 }
 
 .viewTicket-headings {
-  margin-bottom: -1rem;
+  margin-bottom: 0rem;
+  font-weight: bold;
 }
 
 // * breakpoint of > 576px (sm)
