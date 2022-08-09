@@ -12,6 +12,10 @@
     font-family: "Tiro Bangla", serif !important;
   }
 
+  label {
+    margin-bottom: 0rem;
+  }
+
   // The input[type:text] container. The actual input text is within this container
   .textInputForm {
     // background-color: inherit;
@@ -38,6 +42,10 @@
     //   margin-bottom: 0.25rem !important;
     // }
   } // END .textInputForm
+
+  // #createTicket_title_Col_container {
+  //   margin-bottom: -0.5rem;
+  // }
 
   // select option input for priority (container)
   .createTicketSelectForm-priorityNStatus {
