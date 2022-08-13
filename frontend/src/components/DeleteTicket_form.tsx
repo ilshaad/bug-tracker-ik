@@ -149,13 +149,15 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
               <Container>
                 {/* Explain user to type ticket title name to delete ticket */}
                 <Row>
-                  <h3>
+                  <h4>
                     Please type &quot;
                     {ticket ? (
-                      <code className="text-secondary">{ticket.title}</code>
+                      <code className="text-secondary fw-bold">
+                        {ticket.title}
+                      </code>
                     ) : null}
                     &quot; within the text box for delete confirmation.
-                  </h3>
+                  </h4>
                 </Row>
 
                 <Row>
