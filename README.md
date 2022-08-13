@@ -2,6 +2,12 @@
 
 ###### Frontend & Backend build (PERN stack)
 
+##### Author: _ilshaad Kheerdali_
+
+##### Live site: [Bug Tracker app](https://bug-tracker-frontend-ik-202203.herokuapp.com/)
+
+##### Github: [ilshaad/bug-tracker-ik](https://github.com/ilshaad/bug-tracker-ik)
+
 ## What is the app about?
 
 It is a Bug Tracker app (aka. Issue Tracker). Intended for developers as a social board for discovering bugs that may be plaguing applications.
@@ -48,9 +54,3 @@ Developers can:
 - REST API
 
 #### Feel free to contact me if you want to know more about me or the app. Thanks
-
-##### Site: [Bug Tracker app](https://bug-tracker-frontend-ik-202203.herokuapp.com/)
-
-##### Github: [ilshaad/bug-tracker-ik](https://github.com/ilshaad/bug-tracker-ik)
-
-##### _< ilshaad Kheerdali \/>_
