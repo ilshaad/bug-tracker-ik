@@ -52,7 +52,7 @@
     "workbox-webpack-plugin": "^6.5.4"
   },
   "dependencies": {
-    "@auth0/auth0-react": "^1.10.2",
+    "@auth0/auth0-react": "^1.11.0",
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
