@@ -55,7 +55,7 @@
     "@auth0/auth0-react": "^1.10.2",
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
-    "bootstrap": "^5.2.0",
+    "bootstrap": "^5.2.2",
     "dotenv": "^16.0.1",
     "formik": "^2.2.9",
     "handlebars": "^4.7.7",
