@@ -12,15 +12,15 @@
   "author": "Rechad Salma",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.20"
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "dompurify": "^2.3.9",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "jsdom": "^20.0.0",
+    "dompurify": "^2.4.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsdom": "^20.0.2",
     "morgan": "^1.10.0",
-    "pg": "^8.7.3"
+    "pg": "^8.8.0"
   }
 }
