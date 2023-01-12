@@ -65,7 +65,7 @@
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "react-router-dom": "^6.4.3",
+    "react-router-dom": "^6.6.0",
     "uuid": "^9.0.0",
     "yup": "^0.32.11"
   }
