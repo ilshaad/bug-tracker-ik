@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 
-// ! ZZZZZZZZZZZ TESTING
+// ! iK test psql local database for /dummyroute
 // const psqlDb = require("./database/db.js");
 
 require("dotenv").config();
@@ -38,7 +38,7 @@ app.use("/api/user", userRoute);
 // comments_table psql route
 app.use("/api/comment", commentRoute);
 
-// ! IK TESTING DUMMY ROUTE
+// ! Test route for iK localhost psql db
 // app.get("/dummyroute", (req, res) => {
 //   const sqlQuery = "SELECT * FROM iktable;";
 
