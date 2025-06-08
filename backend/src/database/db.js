@@ -4,6 +4,13 @@ const pool = new Pool({
   ssl: {
     rejectUnauthorized: false,
   },
+
+  // * to connect to your local psql database for testing purposes
+  // database: "postgres",
+  // host: "localhost",
+  // user: "postgres",
+  // password: "",
+  // port: 5432,
 });
 
 module.exports = {

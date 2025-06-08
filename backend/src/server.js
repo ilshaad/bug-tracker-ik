@@ -2,6 +2,9 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 
+// ! ZZZZZZZZZZZ TESTING
+// const psqlDb = require("./database/db.js");
+
 require("dotenv").config();
 
 /** routes import */
@@ -34,6 +37,24 @@ app.use("/api/user", userRoute);
 
 // comments_table psql route
 app.use("/api/comment", commentRoute);
+
+// ! IK TESTING DUMMY ROUTE
+// app.get("/dummyroute", (req, res) => {
+//   const sqlQuery = "SELECT * FROM iktable;";
+
+//   psqlDb.query(sqlQuery, null, (err, result) => {
+//     if (err) {
+//       res.status(400).json({
+//         success: false,
+//         msg: "error when fetching ticket list from database",
+//         err,
+//       });
+//       return;
+//     }
+//     res.json({ success: true, data: result.rows });
+//   });
+//   // res.json({ success: true, msg: "ik dummy route is working" });
+// });
 
 // error page route
 app.all("*", (req, res) => {
