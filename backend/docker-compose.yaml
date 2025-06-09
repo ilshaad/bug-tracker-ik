@@ -1,0 +1,13 @@
+# ! iK was created because I wanted to fix the .env file being implemented, but still not working. So psql localhost not working either.
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+# docker-compose up --build

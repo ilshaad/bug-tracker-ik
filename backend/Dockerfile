@@ -1,16 +1,18 @@
 # create node & alpine
 # FROM node:16.14.2-alpine3.15
-FROM node:18.7.0-alpine3.16
+# FROM node:18.7.0-alpine3.16
+FROM node:24.0.2-alpine3.21
 
 # set directory to work within
 WORKDIR /bug-tracker-backend-ik-202203
 
 # copying both package.json & package-lock-json file
 COPY ./package.json .
-COPY ./package-lock.json .
+# COPY ./package-lock.json .
 
 # npm install, must have package-lock-json file to install successfully
-RUN npm ci
+# RUN npm ci
+RUN npm i
 
 # copy all files over
 COPY . .
