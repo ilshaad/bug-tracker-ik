@@ -57,7 +57,9 @@ app.use("/api/comment", commentRoute);
 // });
 
 // error page route
-app.all("*", (req, res) => {
+// app.all("*", (req, res) => {
+app.use((req, res) => {
+  console.log("ik server 404 error route");
   res.status(404).json({ success: false, msg: "path does not exist" });
 });
 
