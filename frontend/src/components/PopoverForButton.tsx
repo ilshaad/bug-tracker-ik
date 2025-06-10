@@ -1,7 +1,7 @@
 // popover for disabled button for tickets edit / delete / apply for assignee / tag as pending|resolved button
 // react-bootstrap overlay & popover
 
-import React from "react";
+import React, { JSX } from "react";
 import { OverlayTrigger, Popover } from "react-bootstrap";
 
 type Props = { position: any; textInfo: string; children: JSX.Element };

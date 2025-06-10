@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import OuterGrid from "./OuterGrid";
 
 type Props = { children: JSX.Element };

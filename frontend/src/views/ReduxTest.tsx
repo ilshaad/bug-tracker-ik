@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { JSX, useEffect } from "react";
 import { createTicket_dispatch_type, ticket_type } from "../types/tickets_type";
 import {
   comment_type,

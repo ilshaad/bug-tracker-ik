@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { JSX, useEffect } from "react";
 import { Container } from "react-bootstrap";
 // import "../styles/views/CreateTicket.scss";
 import CreateTicket_form from "../components/CreateTicket_form";

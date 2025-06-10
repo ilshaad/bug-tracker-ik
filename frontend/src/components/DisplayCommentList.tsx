@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { JSX, useEffect } from "react";
 import { Col } from "react-bootstrap";
 import {
   sortDateByNewestFirst_array,

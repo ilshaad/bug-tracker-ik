@@ -3,7 +3,7 @@
 // - not showing ticket_id / description
 // the tickets will be listed by title ascending order first, & than user can choose to rearrange sort option if they wish to
 
-import React, { useState } from "react";
+import React, { JSX, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import dateOnly from "../scripts/dateOnly";

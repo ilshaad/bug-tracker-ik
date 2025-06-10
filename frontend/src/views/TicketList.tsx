@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { JSX, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import BackToTop_link from "../components/BackToTop_link";
 import DisplayTicketsList_table from "../components/DisplayTicketsList_table";

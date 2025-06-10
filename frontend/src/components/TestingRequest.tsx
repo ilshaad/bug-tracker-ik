@@ -1,7 +1,7 @@
 // IK FOR DEVELOPMENT USE ONLY
 // this route is for testing & will only show up when in development mode
 
-import React from "react";
+import React, { JSX } from "react";
 
 import get_ticketList from "./../controllers/ticketsFetch/get_ticketList";
 import post_createTicket from "../controllers/ticketsFetch/post_createTicket";
