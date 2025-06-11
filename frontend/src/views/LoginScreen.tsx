@@ -4,7 +4,7 @@ import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import LoginButton from "../components/LoginButton";
 import SeoReactHelmet from "../components/SeoReactHelmet";
-import "../styles/views/LoginScreen.scss";
+import "../styles/views/LoginScreen.css";
 
 import Image_responsive from "../components/Image_responsive";
 import buglogo1199 from "../public/images/Bug-Tracker-1199.jpg";
@@ -47,7 +47,7 @@ export default function LoginScreen({}: Props) {
       {/* card telling user how to login with guest account for demo */}
       <Row className="mx-auto">
         <Col xs={12} sm={10} md={8} lg={6} xl={4} className="mx-auto">
-          <Card border="dark" className="text-center border border-3">
+          <Card border="dark" className="text-center border-3">
             <Card.Body id="LoginScreen-view-cardHeader">
               <Card.Title as="h2" className="text-secondary mt-0">
                 Login to your dashboard

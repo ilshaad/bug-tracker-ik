@@ -1,6 +1,6 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
-import "../styles/components/LoadingScreen_foldingPage.scss";
+import "../styles/components/LoadingScreen_foldingPage.css";
 // import Image_responsive from "./Image_responsive";
 // import bugTrackerImg575 from "../public/images/Bug-Tracker-575.jpg";
 

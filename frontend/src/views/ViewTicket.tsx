@@ -17,7 +17,7 @@ import SeoReactHelmet from "../components/SeoReactHelmet";
 import TitlePage from "../components/TitlePage";
 import auth0User from "../scripts/auth0User";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
-import "../styles/views/ViewTicket.scss";
+import "../styles/views/ViewTicket.css";
 import { get_ticketList_actions } from "../models/reducers/tickets_slice";
 
 export default function ViewTicket(): JSX.Element | null {

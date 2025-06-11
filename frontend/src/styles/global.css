@@ -1,0 +1,218 @@
+/*  ! iK this sass bootstrap is a setup for Outer-grid & Inner-Grid
+  You will need to create the component/element first & add the id's within
+ Outer-grid uses css grid & consist of header / main / left side navbar
+ Inner-grid uses flexbox & consist of main & footer */
+
+/* @import "./customBootstrap.scss"; */
+@import url("https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap");
+/* @import "../components/OuterGrid.scss"; */
+
+/* iK xx-small small phones (above 320px)
+ X-Small devices (portrait phones, less than 576px)
+ No media query for `xs` since this is the default in Bootstrap
+ No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }` */
+
+/* #####################################################
+ iK? x-Small devices (small phones, 360px and up)
+ ##################################################### */
+
+/* body {
+   background-color: red;
+ }
+
+ #root {
+   width: 100%;
+   height: 100%;
+   background-color: blue;
+ } */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* * to get react component full 100 width & height of the screen */
+root,
+html,
+body,
+#root,
+#root>div#OuterGrid {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  font-family: "Tiro Bangla", serif;
+
+  /* BOOTSTRAP CUSTOMIZATION FOR ITS CLASSES */
+  /* Primary color */
+  --bs-primary: #2c4a38;
+  --bs-primary-rgb: rgb: 44, 74, 56;
+
+  /* Secondary color: Semi-Transparent Yellow */
+  --bs-secondary: #207846;
+  --bs-secondary-rgb: rgb(32, 120, 70);
+
+  --bs-danger: #ad0c00;
+  --bs-danger-rgb: rgb(173, 12, 0);
+
+  /* iK my variables */
+  /* main background colour */
+  --myPrimaryLightBg: white;
+
+  /* A lighter version of cornsilk colour */
+  --mySecondaryLightBg: #fffae6;
+
+  /* inputs secondary background-color (white is primary background-color unless white is already background then we use secondary to make the input stand out a bit */
+  --mySecondaryInputBg: #f8f9fa;
+
+  /* linean gradient colour of white & green. Mainly used for the loading screen fold page */
+  --myGradientWhiteGreen: linear-gradient(white 30%, var(--bs-secondary) 60%);
+
+  /* secondary gradient screen for fold page loading screen because I do not like the first gradient as that */
+  --myGradientWhiteGreen2: linear-gradient(white 50%, var(--bs-secondary) 75%);
+}
+
+/* * Setup up Outer-grid of the screen (OuterGrid.tsx component) */
+#OuterGrid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-auto-rows: 65px auto;
+  grid-template-areas:
+    "OG-header"
+    "OG-main";
+  width: 100%;
+  height: 100%;
+
+  /* background-color: aquamarine; */
+}
+
+#OuterGrid-header {
+  grid-area: OG-header;
+
+  /* background-color: red; */
+}
+
+#OuterGrid-main {
+  grid-area: OG-main;
+  height: 100%;
+  width: 100%;
+  padding: 1;
+
+  /* background-color: darkgreen; */
+}
+
+#OuterGrid-leftNavBar {
+  grid-area: OG-leftNav;
+  display: none;
+  height: 100%;
+
+  /* background-color: $secondary; */
+}
+
+/* Setup Inner-grid within the Outer-grid */
+#InnerGrid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+
+  /* primary background colour (iK I set it to white unless I changed it for some reason) */
+  background-color: var(--myPrimaryLightBg);
+  /* background-color: $myPrimaryLightBg; */
+}
+
+#InnerGrid-main {
+  flex-basis: 1;
+  height: 100%;
+
+  margin-bottom: 0px;
+}
+
+#InnerGrid-main>* {
+  height: 100%;
+  width: 100%;
+}
+
+#InnerGrid-footer {
+  width: 100%;
+  height: 75px;
+  margin-bottom: 0px;
+  /* border-left: black 6px solid; */
+  /* background-color: slateblue; */
+  /* border: blue 3px solid; */
+}
+
+/* the title names sort option of the tables for ticketlist table / user assigned table / user sumbitted table */
+.tableTitles:hover {
+  background-color: var(--bs-secondary);
+  /* filter: brightness(2); */
+  color: white;
+  cursor: pointer;
+}
+
+/* indicate to user the current sort option selected in the ticketlist table / user assigned table / user submitted table */
+.sortOptionSelectedClass {
+  background-color: var(--bs-secondary);
+  color: white;
+}
+
+/* ! iK Beware I notice media query does not work accordingly unless your elements have higher specificity than < 576px. Not sure if this is a one off or not? */
+/* * However the other breakpoints are working fine with each other so you do not have to compete for specificity there */
+
+/* !! iKupdate this line is not require I think because I manage to get page to load with 100vh & still keeping page filled */
+/* ! Use div#InnerGrid main#InnerGrid-main specificity to expand & adjuse height at each breakpoint because if the content is too small there than the footer will have empty white space below it */
+/* EG. div#InnerGrid main#InnerGrid-main { height: 800px } */
+/* you can also modify InnerGrid-footer too if need be */
+
+/* #####################################################
+ Small devices (landscape phones, 576px and up)
+ ##################################################### */
+@media (min-width: 576px) {
+  #OuterGrid {
+    grid-template-columns: 1fr 9fr;
+    grid-auto-rows: 85px auto;
+    grid-template-areas:
+      "OG-header OG-header OG-header OG-header OG-header OG-header OG-header OG-header OG-header OG-header"
+      "OG-leftNav OG-main OG-main OG-main OG-main OG-main OG-main OG-main OG-main OG-main";
+  }
+
+  #OuterGrid-leftNavBar {
+    display: block;
+  }
+}
+
+/* #####################################################
+ Medium devices (tablets, 768px and up)
+ ##################################################### */
+/* @include media-breakpoint-up(md) {
+} */
+
+/* #####################################################
+ Large devices (desktops, 992px and up)
+ ##################################################### */
+/* @include media-breakpoint-up(lg) {
+} */
+
+/* #####################################################
+ X-Large devices (large desktops, 1200px and up)
+ ##################################################### */
+/* @include media-breakpoint-up(xl) {
+} */
+
+/* #####################################################
+ XX-Large devices (larger desktops, 1400px and up)
+ ##################################################### */
+/* @include media-breakpoint-up(xxl) {
+} */
+
+/* Usage
+ Example: Hide starting at `min-width: 0`, and then show at the `sm` breakpoint
+ .custom-class {
+   display: none;
+ }
+ @include media-breakpoint-up(sm) {
+   .custom-class {
+     display: block;
+   }
+ } */

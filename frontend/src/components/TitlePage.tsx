@@ -1,7 +1,7 @@
 // main title heading for all routes
 
 import React from "react";
-import "../styles/components/TitlePage.scss";
+import "../styles/components/TitlePage.css";
 
 type Props = { titleName: string };
 

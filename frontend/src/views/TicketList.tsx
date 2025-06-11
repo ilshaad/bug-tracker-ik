@@ -7,7 +7,7 @@ import SeoReactHelmet from "../components/SeoReactHelmet";
 import TitlePage from "../components/TitlePage";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { get_ticketList_actions } from "../models/reducers/tickets_slice";
-import "../styles/views/TicketList.scss";
+import "../styles/views/TicketList.css";
 
 export default function TicketList(): JSX.Element {
   const dispatch = useAppDispatch();

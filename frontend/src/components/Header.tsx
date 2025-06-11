@@ -1,7 +1,7 @@
 // include header, which is responsive navbar which only shows the sandwich image when in <576px with route links & logout button
 
 import React from "react";
-import "../styles/components/Header.scss";
+import "../styles/components/Header.css";
 
 import { Link, useLocation } from "react-router-dom";
 import LogoutButton from "./LogoutButton";

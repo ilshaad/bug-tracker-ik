@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { Button } from "react-bootstrap";
-import "../styles/components/LoginButton.scss";
+import "../styles/components/LoginButton.css";
 
 type Props = { classStyle?: string };
 

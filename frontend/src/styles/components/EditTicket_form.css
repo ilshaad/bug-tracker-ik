@@ -1,0 +1,94 @@
+/* @import "../global.scss"; */
+
+/* for label elements  */
+/* @mixin labelSpan {
+  label {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $secondary;
+  }
+
+  // the asterick within the label to indicate to user they must enter something
+  span {
+    font-weight: 300;
+    color: $danger;
+  }
+} */
+
+/* iK? begin from 360px & up for starting breakpoint */
+/* #EditTicket-form-component {} */
+
+/* .editTicketForm {
+  @include labelSpan();
+} */
+
+.editTicketForm label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--bs-secondary);
+}
+
+/* the asterick within the label to indicate to user they must enter something */
+.editTicketForm span {
+  font-weight: 300;
+  color: var(--bs-danger);
+}
+
+/* all the inputs & select form */
+.EditTicket_form-component-inputs {
+  background-color: var(--mySecondaryInputBg);
+  font-family: "Tiro Bangla", serif !important;
+}
+
+/* .editTicketForm-selected {} */
+
+.editTicketForm-selected div {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--bs-secondary);
+  display: inline-block;
+}
+
+.editTicketForm-selected span {
+  font-weight: 300;
+  color: var(--bs-danger);
+}
+
+.EditInputErrorResponse {
+  color: var(--bs-danger);
+  font-size: 1.1rem;
+  margin-top: 0.3em;
+}
+
+.editTicket-form-modal-buttons {
+  width: 30%;
+}
+
+/* #editDescription {
+     font-family: "Tiro Bangla", serif !important;
+   }
+   * breakpoint of > 576px (sm)
+    @include media-breakpoint-up(sm) {
+    } //END breakpoint of > 576px (sm) */
+
+/* * breakpoint of > 768px (md) */
+/* @include media-breakpoint-up(md) {
+    } //END breakpoint of > 768px (md) */
+
+/* * breakpoint of > 992 (lg) */
+/* @include media-breakpoint-up(lg) { */
+@media (min-width: 992px) {
+  #editTicket-form-container {
+    width: 75%;
+  }
+}
+
+/* END breakpoint of > 992 (lg) */
+
+/* * breakpoint of > 1200px (xl) */
+/* @include media-breakpoint-up(xl) {
+    } //END breakpoint of 1200px */
+
+/* * breakpoint of > 1400px (xxl) */
+/* @include media-breakpoint-up(xxl) {
+    } //END breakpoint of 1400px */

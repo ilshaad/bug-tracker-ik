@@ -5,7 +5,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Overlay, Tooltip } from "react-bootstrap";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import "../styles/components/CopyToClipboard.scss";
+import "../styles/components/CopyToClipboard.css";
 
 type Props = {};
 
@@ -26,7 +26,7 @@ export default function CopyToClipboard_button({}: Props) {
         ref={target}
         onClick={() => setShow(!show)}
         variant="light"
-        className={`border border-3 ${!show ? "shadow-none" : ""}`}
+        className={`border-3 ${!show ? "shadow-none" : ""}`}
         active={false}
         size="sm"
       >

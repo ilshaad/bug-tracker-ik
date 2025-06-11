@@ -12,7 +12,7 @@ import catchHandlerForReduxSlices from "../scripts/catchHandlerForReduxSlices";
 import { useAppDispatch } from "../models/hooks";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
 import { post_createTicket_actions } from "../models/reducers/tickets_slice";
-import "../styles/components/CreateTicket_form.scss";
+import "../styles/components/CreateTicket_form.css";
 import { createTicket_dispatch_type } from "../types/tickets_type";
 
 // ticket_id / title / description / submitted_by / priority / assigned_user / status / app_name / app_version / created_on

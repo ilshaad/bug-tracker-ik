@@ -11,7 +11,7 @@ import catchHandlerForReduxSlices from "../scripts/catchHandlerForReduxSlices";
 import { useAppDispatch, useAppSelector } from "../models/hooks";
 import { messageToast_actions } from "../models/reducers/messageToast_slice";
 import { delete_deleteTicket_actions } from "../models/reducers/tickets_slice";
-import "../styles/components/DeleteTicket_form.scss";
+import "../styles/components/DeleteTicket_form.css";
 
 type Props = { closeModal_function: Function };
 

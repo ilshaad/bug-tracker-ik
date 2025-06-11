@@ -1,0 +1,76 @@
+/* @import "../global.scss"; */
+
+/* iK? begin from 360px & up for starting breakpoint */
+
+div#LoadingScreen_foldingPage-views {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background: linear-gradient($primary, $secondary); */
+  background: var(--myGradientWhiteGreen2);
+  /* background: cornsilk; */
+  /* background: linear-gradient($primary, cornsilk); */
+  /* color: $primary; */
+  color: var(--bs-secondary);
+  /* filter: brightness(2); */
+  font-weight: bolder;
+  font-size: 1.2em;
+}
+
+/* .logoimgLoadingPage {
+     // margin-top: -21rem;
+     position: absolute;
+     top: 10%;
+     width: 30%;
+   } */
+
+.spinnerLoadingPage {
+  /* position: absolute; */
+  /* top: 40%; */
+  margin-top: -8rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  /* filter: brightness(2); */
+}
+
+/* h2 {
+     filter: brightness(2);
+   } */
+
+/* * breakpoint of > 576px (sm) */
+/* @include media-breakpoint-up(sm) { */
+@media (min-width: 576px) {
+  .spinnerLoadingPage {
+    /* margin-top: -8rem; */
+    width: 3.5rem;
+    height: 3.5rem;
+    /* top: 44%; */
+  }
+}
+
+/* END breakpoint of > 576px (sm) */
+
+/* * breakpoint of > 768px (md) */
+/* @include media-breakpoint-up(md) {
+     .logoimgLoadingPage {
+       width: 25%;
+     }
+   } //END breakpoint of > 768px (md) */
+
+/* * breakpoint of > 992 (lg) */
+/* @include media-breakpoint-up(lg) {
+     .logoimgLoadingPage {
+       width: 20%;
+     }
+   } //END breakpoint of > 992 (lg) */
+
+/* * breakpoint of > 1200px (xl) */
+/* @include media-breakpoint-up(xl) {
+    } //END breakpoint of 1200px */
+
+/* * breakpoint of > 1400px (xxl) */
+/* @include media-breakpoint-up(xxl) {
+    } //END breakpoint of 1400px */

@@ -1,0 +1,38 @@
+/* @import "../global.scss"; */
+
+/* iK? begin from 360px &tup for starting breakpoint */
+
+/* ticket title heading */
+h2#DisplayTicket_title {
+  /* margin-bottom: -1rem; */
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.5rem !important;
+}
+
+.viewTicket-headings {
+  margin-bottom: 0rem;
+  font-weight: bold;
+}
+
+/* * breakpoint of > 576px (sm) */
+/* @include media-breakpoint-up(sm) {
+  } //END breakpoint of > 576px (sm) */
+
+/* * breakpoint of > 768px (md) */
+/* @include media-breakpoint-up(md) {
+  } //END breakpoint of > 768px (md) */
+
+/* * breakpoint of > 992 (lg) */
+/* @include media-breakpoint-up(lg) {
+  } //END breakpoint of > 992 (lg) */
+
+/* * breakpoint of > 1200px (xl) */
+/* @include media-breakpoint-up(xl) {
+  } //END breakpoint of 1200px */
+
+/* * breakpoint of > 1400px (xxl) */
+/* @include media-breakpoint-up(xxl) {
+  } //END breakpoint of 1400px */

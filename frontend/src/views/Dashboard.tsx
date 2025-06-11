@@ -1,6 +1,6 @@
 import React, { JSX, useEffect } from "react";
 
-import "../styles/views/Dashboard.scss";
+import "../styles/views/Dashboard.css";
 
 // import * as bootstrap from "bootstrap";
 

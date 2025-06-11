@@ -1,0 +1,73 @@
+/* @import "../global.css"; */
+
+#OuterGrid-leftNavBar {
+  background-color: var(--bs-secondary);
+}
+
+#OuterGrid-leftNavBar>ul {
+  margin-top: 50px;
+}
+
+#OuterGrid-leftNavBar * {
+  text-decoration-line: none;
+}
+
+.LeftNavBar-links {
+  background-color: var(--bs-secondary);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  /* padding: 5px 0; */
+  padding-top: 25px;
+  padding-bottom: 25px;
+  /* margin-bottom: 5px; */
+}
+
+.LeftNavBar-links>* {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+/* the logout button parent tag */
+.LeftNavBar-links:nth-child(4) {
+  padding: 0;
+  filter: grayscale(0.9);
+}
+
+/* the logout button tag */
+.LeftNavBar-links:nth-child(4)>div {
+  padding: 25px 16px;
+}
+
+/* when user hover the list in the side left navbar */
+.LeftNavBar-links:hover {
+  cursor: pointer;
+  background-color: var(--bs-primary);
+}
+
+/* for list that matches the current url */
+.LeftNavBar-links.hoverNav {
+  filter: brightness(2);
+  color: black;
+}
+
+/* * breakpoint of > 576px (sm) */
+/*  @include media-breakpoint-up(sm) {
+  } //END breakpoint of > 576px (sm) */
+
+/* * breakpoint of > 768px (md) */
+/*  @include media-breakpoint-up(md) {
+  } //END breakpoint of > 768px (md) */
+
+/* * breakpoint of > 992 (lg) */
+/*  @include media-breakpoint-up(lg) {
+  } //END breakpoint of > 992 (lg) */
+
+/* * breakpoint of > 1200px (xl) */
+/*  @include media-breakpoint-up(xl) {
+  } //END breakpoint of 1200px */
+
+/* * breakpoint of > 1400px (xxl) */
+/*  @include media-breakpoint-up(xxl) {
+  } //END breakpoint of 1400px */
