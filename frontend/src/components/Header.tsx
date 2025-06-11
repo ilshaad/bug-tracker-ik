@@ -109,7 +109,7 @@ export default function Header({}: Props) {
             {/* dashboard link */}
             <Link
               to="/#top"
-              className={`Header-navLinks p-2 border border-dark border-1 rounded text-decoration-none fs-5 fw-bold ${
+              className={`Header-navLinks p-2 border border-dark rounded text-decoration-none fs-5 fw-bold ${
                 uselocation.pathname === "/" ? "Header-navLinks-current" : ""
               }`}
             >
@@ -119,7 +119,7 @@ export default function Header({}: Props) {
             {/* ticket list link */}
             <Link
               to="/ticketlist#top"
-              className={`Header-navLinks p-2 border border-dark border-1 rounded text-decoration-none fs-5 fw-bold ${
+              className={`Header-navLinks p-2 border border-dark rounded text-decoration-none fs-5 fw-bold ${
                 uselocation.pathname === "/ticketlist"
                   ? "Header-navLinks-current"
                   : ""
@@ -131,7 +131,7 @@ export default function Header({}: Props) {
             {/* create ticket link */}
             <Link
               to="/createticket#top"
-              className={`Header-navLinks p-2 border border-dark border-1 rounded text-decoration-none fs-5 fw-bold ${
+              className={`Header-navLinks p-2 border border-dark rounded text-decoration-none fs-5 fw-bold ${
                 uselocation.pathname === "/createticket"
                   ? "Header-navLinks-current"
                   : ""
@@ -141,7 +141,7 @@ export default function Header({}: Props) {
             </Link>
 
             {/* logout button */}
-            <div className="Header-navLinks text-light p-2 border border-dark border-1 rounded text-decoration-none fs-5 fw-bold">
+            <div className="Header-navLinks text-light p-2 border border-dark rounded text-decoration-none fs-5 fw-bold">
               <LogoutButton />
             </div>
 
