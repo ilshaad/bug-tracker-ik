@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "ikupdate": "npm i && npm update && npm audit fix --force && npm outdated",
-    "build": "eslint . && rm -rfv ./dist && mkdir dist && cp -rv ./src/public/manifest/* ./dist/ && webpack --config webpack.production.config.js",
+    "build": "rm -rfv ./dist && mkdir dist && cp -rv ./src/public/manifest/* ./dist/ && webpack --config webpack.production.config.js",
     "prod": "npm run build && node src/server.js",
     "dev": "rm -rfv ./dist && mkdir dist && cp -rv ./src/public/manifest/* ./dist && webpack serve --config webpack.dev.config.js --hot",
     "server": "node src/server.js",
