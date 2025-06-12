@@ -1,52 +1,42 @@
-# This is a basic workflow to help you get started with Actions
-name: connect bug-tracker docker-compose.yml to heroku frontend & backend app
+name: Deploy with Docker Compose
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches:
       - master
       - develop
-#   pull_request:
-#     branches: [ master ]
 
-# Allows you to run this workflow manually from the Actions tab
-#   workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  build-deploy:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      # Check out your repository so that Docker Compose and Dockerfiles are available
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo iK Hello, world! BUG TRACKER echoing!!!
+      # Set up Docker Buildx which is now considered best practice for building Docker images
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-      # Create .env file & insert env variables from github secrets for the frontend
-      - name: Create .env file & insert github secrets as env variables within for the frontend to use as .env
-        run: |
-          touch .env
-          echo DOMAIN_AUTH0=${{ secrets.DOMAIN_AUTH0 }} >> .env
-          echo CLIENT_ID_AUTH0=${{ secrets.CLIENT_ID_AUTH0 }} >> .env
-          echo BACKEND_URL=${{ secrets.BACKEND_URL }} >> .env
-          echo ADMIN_EMAIL=${{ secrets.ADMIN_EMAIL }} >> .env
-          ls -la
-          mv .env frontend
-          ls -la frontend
-
-      - name: Deploy Multiple Docker Images to Heroku Apps
-        uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0 # use the latest version of the action
-        id: heroku
+      # Optionally: Cache Docker layers to speed up builds
+      - name: Cache Docker layers
+        uses: actions/cache@v3
         with:
-          email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
-          api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
-          docker_compose_file: "./docker-compose.yml" # set the path to the folder where the docker-compose file is located
-          heroku_apps: '[{"imagename":"bug-tracker-ik_bugtrackerfrontend","appname":"bug-tracker-frontend-ik-202203","apptype":"web"},{"imagename":"bug-tracker-ik_bugtrackerbackend","appname":"bug-tracker-backend-ik-202203","apptype":"web"}]' # List of Docker Image name, Heroku app and Heroku app type
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      # Build your Docker images using your docker-compose file (explicitly reference it)
+      - name: Build images using docker-compose
+        run: docker-compose -f docker-compose.yml build
+
+      # Push the built images to your registry (if you have push targets set in your compose file)
+      - name: Push images using docker-compose
+        run: docker-compose -f docker-compose.yml push
+
+      # Optionally, deploy (start containers) using Docker Compose locally
+      - name: Start containers via docker-compose
+        run: |
+          docker-compose -f docker-compose.yml up -d
