@@ -365,12 +365,17 @@ export default function EditTicket_form({ closeModal_function }: Props) {
             </Modal.Body>
 
             <Modal.Footer>
-              <Button type="submit" className="editTicket-form-modal-buttons">
+              <Button
+                type="submit"
+                className="editTicket-form-modal-buttons"
+                style={{ backgroundColor: "var(--bs-primary" }}
+              >
                 Submit
               </Button>
               <Button
                 onClick={() => closeModal_function(false)}
-                className="editTicket-form-modal-buttons bg-danger"
+                className="editTicket-form-modal-buttons"
+                style={{ backgroundColor: "var(--bs-danger)" }}
               >
                 Cancel
               </Button>

@@ -126,13 +126,18 @@ export default function EditComment_textarea({
           </Form.Group>
 
           <div className="d-flex justify-content-end gap-2 mt-1">
-            <Button type="submit" size="sm">
+            <Button
+              type="submit"
+              size="sm"
+              style={{ backgroundColor: "var(--bs-primary)" }}
+            >
               Update comment
             </Button>
             <Button
               onClick={() => setDisplayEditCommentBox(false)}
               size="sm"
-              className="bg-danger"
+              // className="bg-danger"
+              style={{ backgroundColor: "var(--bs-danger)" }}
             >
               Cancel
             </Button>

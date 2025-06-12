@@ -30,17 +30,21 @@ export default function Message_toast({}: Props) {
       style={{ position: "fixed", bottom: 0, right: 0 }}
     >
       <Toast
+        // show={true}
         show={messageToast_reduxAction()}
         onClose={nullTheMessageToast_reduxAction}
         delay={5000}
         autohide
         id="Message_toast-component-toast"
       >
-        <Toast.Header className="bg-primary">
+        <Toast.Header style={{ backgroundColor: "var(--bs-primary)" }}>
           {/* <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" /> */}
           <strong className="me-auto text-light">Bug Tracker</strong>
           <small className="text-light">0 mins ago</small>
         </Toast.Header>
+        {/* <Toast.Body className="my-3 fw-bold">
+          ik testing toast message
+        </Toast.Body> */}
         <Toast.Body className="my-3 fw-bold">{messageToast}</Toast.Body>
       </Toast>
     </ToastContainer>

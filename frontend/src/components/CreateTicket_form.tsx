@@ -456,9 +456,10 @@ export default function CreateTicket_form({}: Props) {
               <Col xs={12} md={6} xl={4} className="d-grid">
                 <Button
                   type="submit"
-                  variant="primary"
+                  // variant="primary"
                   size="lg"
                   className="fw-bold"
+                  style={{ backgroundColor: "var(--bs-primary)" }}
                 >
                   Submit
                 </Button>

@@ -36,7 +36,7 @@
 
 /* all the inputs & select form */
 .EditTicket_form-component-inputs {
-  background-color: var(--mySecondaryInputBg);
+  background-color: var(--mySecondaryInputBg) !important;
   font-family: "Tiro Bangla", serif !important;
 }
 

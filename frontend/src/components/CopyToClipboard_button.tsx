@@ -26,7 +26,7 @@ export default function CopyToClipboard_button({}: Props) {
         ref={target}
         onClick={() => setShow(!show)}
         variant="light"
-        className={`border-3 ${!show ? "shadow-none" : ""}`}
+        className={`border ${!show ? "shadow-none" : ""}`}
         active={false}
         size="sm"
       >

@@ -31,6 +31,7 @@ export default function DeleteComment_button({
     <Button
       onClick={() => setDisplayDeleteCommentConfirmation_modal(true)}
       size="sm"
+      style={{ backgroundColor: "var(--bs-primary)" }}
     >
       Delete comment
     </Button>

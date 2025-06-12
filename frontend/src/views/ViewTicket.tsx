@@ -95,7 +95,7 @@ export default function ViewTicket(): JSX.Element | null {
           xs={12}
           md={{ span: 5, offset: 1 }}
           lg={{ span: 4, offset: 2 }}
-          className="d-grid"
+          className="d-grid viewTicket-button--primary"
         >
           <EditTicket_button
             ticketSubmitted_by={ticket?.submitted_by}

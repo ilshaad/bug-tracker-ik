@@ -8,6 +8,11 @@
   width: 80%;
 }
 
+#ticketButtonsCrud button {
+  background-color: var(--bs-primary);
+
+}
+
 /* container (Row) for create comment button & sort option select form */
 #creatCommentSortOption_buttons {
   width: 75%;

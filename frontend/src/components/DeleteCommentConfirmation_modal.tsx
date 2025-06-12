@@ -90,10 +90,15 @@ export default function DeleteCommentConfirmation_modal({
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={deleteComment}>Confirm</Button>
+        <Button
+          onClick={deleteComment}
+          style={{ backgroundColor: "var(--bs-primary)" }}
+        >
+          Confirm
+        </Button>
         <Button
           onClick={() => setDisplayDeleteCommentConfirmation_modal(false)}
-          className="bg-danger"
+          style={{ backgroundColor: "var(--bs-danger)" }}
         >
           Cancel
         </Button>

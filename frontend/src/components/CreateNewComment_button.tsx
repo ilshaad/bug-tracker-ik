@@ -29,6 +29,7 @@ export default function CreateNewComment_button({
           <Button
             onClick={() => setShowCreateCommentBox(!showCreateCommentBox)}
             size="sm"
+            style={{ backgroundColor: "var(--bs-primary)" }}
           >
             Add comment
           </Button>

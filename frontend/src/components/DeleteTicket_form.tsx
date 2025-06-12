@@ -39,6 +39,7 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
           type="submit"
           onClick={() => closeModal_function(false)}
           className="deleteTicket-form-modal-buttons"
+          style={{ backgroundColor: "var(--bs-primary)" }}
         >
           Delete
         </Button>
@@ -51,6 +52,7 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
           disabled
           type="submit"
           className="deleteTicket-form-modal-buttons"
+          style={{ backgroundColor: "var(--bs-primary)" }}
         >
           Delete
         </Button>
@@ -152,7 +154,10 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
                   <h4>
                     Please type &quot;
                     {ticket ? (
-                      <code className="text-secondary fw-bold">
+                      <code
+                        className="fw-bold"
+                        style={{ color: "var(--bs-secondary)" }}
+                      >
                         {ticket.title}
                       </code>
                     ) : null}
@@ -201,7 +206,8 @@ export default function DeleteTicket_form({ closeModal_function }: Props) {
 
               <Button
                 onClick={() => closeModal_function(false)}
-                className="deleteTicket-form-modal-buttons bg-danger"
+                className="deleteTicket-form-modal-buttons"
+                style={{ backgroundColor: "var(--bs-danger)" }}
               >
                 Cancel
               </Button>

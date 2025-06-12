@@ -17,6 +17,18 @@ h3 {
   font-weight: bold;
 }
 
+.viewTicket-text-secondary {
+  color: var(--bs-secondary);
+}
+
+.viewTicket-danger {
+  color: var(--bs-danger);
+}
+
+.viewTicket-status-pending {
+  color: var(--bs-danger);
+}
+
 /* * breakpoint of > 576px (sm) */
 /* @include media-breakpoint-up(sm) {
   } //END breakpoint of > 576px (sm) */

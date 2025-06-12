@@ -13,13 +13,13 @@
 }
 
 .LeftNavBar-links {
-  background-color: var(--bs-secondary);
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
+  background-color: var(--bs-secondary) !important;
+  color: white !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
   /* padding: 5px 0; */
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 25px !important;
+  padding-bottom: 25px !important;
   /* margin-bottom: 5px; */
 }
 
@@ -31,7 +31,7 @@
 
 /* the logout button parent tag */
 .LeftNavBar-links:nth-child(4) {
-  padding: 0;
+  padding: 0 !important;
   filter: grayscale(0.9);
 }
 
@@ -43,13 +43,13 @@
 /* when user hover the list in the side left navbar */
 .LeftNavBar-links:hover {
   cursor: pointer;
-  background-color: var(--bs-primary);
+  background-color: var(--bs-primary) !important;
 }
 
 /* for list that matches the current url */
 .LeftNavBar-links.hoverNav {
-  filter: brightness(2);
-  color: black;
+  filter: brightness(2) !important;
+  color: black !important;
 }
 
 /* * breakpoint of > 576px (sm) */

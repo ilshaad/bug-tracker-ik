@@ -22,7 +22,11 @@ export default function EditComment_button({
   const adminEmail = process.env.ADMIN_EMAIL;
 
   const editButton = () => (
-    <Button onClick={() => setDisplayEditCommentBox(true)} size="sm">
+    <Button
+      onClick={() => setDisplayEditCommentBox(true)}
+      size="sm"
+      style={{ backgroundColor: "var(--bs-primary)" }}
+    >
       Edit comment
     </Button>
   ); //END editbutton

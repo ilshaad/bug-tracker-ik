@@ -1,6 +1,5 @@
 // import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
-
 import { Card, Col, Container, Row } from "react-bootstrap";
 import LoginButton from "../components/LoginButton";
 import SeoReactHelmet from "../components/SeoReactHelmet";
@@ -49,7 +48,7 @@ export default function LoginScreen({}: Props) {
         <Col xs={12} sm={10} md={8} lg={6} xl={4} className="mx-auto">
           <Card border="dark" className="text-center border-3">
             <Card.Body id="LoginScreen-view-cardHeader">
-              <Card.Title as="h2" className="text-secondary mt-0">
+              <Card.Title as="h2" className="mt-0">
                 Login to your dashboard
               </Card.Title>
 
@@ -57,7 +56,7 @@ export default function LoginScreen({}: Props) {
                 id="LoginScreen-view-loginButton"
                 className="d-grid mx-auto mb-1 rounded"
               >
-                <LoginButton classStyle="bg-secondary text-bold mx-auto w-100" />
+                <LoginButton classStyle="text-bold mx-auto w-100 border-0" />
               </div>
 
               <Card.Link href="https://auth0.com/" target="blank">

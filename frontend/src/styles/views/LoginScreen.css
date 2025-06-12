@@ -17,6 +17,8 @@
 
 #LoginScreen-view-cardHeader h2 {
   font-weight: bold;
+  color: var(--bs-secondary) !important;
+  ;
 }
 
 #LoginScreen-view-cardHeader small {
@@ -32,6 +34,7 @@
   /* margin-bottom: -0.9rem; */
   font-size: 1.1rem;
   font-weight: 800;
+  color: var(--bs-danger) !important;
 }
 
 #LoginScreen-view-useGuestAccount {

@@ -135,10 +135,15 @@ export default function CreateNewCommentBox_textarea({
             </Form.Control.Feedback>
           </Form.Group>
           <div className="d-flex justify-content-end mt-1 gap-2">
-            <Button type="submit">Add comment</Button>
+            <Button
+              type="submit"
+              style={{ backgroundColor: "var(--bs-primary)" }}
+            >
+              Add comment
+            </Button>
             <Button
               onClick={() => setShowCreateCommentBox(false)}
-              className="bg-danger"
+              style={{ backgroundColor: "var(--bs-danger)" }}
             >
               Cancel
             </Button>

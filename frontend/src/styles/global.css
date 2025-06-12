@@ -46,7 +46,7 @@ body,
   /* BOOTSTRAP CUSTOMIZATION FOR ITS CLASSES */
   /* Primary color */
   --bs-primary: #2c4a38;
-  --bs-primary-rgb: rgb: 44, 74, 56;
+  --bs-primary-rgb: rgb(44, 74, 56);
 
   /* Secondary color: Semi-Transparent Yellow */
   --bs-secondary: #207846;
@@ -140,6 +140,7 @@ body,
   margin-bottom: 0px;
   /* border-left: black 6px solid; */
   /* background-color: slateblue; */
+  background-color: var(--bs-primary);
   /* border: blue 3px solid; */
 }
 
@@ -153,8 +154,8 @@ body,
 
 /* indicate to user the current sort option selected in the ticketlist table / user assigned table / user submitted table */
 .sortOptionSelectedClass {
-  background-color: var(--bs-secondary);
-  color: white;
+  background-color: var(--bs-secondary) !important;
+  color: white !important;
 }
 
 /* ! iK Beware I notice media query does not work accordingly unless your elements have higher specificity than < 576px. Not sure if this is a one off or not? */
