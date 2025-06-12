@@ -1,9 +1,9 @@
-version: "3.8"
+# version: "3.8"
 services:
   bugtrackerfrontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
+      # dockerfile: Dockerfile
     image: bug-tracker-ik_bugtrackerfrontend
     ports:
       - "3000:3000"
@@ -11,7 +11,7 @@ services:
   bugtrackerbackend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
+      # dockerfile: Dockerfile
     image: bug-tracker-ik_bugtrackerbackend
     ports:
       - "4000:4000"
