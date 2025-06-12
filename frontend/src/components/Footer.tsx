@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Container } from "react-bootstrap";
+import urls from "../config/urls";
 
 type Props = {};
 
@@ -22,7 +23,7 @@ export default function Footer({}: Props) {
       <Container className="d-flex justify-content-center mt-1">
         {/* github link to bug-tracker-ik repo */}
         <a
-          href="https://github.com/ilshaad/bug-tracker-ik"
+          href={urls.bugTrackerGitRepo}
           className="text-decoration-underline text-light mx-2"
           target="_blank"
           title="Github"
@@ -42,7 +43,7 @@ export default function Footer({}: Props) {
 
         {/* link to linkedin  */}
         <a
-          href="https://www.linkedin.com/in/ilshaad/"
+          href={urls.linkedIn}
           className="text-decoration-underline text-light mx-2"
           target="_blank"
           title="LinkedIn"
@@ -61,7 +62,7 @@ export default function Footer({}: Props) {
 
         {/* link to my porfolio site */}
         <a
-          href="https://ilshaad.com/"
+          href={urls.portfolioSite}
           className="text-decoration-underline text-light mx-2"
           target="_blank"
           title="Portfolio site"
@@ -108,7 +109,7 @@ export default function Footer({}: Props) {
 
         {/* link to mail me (contact me)*/}
         <a
-          href="mailto:rechadsalma123@gmail.com?subject=From%20the%20Bug%20Tracker%20app%3A"
+          href={`mailto:${urls.myEmail}?subject=From%20the%20Bug%20Tracker%20app%3A`}
           className="text-decoration-underline text-light mx-2"
           target="_blank"
           title="Email me"
