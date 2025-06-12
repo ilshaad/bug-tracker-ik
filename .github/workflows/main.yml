@@ -42,6 +42,10 @@ jobs:
           mv .env frontend
           ls -la frontend
 
+      # ! included by copilot
+      - name: Build Docker images
+        run: docker-compose -f docker-compose.yml build
+
       - name: Deploy Multiple Docker Images to Heroku Apps
         uses: snithyanantham/docker-compose-multiple-apps-heroku-deploy@v1.0 # use the latest version of the action
         id: heroku
