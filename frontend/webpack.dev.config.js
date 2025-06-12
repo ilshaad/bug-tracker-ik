@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const ReactRefreshBabel = require("react-refresh/babel");
 const webpack = require("webpack");
-// const WorkboxPlugin = require("workbox-webpack-plugin");
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 require("dotenv").config();
 
@@ -85,13 +85,13 @@ module.exports = {
     new ReactRefreshWebpackPlugin(),
 
     // ! IK UNCOMMENT WHEN YOU FINISH TO TURN ON PWA
-    // new WorkboxPlugin.GenerateSW({
-    //   // these options encourage the ServiceWorkers to get in there fast
-    //   // and not allow any straggling "old" SWs to hang around
-    //   clientsClaim: true,
-    //   skipWaiting: true,
-    //   maximumFileSizeToCacheInBytes: 50000000,
-    // }),
+    new WorkboxPlugin.GenerateSW({
+      // these options encourage the ServiceWorkers to get in there fast
+      // and not allow any straggling "old" SWs to hang around
+      clientsClaim: true,
+      skipWaiting: true,
+      maximumFileSizeToCacheInBytes: 50000000,
+    }),
 
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("development"),

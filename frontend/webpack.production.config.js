@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
-// const WorkboxPlugin = require("workbox-webpack-plugin");
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 require("dotenv").config();
 
@@ -76,7 +76,7 @@ module.exports = {
     }),
 
     // ! IK UNCOMMENT WHEN YOU FINISH TO TURN ON PWA
-    // new WorkboxPlugin.GenerateSW(),
+    new WorkboxPlugin.GenerateSW(),
 
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("production"),
