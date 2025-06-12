@@ -3,7 +3,7 @@ name: Deploy with Docker Compose
 on:
   push:
     branches:
-      - master
+      - main
       - develop
 
 jobs:
@@ -11,15 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Check out your repository so that Docker Compose and Dockerfiles are available
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up Docker Buildx which is now considered best practice for building Docker images
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      # Optionally: Cache Docker layers to speed up builds
       - name: Cache Docker layers
         uses: actions/cache@v3
         with:
@@ -28,15 +25,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      # Build your Docker images using your docker-compose file (explicitly reference it)
+      # Install Docker Compose since it's not present by default
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
       - name: Build images using docker-compose
         run: docker-compose -f docker-compose.yml build
 
-      # Push the built images to your registry (if you have push targets set in your compose file)
       - name: Push images using docker-compose
         run: docker-compose -f docker-compose.yml push
 
-      # Optionally, deploy (start containers) using Docker Compose locally
       - name: Start containers via docker-compose
-        run: |
-          docker-compose -f docker-compose.yml up -d
+        run: docker-compose -f docker-compose.yml up -d
