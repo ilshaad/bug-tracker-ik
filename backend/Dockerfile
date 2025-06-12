@@ -1,7 +1,8 @@
 # create node & alpine
 # FROM node:16.14.2-alpine3.15
 # FROM node:18.7.0-alpine3.16
-FROM node:24.0.2-alpine3.21
+# FROM node:24.0.2-alpine3.21
+FROM node:20-alpine
 
 # set directory to work within
 WORKDIR /bug-tracker-backend-ik-202203
