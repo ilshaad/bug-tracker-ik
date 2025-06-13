@@ -84,6 +84,7 @@ module.exports = {
         DOMAIN_AUTH0: JSON.stringify(process.env.DOMAIN_AUTH0),
         CLIENT_ID_AUTH0: JSON.stringify(process.env.CLIENT_ID_AUTH0),
         ADMIN_EMAIL: JSON.stringify(process.env.ADMIN_EMAIL),
+        // BACKEND_URL: JSON.stringify(process.env.BACKEND_URL_PROD),
         BACKEND_URL: JSON.stringify(process.env.BACKEND_URL),
       },
     }),
