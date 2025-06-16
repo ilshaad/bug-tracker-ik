@@ -7,9 +7,6 @@ FROM node:24.0.2-alpine3.21
 # set directory to work within
 WORKDIR /bug-tracker-frontend-ik-202203
 
-
-
-
 # Declare the build-time variables that Railway will provide.
 ARG DOMAIN_AUTH0
 ARG CLIENT_ID_AUTH0
@@ -30,8 +27,6 @@ RUN echo "DOMAIN_AUTH0: $DOMAIN_AUTH0" && \
     echo "ADMIN_EMAIL: $ADMIN_EMAIL" && \
     echo "BACKEND_URL: $BACKEND_URL" && \
     echo "BACKEND_URL_PROD: $BACKEND_URL_PROD"
-
-
 
 # copying both package.json & package-lock-json file
 COPY ./package.json .
