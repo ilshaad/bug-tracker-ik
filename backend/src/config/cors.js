@@ -6,6 +6,7 @@ exports.corsOptionsDelegate = (req, callback) => {
     allowlist = [
       process.env.FRONTEND_HEROKU_SITE_URL,
       process.env.FRONTEND_HEROKU_SITE_URL2,
+      process.env.FRONTEND_RAILWAY_SITE_URL,
     ];
   } else {
     allowlist = [process.env.LOCAL_DEV_URL, process.env.LOCAL_PROD_URL];

@@ -7,6 +7,25 @@ FROM node:24.0.2-alpine3.21
 # set directory to work within
 WORKDIR /bug-tracker-backend-ik-202203
 
+# Declare the build-time variables that Railway will provide.
+ARG FRONTEND_RAILWAY_SITE_URL
+ARG DATABASE_URL
+ARG LOCAL_PROD_URL
+ARG NODE_ENV
+
+# Set these as environment variables with exactly the same names as your setup with your app & railway env dashboard.
+ENV FRONTEND_RAILWAY_SITE_URL=${FRONTEND_RAILWAY_SITE_URL} \
+    DATABASE_URL=${DATABASE_URL} \
+    LOCAL_PROD_URL=${LOCAL_PROD_URL} \
+    BACKEND_URL=${BACKEND_URL} 
+
+# For debugging purposes, you can echo the variables (optional)
+RUN echo "DOMAIN_AUTH0: $DOMAIN_AUTH0" && \
+    echo "DATABASE_URL: $DATABASE_URL" && \
+    echo "LOCAL_PROD_URL: $LOCAL_PROD_URL" && \
+    echo "BACKEND_URL: $BACKEND_URL" 
+
+
 # copying both package.json & package-lock-json file
 COPY ./package.json .
 # COPY ./package-lock.json .
