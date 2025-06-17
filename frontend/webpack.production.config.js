@@ -76,7 +76,7 @@ module.exports = {
     }),
 
     // ! IK UNCOMMENT WHEN YOU FINISH TO TURN ON PWA
-    new WorkboxPlugin.GenerateSW(),
+    // new WorkboxPlugin.GenerateSW(),
 
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("production"),
