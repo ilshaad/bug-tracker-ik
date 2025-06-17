@@ -43,7 +43,7 @@ COPY . .
 # build
 # RUN npm run build
 
-EXPOSE 4000
+# EXPOSE 4000
 
 # CMD to start server. eg. node ./src/server.js
 CMD npm run server
