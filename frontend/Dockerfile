@@ -8,25 +8,25 @@ FROM node:24.0.2-alpine3.21
 WORKDIR /bug-tracker-frontend-ik-202203
 
 # Declare the build-time variables that Railway will provide.
-ARG DOMAIN_AUTH0
-ARG CLIENT_ID_AUTH0
-ARG ADMIN_EMAIL
-ARG BACKEND_URL
-ARG BACKEND_URL_PROD
+# ARG DOMAIN_AUTH0
+# ARG CLIENT_ID_AUTH0
+# ARG ADMIN_EMAIL
+# ARG BACKEND_URL
+# ARG BACKEND_URL_PROD
 
-# Set these as environment variables with exactly the same names.
-ENV DOMAIN_AUTH0=${DOMAIN_AUTH0} \
-    CLIENT_ID_AUTH0=${CLIENT_ID_AUTH0} \
-    ADMIN_EMAIL=${ADMIN_EMAIL} \
-    BACKEND_URL=${BACKEND_URL} \
-    BACKEND_URL_PROD=${BACKEND_URL_PROD}
+# # Set these as environment variables with exactly the same names.
+# ENV DOMAIN_AUTH0=${DOMAIN_AUTH0} \
+#     CLIENT_ID_AUTH0=${CLIENT_ID_AUTH0} \
+#     ADMIN_EMAIL=${ADMIN_EMAIL} \
+#     BACKEND_URL=${BACKEND_URL} \
+#     BACKEND_URL_PROD=${BACKEND_URL_PROD}
 
-# For debugging purposes, you can echo the variables (optional)
-RUN echo "DOMAIN_AUTH0: $DOMAIN_AUTH0" && \
-    echo "CLIENT_ID_AUTH0: $CLIENT_ID_AUTH0" && \
-    echo "ADMIN_EMAIL: $ADMIN_EMAIL" && \
-    echo "BACKEND_URL: $BACKEND_URL" && \
-    echo "BACKEND_URL_PROD: $BACKEND_URL_PROD"
+# # For debugging purposes, you can echo the variables (optional)
+# RUN echo "DOMAIN_AUTH0: $DOMAIN_AUTH0" && \
+#     echo "CLIENT_ID_AUTH0: $CLIENT_ID_AUTH0" && \
+#     echo "ADMIN_EMAIL: $ADMIN_EMAIL" && \
+#     echo "BACKEND_URL: $BACKEND_URL" && \
+#     echo "BACKEND_URL_PROD: $BACKEND_URL_PROD"
 
 # copying both package.json & package-lock-json file
 COPY ./package.json .
