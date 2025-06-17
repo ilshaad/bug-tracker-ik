@@ -6,6 +6,7 @@ exports.corsOptionsDelegate = (req, callback) => {
     process.env.FRONTEND_HEROKU_SITE_URL,
     process.env.FRONTEND_HEROKU_SITE_URL2,
     process.env.FRONTEND_RAILWAY_SITE_URL,
+    process.env.FRONTEND_RENDER_SITE_URL,
     process.env.NODE_ENV !== "production" ? process.env.LOCAL_DEV_URL : null,
     process.env.NODE_ENV !== "production" ? process.env.LOCAL_PROD_URL : null,
   ];
