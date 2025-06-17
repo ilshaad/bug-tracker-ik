@@ -2,15 +2,24 @@ exports.corsOptionsDelegate = (req, callback) => {
   // list of urls for cors
   let allowlist;
   // setting production & develoment environments variables & etc
-  if (process.env.NODE_ENV === "production") {
-    allowlist = [
-      process.env.FRONTEND_HEROKU_SITE_URL,
-      process.env.FRONTEND_HEROKU_SITE_URL2,
-      process.env.FRONTEND_RAILWAY_SITE_URL,
-    ];
-  } else {
-    allowlist = [process.env.LOCAL_DEV_URL, process.env.LOCAL_PROD_URL];
-  }
+  allowlist = [
+    process.env.FRONTEND_HEROKU_SITE_URL,
+    process.env.FRONTEND_HEROKU_SITE_URL2,
+    process.env.FRONTEND_RAILWAY_SITE_URL,
+    process.env.NODE_ENV !== "production" ? process.env.LOCAL_DEV_URL : null,
+    process.env.NODE_ENV !== "production" ? process.env.LOCAL_PROD_URL : null,
+  ];
+
+  // // setting production & develoment environments variables & etc
+  // if (process.env.NODE_ENV === "production") {
+  //   allowlist = [
+  //     process.env.FRONTEND_HEROKU_SITE_URL,
+  //     process.env.FRONTEND_HEROKU_SITE_URL2,
+  //     process.env.FRONTEND_RAILWAY_SITE_URL,
+  //   ];
+  // } else {
+  //   allowlist = [process.env.LOCAL_DEV_URL, process.env.LOCAL_PROD_URL];
+  // }
 
   let corsOptions;
   if (allowlist.indexOf(req.header("Origin")) !== -1) {
