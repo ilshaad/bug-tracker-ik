@@ -14,6 +14,7 @@ ARG ADMIN_EMAIL
 ARG BACKEND_URL
 ARG BACKEND_URL_PROD
 
+
 # # Set these as environment variables with exactly the same names.
 ENV DOMAIN_AUTH0=${DOMAIN_AUTH0} \
     CLIENT_ID_AUTH0=${CLIENT_ID_AUTH0} \
@@ -27,6 +28,9 @@ RUN echo "DOMAIN_AUTH0: $DOMAIN_AUTH0" && \
     echo "ADMIN_EMAIL: $ADMIN_EMAIL" && \
     echo "BACKEND_URL: $BACKEND_URL" && \
     echo "BACKEND_URL_PROD: $BACKEND_URL_PROD"
+
+# Echo the Node.js version for confirmation during build
+RUN echo "Node.js version: $(node -v)"
 
 # copying both package.json & package-lock-json file
 COPY ./package.json .
