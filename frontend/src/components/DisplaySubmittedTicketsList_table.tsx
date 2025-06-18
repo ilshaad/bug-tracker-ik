@@ -20,6 +20,7 @@ import {
   sortPriorityByDescendingOrder_array,
 } from "../scripts/sortByPriority";
 import { ticket_type } from "../types/tickets_type";
+import LoadSpinner from "./LoadSpinner";
 
 type Props = {
   userSubmittedTickets_array: ticket_type[];
@@ -192,7 +193,8 @@ export default function DisplaySubmittedTicketsList_table({
     !userSubmittedTickets_array ||
     auth0UserObject === null
   ) {
-    return <h3>You have no submitted tickets</h3>;
+    // return <h3>You have no submitted tickets</h3>;
+    return <LoadSpinner colour="primary" />;
   }
 
   return (

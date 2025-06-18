@@ -23,7 +23,7 @@ export default function LoadingScreen_foldingPage({}: Props) {
         variant="primary"
       />
       <h3 className="mt-5 mx-5 text-center">
-        Please allow up to 60seconds to load as I am using a free server
+        Please allow up to 60seconds to load data as I am using a free server
       </h3>
     </div>
   );

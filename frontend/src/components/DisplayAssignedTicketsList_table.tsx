@@ -20,6 +20,7 @@ import {
   sortPriorityByDescendingOrder_array,
 } from "../scripts/sortByPriority";
 import { ticket_type } from "../types/tickets_type";
+import LoadSpinner from "./LoadSpinner";
 
 type Props = { userAssignedTickets_array: ticket_type[]; auth0UserObject: any };
 
@@ -189,7 +190,8 @@ export default function DisplayAssignedTicketsList_table({
     !userAssignedTickets_array ||
     auth0UserObject === null
   ) {
-    return <h3>You have no assigned tickets</h3>;
+    // return <h3>You have no assigned tickets</h3>;
+    return <LoadSpinner colour="primary" />;
   }
 
   return (

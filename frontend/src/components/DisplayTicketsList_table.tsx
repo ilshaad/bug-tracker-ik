@@ -20,6 +20,7 @@ import {
   sortPriorityByDescendingOrder_array,
 } from "../scripts/sortByPriority";
 import { useAppSelector } from "../models/hooks";
+import LoadSpinner from "./LoadSpinner";
 
 type Props = {};
 
@@ -187,7 +188,8 @@ export default function DisplayTicketsList_table({}: Props) {
 
   // if redux reducer tickets list is empty (meaning no tickets at all) than return statement to user
   if (Object.keys(ticketsList_dictionary).length === 0) {
-    return <h3>No tickets available</h3>;
+    // return <h3>No tickets available</h3>;
+    return <LoadSpinner colour="primary" />;
   }
 
   return (
