@@ -3,7 +3,7 @@ services:
   bugtrackerfrontend:
     build:
       context: ./frontend
-      # dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     image: bug-tracker-ik_bugtrackerfrontend
     ports:
       - "3000:3000"

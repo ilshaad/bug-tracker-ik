@@ -1,4 +1,5 @@
-# * This is the Dockerfile you upload & build from your server (Render) to build your app. Ensure all the env is already set up on their site
+# * iK For docker local development, for some reason your .env file does not work when using ARG & ENV for the frontend (however backend works fine ???)
+
 # create node & alpine
 # FROM node:16.14.2-alpine3.15
 # FROM node:18.7.0-alpine3.16
@@ -9,38 +10,40 @@ FROM node:24.0.2-alpine3.21
 WORKDIR /bug-tracker-frontend-ik-202203
 
 # Declare the build-time variables that Railway will provide.
-ARG DOMAIN_AUTH0
-ARG CLIENT_ID_AUTH0
-ARG ADMIN_EMAIL
-ARG BACKEND_URL
-ARG BACKEND_URL_PROD
+# ARG DOMAIN_AUTH0
+# ARG CLIENT_ID_AUTH0
+# ARG ADMIN_EMAIL
+# ARG BACKEND_URL
+# ARG BACKEND_URL_PROD
 
 
 # # Set these as environment variables with exactly the same names.
-ENV DOMAIN_AUTH0=${DOMAIN_AUTH0} \
-    CLIENT_ID_AUTH0=${CLIENT_ID_AUTH0} \
-    ADMIN_EMAIL=${ADMIN_EMAIL} \
-    BACKEND_URL=${BACKEND_URL} \
-    BACKEND_URL_PROD=${BACKEND_URL_PROD}
+# ENV DOMAIN_AUTH0=${DOMAIN_AUTH0} \
+#     CLIENT_ID_AUTH0=${CLIENT_ID_AUTH0} \
+#     ADMIN_EMAIL=${ADMIN_EMAIL} \
+#     BACKEND_URL=${BACKEND_URL} \
+#     BACKEND_URL_PROD=${BACKEND_URL_PROD}
 
 # # For debugging purposes, you can echo the variables (optional)
-RUN echo "DOMAIN_AUTH0: $DOMAIN_AUTH0" && \
-    echo "CLIENT_ID_AUTH0: $CLIENT_ID_AUTH0" && \
-    echo "ADMIN_EMAIL: $ADMIN_EMAIL" && \
-    echo "BACKEND_URL: $BACKEND_URL" && \
-    echo "BACKEND_URL_PROD: $BACKEND_URL_PROD"
+# RUN echo "DOMAIN_AUTH0: $DOMAIN_AUTH0" && \
+#     echo "CLIENT_ID_AUTH0: $CLIENT_ID_AUTH0" && \
+#     echo "ADMIN_EMAIL: $ADMIN_EMAIL" && \
+#     echo "BACKEND_URL: $BACKEND_URL" && \
+#     echo "BACKEND_URL_PROD: $BACKEND_URL_PROD"
 
 # Echo the Node.js version for confirmation during build
-RUN echo "iK Node.js version: $(node -v)"
+# RUN echo "iK dev Node.js version: $(node -v)"
 
 # copying both package.json & package-lock-json file
 COPY ./package.json .
-COPY ./package-lock.json .
+# COPY ./package-lock.json .
 
 # npm install, must have package-lock-json file to install successfully
 # RUN npm ci
 # RUN npm i
-RUN npm ci --legacy-peer-deps
+# RUN npm ci --legacy-peer-deps
+# RUN npm ci -f
+RUN npm i -f
 
 # copy all files over
 COPY . .
@@ -50,7 +53,7 @@ COPY . .
 # build
 RUN npm run build
 
-# EXPOSE 3000
+EXPOSE 3000
 
 # CMD to start server. eg. node ./src/server.js
 CMD npm run server

@@ -26,7 +26,7 @@ WORKDIR /bug-tracker-backend-ik-202203
 #     echo "BACKEND_URL: $BACKEND_URL" 
 
 # Echo the Node.js version for confirmation during build
-RUN echo "Node.js version: $(node -v)"
+RUN echo "iK Node.js version: $(node -v)"
 
 # copying both package.json & package-lock-json file
 COPY ./package.json .
