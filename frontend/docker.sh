@@ -1,7 +1,8 @@
 # Dockerfile.dev works for local developement, but not for Dockerfile because that only works for deployement (Render) due to env setup
-docker build -t fe1 -f Dockerfile.dev . \
-&& \
+docker build -t fe1 . && \
+# docker build -t fe1 -f Dockerfile.dev . && \
 docker run -p 3000:3000 fe1
+# docker run -p 3000:3000 fe1
 
 # touch .env && \
 
