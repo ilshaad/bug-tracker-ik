@@ -4,7 +4,7 @@
 
 ##### Author: _ilshaad Kheerdali_
 
-##### Live site: [Bug Tracker app](https://bug-tracker-frontend-ik-202203.herokuapp.com/)
+##### Live site: [Bug Tracker app](https://bug-tracker-ik.onrender.com)
 
 ##### Github: [ilshaad/bug-tracker-ik](https://github.com/ilshaad/bug-tracker-ik)
 
@@ -28,10 +28,9 @@ Developers can:
 - Redux
 - Webpack
 - Auth0
-- Sass / Bootstrap
+- Bootstrap
 - Docker
-- Github Actions (CI/CD)
-- Heroku
+- Render
 - PWA (Workbox)
 - etc...
 

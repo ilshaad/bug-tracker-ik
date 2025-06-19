@@ -45,12 +45,22 @@ body,
 
   /* BOOTSTRAP CUSTOMIZATION FOR ITS CLASSES */
   /* Primary color */
-  --bs-primary: #2c4a38;
-  --bs-primary-rgb: rgb(44, 74, 56);
+  /* ik old colour */
+  /* --bs-primary: #2c4a38;
+  --bs-primary-rgb: rgb(44, 74, 56); */
+  /* --bs-primary: #179576;
+  --bs-primary-rgb: rgb(23, 149, 118); */
+  --bs-primary: #4a1795;
+  --bs-primary-rgb: rgb(74, 23, 149);
 
   /* Secondary color: Semi-Transparent Yellow */
-  --bs-secondary: #207846;
-  --bs-secondary-rgb: rgb(32, 120, 70);
+  /* ik old colour */
+  /* --bs-secondary: #207846;
+  --bs-secondary-rgb: rgb(32, 120, 70); */
+  /* --bs-secondary: #38935f;
+  --bs-secondary-rgb: rgb(56, 147, 95); */
+  --bs-secondary: #6a39b3;
+  --bs-secondary-rgb: rgb(106, 57, 179);
 
   --bs-danger: #ad0c00;
   --bs-danger-rgb: rgb(173, 12, 0);

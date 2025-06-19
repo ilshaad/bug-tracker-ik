@@ -75,7 +75,11 @@ export default function LoginScreen({}: Props) {
                   You can use the 'guest' account as demo user:
                 </h4>
               </Card.Title>
-              <Card.Text className="mx-auto" id="userPasswordContainer">
+              <Card.Text
+                className="mx-auto"
+                id="userPasswordContainer"
+                as="div"
+              >
                 <div className="userPasswordTextBox">
                   <div>
                     <span>Username:</span>
