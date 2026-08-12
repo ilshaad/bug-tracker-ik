@@ -61,7 +61,7 @@
     "dotenv": "^16.5.0",
     "formik": "^2.4.6",
     "handlebars": "^4.7.8",
-    "react": "^19.1.0",
+    "react": "^19.2.1",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^19.1.0",
     "react-helmet": "^6.1.0",
